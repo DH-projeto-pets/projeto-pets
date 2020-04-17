@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+    header {        
+        background-color: rgb(255, 135, 0);
+        height: 55px;
+        display: grid;
+        grid-template-columns:65% 20% 15%;
+    }
+
+    nav, #logout {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    a:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    img { height: 50px }
+
+    #logout {
+        justify-content: flex-start;
+        margin-left: 20%;
+    }
+
+    .logo, .menu { height: 55px }
+
+    .menuHeader {
+        display: flex;
+        flex-direction: row;
+        height: 55px;
+        align-items: center;
+    }
+
+    .menuHeader a {
+        align-self: center;
+        height: 60%;
+        padding: 0px 15px;
+    }
+
+    .menuHeader a:hover { background-color: rgba(255, 135, 0, 50%) }
+
+    .user { justify-content: flex-start }
+
+    .user a { padding: 0 5px }
+    #fotoUser { border-radius: 50% }
+
+    #nome {
+        text-align: center;
+        font-weight: 550;
+        height: 40px;
+    }
+
+    .logout {
+        height: 40px;
+        width: 120px;
+        outline: none;
+        background-color: #3D9194;
+        color: #FFF;
+        font-weight: 700;
+    }
+</style>
+
+<header class="">
+    <nav class="menu">
+        <a href="" class="logo" >
+            <img src="../../public/images/LogoPetAqui9.png" alt="logo"class="logo">
+        </a>    
+        <div class="menuHeader">
+            <a href="">Encontrar Pet</a>
+            <a href="">Pets Encontrados</a>
+            <a href="">Adoção</a>
+            <a href="">Sobre</a>
+        </div>
+    </nav>
+    <nav class="user">
+        <a href="">
+            <img src="../../public/images/fotoPerfil.jpg" alt="foto" id="fotoUser">
+        </a>
+        <a href="">
+            <div id="nameUser"><span>Doida dos Gatos</span></div>
+        </a>
+    </nav>
+    <div id=logout>
+        <button class="btn logout">Sair</button>
+    </div>
