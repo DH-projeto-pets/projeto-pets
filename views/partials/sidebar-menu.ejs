@@ -1,0 +1,81 @@
+
+<!-- Sciprt para o collapsible -->
+<script>
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+</script>
+
+<!-- Container da sidebar -->
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+            </button>
+
+        </div>
+
+        <ul class="list-unstyled components">
+            <li class="active menu-item">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-home"></i> Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-plus-circle" aria-hidden="true"></i> Cadastro</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Pet para adoção</a>
+                    </li>
+                    <li>
+                        <a href="#">Pet encontrado</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#"><i class="fa fa-paw" aria-hidden="true"></i> Adotar pet</a>
+            </li>
+            <li class="menu-item">
+                <a href="#"><i class="fa fa-search" aria-hidden="true"></i> Encontrar meu pet</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Item de menu</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Item de menu</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Item de menu</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+<!-- Page Content  -->
+<div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button>
+        </div>
+    </nav>
+</div>
