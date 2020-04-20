@@ -1,0 +1,51 @@
+:root {
+  --orange: #FF9721;
+  --lightgreen: #4BDBB7;
+  --green: #4AB1B5;
+}
+.orange { background-color: var(--orange); }
+.mission { background-color: var(--orange); }
+.values { background-color: var(--green); }
+.vision { background-color: var(--lightgreen); }
+.about p { color: #000; text-align: justify; }
+
+.about-desc__imgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.about-desc__img {
+  height: 300px;
+}
+
+
+.about-desc__text p:first-child {
+  font-weight: 700;
+}
+
+.about-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+}
+
+.about-info_row {
+  justify-content: space-between;
+}
+
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-info p {
+  text-align: justify;
+}
