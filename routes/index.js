@@ -14,4 +14,9 @@ router.get('/pets/new', (req,res) => {
   return res.render('screen/register-lost-found-pets');
 });
 
+
+router.get('/user/edit', (req,res) => {
+  return res.render('screen/edit-user');
+});
+
 module.exports = router;
