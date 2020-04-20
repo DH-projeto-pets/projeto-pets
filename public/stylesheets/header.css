@@ -1,66 +1,67 @@
-    header {
-        background-color: #FF8700;
-        height: 55px;
-    }
-    nav ul {
-        list-style: none;
-    }
-    li:hover {
-        background-color: rgba(255,255,255,0.1);    
-        text-decoration: none;
-    }
+header {
+    background-color: #FF8700;
+}
+
+#logo{
+    height: 30px;
  
-    li.selecterd {
-        background-color: rgba(0,0,0,0.1);
-        text-decoration: none;
-    }
-    
+}
 
-    a li {
-        padding: 0px 15px;
-        text-decoration: none;
-        color: #000;
-        text-align: center;
-        width: 100%;
-        font-weight: 500;
-    }
-    img {
-        height: 40px;
-    }
-    .login {
-        width: 100px;
-        height: 40px;
-        outline: none;
-        background-color: white;
-        border-radius: 6px;
-        color: #3D9194;
-        border: solid 2px #3D9194;
-        box-sizing: border-box;
-    }
-    .register {
-        width: 200px;
-        height: 40px;
-        outline: none;
+
+li:hover {
+    background-color: rgba(255,255,255,0.1);    
+    text-decoration: none;
+    color: black;
+}
+
+li.selected {
+    background-color: rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: black;
+}
+
+.login {
+    width: 100px;
+    height: 40px;
+    outline: none;
+    background-color: white;
     border-radius: 6px;
+    color: #3D9194;
     border: solid 2px #3D9194;
-    background-color: #3D9194;
-    color: white;
     box-sizing: border-box;
-    /* white-space: nowrap; */
-    }
+    font-weight: 500;
+}
+.register {
+    width: 200px;
+    height: 40px;
+    outline: none;
+border-radius: 6px;
+border: solid 2px #3D9194;
+background-color: #3D9194;
+color: white;
+box-sizing: border-box;
+/* white-space: nowrap; */
+font-weight: 500;
+}
 
-    .login:hover{
-        background-color: rgb(226, 226, 226);   
-        text-decoration: none;
-        border: solid 2px #3D9194;
-        color: #3D9194;
+.login:hover{
+    background-color: rgb(226, 226, 226);   
+    text-decoration: none;
+    border: solid 2px #3D9194;
+    color: #3D9194;
+    font-weight: 500;
+}
 
-    }
+
+.register:hover{
+    background-color: rgb(58, 133, 135);     
+    border: solid 2px #3D9194;
+    color: white;
+    font-weight: 500;
+}
 
 
-    .register:hover{
-        background-color: rgb(58, 133, 135);     
-        border: solid 2px #3D9194;
-        color: white;
-
-    }
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,0.9);
+    font-weight: 500;
+}
