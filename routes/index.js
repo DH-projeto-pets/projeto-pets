@@ -7,8 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/sobre', (req, res) => {
+  return res.render('screen/about')
+});
 
-  res.render('screen/about')
+router.get('/pets/new', (req,res) => {
+  return res.render('screen/register-lost-found-pets');
 });
 
 module.exports = router;

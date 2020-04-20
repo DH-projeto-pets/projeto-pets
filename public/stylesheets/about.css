@@ -3,7 +3,7 @@
   --lightgreen: #4BDBB7;
   --green: #4AB1B5;
 }
-
+.orange { background-color: var(--orange); }
 .mission { background-color: var(--orange); }
 .values { background-color: var(--green); }
 .vision { background-color: var(--lightgreen); }
