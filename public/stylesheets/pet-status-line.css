@@ -1,0 +1,36 @@
+#tamanho{
+    border:solid 5px #FF9721;
+    border-radius: 20px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    
+    #vacinado{
+    border:solid 5px#FFCC33;
+    border-radius: 20px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    
+        
+    #vermifugado{
+    border:solid 5px #FF9721;
+    border-radius: 20px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    
+    #castrado{
+    border:solid 5px #FFCC33;
+    border-radius: 20px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    
+    .desativado{
+    color: lightgray;
+    }
