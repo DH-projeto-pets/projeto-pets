@@ -4,7 +4,38 @@
 <link rel="stylesheet" href="stylesheets/register-user.css">
 
 <%- include('partials/header') %>
+<div class="formulario p-4">
+    <h3 class="text-align-center mb-4">Criar conta</h3>
+    <form action="#" method="POST" class="container-fluid">
+        <div class="form-text">
+            <label class="col-3" for="nome">Nome</label>
+            <input class="col-8 mb-3" type="text" name="nome" id="">
+        </div>
+        <div class="form-text">
+            <label class="col-3" for="email">Email</label>
+            <input class="col-8 mb-3" type="email" name="email" id="">
+        </div>
+        <div class="form-text">
+            <label class="col-3" for="senha">Senha</label>
+            <input class="col-8 mb-3" type="password" name="senha" id="">
+        </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="col-1" checked data-toggle="toggle">
+            <label class="form-check-label label offset-1 col-9" for="check1">Autorizo o uso da minha localização atual.</label>
+        </div>
+        <div class="form-check mb-4">
+            <input type="checkbox" class="col-1" checked data-toggle="toggle">
+            <label class="form-check-label label offset-1 col-9" for="check1">Ao cadastrar eu concordo
+                com os <a href="">Termos e Condições de uso</a>
+                e condições de privacidade.
+            </label>
+        </div>
+        <button class="btn btn-primary offset-3 col-7" type="submit">Submeter Cadastro</button>
+    </form>
+</div>
+
 <%- include('partials/footer') %>
+
 
 
 </body>
