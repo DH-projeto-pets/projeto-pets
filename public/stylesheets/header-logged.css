@@ -1,6 +1,8 @@
-header {        
+header {
+  position: fixed;        
     background-color: rgb(255, 135, 0);
     height: 55px;
+    z-index: 2;
   }
   .menuHeader, .logo { height: 55px }
   .menuHeader ul { list-style: none }

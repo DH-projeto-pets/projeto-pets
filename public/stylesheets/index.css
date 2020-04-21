@@ -1,5 +1,7 @@
 /* FOOTER */
-
+.footer {
+  margin-top: 50px;
+}
 /* configurando o logo(margem, tamanho, espaçamento) */
 .img-responsive {
   width: 150px;
