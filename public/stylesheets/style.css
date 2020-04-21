@@ -70,6 +70,7 @@ a, a:hover, a:focus {
     background: #FF8800;
     color: #fff;
     transition: all 0.3s;
+    position: fixed;
 }
 
 #sidebar .sidebar-header {
