@@ -1,0 +1,25 @@
+.container_registerPetLF {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerPetLF {
+  width: 60%;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 26px;
+  padding: 25px;
+}
+
+.orange--offset {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.registerPetLF__btn-area {
+  display: flex;
+  justify-content: flex-end;
+}

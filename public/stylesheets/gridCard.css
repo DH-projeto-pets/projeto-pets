@@ -1,0 +1,31 @@
+.gridCard-body {
+  padding: 10px;
+}
+
+.gridCard-title {
+  margin: 0;
+}
+
+.gridCard-body.badge {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gridCard-badge {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.gridCard-badge::after {
+  color: #fff;
+  top: calc(50% - 5px);
+}
+
+.gridCard-badge p { color: #fff; margin: 0; }
+.gridCard-badge.procurando { background-color: red; }
+.gridCard-badge.encontrado { background-color: blue; }
+.gridCard-badge.adocao { background-color: pink; }
+.gridCard-badge.adocao::after { content: 'A'; }
+.gridCard-badge.encontrado::after { content: 'E'; }
+.gridCard-badge.procurando::after { content: 'P'; }
