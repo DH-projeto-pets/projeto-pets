@@ -1,0 +1,53 @@
+/* Altera a aparência do grid de pets perdidos e encontrados */
+
+.container-grid-pets {
+    min-height: 60vh;
+    min-width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.container-grid-pets img {
+    min-height: 140px;
+    min-width: 160px;
+}
+.container-grid-pets h2 {
+    text-align: center;
+    width: 85%;
+    margin: 4vh 0 8vh 0;
+}
+.container-filter {
+    width: 64vw;
+    height: 8vh;
+    background-color: #FF8800;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px grey;
+}
+.container-filter select {
+    margin: 10px 2px 2px 20px;
+    width: 80%;
+}
+
+/* Alinha o nome e badge do pet */
+.container-card-info {
+    display: flex;
+    justify-content: space-between;
+}
+.badge-found {
+    width: 32px;
+    height: 32px;
+    background-color: #0275D8;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+}
+.badge-lost {
+    width: 32px;
+    height: 32px;
+    background-color: #EC5353;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+}
