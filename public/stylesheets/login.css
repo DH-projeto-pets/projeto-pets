@@ -1,6 +1,7 @@
-body {
-  background: white; /* Precisa colocar o wallpaper */
-  padding-top: 25vh;
+
+.container-fluid{
+  margin-top: 10%;
+  margin-bottom: 9%;
 }
 
 /* Ícone do usuário na parte de cima do formulário */
@@ -53,7 +54,7 @@ body {
   content: "\f023";
 }
 
-/* Link "Registre-se" */
+/* Link "Esqueci a senha" */
 .forgot {
   float: right;
 }
