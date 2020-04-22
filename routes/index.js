@@ -23,7 +23,7 @@ router.get('/user/edit', (req,res) => {
 });
 
 router.get('/user/register', (req,res) => {
-  return res.render('screen/register');
+  return res.render('screen/register-user');
 });
 
 router.get('/login', (req,res) => {
@@ -37,6 +37,12 @@ router.get('/lost-passwd', (req,res) => {
 router.get('/home/user', (req,res) => {
   return res.render('screen/home');
 });
+
+router.get('/pets/procurando', (req,res) => {
+  return res.render('screen/lost-found-pets');
+});
+
+
 
 
 module.exports = router;
