@@ -1,0 +1,9 @@
+.formulario {
+    width: 700px;
+    background-color: #FFF2CC;
+    position: relative;
+    left: calc(50% - 350px);
+}
+.title {
+    text-align: center;
+}

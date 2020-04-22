@@ -1,6 +1,7 @@
 #headercomlogin {       
   background-color: rgb(255, 135, 0);
   height: 55px;
+  position:fixed;
   margin-bottom: 20px;
 }
 .menuHeader, .logo { height: 50px }

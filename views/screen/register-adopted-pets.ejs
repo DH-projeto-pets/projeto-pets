@@ -1,11 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Pets</title>
-</head>
-<body>
-    <h1>Cadastro de Pets para adoção</h1>
+<%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
+
+<%- include('../partials/sidebar-menu') %>
+<main class="formulario p-4 ">
+    <div class=" col-12 d-flex">
+        <h1 class="title">Cadastrar Pet para adoção
+            <a class="twitter" href="#">
+                <i class="far fa-question-circle fa-1x"
+                style="color: orange"></i>
+            </a>
+        </h1>
+
+    </div>
+    <form action="#" method="POST" class="container-fluid">
+        <div class="form-text">
+            <label class="col-3" for="nome">Nome*</label>
+            <input class="col-8 mb-3" type="text" name="nome" id="">
+        </div>
+        <div class="row">
+            <label class="col-3 ml-3" for="sexo">Sexo*</label>
+            <div class="form-check col-2">
+                <input class="form-check-input" type="radio" value="" id="defaultCheck2" disabled>
+                <label class="form-check-label" for="defaultCheck2">
+                  Macho
+                </label>
+              </div>
+              <div class="form-check col-2">
+                <input class="form-check-input" type="radio" value="" id="defaultCheck2" disabled>
+                <label class="form-check-label" for="defaultCheck2">
+                  Fêmea
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="" id="defaultCheck2" disabled>
+                <label class="form-check-label" for="defaultCheck2">
+                  Não tenho certeza
+                </label>
+              </div>
+
+          </div>
+        <div class="form-text">
+            <label class="col-3" for="email">Email</label>
+            <input class="col-8 mb-3" type="email" name="email" id="">
+        </div>
+        <div class="form-text">
+            <label class="col-3" for="senha">Senha</label>
+            <input class="col-8 mb-3" type="password" name="senha" id="">
+        </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="col-1" checked data-toggle="toggle">
+            <label class="form-check-label label offset-1 col-9" for="check1">Autorizo o uso da minha localização atual.</label>
+        </div>
+        <div class="form-check mb-4">
+            <input type="checkbox" class="col-1" checked data-toggle="toggle">
+            <label class="form-check-label label offset-1 col-9" for="check1">Ao cadastrar eu concordo
+                com os <a href="">Termos e Condições de uso</a>
+                e condições de privacidade.
+            </label>
+        </div>
+        <button class="btn btn-primary offset-3 col-7" type="submit">Submeter Cadastro</button>
+    </form>
+</main>
 </body>
-</html>
