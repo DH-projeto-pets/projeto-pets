@@ -1,0 +1,15 @@
+.pets-manager {
+    width: 60%;
+    position: relative;
+    top: 60px;
+    left: 20%;
+    margin-bottom: 60px;
+    background-color: #FFF2CC;
+    border-radius: 10px;
+  
+}
+.pets-manager h3 { text-align: center }
+
+.select-tipo {
+    width: 150px;
+}
