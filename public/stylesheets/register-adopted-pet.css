@@ -7,3 +7,15 @@
 .title {
     text-align: center;
 }
+
+.fotos-cadastro {
+    height: 70px;
+    width: 70px;
+    background-color: orange;
+    border-radius: 5px;
+}
+
+.fotos-cadastro i {
+    color: #FFF2CC;
+
+}
