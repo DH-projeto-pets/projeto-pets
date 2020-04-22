@@ -1,0 +1,13 @@
+body {
+    background-image: url('../images/background.png');
+}
+.conteudo {
+    width: 50%;
+    margin-left: 220px;
+    background-color: #f00;
+
+}
+.userRegister {
+    border: 2px solid #f00;
+    display: inline;
+}
