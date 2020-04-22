@@ -60,6 +60,8 @@ router.get('/user/pet/adoption-register', (req,res) => {
   return res.render("screen/register-adopted-pets");
 
 });
-
+router.get('/perfildono', (req,res) => {
+  return res.render('screen/owner-profile');
+});
 
 module.exports = router;
