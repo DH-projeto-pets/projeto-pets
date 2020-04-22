@@ -14,9 +14,16 @@ router.get('/pets/new', (req,res) => {
   return res.render('screen/register-lost-found-pets');
 });
 
+router.get('/pets/new2', (req,res) => {
+  return res.render('screen/register-adoption-pets');
+});
 
 router.get('/user/edit', (req,res) => {
   return res.render('screen/edit-user');
+});
+
+router.get('/user/register', (req,res) => {
+  return res.render('screen/register');
 });
 
 module.exports = router;
