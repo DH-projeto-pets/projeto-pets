@@ -2,7 +2,6 @@
 
 .container-grid-pets {
     min-height: 60vh;
-    min-width: 80vw;
     display: flex;
     flex-wrap: wrap;
     
@@ -50,4 +49,7 @@
     text-align: center;
     color: #fff;
     padding: 5px;
+}
+.container-fluid{
+    /* overflow: hidden; */
 }
