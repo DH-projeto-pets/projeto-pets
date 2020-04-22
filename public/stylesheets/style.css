@@ -48,7 +48,7 @@ a[data-toggle="collapse"] {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background-image: url(../images/fundo.png);
 }
 
 p {

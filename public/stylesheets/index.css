@@ -1,35 +1,171 @@
-/* FOOTER */
+/* CSS DA HOME (LANDING PAGE) */
 
-/* configurando o logo(margem, tamanho, espaçamento) */
-.img-responsive {
-  width: 150px;
-  background-color: #3d9194;
-  margin-left: 20%;
-  padding-top: 3%;
-  padding-bottom: 2%;
+body, a {
+  color: #323232;
+}
+ul li a:hover {
+  text-decoration: none;
+}
+.barra-superior, .menu-principal{
+  display: flex;
 }
 
-/* implementando a cor de fundo no footer */
-.navbar {
-  background-color: #3d9194;
+/* BARRA SUPERIOR / MENU PRINCIPAL */
+.barra-superior {
+  background-color: #FF9721;
+  align-items: center;
+  /* min-height: 15vh; */
 }
-.navbar-brand {
-  padding: inherit;
+.menu-principal{
+  align-items: center;
+  flex-grow: 3;
+}
+.menu-principal ul{
+  display: flex;
+  justify-content: space-around;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.menu-principal li {
+  list-style: none;
+  padding: 0 15px;
+}
+.menu-principal li > a:hover {
+  color: #FFDC73;
+}
+.botoes-login {
+  flex-grow: 2;
+}
+.botoes-login button {
+  width: 11vw;
+}
+.botao-entrar {
+  background-color: #f9f9f9;
 }
 
-/* Implementando largura da ocupação dos ícones */
-.redes-sociais {
-  width: 20%;
+/* CARROSSEL */
+
+/* Aumenta o tamanho dos botões de navegação */
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  padding: 40px;
+}
+/* Ajusta altura do banner rotativo da landing page */
+.carousel-item img {
+  min-height: 63vh;
 }
 
-/* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
-.facebook,
-.instagram,
-.twitter {
-  color: black;
-  padding-right: 20%;
+/* GRID DE PETS */
+
+.espaco-branco {
+  min-height: 80px;
+}
+.titulo-centralizado {
+  text-align: center;
+}
+.container-pets {
+  background: url('/images/background-paw.png');
+  /* background-color: #f2f2f2; */
+  min-height: 300px;
+  padding: 15px 150px;
+}
+.grid-perdidos {
+  display: flex;
+  justify-content: space-around;
+}
+.miniatura-grid {
+  width: 250px;
+  height: 320px;
+}
+.grid-item-descricao {
+  background-color: #ffffff;
+  min-height: 60px;
+  text-align: center;
+  font-weight: 600;
+}
+.container-botao {
+  display: flex;
+  justify-content: center;
+}
+.botao-medio-amarelo {
+  color: #000;
+  font-weight: 500;
+  padding: 10px 70px;
+  margin: 10px 0;
+  border: none;
+  background-color: #FFDC73;
+}
+.botao-medio-amarelo:hover {
+  color: #000;
+  background-color: #FF9721;
 }
 
+/* CALL TO ACTION 'COMO POSSO AJUDAR?' */
+
+.container-cta {
+  display: flex;
+  background: url('/images/background-paw-50.png');
+  min-height: 300px;
+  justify-content: space-between;
+}
+.container-texto-cta {
+  background-color: rgba(242, 242, 242, 0.9);
+  padding: 30px;
+}
+.container-texto-cta h2{
+  font-weight: 700;
+}
+.imagem-lateral {
+  width: 300px;
+  height: 400px;
+  flex-grow: 1;
+}
+.texto-cta {
+  padding: 20px 280px 20px 40px;    
+}
+.botao-medio-verde {
+  color: #000;
+  font-weight: 500;
+  padding: 15px 80px;
+  margin: 10px 0;
+  border: none;
+  background-color: #4BDBB7;
+}
+.botao-medio-verde:hover {
+  color: #000;
+  background-color: #3D9194;
+}
+
+
+/* RODAPÉ */
+
+.container-rodape {
+   min-height: 220px;
+   padding: 20px;
+   background-color: #3D9194;
+}
+.menu-rodape {
+  display: flex;
+  justify-content: space-between;
+}
+.menu-rodape ul {
+  list-style-type: none;
+}
+.menu-rodape li {
+  padding: 17px;
+  font-weight: 600;
+}
+.direita-rodape {
+  text-align: end;
+}
+.icone-social {
+  width: 32px;
+  height: 32px;
+  margin: 12px;
+}
+.titulo-negrito {
+  font-weight: 700;
+  font-size: 1.9rem;
+}
 /* CSS DA HOME (LANDING PAGE) */
 
 body, a {
