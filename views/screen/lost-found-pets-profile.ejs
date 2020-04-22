@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Pets perdidos e encontrados</title>
-</head>
-<body>
-    <h1>Perfil de Pets perdidos e encontrados</h1>
-    
-    <div class="bg"></div>
+<%- include('../partials/head', { title: "Sobre" }) %> 
+<%-include('../partials/header') %>
+<%- include('partials/sidebar-menu') %>
+<%- include('partials/sidebar-pets') %>
+
 
     <div class="container col-10 justify-content:center rounded " id="containerbody">
         <br>
@@ -37,6 +31,8 @@
                     <img src="public\images\cachorro.jpg" alt="thumb pet" class="img-fluid p-1">
                 </div>
             </div>
+
+            <%- include('components/pet-status-line') %>
         </div>
         <div class="texto p-3">
 
@@ -67,7 +63,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
 
-
+<%- include('partials/footer') %>

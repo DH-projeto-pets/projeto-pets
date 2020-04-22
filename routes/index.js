@@ -38,5 +38,12 @@ router.get('/home/user', (req,res) => {
   return res.render('screen/home');
 });
 
+router.get('/adoptionpet', (req,res) => {
+  return res.render('screen/adoption-pets-profile');
+});
+
+router.get('/lostfoundpet', (req,res) => {
+  return res.render('screen/lost-found-pets-profile');
+});
 
 module.exports = router;
