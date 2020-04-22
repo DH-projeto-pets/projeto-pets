@@ -10,6 +10,7 @@
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
+    position: fixed;
 }
 
 #sidebar.active {
@@ -47,7 +48,7 @@ a[data-toggle="collapse"] {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background-image: url(../images/fundo.png);
 }
 
 p {
@@ -69,6 +70,7 @@ a, a:hover, a:focus {
     background: #FF8800;
     color: #fff;
     transition: all 0.3s;
+    position: fixed;
 }
 
 #sidebar .sidebar-header {
