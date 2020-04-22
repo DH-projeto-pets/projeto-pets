@@ -45,6 +45,7 @@ router.get('/adoptionpet', (req,res) => {
 
 router.get('/lostfoundpet', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
+});
 
 // Rota para cadastro de usuário
 router.get('/user/register', (req,res) => {
