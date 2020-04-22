@@ -1,9 +1,6 @@
-<%- include('partials/head') %>
-<link rel="stylesheet" href="/stylesheets/index.css">
-<link rel="stylesheet" href="stylesheets/header.css">
-<link rel="stylesheet" href="stylesheets/register-user.css">
+<%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
+<%- include('../partials/header') %>
 
-<%- include('partials/header') %>
 <div class="formulario p-4">
     <h3 class="text-align-center mb-4">Criar conta</h3>
     <form action="#" method="POST" class="container-fluid">
@@ -33,9 +30,5 @@
         <button class="btn btn-primary offset-3 col-7" type="submit">Submeter Cadastro</button>
     </form>
 </div>
-
-<%- include('partials/footer') %>
-
-
-
+<%- include('../partials/footer') %>
 </body>

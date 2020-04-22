@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Pets</title>
-</head>
-<body>
-    <h1>Gerenciamento de Pets</h1>
+<%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
+<%- include('../partials/header') %>
+
+
+<div class="pets-manager p-4">
+    <h3 class="text-align-center mb-4">Gerenciamento de Pets</h3>
+    <div class="form-select d-flex offset-7 align-items-center
+                justify-content-end col-5 mb-5">
+        <label class="col-3 mr-6" for="nome">Tipo:</label>
+        <select class="form-control col-6" id="exampleFormControlSelect1">
+            <option>Todos</option>
+            <option>Gato</option>
+            <option>Cachorro</option>
+            <option>Papagaio</option>
+            <option>Passarinho</option>
+            <option>Peixe</option>
+            </select>
+    </div>
+    <div class="d-flex flex-wrap">
+        <%- include('../components/card-pet-manager') %>
+        <%- include('../components/card-pet-manager') %>
+        <%- include('../components/card-pet-manager') %>
+    </div>
+</div>
+<%- include('../partials/footer') %>
 </body>
-</html>

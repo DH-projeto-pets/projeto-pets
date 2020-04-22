@@ -22,9 +22,6 @@ router.get('/user/edit', (req,res) => {
   return res.render('screen/edit-user');
 });
 
-router.get('/user/register', (req,res) => {
-  return res.render('screen/register');
-});
 
 router.get('/login', (req,res) => {
   return res.render('screen/login');
@@ -38,5 +35,11 @@ router.get('/home/user', (req,res) => {
   return res.render('screen/home');
 });
 
+router.get('/user2', (req,res) => {
+  return res.render("screen/register-user");
+});
+router.get('/user3', (req,res) => {
+  return res.render("screen/manager-pet");
+});
 
 module.exports = router;
