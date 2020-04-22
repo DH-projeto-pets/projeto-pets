@@ -1,15 +1,10 @@
-<%- include('partials/head') %>
-<%- include('partials/header-logged') %>
+<%- include('../partials/head', { title: ''}) %>
+<div class="d-flex" id="wrapper">
+  <%- include('../partials/sidebar') %>
 
-
-
-<div class="container-fluid px-0">
+    <div class="container-fluid px-0">
     <div class="row no-gutters">
-        <div class="col-md-3">
-            <%- include('partials/sidebar-menu') %>
-
-      </div>
-      <div class="col-md-9">
+      <div class="col-md-12">
           <!-- espaço em branco -->
         <div class="espaco-branco"></div>
         <!-- container do grid de pets -->
@@ -126,4 +121,4 @@
 <div class="espaco-branco"></div>
 <div class="espaco-branco"></div>
 
-<%- include('partials/footer') %>
+<%- include('../partials/footer') %>

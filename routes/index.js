@@ -22,7 +22,6 @@ router.get('/user/edit', (req,res) => {
   return res.render('screen/edit-user');
 });
 
-
 router.get('/login', (req,res) => {
   return res.render('screen/login');
 });
@@ -33,6 +32,19 @@ router.get('/lost-passwd', (req,res) => {
 
 router.get('/home/user', (req,res) => {
   return res.render('screen/home');
+});
+
+router.get('/pets/procurando', (req,res) => {
+  return res.render('screen/lost-found-pets');
+});
+
+
+router.get('/adoptionpet', (req,res) => {
+  return res.render('screen/adoption-pets-profile');
+});
+
+router.get('/lostfoundpet', (req,res) => {
+  return res.render('screen/lost-found-pets-profile');
 });
 
 // Rota para cadastro de usuário
@@ -46,6 +58,8 @@ router.get('/user/pet-management', (req,res) => {
 // rota para cadastro de pets para adoção
 router.get('/user/pet/adoption-register', (req,res) => {
   return res.render("screen/register-adopted-pets");
+
 });
+
 
 module.exports = router;

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Pets</title>
-</head>
-    <h1>Perfil de adoção de Pets</h1>
-<body>
-   
-    <div class="bg"></div>
-  
+<%- include('../partials/head', { title: "Perfil Pet" }) %>
+<%- include('partials/header') %>
+<%- include('partials/sidebar-menu') %>
+      
     <div class="container col-10 justify-content:center rounded " id="containerbody">
       <br>
       <div class="row ml-3">
@@ -28,6 +20,8 @@
             <img src="public\images\gato.jpg" alt="thumb pet" class="img-fluid p-1">
           </div>
         </div>
+        <%- include('components/pet-status-line') %>
+
       </div>
       <div class="texto p-3">
         
@@ -54,6 +48,6 @@
     </div>
   
     
-</body>
-</html>
 
+
+<%- include('partials/footer') %>
