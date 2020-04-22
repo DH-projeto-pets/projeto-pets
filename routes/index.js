@@ -35,11 +35,17 @@ router.get('/home/user', (req,res) => {
   return res.render('screen/home');
 });
 
-router.get('/user2', (req,res) => {
+// Rota para cadastro de usuário
+router.get('/user/register', (req,res) => {
   return res.render("screen/register-user");
 });
-router.get('/user3', (req,res) => {
+// rota para gerenciamento de pets cadastrados
+router.get('/user/pet-management', (req,res) => {
   return res.render("screen/manager-pet");
+});
+// rota para cadastro de pets para adoção
+router.get('/user/pet/adoption-register', (req,res) => {
+  return res.render("screen/register-adopted-pets");
 });
 
 module.exports = router;
