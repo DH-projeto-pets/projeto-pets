@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Página Inicial</h1>
-</body>
-</html>
+<%- include('../partials/head', { title: '' }) %> 
+<%- include('../partials/header') %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="div-container mb-5 mt-5">
+        <div class="card">
+          <!-- Incluir o Component card do feed de pets (Perfil do usuário após o login) -->
+
+          <div class="card-header bg-transparent">Pets para adoção</div>
+          <div class="card-body">
+            <img class="card-img-top" src="./buldog.png" alt="Card image cap" />
+          </div>
+          <div class="card-footer bg-transparent">Tom</div>
+          <!-- Fim do card -->
+
+          <hr class="style18" />
+
+          <!-- Incluir o Component card do feed de pets (Perfil do usuário após o login) -->
+
+          <div class="card-header bg-transparent">
+            Pets Encontrados / Perdidos
+          </div>
+          <div class="card-body">
+            <img class="card-img-top" src="./buldog.png" alt="Card image cap" />
+          </div>
+          <div class="card-footer bg-transparent">Sem nome</div>
+
+          <!-- Fim do card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

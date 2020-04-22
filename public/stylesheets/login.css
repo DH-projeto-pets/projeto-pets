@@ -1,0 +1,68 @@
+
+.container-fluid{
+  margin-top: 10%;
+  margin-bottom: 9%;
+}
+
+/* Ícone do usuário na parte de cima do formulário */
+.fa-user-circle {
+  width: 60px;
+  height: 60px;
+  top: -61px;
+  left: 33.5%;
+  position: absolute;
+  color: #ff9721;
+}
+
+/* Formatando o formulário */
+.form-container {
+  border-radius: 10px;
+  padding: 20% 15% 10% 10%;
+  box-shadow: 0px 0px 10px 0px;
+  background: #fff2cc;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+.form-group input {
+  height: 38px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 16px;
+  padding-left: 54px;
+}
+
+/* Inserindo os ícones */
+.form-group::before {
+  font-family: "Font Awesome\ 5 Free";
+  position: absolute;
+  font-size: 20px;
+  color: #3d9194;
+  left: 60px;
+  padding-top: 4px;
+  font-weight: 900;
+}
+
+/* Ícone do input email */
+.form-group#email-group::before {
+  content: "\f0e0";
+}
+
+/* Ícone do input senha */
+.form-group#paswd-group::before {
+  content: "\f023";
+}
+
+/* Link "Esqueci a senha" */
+.forgot {
+  float: right;
+}
+
+/* Botão "Entrar" */
+.btn {
+  background-color: #ff9721;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}

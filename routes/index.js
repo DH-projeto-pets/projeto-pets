@@ -6,4 +6,30 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/sobre', (req, res) => {
+  return res.render('screen/about')
+});
+
+router.get('/pets/new', (req,res) => {
+  return res.render('screen/register-lost-found-pets');
+});
+
+
+router.get('/user/edit', (req,res) => {
+  return res.render('screen/edit-user');
+});
+
+router.get('/login', (req,res) => {
+  return res.render('screen/login');
+});
+
+router.get('/lost-passwd', (req,res) => {
+  return res.render('screen/forgot-password');
+});
+
+router.get('/home/user', (req,res) => {
+  return res.render('screen/home');
+});
+
+
 module.exports = router;

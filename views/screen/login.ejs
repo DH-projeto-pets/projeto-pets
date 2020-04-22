@@ -1,11 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login</h1>
-</body>
-</html>
+<%- include('../partials/head', { title: 'Login' }) %> 
+<%- include('../partials/header') %>
+<section class="container-fluid">
+  <section class="row justify-content-center">
+    <section class="col-12 col-sm-6 col-md-3">
+      <div style="font-size: 10px;">
+        <i class="fas fa-user-circle fa-10x"></i>
+      </div>
+      <form class="form-container">
+        <div class="form-group" id="email-group">
+          <input type="email" class="form-control" placeholder="Email" />
+        </div>
+        <div class="form-group" id="paswd-group">
+          <input type="password" class="form-control" placeholder="Senha" />
+        </div>
+        <div class="submit-button">
+          <button type="submit" class="btn btn-block">
+            Entrar <i class="fas fa-sign-in-alt"></i>
+          </button>
+        </div>
+        <a href="#" class="register-login">Registre-se</a>
+        <a href="#" class="forgot">Esqueci a senha</a>
+      </form>
+    </section>
+  </section>
+</section>
+
+<%- include('../partials/footer') %>
