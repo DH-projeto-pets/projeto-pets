@@ -1,26 +1,26 @@
-header {
+#header-sem-login {
     background-color: #FF8700;
 }
 
-#logo{
+#logosemlogin{
     height: 30px;
  
 }
 
 
-li:hover {
+#liheader:hover {
     background-color: rgba(255,255,255,0.1);    
     text-decoration: none;
     color: black;
 }
 
-li.selected {
+#liheader.selected {
     background-color: rgba(0,0,0,0.1);
     text-decoration: none;
     color: black;
 }
 
-.login {
+#login {
     width: 100px;
     height: 40px;
     outline: none;
@@ -31,7 +31,7 @@ li.selected {
     box-sizing: border-box;
     font-weight: 500;
 }
-.register {
+#register {
     width: 200px;
     height: 40px;
     outline: none;
@@ -44,7 +44,7 @@ box-sizing: border-box;
 font-weight: 500;
 }
 
-.login:hover{
+#login:hover{
     background-color: rgb(226, 226, 226);   
     text-decoration: none;
     border: solid 2px #3D9194;
@@ -53,7 +53,7 @@ font-weight: 500;
 }
 
 
-.register:hover{
+#register:hover{
     background-color: rgb(58, 133, 135);     
     border: solid 2px #3D9194;
     color: white;
@@ -61,7 +61,7 @@ font-weight: 500;
 }
 
 
-.navbar-light .navbar-nav .nav-link {
+#navbarsemlogin {
     color: rgba(0,0,0,0.9);
     font-weight: 500;
 }
