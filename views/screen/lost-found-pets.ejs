@@ -1,11 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pets perdidos e encontrados</title>
-</head>
-<body>
-    
-</body>
-</html>
+<%- include('partials/head') %>
+<%- include('partials/header-logged') %>
+
+
+
+<div class="container-fluid px-0">
+    <div class="row no-gutters">
+        <div class="col-md-3">
+            <%- include('partials/sidebar-menu') %>
+
+      </div>
+      <div class="col-md-9">
+          <!-- espaço em branco -->
+        <div class="espaco-branco"></div>
+        <!-- container do grid de pets -->
+        <div class="container-grid-pets">
+            <!-- barra de filtro -->
+            <div class="container-filter">
+                <form>
+                    <div class="form-group">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <select class="form-control form-control-sm">
+                                    <option>-- Espécie --</option>
+                                    <option>Cachorro</option>
+                                    <option>Gato</option>
+                                    <option>Ave</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control form-control-sm">
+                                    <option>-- Raça --</option>
+                                    <option>SRD</option>
+                                    <option>Poodle</option>
+                                    <option>Rottweiler</option>
+                                    <option>Golden</option>
+                                    <option>Cocker</option>
+                                    <option>Chiwawa</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control form-control-sm">
+                                    <option>-- Porte --</option>
+                                    <option>Pequeno</option>
+                                    <option>Médio</option>
+                                    <option>Grande</option>
+                                    <option>Muito Grande</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control form-control-sm">
+                                    <option>-- Sexo --</option>
+                                    <option>Fêmea</option>
+                                    <option>Macho</option>
+                                    <option>Não tenho certeza</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <h2>Pets Perdidos & Encontrados</h2>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/pet-grid-01.png" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                    <div class="container-card-info">
+                        <p class="card-text">Sem nome</p>
+                        <div class="badge-found">E</div>
+                    </div>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/pet-grid-02.png" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                    <div class="container-card-info">
+                        <p class="card-text">Charlie</p>
+                        <div class="badge-lost">P</div>
+                    </div>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/pet-grid-03.png" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                    <div class="container-card-info">
+                        <p class="card-text">Charlie</p>
+                        <div class="badge-lost">P</div>
+                    </div>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/pet-grid-02.png" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                    <div class="container-card-info">
+                        <p class="card-text">Charlie</p>
+                        <div class="badge-lost">P</div>
+                    </div>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/pet-grid-04.png" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                    <div class="container-card-info">
+                        <p class="card-text">Sem nome</p>
+                        <div class="badge-found">E</div>
+                    </div>
+                </div>
+              </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/pet-grid-01.png" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                    <div class="container-card-info">
+                        <p class="card-text">Sem nome</p>
+                        <div class="badge-found">E</div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<div class="espaco-branco"></div>
+<div class="espaco-branco"></div>
+<div class="espaco-branco"></div>
+
+<%- include('partials/footer') %>

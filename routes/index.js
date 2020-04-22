@@ -26,4 +26,17 @@ router.get('/user/register', (req,res) => {
   return res.render('screen/register');
 });
 
+router.get('/login', (req,res) => {
+  return res.render('screen/login');
+});
+
+router.get('/lost-passwd', (req,res) => {
+  return res.render('screen/forgot-password');
+});
+
+router.get('/home/user', (req,res) => {
+  return res.render('screen/home');
+});
+
+
 module.exports = router;
