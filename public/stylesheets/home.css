@@ -1,6 +1,7 @@
 
 /* Configuração do container em volta dos cards */
 .div-container {
+  width: 130%;
   padding: 10%;
   box-shadow: 0px 0px 10px 0px;
   border-radius: 5px;
