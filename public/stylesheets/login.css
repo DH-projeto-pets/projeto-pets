@@ -1,21 +1,23 @@
 
 .container-fluid{
-  margin-top: 10%;
-  margin-bottom: 9%;
+  margin-bottom: 10%;
+  padding: 12% 17% 2% 10%;
 }
 
 /* Ícone do usuário na parte de cima do formulário */
 .fa-user-circle {
   width: 60px;
   height: 60px;
-  top: -61px;
-  left: 33.5%;
+  top: -60px;
+  left: 41%;
   position: absolute;
   color: #ff9721;
 }
 
 /* Formatando o formulário */
-.form-container {
+.section-login{
+  width: 130%;
+  height: 110%;
   border-radius: 10px;
   padding: 20% 15% 10% 10%;
   box-shadow: 0px 0px 10px 0px;
@@ -24,6 +26,7 @@
 
 .form-group {
   margin-bottom: 25px;
+  margin-top: 25px;
 }
 .form-group input {
   height: 38px;
