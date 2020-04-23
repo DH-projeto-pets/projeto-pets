@@ -48,15 +48,15 @@ router.get('/lostfoundpet', (req,res) => {
 });
 
 // Rota para cadastro de usuário
-router.get('/user/register', (req,res) => {
+router.get('/user/cadastro', (req,res) => {
   return res.render("screen/register-user");
 });
 // rota para gerenciamento de pets cadastrados
-router.get('/user/pet-management', (req,res) => {
+router.get('/user/gerenciamento', (req,res) => {
   return res.render("screen/manager-pet");
 });
 // rota para cadastro de pets para adoção
-router.get('/user/pet/adoption-register', (req,res) => {
+router.get('/user/registro-pets', (req,res) => {
   return res.render("screen/register-adopted-pets");
 
 });
