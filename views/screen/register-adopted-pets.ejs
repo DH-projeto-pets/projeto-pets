@@ -1,139 +1,156 @@
 <%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
 
 <%- include('../partials/sidebar-menu') %>
-<main class="formulario p-4 ">
-    <div class=" col-12 offset-1">
-        <h2 class="title">Cadastrar Pet para adoção
-            <a class="twitter" href="#">
-                <i class="far fa-question-circle fa-1x"
-                style="color: orange"></i>
-            </a>
-        </h2>
-
+<main class="formulario">
+  
+  <form action="#" method="POST" class="container-fluid">
+    <div class=" col-12">
+      <h2 class="title">Cadastrar Pet para adoção
+        <a class="" href="#">
+          <i class="far fa-question-circle fa-1x"
+          style="color: orange"></i>
+        </a>
+      </h2>
     </div>
-    <form action="#" method="POST" class="container-fluid">
-        <div class="form-text">
-            <label class="col-3" for="nome">Nome*</label>
-            <input class="col-8 mb-3" type="text" name="nome" id="">
-        </div>
-        <div class="row mb-2">
-            <label class="col-3 ml-3" for="sexo">Sexo*</label>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="radio" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Macho
-                </label>
-              </div>
-              <div class="form-check col-2">
-                <input class="form-check-input" type="radio" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Fêmea
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Não tenho certeza
-                </label>
-              </div>
-
+        <div class="form-group row">
+            <label class="col-form-label col-2" for="nome">Nome*</label>
+            <div class="col-10">
+              <input class="form-control" type="text" name="nome" id="">
+            </div>
           </div>
-          <div class="form-text  mb-3 ml-1 d-flex">
-            <label class="col-3" for="nome">Fotos*</label>
-            <div class="col-8 d-flex justify-content-between">
-                <div class="fotos-cadastro">
-                    <i class="fas fa-user-alt fa-4x ml-1"></i>
-                </div>
-                <div class="fotos-cadastro">
-                    <i class="fas fa-user-alt fa-4x ml-1"></i>
-                </div>
-                <div class="fotos-cadastro">
-                    <i class="fas fa-user-alt fa-4x ml-1"></i>
-                </div>
-                <div class="fotos-cadastro">
-                    <i class="fas fa-user-alt fa-4x ml-1"></i>
-                </div>
+          
+          <div class="form-group row mb-3">
+            <label class="col-2 mr-3" for="sexo">Sexo*</label>
+            <div class="form-check form-check-inline col-2">
+              <input class="form-check-input" type="radio" name="sexo" id="" value="macho">
+              <label class="form-check-label" for="">Macho</label>
             </div>
+            <div class="form-check form-check-inline col-2">
+              <input class="form-check-input" type="radio" name="sexo" id="" value="fêmea">
+              <label class="form-check-label" for="">Fêmea</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexo" id="" value="não sei">
+              <label class="form-check-label" for="">Não tenho certeza</label>
+            </div>
+          </div>   
+        <div class="row mb-3">
+          <label class="col-form-label col-2" for="nome">Idade*</label>
+          <select class="custom-select col-3 ml-3">
+            <option selected>Não sei</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+          </select>
+          <label class="col-form-label col-2" for="nome">Anos</label>
+          <select class="custom-select col-3">
+            <option selected>Não sei</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+          </select>
+          <label class="col-form-label col-1" for="nome">Meses</label>
         </div>
-        <div class="form-text row d-flex mb-3">
-            <label class="col-3 ml-3" for="descricao">Descrição*</label>
-            <textarea class="form-control col-7" aria-label="With textarea"></textarea>
+        
+        <div class="row mb-3">
+          <label class="col-form-label col-2" for="nome">Espécie:*</label>
+          <select class="custom-select col-3 ml-3">
+            <option selected>-</option>
+            <option value="1">Cachorro</option>
+            <option value="2">Gato</option>
+            <option value="3">Tartaruga</option>
+          </select>
+          <label class="col-form-label col-2" for="nome">Raça:</label>
+          <select class="custom-select col-3">
+            <option selected>Indefinida</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+          </select>
         </div>
 
-        <div class="row mb-2">
-            <label class="col-3 ml-3" for="sexo">Castrado*</label>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Sim
-                </label>
-            </div>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Não
-                </label>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <label class="col-3 ml-3" for="sexo">Vermifugado*</label>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Sim
-                </label>
-            </div>
-            <div class="form-check mb-2 col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Não
-                </label>
+     
+          <div class="form-group row">
+            <label class="col-form-label col-2" for="">Fotos:</label>
+            <div class="col-9 d-flex justify-content-between">
+                <div class="fotos-cadastro">
+                    <i class="fas fa-user-alt fa-4x ml-1"></i>
+                </div>
+                <div class="fotos-cadastro">
+                    <i class="fas fa-user-alt fa-4x ml-1"></i>
+                </div>
+                <div class="fotos-cadastro">
+                    <i class="fas fa-user-alt fa-4x ml-1"></i>
+                </div>
+                <div class="fotos-cadastro">
+                    <i class="fas fa-user-alt fa-4x ml-1"></i>
+                </div>
             </div>
         </div>
-        <div class="row mb-2">
-            <label class="col-3 ml-3" for="sexo">Cuidados Extras*</label>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Sim
-                </label>
-            </div>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Não
-                </label>
-            </div>
+
+        <div class="form-group row">
+          <label class="col-form-label col-2" for="">Descrição*</label>
+          <textarea class="form-control col-8 ml-3" aria-label="With textarea"></textarea>
         </div>
-        <div class="row mb-2">
-            <label class="col-3 ml-3" for="sexo">Vacinado*</label>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Sim
-                </label>
-            </div>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Não
-                </label>
-            </div>
+
+        <div class="row mb-2 align-items-center">
+          <label class="form-label col-4" for="">Castrado*</label>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="castrado" id="castrado1">
+            <label class="form-check-label" for="castrado1">Sim</label>
+          </div>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="castrado" id="castrado2">
+            <label class="form-check-label" for="castrado2">Não</label>
+          </div>
         </div>
-        <div class="row mb-2">
-            <label class="col-3 ml-3" for="sexo">Vacinas*</label>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Raiva
-                </label>
-            </div>
-            <div class="form-check col-2">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  V12/V10/V8
-                </label>
-            </div>
+        <div class="row mb-2 align-items-center">
+          <label class="form-label col-4" for="">Vermifugado*</label>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="vermifugado" id="vermifugado1">
+            <label class="form-check-label" for="vermifugado1">Sim</label>
+          </div>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="vermifugado" id="vermifugado2">
+            <label class="form-check-label" for="vermifugado2">Não</label>
+          </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+          <label class="form-label col-4" for="">Cuidados extras*</label>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="cuidados" id="cuidados1">
+            <label class="form-check-label" for="cuidados1">Sim</label>
+          </div>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="cuidados" id="cuidados2">
+            <label class="form-check-label" for="cuidados2">Não</label>
+          </div>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+          <label class="form-label col-4" for="">Vacinado*</label>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="vacinado" id="vacinado1">
+            <label class="form-check-label" for="vacinado1">Sim</label>
+          </div>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="vacinado" id="vacinado2">
+            <label class="form-check-label" for="vacinado2">Não</label>
+          </div>
+        </div>
+
+
+        <div class="row mb-2 align-items-center">
+          <label class="form-label col-4" for="sexo">Vacinas*</label>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="vacinas" id="vacina1">
+            <label class="form-check-label" for="vacina1">Raiva</label>
+          </div>
+          <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="" name="vacinas" id="vacina2">
+            <label class="form-check-label" for="vacina2">V12/V10/V8</label>
+          </div>
         </div>
         <div class="form-group row">
             <label for="comportamento" class="col-3 ml-3">Comportamento</label>
