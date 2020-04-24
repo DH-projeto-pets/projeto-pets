@@ -1,11 +1,14 @@
+#section-container-login {
+  margin: 0 auto;
+  margin: 10%;
+}
 
-.container-fluid{
-  margin-bottom: 10%;
-  padding: 12% 17% 2% 10%;
+.form-container-input {
+  margin-top: 10%;
 }
 
 /* Ícone do usuário na parte de cima do formulário */
-.fa-user-circle {
+#icone-login-user {
   width: 60px;
   height: 60px;
   top: -60px;
@@ -15,20 +18,21 @@
 }
 
 /* Formatando o formulário */
-.section-login{
+.section-login {
   width: 130%;
-  height: 110%;
+  height: 120%;
   border-radius: 10px;
   padding: 20% 15% 10% 10%;
   box-shadow: 0px 0px 10px 0px;
   background: #fff2cc;
+  padding-bottom: 40%;
 }
 
-.form-group {
+.input-login {
   margin-bottom: 25px;
   margin-top: 25px;
 }
-.form-group input {
+.input-login input {
   height: 38px;
   border-radius: 5px;
   border: 0;
@@ -37,7 +41,7 @@
 }
 
 /* Inserindo os ícones */
-.form-group::before {
+.input-login::before {
   font-family: "Font Awesome\ 5 Free";
   position: absolute;
   font-size: 20px;
@@ -48,12 +52,12 @@
 }
 
 /* Ícone do input email */
-.form-group#email-group::before {
+.input-login#email-group::before {
   content: "\f0e0";
 }
 
 /* Ícone do input senha */
-.form-group#paswd-group::before {
+.input-login#paswd-group::before {
   content: "\f023";
 }
 
@@ -63,7 +67,7 @@
 }
 
 /* Botão "Entrar" */
-.btn {
+.button-entrar {
   background-color: #ff9721;
   color: #fff;
   font-weight: bold;
