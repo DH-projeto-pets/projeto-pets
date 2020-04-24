@@ -15,9 +15,10 @@
 <div id="page-content-wrapper">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <a class="navbar-brand <%= sidebarIsVisible ? 'd-none' : '' %>"" href="#">PetAqui</a>
     <button class="btn btn-primary  <%= !sidebarIsVisible ? 'd-none' : '' %>" id="menu-toggle"><i class="fas fa-bars"></i></button>
 
-    <button class="navbar-toggler <%= !sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler <%= sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -29,15 +30,15 @@
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li> -->
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Entrar
+            <i class="fas fa-caret-down"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Login</a>
             <a class="dropdown-item" href="#">Criar conta</a>
-            <!-- <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
         </li>
       </ul>
