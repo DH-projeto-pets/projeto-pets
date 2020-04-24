@@ -1,147 +1,71 @@
 <%- include('../partials/head', { title: 'Cadastrar novo Pet'}) %>
-<div class="d-flex" id="wrapper">
+<section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-  <section class="container_form-area">
-    <section class="form-area mt-5 mb-5">
-      <div class="row">
-        <h1 class="col-sm-12 text-center">Editar Perfil</h1>
-      </div>
-      <form>
-        <div class="form-group row">
-          <label for="tipo" class="col-sm-2 col-form-label"
-            >Tipo do perfil</label
-          >
-          <div class="col-sm-10">
+  <section class="container formEditUser__container p-0">
+    <section class="formRegisterPet__container col-md-8 col-sm-12">
+      <h1 class="col-md-12 text-center">Editar perfil</h1>
+      <form class="formRegisterPet__form">
+        <section class="form-row">
+          <section class="form-group col-md-12">
+            <label for="tipoPerfil">Tipo de perfil</label><br>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="tipo"
-                id="pessoaFisica"
-                value="pessoaFisica"
-              />
-              <label class="form-check-label" for="pessoaFisica"
-                >Pessoa Fisica</label
-              >
+              <input class="form-check-input" type="radio" name="tipoPerfil" id="pessoa" value="PessoaFisica">
+              <label class="form-check-label" for="pessoa">Pessoa Física</label>
             </div>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="tipo"
-                id="ONG"
-                value="ONG"
-              />
-              <label class="form-check-label" for="ONG">ONG</label>
+              <input class="form-check-input" type="radio" name="tipoPerfil" id="ong" value="ONG">
+              <label class="form-check-label" for="ong">ONG</label>
             </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-2 col-form-label">
-            <img
-              src="/images/black-cat-3739702_1920.jpg"
-              class="edit-userPhoto"
-            />
-          </div>
-          <div class="col-sm-8">
-            <div class="row">
-              <div class="col-sm-12">
-                <label for="username" class="col-form-label">Username</label>
-              </div>
-              <div class="col-sm-12">
-                <input
-                  type="email"
-                  class="form-control col-sm-12"
-                  id="username"
-                  value="ONGXYX"
-                />
-              </div>
-              <div class="col-sm-12">
-                <a href="#">Alterar username</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="nome" class="col-sm-2 col-form-label"
-            >Nome de exibição</label
-          >
-          <div class="col-sm-10">
+          </section>
+        
+          <section class="form-group col-md-12">
+            <label for="nome">Nome de exibição</label>
             <input type="text" class="form-control" id="nome" />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="gender" class="col-sm-2 col-form-label">Gênero</label>
-          <div class="col-sm-10">
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="genero"
-                id="feminino"
-                value="feminino"
-              />
-              <label class="form-check-label" for="feminino">Feminino</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="genero"
-                id="masculino"
-                value="masculino"
-              />
-              <label class="form-check-label" for="masculino">Masculino</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="genero"
-                id="null"
-                value="null"
-              />
-              <label class="form-check-label" for="null">Não informar</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="tipoPerfil" class="col-sm-2 col-form-label"
-            >Endereço</label
-          >
-          <div class="col-sm-10">
-            <button
+          </section>
+          <section class="form-group col-md-12">
+            <section class="row">
+              <section class="col-md-3">
+                <img src="/images/default-photo.png" alt="Pre-visualização da foto do perfil" class="img-thumbnail">
+              </section>
+              <section class="col-md-9" style="display: flex; flex-direction: column; justify-content: center;">
+                <section class="custom-file">
+                  <input type="file" class="custom-file-input" id="fotoPerfil">
+                  <label class="custom-file-label" for="fotoPerfil">Selecionar foto</label>
+                </section>
+              </section>
+            </section>
+          </section>
+          <section class="form-group col-md-12">
+            <label for="tipoPerfil">Endereço</label
+            ><button
               type="button"
               class="btn btn-block orange"
               data-toggle="modal"
               data-target="#modal-endereco"
             >
-              Adicionar o endereço
+              Editar o endereço
             </button>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="contato" class="col-sm-2 col-form-label">Contato</label>
-          <div class="col-sm-5">
+          </section>
+          <section class="form-group col-md-8">
+            <label for="email">E-mail</label>
+
             <input
               type="email"
               class="form-control"
               id="email"
               placeholder="E-mail"
             />
-          </div>
-          <div class="col-sm-5">
+          </section>
+          <section class="form-group col-md-4">
+            <label for="telefone">Telefone</label>
             <input
               type="text"
               class="form-control"
               id="telefone"
-              placeholder="Telefone"
+              placeholder="(xx) xxxxx-xxxx"
             />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="#" class="col-sm-2 col-form-label">Redes Sociais</label>
-          <div class="col-md-5">
+          </section>
+          <section class="form-group col-md-6">
             <label class="sr-only" for="facebook-url">Facebook</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -156,8 +80,8 @@
                 placeholder="Facebook"
               />
             </div>
-          </div>
-          <div class="col-md-5">
+          </section>
+          <section class="form-group col-md-6">
             <label class="sr-only" for="instagram">Instagram</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -172,11 +96,8 @@
                 placeholder="Instagram"
               />
             </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="#" class="col-sm-2 col-form-label"></label>
-          <div class="col-md-5">
+          </section>
+          <section class="form-group col-md-6">
             <label class="sr-only" for="twitter">Twitter</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -191,8 +112,8 @@
                 placeholder="Twitter"
               />
             </div>
-          </div>
-          <div class="col-md-5">
+          </section>
+          <section class="form-group col-md-6">
             <label class="sr-only" for="whatsapp">Whatsapp</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -207,23 +128,25 @@
                 placeholder="Whatsapp"
               />
             </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="preferencia" class="col-sm-2 col-form-label"
-            >Prefêrencia de contato</label
+          </section>
+          <section class="form-group col-md-12">
+            <label for="preferencia">Prefêrencia de contato</label>
+            <select id="preferencia" class="form-control">
+              <option value="facebook" selected>Facebook</option>
+              <option value="twitter">Twitter</option>
+              <option value="instagram">Instagram</option>
+              <option value="whatsapp">Whatsapp</option>
+            </select>
+          </section>
+          <section
+            class="form-group col-sm-12 col-md-12"
+            style="display: flex; justify-content: flex-end;"
           >
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="preferencia" />
-          </div>
-        </div>
-        <section class="row">
-          <section class="col-md-6 offset-6 registerPetLF__btn-area">
             <button type="button" class="btn orange--offset mr-2">
               Cancelar
             </button>
             <button type="submit" class="btn orange">
-              Cadastrar
+              Salvar
             </button>
           </section>
         </section>
@@ -231,7 +154,7 @@
     </section>
   </section>
   <%- include('../partials/footer') %>
-</div>
+</section>
 
 <section
   class="modal fade"

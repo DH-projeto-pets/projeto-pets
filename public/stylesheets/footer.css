@@ -10,23 +10,31 @@
 }
 
 /* implementando a cor de fundo no footer */
-footer {
+.footer {
   background-color: #3d9194;
-
+  line-height: 1.5rem;
+  position: sticky;
+  margin-top: 0 auto;
+  width: 100%;
 }
-.navbar-brand {
+.footer > .container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.logo-footer {
   padding: inherit;
 }
 
 /* Implementando largura da ocupação dos ícones */
-.redes-sociais {
+.redes-sociais-footer {
   width: 20%;
 }
 
 /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
-.facebook,
-.instagram,
-.twitter {
+.face-footer,
+.insta-footer,
+.twitter-footer {
   color: black;
   padding-right: 20%;
 }
