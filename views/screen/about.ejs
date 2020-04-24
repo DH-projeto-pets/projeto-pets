@@ -1,75 +1,79 @@
-<%- include('../partials/head', { title: "Sobre" }) %> <%-
-include('../partials/header') %>
-<section class="container about">
-  <section class="row mb-3 mt-3">
-    <section class="col-md-12">
-      <h1 class="text-center">Sobre o Projeto PetAqui</h1>
-    </section>
-  </section>
-  <section class="row">
-    <section class="col-md-12">
-      <section class="row mb-3">
-        <section class="col-md-8">
-          <section class="row">
-            <section class="col-md-6 about-desc__text">
-              <p>Lorem ipsum</p>
+<%- include('../partials/head', { title: 'Sobre'}) %>
+<section class="d-flex" id="wrapper">
+  <%- include('../partials/sidebar', { sidebarIsVisible: false }) %>
+  <section class="container about-container">
+    <section class="about mt-3 mb-3">
+      <section class="row mb-3 mt-3">
+        <section class="col-md-12">
+          <h1 class="text-center">Sobre o Projeto PetAqui</h1>
+        </section>
+      </section>
+      <section class="row">
+        <section class="col-md-12">
+          <section class="row mb-3">
+            <section class="col-md-8">
+              <section class="row">
+                <section class="col-md-6 about-desc__text">
+                  <p>Lorem ipsum</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                    fermentum nulla quis ligula mollis tempu
+                  </p>
+                </section>
+                <section class="col-md-6 about-desc__text">
+                  <p>Lorem ipsum</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                    fermentum nulla quis ligula mollis tempu
+                  </p>
+                </section>
+                <section class="col-md-12 about-desc__text">
+                  <p>Lorem ipsum</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                    fermentum nulla quis ligula mollis tempuLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum nulla quis ligula mollis.
+                  </p>
+                </section>
+              </section>
+            </section>
+            <section class="col-md-4 about-desc__imgContainer">
+              <img src="/images/sobre-img.png" class="about-desc__img" />
+            </section>
+          </section>
+        </section>
+        <section class="col-md-12">
+          <section class="row about-info_row">
+            <section class="col-md-3 about-info">
+              <div class="about-circle mission">
+                Missão
+              </div>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                 fermentum nulla quis ligula mollis tempu
               </p>
             </section>
-            <section class="col-md-6 about-desc__text">
-              <p>Lorem ipsum</p>
+            <section class="col-md-3 about-info">
+              <div class="about-circle vision">
+                Visão
+              </div>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                 fermentum nulla quis ligula mollis tempu
               </p>
             </section>
-            <section class="col-md-12 about-desc__text">
-              <p>Lorem ipsum</p>
+            <section class="col-md-3 about-info">
+              <div class="about-circle values">
+                Valores
+              </div>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                fermentum nulla quis ligula mollis tempuLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum nulla quis ligula mollis.
+                fermentum nulla quis ligula mollis tempu
               </p>
             </section>
           </section>
         </section>
-        <section class="col-md-4 about-desc__imgContainer">
-          <img src="/images/sobre-img.png" class="about-desc__img" />
-        </section>
-      </section>
-    </section>
-    <section class="col-md-12">
-      <section class="row about-info_row">
-        <section class="col-md-3 about-info">
-          <div class="about-circle mission">
-            Missão
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum nulla quis ligula mollis tempu
-          </p>
-        </section>
-        <section class="col-md-3 about-info">
-          <div class="about-circle vision">
-            Visão
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum nulla quis ligula mollis tempu
-          </p>
-        </section>
-        <section class="col-md-3 about-info">
-          <div class="about-circle values">
-            Valores
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            fermentum nulla quis ligula mollis tempu
-          </p>
-        </section>
       </section>
     </section>
   </section>
+  <%- include('../partials/footer') %>
 </section>
-<%- include('../partials/footer') %>
