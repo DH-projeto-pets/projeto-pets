@@ -57,6 +57,8 @@ router.get('/user/registro-pets', (req,res) => {
   return res.render("screen/register-adopted-pets");
 
 });
-
+router.get('/perfildono', (req,res) => {
+  return res.render('screen/owner-profile');
+});
 
 module.exports = router;
