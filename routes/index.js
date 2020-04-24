@@ -26,7 +26,7 @@ router.get('/login', (req,res) => {
   return res.render('screen/login');
 });
 
-router.get('/lost-passwd', (req,res) => {
+router.get('/esqueci-senha', (req,res) => {
   return res.render('screen/forgot-password');
 });
 
