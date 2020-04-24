@@ -38,8 +38,6 @@ router.get('/pets/procurando', (req,res) => {
   return res.render('screen/lost-found-pets');
 });
 
-
-
 router.get('/lostfoundpet', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
 });
@@ -53,7 +51,7 @@ router.get('/user/gerenciamento', (req,res) => {
   return res.render("screen/manager-pet");
 });
 // rota para cadastro de pets para adoção
-router.get('/user/registro-pets', (req,res) => {
+router.get('/user/cadastro-pets-adocao', (req,res) => {
   return res.render("screen/register-adopted-pets");
 
 });
