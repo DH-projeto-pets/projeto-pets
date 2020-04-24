@@ -1,9 +1,19 @@
 .formulario {
-    width: 700px;
+    width: 60%;
     background-color: #FFF2CC;
     position: relative;
-    left: calc(50% - 350px);
+    left: 20%
 }
-.title {
-    text-align: center;
+.title { text-align: center }
+
+.fotos-cadastro {
+    height: 70px;
+    width: 70px;
+    background-color: orange;
+    border-radius: 5px;
+}
+
+.fotos-cadastro i {
+    color: #FFF2CC;
+
 }

@@ -12,15 +12,7 @@
 /* implementando a cor de fundo no footer */
 .footer {
   background-color: #3d9194;
-  line-height: 1.5rem;
-  position: sticky;
-  margin-top: 0 auto;
-  width: 100%;
-}
-.footer > .container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+
 }
 .logo-footer {
   padding: inherit;
