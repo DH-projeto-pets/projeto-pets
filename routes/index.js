@@ -38,13 +38,9 @@ router.get('/pets/procurando', (req,res) => {
   return res.render('screen/lost-found-pets');
 });
 
-
-<<<<<<< HEAD
 router.get('/perfilpetadocao', (req,res) => {
   return res.render('screen/adoption-pets-profile');
 });
-=======
->>>>>>> master
 
 router.get('/perfilpetencontrado', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
