@@ -1,8 +1,8 @@
 .formulario {
-    width: 700px;
+    width: 60%;
     background-color: #FFF2CC;
     position: relative;
-    left: calc(50% - 350px);
+    left: 20%
 }
 .title { text-align: center }
 

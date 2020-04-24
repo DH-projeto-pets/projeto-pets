@@ -12,6 +12,7 @@
 /* implementando a cor de fundo no footer */
 footer {
   background-color: #3d9194;
+  z-index: 2;
 
 }
 .navbar-brand {

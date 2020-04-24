@@ -39,9 +39,6 @@ router.get('/pets/procurando', (req,res) => {
 });
 
 
-router.get('/adoptionpet', (req,res) => {
-  return res.render('screen/adoption-pets-profile');
-});
 
 router.get('/lostfoundpet', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
