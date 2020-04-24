@@ -10,7 +10,7 @@ router.get('/sobre', (req, res) => {
   return res.render('screen/about')
 });
 
-router.get('/pets/new', (req,res) => {
+router.get('/pets-perdidos-encontrados/novo', (req,res) => {
   return res.render('screen/register-lost-found-pets');
 });
 
@@ -18,7 +18,7 @@ router.get('/pets/new2', (req,res) => {
   return res.render('screen/register-adoption-pets');
 });
 
-router.get('/user/edit', (req,res) => {
+router.get('/user/editar', (req,res) => {
   return res.render('screen/edit-user');
 });
 
@@ -26,7 +26,7 @@ router.get('/login', (req,res) => {
   return res.render('screen/login');
 });
 
-router.get('/lost-passwd', (req,res) => {
+router.get('/esqueci-senha', (req,res) => {
   return res.render('screen/forgot-password');
 });
 

@@ -10,24 +10,23 @@
 }
 
 /* implementando a cor de fundo no footer */
-footer {
+.footer {
   background-color: #3d9194;
-  z-index: 2;
 
 }
-.navbar-brand {
+.logo-footer {
   padding: inherit;
 }
 
 /* Implementando largura da ocupação dos ícones */
-.redes-sociais {
+.redes-sociais-footer {
   width: 20%;
 }
 
 /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
-.facebook,
-.instagram,
-.twitter {
+.face-footer,
+.insta-footer,
+.twitter-footer {
   color: black;
   padding-right: 20%;
 }
