@@ -38,7 +38,15 @@ router.get('/pets/procurando', (req,res) => {
   return res.render('screen/lost-found-pets');
 });
 
-router.get('/lostfoundpet', (req,res) => {
+router.get('/perfilpetadocao', (req,res) => {
+  return res.render('screen/adoption-pets-profile');
+});
+
+router.get('/perfilpetencontrado', (req,res) => {
+  return res.render('screen/lost-found-pets-profile');
+});
+
+router.get('/perfilpetperdido', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
 });
 
