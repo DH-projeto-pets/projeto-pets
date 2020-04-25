@@ -70,5 +70,9 @@ router.get('/perfildono', (req,res) => {
 router.get('/termos-de-uso', (req, res) => {
   return res.render('screen/terms-of-use');
 });
+// rota para grid de pets perdidos e encontrados
+router.get('/pets-perdidos-encontrados', (req, res) => {
+  return res.render('screen/lost-found-pets');
+});
 
 module.exports = router;
