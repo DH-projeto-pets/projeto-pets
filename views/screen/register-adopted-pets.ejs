@@ -1,7 +1,7 @@
-<%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
+<%- include('../partials/head', { title: 'Cadastro de Pet para adoção' }) %> 
 
 <div class="d-flex" id="wrapper">
-  <%- include('../partials/sidebar') %>
+  <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
   <main class="formulario col-10">
     
     <form action="#" method="POST" class="container-fluid">
@@ -143,10 +143,14 @@
         <textarea class="form-control col-8 ml-3" aria-label="With textarea"></textarea>
       </div>
 
-      <div class="row">
-        <button class="btn offset-3 col-3" type="submit">Voltar</button>
-        <button class="btn offset-1 col-3" type="submit">Salvar</button>
-      </div>
+      <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
+        <button type="button" class="btn orange--offset mr-2">
+          Cancelar
+        </button>
+        <button type="submit" class="btn orange">
+          Cadastrar
+        </button>
+      </section>
     </form>
   </main>
     <%- include('../partials/footer') %>
