@@ -66,5 +66,9 @@ router.get('/user/registro-pets', (req,res) => {
 router.get('/perfildono', (req,res) => {
   return res.render('screen/owner-profile');
 });
+// rota para termos de uso
+router.get('/termos-de-uso', (req, res) => {
+  return res.render('screen/terms-of-use');
+});
 
 module.exports = router;
