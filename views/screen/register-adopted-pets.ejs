@@ -7,35 +7,65 @@
     <form action="#" method="POST" class="container-fluid">
 
       <div class=" col-12">
-        <h2 class="title">Cadastrar Pet para adoção
+        <h2 class="title mb-6">Cadastrar Pet para adoção
           <a class="" href="#">
             <i class="far fa-question-circle fa-1x"></i>
           </a>
         </h2>
       </div>
 
+
       <div class="form-group row">
-        <label class="col-form-label col-sm-12 col-lg-2" for="nome">Nome*</label>
+        <label 
+          class="col-form-label col-sm-12 col-lg-2"
+          for="nome">Nome*</label>
         <div class="col-sm-12 col-lg-10">
-          <input class="form-control" type="text" name="nome" id="">
+          <input 
+            class="form-control"
+            type="text"
+            name="nome"
+            id="">
         </div>
       </div>
-          
-      <div class="form-group row mb-3">
-        <label class="col-sm-12 col-lg-2 mr-3" for="sexo">Sexo*</label>
-        <div class="form-check form-check-inline col-2">
-          <input class="form-check-input" type="radio" name="sexo" id="" value="macho">
-          <label class="form-check-label" for="">Macho</label>
+
+      <section class="row">
+
+        <div class="form-group row col-6 col-lg-12 mb-3">
+          <label class="col-12 col-lg-2 mr-2" for="porte">Porte*</label>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-2">
+            <input class="form-check-input" type="radio" name="porte" id="pequeno" value="pequeno">
+            <label class="form-check-label" for="pequeno">Pequeno</label>
+          </div>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-2">
+            <input class="form-check-input" type="radio" name="porte" id="medio" value="medio">
+            <label class="form-check-label" for="medio">Médio</label>
+          </div>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-2">
+            <input class="form-check-input" type="radio" name="porte" id="grande" value="grande">
+            <label class="form-check-label" for="grande">Grande</label>
+          </div>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-2">
+            <input class="form-check-input" type="radio" name="porte" id="indefinido1" value="indefinido">
+            <label class="form-check-label" for="indefinido1">Não sei</label>
+          </div>
         </div>
-        <div class="form-check form-check-inline col-2">
-          <input class="form-check-input" type="radio" name="sexo" id="" value="fêmea">
-          <label class="form-check-label" for="">Fêmea</label>
+        <div class="form-group row col-6 col-lg-12 mb-3">
+          <label class="col-12 col-lg-2 mr-2" for="sexo">Sexo*</label>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-2">
+            <input class="form-check-input" type="radio" name="sexo" id="macho" value="macho">
+            <label class="form-check-label" for="macho">Macho</label>
+          </div>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-2">
+            <input class="form-check-input" type="radio" name="sexo" id="femea" value="fêmea">
+            <label class="form-check-label" for="femea">Fêmea</label>
+          </div>
+          <div class="form-check form-check-inline offset-2 offset-lg-0 col-12 col-lg-4">
+            <input class="form-check-input" type="radio" name="sexo" id="indefinido2" value="não sei">
+            <label class="form-check-label" for="indefinido2">Não sei</label>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="sexo" id="" value="não sei">
-          <label class="form-check-label" for="">Não tenho certeza</label>
-        </div>
-      </div>
+      </section>
+
 
       <div class="row mb-3">
         <label class="col-form-label col-2" for="nome">Idade*</label>
@@ -57,7 +87,7 @@
         
       <div class="row mb-3">
         <label class="col-form-label col-2" for="nome">Espécie:*</label>
-        <select class="custom-select col-3 ml-3">
+        <select class="custom-select offset-3 offset-lg-0 col-3 col-lg-3 ml-3">
           <option selected>-</option>
           <option value="1">Cachorro</option>
           <option value="2">Gato</option>
@@ -71,7 +101,8 @@
           <option value="3">03</option>
         </select>
       </div>
-        
+
+      
         
       <div class="form-group row d-flex flex-wrap">
         <label class="col-form-label col-md-12 col-2" for="">Fotos:</label>
@@ -130,9 +161,9 @@
         
       <div class="form-group row">
         <label for="comportamento" class="col-form-label col-5">Comportamento</label>
-        <select class="form-control w-25" id="selectComportamento">
+        <select class="form-control w-25" id="" multiple>
           <option>Dócil</option>
-          <option>Agressi vo</option>
+          <option>Agressivo</option>
           <option>Assustado</option>
           <option>Afetuoso</option>
         </select>

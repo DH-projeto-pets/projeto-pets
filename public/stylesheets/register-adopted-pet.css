@@ -1,14 +1,21 @@
 .formulario {
-    width: 60%;
+    min-width: 400px;
+    width: 80%;
     background-color: #FFF2CC;
     position: relative;
-    left: 20%
+    left: 10%
 }
 .title { text-align: center }
 
 .fotos-cadastro {
     height: 70px;
     width: 70px;
+    background-color: orange;
+    border-radius: 5px;
+}
+.foto-perfil {
+    height: 100px;
+    width: 100px;
     background-color: orange;
     border-radius: 5px;
 }
