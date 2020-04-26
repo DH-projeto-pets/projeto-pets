@@ -1,122 +1,121 @@
-<%- include('partials/head') %>
-<%- include('partials/header') %>
-
+<%- include('partials/head', { title: 'Home'}) %>
+<section class="d-flex" id="wrapper">
+  <%- include('partials/sidebar', { sidebarIsVisible: false }) %>
+  <section class="home-main-content__container">
     <!-- CARROSSEL -->
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
         <div class="carousel-item active">
-        <img src="/images/banner-cachorro-v2.png" class="d-block w-100" alt="...">
+          <img src="/images/banner-cachorro-v2.png" class="d-block w-100" alt="...">
         </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Anterior</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Próximo</span>
-    </a>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Próximo</span>
+        </a>
+      </div>
+      
+    <!-- Espaçamento em branco -->
+    <div class="espaco-branco"></div>
+  
+    <!-- Grid Pets Perdidos -->
+    <section>
+      <h3 class="titulo-centralizado">Últimos Pets Perdidos</h3>
+      
+      <div class="container-pets">
+        <div class="grid-perdidos">
+          <div class="grid-item">
+            <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
+            <div class="grid-item-descricao">
+              <strong>Lorem:</strong> Lorem Ipsum<br>
+              Lorem Ipsum sit
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
+            <div class="grid-item-descricao">
+              <strong>Lorem:</strong> Lorem Ipsum<br>
+              Lorem Ipsum sit
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
+            <div class="grid-item-descricao">
+              <strong>Lorem:</strong> Lorem Ipsum<br>
+              Lorem Ipsum sit
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container-botao">
+      <button class="btn btn-primary botao-medio-amarelo">VER TODOS</button>
     </div>
-
-<!-- Espaçamento em branco -->
-<div class="espaco-branco"></div>
-
-<!-- Grid Pets Perdidos -->
-<section>
-  <h3 class="titulo-centralizado">Últimos Pets Perdidos</h3>
-
-  <div class="container-pets">
-    <div class="grid-perdidos">
-      <div class="grid-item">
-        <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
-        <div class="grid-item-descricao">
-          <strong>Lorem:</strong> Lorem Ipsum<br>
-          Lorem Ipsum sit
+    <!-- Espaçamento em branco -->
+    <div class="espaco-branco"></div>
+    <!-- Grid Pets Encontrados -->
+    <section>
+      <h3 class="titulo-centralizado">Últimos Pets Perdidos</h3>
+      
+      <div class="container-pets">
+        <div class="grid-perdidos">
+          <div class="grid-item">
+            <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
+            <div class="grid-item-descricao">
+              <strong>Lorem:</strong> Lorem Ipsum<br>
+              Lorem Ipsum sit
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
+            <div class="grid-item-descricao">
+              <strong>Lorem:</strong> Lorem Ipsum<br>
+              Lorem Ipsum sit
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
+            <div class="grid-item-descricao">
+              <strong>Lorem:</strong> Lorem Ipsum<br>
+              Lorem Ipsum sit
+            </div>
+          </div>
         </div>
       </div>
-      <div class="grid-item">
-        <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
-        <div class="grid-item-descricao">
-          <strong>Lorem:</strong> Lorem Ipsum<br>
-          Lorem Ipsum sit
-        </div>
-      </div>
-      <div class="grid-item">
-        <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
-        <div class="grid-item-descricao">
-          <strong>Lorem:</strong> Lorem Ipsum<br>
-          Lorem Ipsum sit
-        </div>
-      </div>
+    </section>
+
+    <div class="container-botao">
+      <button class="btn btn-primary botao-medio-amarelo">VER TODOS</button>
     </div>
-  </div>
-</section>
-
-<div class="container-botao">
-  <button class="btn btn-primary botao-medio-amarelo">VER TODOS</button>
-</div>
-
-<!-- Espaçamento em branco -->
-<div class="espaco-branco"></div>
-
-
-<!-- Grid Pets Encontrados -->
-<section>
-  <h3 class="titulo-centralizado">Últimos Pets Perdidos</h3>
-
-  <div class="container-pets">
-    <div class="grid-perdidos">
-      <div class="grid-item">
-        <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
-        <div class="grid-item-descricao">
-          <strong>Lorem:</strong> Lorem Ipsum<br>
-          Lorem Ipsum sit
-        </div>
-      </div>
-      <div class="grid-item">
-        <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
-        <div class="grid-item-descricao">
-          <strong>Lorem:</strong> Lorem Ipsum<br>
-          Lorem Ipsum sit
-        </div>
-      </div>
-      <div class="grid-item">
-        <img src="./images/dog-encontrado-02.png" class="miniatura-grid">
-        <div class="grid-item-descricao">
-          <strong>Lorem:</strong> Lorem Ipsum<br>
-          Lorem Ipsum sit
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container-botao">
-  <button class="btn btn-primary botao-medio-amarelo">VER TODOS</button>
-</div>
-
-<!-- Espaçamento em branco -->
-<div class="espaco-branco"></div>
-
-<div class="container-cta">
-    <div class="texto-cta">
+    
+    <!-- Espaçamento em branco -->
+    <div class="espaco-branco"></div>
+    
+    <div class="container-cta">
+      <div class="texto-cta">
         <!-- Espaçamento em branco -->
-<div class="espaco-branco"></div>
+        <div class="espaco-branco"></div>
+        
+        <div class="container-texto-cta">
+          <h2>Como posso ajudar?</h2>
+          <br>
+          <p>
+            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex et id incidunt voluptatum earum. Accusantium praesentium, voluptatem commodi consectetur minus adipisci porro eos placeat est ullam dolorum accusamus corporis iste.</span>
+            <span>Quaerat rem odit aut eaque lumenda dolor quod omnis?</span>
+          </p>
+          <button class="btn btn-primary botao-medio-verde">CONHECER MAIS</button>
+        </div>
+      </div>
+      <img src="./images/banner-cachorro-v3.png" alt="banner-cachorro" class="imagem-lateral">
+      </div>
 
-<div class="container-texto-cta">
-    <h2>Como posso ajudar?</h2>
-    <br>
-    <p>
-        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex et id incidunt voluptatum earum. Accusantium praesentium, voluptatem commodi consectetur minus adipisci porro eos placeat est ullam dolorum accusamus corporis iste.</span>
-        <span>Quaerat rem odit aut eaque lumenda dolor quod omnis?</span>
-    </p>
-    <button class="btn btn-primary botao-medio-verde">CONHECER MAIS</button>
-    </div>
-</div>
-<img src="./images/banner-cachorro-v3.png" alt="banner-cachorro" class="imagem-lateral">
-</div>
-
-<div class="espaco-branco"></div>
-<div class="espaco-branco"></div>
-<div class="espaco-branco"></div>
-<%- include('partials/footer') %>
+      <div class="espaco-branco"></div>
+      <div class="espaco-branco"></div>
+      <div class="espaco-branco"></div>
+      <%- include('partials/footer') %>
+  </section>
+</section>
