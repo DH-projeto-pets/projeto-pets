@@ -52,6 +52,16 @@
   height: 50px;
 }
 
+.sup-menu {
+  width: calc(100% - 180px); 
+  display: flex; 
+  justify-content: center;
+}
+
+.sup-menu__logo img, .logo-pets {
+  height: 40px;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
