@@ -1,0 +1,39 @@
+/* FOOTER */
+
+/* configurando o logo(margem, tamanho, espaçamento) */
+.img-responsive {
+    width: 150px;
+    background-color: #3d9194;
+    /* margin-left: 0%; */
+    /* padding-top: 3%; */
+    /* padding-bottom: 2%; */
+  }
+  #main-footer{
+    /* min-height: calc(100vh - 39.31px - 126px);
+    margin: 0px; */
+    
+  }
+  /* implementando a cor de fundo no footer */
+  footer {
+    background-color: #3d9194;
+    /* position: absolute; */
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+  
+  }
+     
+  /* Implementando largura da ocupação dos ícones */
+  .redes-sociais-footer {
+    width: 50%;
+    height: 50%;
+  }
+  
+  /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
+  .item-footer{
+    list-style-type: none;
+    padding-right: 40%;
+    /* color: black; */
+  
+  }
