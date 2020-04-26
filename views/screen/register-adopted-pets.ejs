@@ -148,25 +148,35 @@
               <section class="form-group 
                               col-sm-12 col-md-12">
                 <section class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFile">
-                  <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+                  <input
+                      type="file"
+                      class="custom-file-input"
+                      id="customFile">
+                  <label
+                      class="custom-file-label"
+                      for="customFile">Selecionar arquivo</label>
                 </section>
               </section>
 
               <section class="form-row">
                 <section class="form-group col-sm-12 col-md-6">
                   <label for="especie">Espécie*</label>
-                  <select class="form-control" id="especie">
-                    <option>Cachorro</option>
-                    <option>Gato</option>
-                    <option>Passáro</option>
+                  <select
+                      class="form-control"
+                      name="especie"
+                      id="especie">
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                    <option value="passaro">Passáro</option>
                   </select>
                 </section>
 
                 <section class="form-group col-sm-12 col-md-6">
                   <label for="raca">Raça</label>
-                  <select class="form-control" id="raca">
-                    <option>SRD</option>
+                  <select class="form-control"
+                          name="raca"
+                          id="raca">
+                    <option value="indefinido">Indefinida</option>
                   </select>
                 </section>
                 
@@ -177,16 +187,24 @@
                     <div class="form-check form-check-inline">
                       <input
                       class="form-check-input"
-                      name="sexo"
+                      name="vacinado"
                       type="radio"
-                      id="radio-femea"
-                      value="femea"/>
-                      <label class="form-check-label" for="radio-femea">Sim</label>
+                      id="vacinado-sim"
+                      value="sim"/>
+                      <label
+                        class="form-check-label"
+                        for="vacinado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input  class="form-check-input" name="sexo"
-                      type="radio" id="radio-macho" value="macho"/>
-                      <label class="form-check-label" for="radio-macho">Não</label>
+                      <input
+                          class="form-check-input"
+                          name="vacinado"
+                          type="radio"
+                          id="vacinado-nao"
+                          value="nao"/>
+                      <label
+                        class="form-check-label"
+                        for="vacinado-nao">Não</label>
                     </div>
                   </section>
                 </section>
@@ -198,19 +216,26 @@
                     <div class="form-check form-check-inline">
                       <input
                       class="form-check-input"
-                      name="sexo"
+                      name="castrado"
                       type="radio"
-                      id="radio-femea"
-                      value="femea"
+                      id="castrado-sim"
+                      value="sim"
                       />
-                      <label class="form-check-label" for="radio-femea">Sim</label>
+                      <label
+                        class="form-check-label"
+                        for="castrado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
                       <input
-                      class="form-check-input" name="sexo"
-                      type="radio" id="radio-macho" value="macho"
+                        class="form-check-input"
+                        name="castrado"
+                        type="radio"
+                        id="castrado-nao"
+                        value="nao"
                       />
-                      <label class="form-check-label" for="radio-macho">Não</label>
+                      <label
+                        class="form-check-label"
+                        for="castrado-nao">Não</label>
                     </div>
                   </section>
                 </section>
@@ -221,19 +246,26 @@
                     <div class="form-check form-check-inline">
                       <input
                         class="form-check-input"
-                        name="sexo"
+                        name="vermifugado"
                         type="radio"
-                        id="radio-não"
-                        value="não"
+                        id="vermifugado-sim"
+                        value="sim"
                       />
-                      <label class="form-check-label" for="radio-não">Sim</label>
+                      <label
+                        class="form-check-label"
+                        for="vermifugado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
                       <input
-                      class="form-check-input" name="sexo"
-                      type="radio" id="radio-macho" value="macho"
+                          class="form-check-input"
+                          name="vermifugado"
+                          type="radio"
+                          id="vermifugado-nao"
+                          value="nao"
                       />
-                      <label class="form-check-label" for="radio-macho">Não</label>
+                      <label
+                      class="form-check-label"
+                      for="vermifugado-nao">Não</label>
                     </div>
                   </section>
                   
