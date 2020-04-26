@@ -74,9 +74,8 @@
 }
 
 .btn-login {
-  /*background-color: #4d90fe; */
+  color: #fff;
   background-color: #ff9721;
-  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
   padding: 0px;
   font-weight: 700;
   font-size: 14px;
@@ -90,6 +89,11 @@
   -webkit-transition: all 0.218s;
   transition: all 0.218s;
 }
+
+.btn-login:hover{
+  color: #fff;
+}
+  
 
 .forgot:hover,
 .forgot:active,
