@@ -3,15 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', logged: false });
 });
 
 router.get('/sobre', (req, res) => {
-  return res.render('screen/about')
+  return res.render('screen/about', { logged: false })
 });
 
 router.get('/pets-perdidos-encontrados/novo', (req,res) => {
-  return res.render('screen/register-lost-found-pets');
+  return res.render('screen/register-lost-found-pets', { logged: true });
 });
 
 router.get('/pets/new2', (req,res) => {
@@ -72,7 +72,7 @@ router.get('/termos-de-uso', (req, res) => {
 });
 // rota para grid de pets perdidos e encontrados
 router.get('/pets-perdidos-encontrados', (req, res) => {
-  return res.render('screen/lost-found-pets');
+  return res.render('screen/lost-found-pets', { logged: true });
 });
 
 module.exports = router;
