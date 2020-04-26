@@ -19,7 +19,7 @@ router.get('/pets/new2', (req,res) => {
 });
 
 router.get('/user/editar', (req,res) => {
-  return res.render('screen/edit-user');
+  return res.render('screen/edit-user', { logged: true });
 });
 
 router.get('/login', (req,res) => {
