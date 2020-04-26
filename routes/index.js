@@ -15,7 +15,7 @@ router.get('/pets-perdidos-encontrados/novo', (req,res) => {
 });
 
 router.get('/pets/new2', (req,res) => {
-  return res.render('screen/register-adoption-pets');
+  return res.render('screen/register-adoption-pets', { logged: true });
 });
 
 router.get('/user/editar', (req,res) => {
@@ -23,52 +23,52 @@ router.get('/user/editar', (req,res) => {
 });
 
 router.get('/login', (req,res) => {
-  return res.render('screen/login');
+  return res.render('screen/login', { logged: false });
 });
 
 router.get('/esqueci-senha', (req,res) => {
-  return res.render('screen/forgot-password');
+  return res.render('screen/forgot-password', { logged: false });
 });
 
 router.get('/home/user', (req,res) => {
-  return res.render('screen/home');
+  return res.render('screen/home', { logged: true });
 });
 
 router.get('/pets/procurando', (req,res) => {
-  return res.render('screen/lost-found-pets');
+  return res.render('screen/lost-found-pets', { logged: true });
 });
 
-router.get('/perfilpetadocao', (req,res) => {
-  return res.render('screen/adoption-pets-profile');
+router.get('/perfil-pet/adocao', (req,res) => {
+  return res.render('screen/adoption-pets-profile', { logged: true });
 });
 
-router.get('/perfilpetencontrado', (req,res) => {
-  return res.render('screen/lost-found-pets-profile');
+router.get('/perfil-pet/encontrado', (req,res) => {
+  return res.render('screen/lost-found-pets-profile', { logged: true });
 });
 
-router.get('/perfilpetperdido', (req,res) => {
-  return res.render('screen/lost-found-pets-profile');
+router.get('/perfil-pet/perdido', (req,res) => {
+  return res.render('screen/lost-found-pets-profile', { logged: true });
 });
 
 // Rota para cadastro de usuário
 router.get('/user/cadastro', (req,res) => {
-  return res.render("screen/register-user");
+  return res.render("screen/register-user", { logged: false });
 });
 // rota para gerenciamento de pets cadastrados
 router.get('/user/gerenciamento', (req,res) => {
-  return res.render("screen/manager-pet");
+  return res.render("screen/manager-pet", { logged: true });
 });
 // rota para cadastro de pets para adoção
 router.get('/user/registro-pets', (req,res) => {
-  return res.render("screen/register-adopted-pets");
+  return res.render("screen/register-adopted-pets", { logged: true });
 
 });
-router.get('/perfildono', (req,res) => {
-  return res.render('screen/owner-profile');
+router.get('/perfil/dono', (req,res) => {
+  return res.render('screen/owner-profile', { logged: true });
 });
 // rota para termos de uso
 router.get('/termos-de-uso', (req, res) => {
-  return res.render('screen/terms-of-use');
+  return res.render('screen/terms-of-use', { logged: false });
 });
 // rota para grid de pets perdidos e encontrados
 router.get('/pets-perdidos-encontrados', (req, res) => {
