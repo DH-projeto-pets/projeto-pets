@@ -1,75 +1,129 @@
-#section-container-login {
-  margin: 0 auto;
-  margin: 10%;
-}
-
-.form-container-input {
-  margin-top: 10%;
-}
-
-/* Ícone do usuário na parte de cima do formulário */
-#icone-login-user {
-  width: 60px;
-  height: 60px;
-  top: -60px;
-  left: 41%;
-  position: absolute;
-  color: #ff9721;
-}
-
-/* Formatando o formulário */
-.section-login {
-  width: 130%;
-  height: 120%;
+.card-container.card {
+  max-width: 350px;
+  padding: 40px 40px;
   border-radius: 10px;
-  padding: 20% 15% 10% 10%;
   box-shadow: 0px 0px 10px 0px;
   background: #fff2cc;
-  padding-bottom: 40%;
 }
 
-.input-login {
-  margin-bottom: 25px;
-  margin-top: 25px;
+.btn {
+  font-weight: 700;
+  height: 36px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
 }
-.input-login input {
-  height: 38px;
-  border-radius: 5px;
-  border: 0;
+
+/*
+* Card component
+*/
+.card {
+  background-color: #F7F7F7;
+  /* just in case there no content*/
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  /* shadows and rounded borders */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+ 
+}
+
+/*
+* Form styles
+*/
+.profile-name-card {
   font-size: 16px;
-  padding-left: 54px;
-}
-
-/* Inserindo os ícones */
-.input-login::before {
-  font-family: "Font Awesome\ 5 Free";
-  position: absolute;
-  font-size: 20px;
-  color: #3d9194;
-  left: 60px;
-  padding-top: 4px;
-  font-weight: 900;
-}
-
-/* Ícone do input email */
-.input-login#email-group::before {
-  content: "\f0e0";
-}
-
-/* Ícone do input senha */
-.input-login#paswd-group::before {
-  content: "\f023";
-}
-
-/* Link "Esqueci a senha" */
-.forgot {
-  float: right;
-}
-
-/* Botão "Entrar" */
-.button-entrar {
-  background-color: #ff9721;
-  color: #fff;
   font-weight: bold;
+  text-align: center;
+  margin: 10px 0 0;
+  min-height: 1em;
+}
+
+.reauth-email {
+  display: block;
+  color: #404040;
+  line-height: 2;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+  direction: ltr;
+  height: 44px;
   font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+  border-color: rgb(104, 145, 162);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin {
+  /*background-color: #4d90fe; */
+  background-color: #ff9721;
+  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  padding: 0px;
+  font-weight: 700;
+  font-size: 14px;
+  height: 36px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  -o-transition: all 0.218s;
+  -moz-transition: all 0.218s;
+  -webkit-transition: all 0.218s;
+  transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+  color: #fff;
+}
+
+.forgot:hover,
+.forgot:active,
+.forgot:focus{
+  color: rgb(12, 97, 33);
 }
