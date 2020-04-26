@@ -103,7 +103,8 @@ ul li a:hover {
 
 .container-cta {
   display: flex;
-  background: url('/images/background-paw-50.png');
+  background-image: url('../images/fundo2.png');
+  background-size: 70%;
   min-height: 300px;
   justify-content: space-between;
 }

@@ -1,12 +1,14 @@
 <%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
-<%- include('../partials/sidebar-menu') %>
+<div class="d-flex" id="wrapper">
 
-<div class="pets-manager p-4">
+    <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
+    
+    <div class="pets-manager p-4">
     <h3 class="text-align-center mb-4">Gerenciamento de Pets</h3>
     <div class="form-select d-flex align-items-center
-                justify-content-end col-12 mb-5">
-        <label class="" for="nome">Tipo:</label>
-        <select class="form-control select-tipo ml-3" id="exampleFormControlSelect1">
+    justify-content-end col-12 mb-5">
+    <label class="" for="nome">Tipo:</label>
+    <select class="form-control select-tipo ml-3" id="exampleFormControlSelect1">
             <option>Todos</option>
             <option>Gato</option>
             <option>Cachorro</option>
@@ -14,12 +16,13 @@
             <option>Passarinho</option>
             <option>Peixe</option>
             </select>
-    </div>
-    <div class="d-flex justify-content-center flex-wrap">
+        </div>
+        <div class="d-flex justify-content-center flex-wrap">
         <%- include('../components/card-pet-manager') %>
         <%- include('../components/card-pet-manager') %>
         <%- include('../components/card-pet-manager') %>
     </div>
 </div>
 <%- include('../partials/footer') %>
+</div>
 </body>

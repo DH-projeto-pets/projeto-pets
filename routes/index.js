@@ -14,10 +14,6 @@ router.get('/pets-perdidos-encontrados/novo', (req,res) => {
   return res.render('screen/register-lost-found-pets');
 });
 
-router.get('/pets/new2', (req,res) => {
-  return res.render('screen/register-adoption-pets');
-});
-
 router.get('/user/editar', (req,res) => {
   return res.render('screen/edit-user');
 });
@@ -38,15 +34,15 @@ router.get('/pets/procurando', (req,res) => {
   return res.render('screen/lost-found-pets');
 });
 
-router.get('/perfilpetadocao', (req,res) => {
+router.get('/perfil-pet-adocao', (req,res) => {
   return res.render('screen/adoption-pets-profile');
 });
 
-router.get('/perfilpetencontrado', (req,res) => {
+router.get('/perfil-pet-encontrado', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
 });
 
-router.get('/perfilpetperdido', (req,res) => {
+router.get('/perfil-pet-perdido', (req,res) => {
   return res.render('screen/lost-found-pets-profile');
 });
 
@@ -59,11 +55,11 @@ router.get('/user/gerenciamento', (req,res) => {
   return res.render("screen/manager-pet");
 });
 // rota para cadastro de pets para adoção
-router.get('/user/registro-pets', (req,res) => {
+router.get('/user/cadastro-pets-adocao', (req,res) => {
   return res.render("screen/register-adopted-pets");
 
 });
-router.get('/perfildono', (req,res) => {
+router.get('/perfil-dono', (req,res) => {
   return res.render('screen/owner-profile');
 });
 // rota para termos de uso

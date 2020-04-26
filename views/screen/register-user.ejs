@@ -1,47 +1,101 @@
+<%- include('../partials/head', { title: 'Cadastro usuário' }) %> 
+<%- include('../partials/header') %>
 
-<%- include('../partials/head', { title: 'Gerenciamento de Pets' }) %> 
+<section class="col-12
+                col-xs-2
+                offset-sm-2 col-sm-8
+                offset-lg-3 col-lg-7
+                offset-xl-3 col-xl-6">
 
-<%- include('../partials/sidebar-menu') %>
-
-
-<div class="formulario p-4">
-    <h3 class="text-align-center mb-4">Criar conta</h3>
-    <form action="#" method="POST" class="container-fluid">      
-        <div class="form-group row">
-            <label class="col-form-label col-2" for="nome">Nome*</label>
-            <div class="col-10">
-                <input class="form-control" type="text" name="nome" id="">
+    <div class="formulario p-5">
+        <h3 class="text-align-center mb-4">Criar conta</h3>
+        <form 
+            action="#"
+            method="POST"
+            class="">      
+            <div class="form-group">
+                <section class="form-row">
+                    <label 
+                        class="col-form-label col-12 col-md-2"
+                        for="nome">Nome*</label>
+                    <input 
+                        class="form-control col-12 col-md-10"
+                        type="text"
+                        name="nome"
+                        id="nome">
+                </section>
             </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-form-label col-2" for="email">Email*</label>
-            <div class="col-10">
-                <input class="form-control" type="email" name="email" id="">
+            <div class="form-group">
+                <section class="form-row">
+                    <label 
+                        class="col-form-label col-12 col-md-2"
+                        for="email">Email*</label>
+                    <input 
+                        class="form-control col-12 col-md-10"
+                        type="email"
+                        name="email"
+                        id="email">
+                </section>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-form-label col-2" for="senha">Senha*</label>
-            <div class="col-10">
-                <input class="form-control" type="password" name="email" id="">
+            <div class="form-group">
+                <section class="form-row">
+                    <label 
+                        class="col-form-label col-12 col-md-2"
+                        for="senha">Senha*</label>
+                    <input 
+                        class="form-control col-12 col-md-10"
+                        type="password"
+                        name="senha"
+                        id="senha">
+                </section>
             </div>
-        </div>
+            <div class="form-group">
+                <section class="form-row">
+                    <label 
+                        class="col-form-label col-12 col-md-4"
+                        for="confirmar-senha">
+                        Confirmar senha*
+                    </label>
+                    <input 
+                        class="form-control col-12 col-md-8"
+                        type="password"
+                        name="confirmar-senha"
+                        id="confirmar-senha">
+                </section>
+            </div>
+    
+            <div class="form-group">
+                <section class="form-row">
+                    <input 
+                        type="checkbox"
+                        class="col-1"
+                        id="localizacao">
+                    <label
+                        class="form-check-label col-10"
+                        for="localizacao">
+                        Autorizo o uso da minha localização atual.
+                    </label>
+                </section>
+            </div>
 
-        <div class="form-check mb-3">
-            <input type="checkbox" class="col-1" data-toggle="toggle">
-            <label class="form-check-label label offset-1 col-9" for="check1">Autorizo o uso da minha localização atual.</label>
-        </div>
-        <div class="form-check mb-4">
-            <input type="checkbox" class="col-1" data-toggle="toggle">
-            <label class="form-check-label label offset-1 col-9"        
-                    for="check1">Ao cadastrar eu concordo
-                    com os <a href="">Termos e Condições de uso</a>
-                e condições de privacidade.
-            </label>
-        </div>
-        <button class="btn btn-primary offset-3 col-7" type="submit">Submeter Cadastro</button>
-    </form>
-</div>
+            <div class="form-group">
+                <section class="form-row">
+                    <input
+                        type="checkbox"
+                        class="col-1"
+                        id="termos-de-uso">
+                    <label 
+                        class="form-check-label col-10"        
+                        for="termos-de-uso">
+                        Ao cadastrar eu concordo com os 
+                        <a href="/termos-de-uso">Termos e Condições de uso</a>
+                        e condições de privacidade.
+                    </label>
+                </section>
+            </div>
+            <button type="submit" class="btn orange">Cadastrar</button>
+        </form>
+    </div>
+</section>
 <%- include('../partials/footer') %>
-</body>
