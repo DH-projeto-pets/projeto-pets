@@ -11,19 +11,27 @@
     <a href="#" class="list-group-item list-group-item-action bg-light">Sair</a>
   </div>
 </div>
+<%= console.log(logged) %>
 
 <div id="page-content-wrapper">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <a class="navbar-brand <%= sidebarIsVisible ? 'd-none' : '' %>"" href="#">PetAqui</a>
-    <button class="btn btn-primary  <%= !sidebarIsVisible ? 'd-none' : '' %>" id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <!-- <a class="navbar-brand <%= sidebarIsVisible ? 'd-none' : '' %>"" href="#">PetAqui</a> -->
+    
+    <button class="btn <%= !sidebarIsVisible ? 'd-none' : '' %>" id="menu-toggle"><i class="fas fa-bars"></i></button>
 
     <button class="navbar-toggler <%= sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <section class="sup-menu">
+      <a class="navbar-brand sup-menu__logo d-md-none" href="#">
+        <img src="/images/logo-transparente.png"
+      </a>
+    </section>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0  <%= logged ? 'd-none': '' %>">
         <li class="nav-item active">
           <a class="nav-link" href="#">Sobre <span class="sr-only">(current)</span></a>
         </li>
