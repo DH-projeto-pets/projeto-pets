@@ -26,3 +26,8 @@ hr.style18:before {
   border-width: 0 0 1px 0;
   border-radius: 20px;
 }
+@media (max-width: 575px) {
+  .div-cardContainer {
+    width: 80%;
+  }
+}
