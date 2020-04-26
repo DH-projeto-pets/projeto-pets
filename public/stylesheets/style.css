@@ -35,4 +35,8 @@ body {
   text-decoration: none;
   color: inherit;
 }
-
+/* Container para receber todo o código da home para sobrescrever o background */
+.home-main-content__container {
+    background: none;
+    background-color: #fff;
+}
