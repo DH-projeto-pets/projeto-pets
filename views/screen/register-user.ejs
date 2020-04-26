@@ -1,6 +1,7 @@
 <%- include('../partials/head', { title: 'Cadastro usuário' }) %> 
-<%- include('../partials/header') %>
 
+<section class="d-flex" id="wrapper">
+    <%- include('../partials/sidebar', { sidebarIsVisible: false }) %>
 <section class="col-12
                 col-xs-2
                 offset-sm-2 col-sm-8
@@ -10,8 +11,8 @@
     <div class="formulario p-5">
         <h3 class="text-align-center mb-4">Criar conta</h3>
         <form 
-            action="#"
-            method="POST"
+            action="/login"
+            method="GET"
             class="">      
             <div class="form-group">
                 <section class="form-row">
@@ -94,8 +95,9 @@
                     </label>
                 </section>
             </div>
-            <button type="submit" class="btn orange">Cadastrar</button>
+            <button type="submit" class="btn b btn-login">Cadastrar</button>
         </form>
     </div>
 </section>
 <%- include('../partials/footer') %>
+</section>

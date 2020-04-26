@@ -14,12 +14,6 @@ router.get('/pets-perdidos-encontrados/novo', (req,res) => {
   return res.render('screen/register-lost-found-pets', { logged: true });
 });
 
-
-router.get('/pets/new2', (req,res) => {
-  return res.render('screen/register-adoption-pets', { logged: true });
-});
-
-
 router.get('/user/editar', (req,res) => {
   return res.render('screen/edit-user', { logged: true });
 });
