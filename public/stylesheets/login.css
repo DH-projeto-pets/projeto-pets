@@ -72,16 +72,8 @@
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
 }
-.btn {
-  font-weight: 700;
-  height: 36px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  cursor: default;
-}
 
-.btn.btn-signin {
+.btn-login {
   /*background-color: #4d90fe; */
   background-color: #ff9721;
   /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
@@ -97,12 +89,6 @@
   -moz-transition: all 0.218s;
   -webkit-transition: all 0.218s;
   transition: all 0.218s;
-}
-
-.btn.btn-signin:hover,
-.btn.btn-signin:active,
-.btn.btn-signin:focus {
-  color: #fff;
 }
 
 .forgot:hover,
