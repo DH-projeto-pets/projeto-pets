@@ -1,7 +1,11 @@
 <%- include('../partials/head', { title: 'Cadastro usuário' }) %> 
 <%- include('../partials/header') %>
 
-<section class="col-12 col-xs-2 col-sm-9 col-lg-8 col-xl-6">
+<section class="col-12
+                col-xs-2
+                offset-sm-2 col-sm-8
+                offset-lg-3 col-lg-7
+                offset-xl-3 col-xl-6">
 
     <div class="formulario p-5">
         <h3 class="text-align-center mb-4">Criar conta</h3>
@@ -12,10 +16,10 @@
             <div class="form-group">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-2"
+                        class="col-form-label col-12 col-md-2"
                         for="nome">Nome*</label>
                     <input 
-                        class="form-control col-10"
+                        class="form-control col-12 col-md-10"
                         type="text"
                         name="nome"
                         id="nome">
@@ -24,10 +28,10 @@
             <div class="form-group">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-2"
+                        class="col-form-label col-12 col-md-2"
                         for="email">Email*</label>
                     <input 
-                        class="form-control col-10"
+                        class="form-control col-12 col-md-10"
                         type="email"
                         name="email"
                         id="email">
@@ -37,10 +41,10 @@
             <div class="form-group">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-2"
+                        class="col-form-label col-12 col-md-2"
                         for="senha">Senha*</label>
                     <input 
-                        class="form-control col-10"
+                        class="form-control col-12 col-md-10"
                         type="password"
                         name="senha"
                         id="senha">
@@ -49,14 +53,14 @@
             <div class="form-group">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-4"
+                        class="col-form-label col-12 col-md-4"
                         for="confirmar-senha">
                         Confirmar senha*
                     </label>
                     <input 
-                        class="form-control col-8"
+                        class="form-control col-12 col-md-8"
                         type="password"
-                        name="nome"
+                        name="confirmar-senha"
                         id="confirmar-senha">
                 </section>
             </div>
