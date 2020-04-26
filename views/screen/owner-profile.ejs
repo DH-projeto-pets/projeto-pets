@@ -3,19 +3,19 @@
 <div class="d-flex" id="wrapper">
     <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
 
-    <div class="container col-10 justify-content:center rounded " id="containerbody">
+    <div class="container col-11 justify-content:center rounded " id="containerbody">
         <br>
         <h6 class="text-center">Perfil do Responsável</h6>
-        <div class="row ml-3">
+        <div class="row ml-2">
             <h3 class="">Nome do Responsável </h3>
 
         </div>
 
-        <div class="container p-1 lead" id="containerimgs">
+        <div class="container p-1 col-11 " id="containerimgs">
             <div class="row">
-                <img src="images/pessoa.jpg" class="img-fluid col-6 m-2 h-100 " alt="Foto da Pessoa" id="fotomaior">
+                <img src="images/pessoa.jpg" class="img-fluid col-lg-7 col-sm-12 m-2 h-100 " alt="Foto da Pessoa" id="fotomaior">
 <!-- <div class="w-100"></div> -->
-                <div class="col-5 p-1 float-right " id="descricao">
+                <div class="col-lg-4 p-1 col-sm-12 float-right " id="descricao">
                     <p>Tootsie roll cake jelly-o dragée tootsie roll. Cotton candy cupcake fruitcake pie tootsie roll.
                         Caramels powder halvah chocolate cake bear claw icing wafer soufflé
                     </p>
@@ -71,9 +71,10 @@
 
             </div>
         </div>
-        <div class="container p-4 ">
-            <div class="row">
-                <div class="card" style="width: 12rem;">
+
+        
+            <div class="container justify-content:center row ml-2 p-1">
+                <div class="card m-1" style="width: 12rem;">
                     <img class="card-img-top" src="/images/gato.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Nome do Pet</h5>
@@ -82,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="card float-right" style="width: 12rem;">
+                <div class="card m-1" style="width: 12rem;">
                     <img class="card-img-top" src="/images/cachorro.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Nome do Pet</h5>
@@ -93,7 +94,7 @@
 
 
             </div>
-        </div>
+        
     </div>
 
 <%- include('../partials/footer') %>
