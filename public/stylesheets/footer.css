@@ -4,33 +4,25 @@
 .img-responsive {
   width: 150px;
   background-color: #3d9194;
-  margin-left: 20%;
-  padding-top: 3%;
-  padding-bottom: 2%;
 }
 
 /* implementando a cor de fundo no footer */
-.footer {
+footer {
   background-color: #3d9194;
-  /* position: absolute; */
-  bottom: 0;
+  text-align: center;
+  padding: 10px;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
-}
-.logo-footer {
-  padding: inherit;
+  bottom: 0;
 }
 
 /* Implementando largura da ocupação dos ícones */
 .redes-sociais-footer {
-  width: 20%;
+  width: 50%;
+  height: 50%;
 }
 
 /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
-.face-footer,
-.insta-footer,
-.twitter-footer {
-  color: black;
-  padding-right: 20%;
+.item-footer {
+  list-style-type: none;
+  padding-right: 40%;
 }
