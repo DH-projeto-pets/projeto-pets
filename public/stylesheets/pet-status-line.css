@@ -1,34 +1,38 @@
+.card-title{
+    white-space : nowrap;
+}
+
 #tamanho{
-    border:solid 5px #FF9721;
+    border:solid 4px #FF9721;
     border-radius: 20px;
-    margin: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 2px;
+    padding-top: 15px;
+    /* padding-bottom: 10px; */
     }
     
 #vacinado{
-    border:solid 5px#FFCC33;
+    border:solid 4px#FFCC33;
     border-radius: 20px;
-    margin: 10px;
-    padding-top: 10px;
+    margin: 2px;
+    padding-top: 15px;
     padding-bottom: 10px;
     }
     
         
     #vermifugado{
-    border:solid 5px #FF9721;
+    border:solid 4px #FF9721;
     border-radius: 20px;
-    margin: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 2px;
+    padding-top: 15px;
+    /* padding-bottom: 10px; */
     }
     
     #castrado{
-    border:solid 5px #FFCC33;
+    border:solid 4px #FFCC33;
     border-radius: 20px;
-    margin: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 2px;
+    padding-top: 15px;
+    /* padding-bottom: 10px; */
     }
     
     .desativado{
