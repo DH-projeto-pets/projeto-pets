@@ -5,6 +5,8 @@
   width: 150px;
   background-color: #3d9194;
 }
+@media(max-width: 768px) { .img-responsive { width: 130px }}
+@media(max-width: 576px) { .img-responsive { width: 100px }}
 
 /* implementando a cor de fundo no footer */
 footer {
@@ -22,7 +24,7 @@ footer {
 }
 
 /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
-.item-footer {
+.item-footer { 
   list-style-type: none;
-  padding-right: 40%;
+  margin-right: 5%; 
 }

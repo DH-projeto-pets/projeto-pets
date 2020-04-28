@@ -18,9 +18,25 @@
             </select>
         </div>
         <div class="d-flex justify-content-center flex-wrap">
-        <%- include('../components/card-pet-manager') %>
-        <%- include('../components/card-pet-manager') %>
-        <%- include('../components/card-pet-manager') %>
+        <%- include('../components/card-pet-manager', 
+        { 
+            nome: 'Aquiles',
+            situation: 'P',
+            image: '/images/modelos-marco/zeus.jpg'
+         }) %>
+
+        <%- include('../components/card-pet-manager', 
+        { 
+            nome: 'Simba',
+            situation: 'E',
+            image: '/images/modelos-marco/aquiles.jpeg' 
+        }) %>
+        <%- include('../components/card-pet-manager', 
+        { 
+            nome: 'Muller',
+            situation: 'E',
+            image: '/images/modelos-marco/muller.jpg'
+        }) %>
     </div>
 </div>
 <%- include('../partials/footer') %>

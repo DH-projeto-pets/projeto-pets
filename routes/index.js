@@ -14,6 +14,10 @@ router.get('/pets-perdidos-encontrados/novo', (req,res) => {
   return res.render('screen/register-lost-found-pets', { logged: true });
 });
 
+router.get('/pets-perdidos-encontrados/editar-pet', (req,res) => {
+  return res.render('screen/register-lost-found-pets', { logged: true });
+});
+
 router.get('/user/editar', (req,res) => {
   return res.render('screen/edit-user', { logged: true });
 });
@@ -53,7 +57,12 @@ router.get('/user/cadastro', (req,res) => {
 });
 // rota para gerenciamento de pets cadastrados
 router.get('/user/gerenciamento', (req,res) => {
-  return res.render("screen/manager-pet", { logged: true });
+  return res.render("screen/manager-pet", 
+                      { 
+                        logged: true, 
+                        nome: 'Daia', 
+                        image: '/images/pet.jpg'
+                      });
 });
 // rota para cadastro de pets para adoção
 
