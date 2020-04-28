@@ -17,9 +17,14 @@ footer {
   bottom: 0;
 }
 
+.ul-footer{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
 /* Implementando largura da ocupação dos ícones */
 .redes-sociais-footer {
-  width: 50%;
   height: 50%;
 }
 
