@@ -52,7 +52,7 @@ router.get('/perfil-pet-perdido', (req,res) => {
 });
 
 // Rota para cadastro de usuário
-router.get('/cadastro', (req,res) => {
+router.get('/cadastrar', (req,res) => {
   return res.render("screen/register-user", { logged: false });
 });
 // rota para gerenciamento de pets cadastrados
