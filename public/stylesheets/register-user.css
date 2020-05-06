@@ -1,10 +1,15 @@
 .formulario {
     position: relative;
-    margin-bottom: 23px;
+    top: 30px;
+    margin-bottom: 50px;
     background-color: #FFF2CC;
     border-radius: 10px;
+    box-shadow: var(--shadow-box);
 }
-.formulario h3 { text-align: center }
+.formulario h1 { 
+    text-align: center;
+    background-color: var(--title-bg-color);
+}
 .label {
     text-align: justify; 
 }
