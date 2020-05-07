@@ -99,9 +99,7 @@
   color: #fff;
 }
   
-
-.forgot:hover,
-.forgot:active,
-.forgot:focus{
-  color: rgb(12, 97, 33);
+.register-login:hover,
+.forgot:hover{
+  text-decoration: none;
 }
