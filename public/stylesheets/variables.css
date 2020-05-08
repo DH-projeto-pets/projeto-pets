@@ -1,7 +1,15 @@
 :root {
-    --title-bg-color: coral;
-    --shadow-box: 5px 5px 5px #000;
+    /* Cor laranja do header */
+    --title-bg-color: #ff9721;
+    /* Cor laranja leve do background de cards */
+    --cards-bg-color: #FFF2CC;
+    /* Sombra para caixas */
+    --shadow-box: 0px 0px 10px 0px;
+    /* Tamanho do titulo das páginas */
     --title-fontsize: 20px;
-    
+    /* Margem entre conteudo e header */
+    --margin-header: 40px;
+    /* Raio de arredondamento de bordas para conteúdos */
+    --border-radius: 10px;
+
 }
-  
