@@ -18,7 +18,7 @@
 }
 
 /* Altera a cor de fundo dos itens do menu */
-.bg-light {
+.list-group-item, .bg-light {
   background-color: #FF8800 !important;
 }
 
