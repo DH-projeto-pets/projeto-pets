@@ -3,14 +3,14 @@
 <div class="d-flex" id="wrapper">
     <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
 
-    <div class="container col-10 justify-content:center rounded " id="containerbody">
+    <div class="container col-10 justify-content:center rounded mt-5 mb-5" id="containerbody">
         <br>
         <div class="row ml-3">
             <h3 class="">Nome do Pet </h3>
             <!-- botão para pet encontrado -->
 
             <div class="col" style="text-align: right;">
-                <button type="button" class="btn btn-primary btn-sm disabled" id="classedepet" disabled aria-disabled="true">Encontrado</button>
+                <button type="button" class="btn btn-primary btn-sm disabled mr-4 mt-1" id="classedepet" disabled aria-disabled="true">Encontrado</button>
             </div>
           <!-- botão para pet perdido -->
 
@@ -22,9 +22,9 @@
         <div class="container p-1 col-11" id="containerimgs">
             <div class="row">
 
-                <img src="/images/cachorro.jpg" class="img-fluid col-lg-9 col-md-8 p-1 " alt="Foto do Pet" id="fotomaior">
+                <img src="/images/cachorro.jpg" class="img-fluid col-9  p-1 " alt="Foto do Pet" id="fotomaior">
 
-                <div class="col-lg-3 col-md-3 p-1 float-right " id="thumbspets">
+                <div class="col-3 p-1 float-right " id="thumbspets">
                     <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid p-1">
                     <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid p-1">
                     <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid p-1">
@@ -33,9 +33,9 @@
 
             <%- include('../components/pet-status-line') %>
         </div>
-        <div class="texto p-3">
+        <div class="texto pt-1 pb-3">
 
-            <div class="row m-3">
+            <div class="row ml-1">
                 <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -44,7 +44,7 @@
                 </svg>
                 <h6>3km de você</h6>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            <p class="ml-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo
