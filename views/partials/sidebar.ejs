@@ -1,5 +1,5 @@
 <div class="bg-light border-right <%= !sidebarIsVisible ? 'd-none' : '' %>" id="sidebar-wrapper">
-  <div class="sidebar-heading"><img src="/images/logosemborda.png" class="logo-pets"></div>
+  <div class="sidebar-heading"><img src="/images/logosemborda.png" class="logo-pets" id="sidebar"></div>
   <div class="list-group list-group-flush">
     <a href="/home/user" class="list-group-item list-group-item-action bg-light">Home</a>
     <a href="/pets/procurando" class="list-group-item list-group-item-action bg-light">Pets para adoção</a>
@@ -22,7 +22,7 @@
     
     <button class="btn <%= !sidebarIsVisible ? 'd-none' : '' %>" id="menu-toggle"><i class="fas fa-bars"></i></button>
 
-    <button class="navbar-toggler <%= sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler <%= sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="#sidebarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
 
