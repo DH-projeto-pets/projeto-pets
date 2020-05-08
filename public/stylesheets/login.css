@@ -1,8 +1,7 @@
 /* Card component */
 
 .card-container-login {
-  margin-top: var(--margin-header);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--shadow-box);
   border-radius: var(--border-radius);
   background: var(--cards-bg-color);
   max-width: 370px;
