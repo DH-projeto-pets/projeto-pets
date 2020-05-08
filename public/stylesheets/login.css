@@ -1,13 +1,20 @@
 /* Card component */
 
 .card-container-login {
-  max-width: 350px;
-  padding: 40px 40px;
+  max-width: 370px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px;
   background: #fff2cc;
-  margin: 0 auto 25px;
-  margin-top: 50px;
+  margin: 0 auto 30px;
+  margin-top: 35px;
+
+  border:0px;
+}
+
+#card-header-login{
+  background-color: #ff9721;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .profile-img-card {
@@ -22,12 +29,9 @@
 }
 
 /* Form styles */
-.profile-name-card {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  margin: 10px 0 0;
-  min-height: 1em;
+
+.section-form-login{
+   padding: 40px 40px;
 }
 
 .reauth-email {
@@ -88,15 +92,14 @@
   -moz-transition: all 0.218s;
   -webkit-transition: all 0.218s;
   transition: all 0.218s;
+  margin-top: 10%
 }
 
 .btn-login:hover{
   color: #fff;
 }
   
-
-.forgot:hover,
-.forgot:active,
-.forgot:focus{
-  color: rgb(12, 97, 33);
+.register-login:hover,
+.forgot:hover{
+  text-decoration: none;
 }
