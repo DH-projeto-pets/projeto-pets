@@ -3,85 +3,84 @@
 <section class="d-flex" id="wrapper">
     <%- include('../partials/sidebar', { sidebarIsVisible: false }) %>
 <section class="col-12
-                col-xs-2
                 offset-sm-2 col-sm-8
-                offset-lg-3 col-lg-7
-                offset-xl-3 col-xl-6">
+                offset-lg-3 col-lg-6
+                offset-xl-4 col-xl-4">
 
-    <div class="formulario p-5">
-        <h3 class="text-align-center mb-4">Criar conta</h3>
+    <div class="formulario pb-5">
         <form 
-            action="/login"
-            method="GET"
+        action="/login"
+        method="GET"
             class="">      
-            <div class="form-group">
+        <h1 class="text-align-center mb-4 p-0">Criar conta</h1>
+            <div class="form-group px-5">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-12 col-md-2"
-                        for="nome">Nome*</label>
+                        class="col-form-label col-12"
+                        for="nome">Nome:</label>
                     <input 
-                        class="form-control col-12 col-md-10"
+                        class="form-control col-12"
                         type="text"
                         name="nome"
                         id="nome">
                 </section>
             </div>
-            <div class="form-group">
+            <div class="form-group px-5">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-12 col-md-2"
-                        for="email">Email*</label>
+                        class="col-form-label col-12"
+                        for="email">Email:</label>
                     <input 
-                        class="form-control col-12 col-md-10"
+                        class="form-control col-12"
                         type="email"
                         name="email"
                         id="email">
                 </section>
             </div>
 
-            <div class="form-group">
+            <div class="form-group px-5">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-12 col-md-2"
-                        for="senha">Senha*</label>
+                        class="col-form-label col-12"
+                        for="senha">Senha:</label>
                     <input 
-                        class="form-control col-12 col-md-10"
+                        class="form-control col-12"
                         type="password"
                         name="senha"
                         id="senha">
                 </section>
             </div>
-            <div class="form-group">
+            <div class="form-group px-5">
                 <section class="form-row">
                     <label 
-                        class="col-form-label col-12 col-md-2"
+                        class="col-form-label col-12"
                         for="confirmar-senha">
-                        Confirmar*
+                        Confirmar senha:
                     </label>
                     <input 
-                        class="form-control col-12 col-md-10"
+                        class="form-control col-12"
                         type="password"
                         name="confirmar-senha"
                         id="confirmar-senha">
                 </section>
             </div>
 
-            <div class="form-group">
+            <div class="form-group px-5">
                 <section class="form-row d-flex align-items-center">
                     <input
                         type="checkbox"
-                        class="col-2"
+                        class="col-1"
                         id="termos-de-uso">
                     <label 
                         class="form-check-label col-10"        
                         for="termos-de-uso">
                         Ao cadastrar eu concordo com os 
                         <a href="/termos-de-uso">Termos e Condições de uso</a>
-                        e condições de privacidade.
+                        e políticas de privacidade.
                     </label>
                 </section>
             </div>
-            <button type="submit" class="btn offset-4 col-5 btn-login">Cadastrar</button>
+            <button type="submit" class="btn offset-3 col-5 btn-login">Cadastrar</button>
         </form>
     </div>
 </section>

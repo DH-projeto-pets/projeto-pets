@@ -1,18 +1,18 @@
 /* Card component */
 
 .card-container-login {
+  margin-top: var(--margin-header);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  background: var(--cards-bg-color);
   max-width: 370px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px;
-  background: #fff2cc;
   margin: 0 auto 30px;
-  margin-top: 35px;
-
+  margin-top: var(--margin-header);
   border:0px;
 }
 
 #card-header-login{
-  background-color: #ff9721;
+  background-color: var(--title-bg-color);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
