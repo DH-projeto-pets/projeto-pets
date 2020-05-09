@@ -32,3 +32,9 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.register-pet-adoption {
+  position: relative;
+  top: var(--margin-header);
+  box-shadow: var(--shadow-box);
+}
