@@ -136,87 +136,11 @@ ul li a:hover {
   background-color: #3D9194;
 }
 
-
-/* RODAPÉ */
-
-.container-rodape {
-   min-height: 220px;
-   padding: 20px;
-   background-color: #3D9194;
-}
-.menu-rodape {
-  display: flex;
-  justify-content: space-between;
-}
-.menu-rodape ul {
-  list-style-type: none;
-}
-.menu-rodape li {
-  padding: 17px;
-  font-weight: 600;
-}
-.direita-rodape {
-  text-align: end;
-}
-.icone-social {
-  width: 32px;
-  height: 32px;
-  margin: 12px;
-}
-.titulo-negrito {
-  font-weight: 700;
-  font-size: 1.9rem;
-}
-/* CSS DA HOME (LANDING PAGE) */
-
-body, a {
-  color: #323232;
-}
-ul li a:hover {
-  text-decoration: none;
-}
-.barra-superior, .menu-principal{
-  display: flex;
-}
-
-/* BARRA SUPERIOR / MENU PRINCIPAL */
-.barra-superior {
-  background-color: #FF9721;
-  align-items: center;
-  /* min-height: 15vh; */
-}
-.menu-principal{
-  align-items: center;
-  flex-grow: 3;
-}
-.menu-principal ul{
-  display: flex;
-  justify-content: space-around;
-  font-weight: 500;
-  margin-top: 10px;
-}
-.menu-principal li {
-  list-style: none;
-  padding: 0 15px;
-}
-.menu-principal li > a:hover {
-  color: #FFDC73;
-}
-.botoes-login {
-  flex-grow: 2;
-}
-.botoes-login button {
-  width: 11vw;
-}
-.botao-entrar {
-  background-color: #f9f9f9;
-}
-
 /* CARROSSEL */
 
 /* Aumenta o tamanho dos botões de navegação */
 .carousel-control-next-icon, .carousel-control-prev-icon {
-  padding: 40px;
+  padding: 30px;
 }
 /* Ajusta altura do banner rotativo da landing page */
 .carousel-item img {
@@ -270,15 +194,27 @@ ul li a:hover {
 
 /* CALL TO ACTION 'COMO POSSO AJUDAR?' */
 
-.container-cta {
-  display: flex;
-  background: url('/images/background-paw-50.png');
-  min-height: 300px;
-  justify-content: space-between;
+/* Sobrescreve a classe do componenete Jumbotron (call to action) */
+.jumbotron {
+  padding: 0;
 }
-.container-texto-cta {
+.fundo-cta {
+  background: url('/images/fundo2.png');
+  background-size: 70%;
+  max-height: 370px;
+}
+.lateral-cta {
+  background: url('/images/banner-cachorro-v3.png');
+  background-position: right;
+  background-size: 22%;
+  background-repeat: no-repeat;
+  height: 340px;
+  display: flex;
+  align-items: center;
+}
+.area-texto-cta {
   background-color: rgba(242, 242, 242, 0.9);
-  padding: 30px;
+  padding: 20px;
 }
 .container-texto-cta h2{
   font-weight: 700;
@@ -286,7 +222,7 @@ ul li a:hover {
 .imagem-lateral {
   width: 300px;
   height: 400px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 .texto-cta {
   padding: 20px 280px 20px 40px;    
@@ -302,36 +238,4 @@ ul li a:hover {
 .botao-medio-verde:hover {
   color: #000;
   background-color: #3D9194;
-}
-
-
-/* RODAPÉ */
-
-.container-rodape {
-   min-height: 220px;
-   padding: 20px;
-   background-color: #3D9194;
-}
-.menu-rodape {
-  display: flex;
-  justify-content: space-between;
-}
-.menu-rodape ul {
-  list-style-type: none;
-}
-.menu-rodape li {
-  padding: 17px;
-  font-weight: 600;
-}
-.direita-rodape {
-  text-align: end;
-}
-.icone-social {
-  width: 32px;
-  height: 32px;
-  margin: 12px;
-}
-.titulo-negrito {
-  font-weight: 700;
-  font-size: 1.9rem;
 }
