@@ -1,53 +1,160 @@
-<div class="bg-light border-right <%= !sidebarIsVisible ? 'd-none' : '' %>" id="sidebar-wrapper">
-  <div class="sidebar-heading"><img src="/images/logosemborda.png" class="logo-pets"></div>
-  <div class="list-group list-group-flush">
-    <a href="/home/user" class="list-group-item list-group-item-action bg-light">Home</a>
-    <a href="/pets/procurando" class="list-group-item list-group-item-action bg-light">Pets para adoção</a>
-    <a href="/pets/procurando" class="list-group-item list-group-item-action bg-light">Encontrar meu pet</a>
-    <a href="/pets-perdidos-encontrados/novo" class="list-group-item list-group-item-action bg-light">Cadastrar novo pet Perdido/Encontrado</a>
-    <a href="/user/cadastro-pets-adocao" class="list-group-item list-group-item-action bg-light">Cadastro Pet para adoção</a>
-    <a href="/user/gerenciamento" class="list-group-item list-group-item-action bg-light">Gerenciamento de Pets</a>
-    <a href="/user/editar" class="list-group-item list-group-item-action bg-light">Editar perfil</a>
-    <a href="/termos-de-uso" class="list-group-item list-group-item-action bg-light">Termos de uso</a>
-    <!-- <a href="/sobre" class="list-group-item list-group-item-action bg-light">Sobre</a> -->
-    <a href="/" class="list-group-item list-group-item-action bg-light">Sair</a>
+<div  class="bg-light border-right sidebar
+            <%= !sidebarIsVisible ? 'd-none' : '' %>"
+      id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <img  src="/images/logosemborda.png"
+          class="logo-pets" id="sidebar">
   </div>
+  <!-- Links da sidebar (menu lateral) -->
+  <div class="list-group
+              list-group-flush">
+    <a  href="/home/user" 
+        class="list-group-item
+                list-group-item-action">
+                Home
+    </a>
+    <a  href="/pets/procurando"
+        class="list-group-item
+                list-group-item-action">
+                Pets para adoção
+    </a>
+    <a href="/pets/procurando"
+        class="list-group-item 
+                list-group-item-action">
+                Encontrar meu pet
+    </a>
+    <!-- Link para página de cadastro de pets perdidos ou encontrados -->
+    <a href="/pets-perdidos-encontrados/novo"
+        class="list-group-item
+                list-group-item-action">
+                Cadastrar Pet Perdido/Encontrado
+    </a>
+    <!-- Link para página de cadastro de pets para adoção -->
+    <a href="/user/cadastro-pets-adocao"
+        class="list-group-item
+                list-group-item-action">
+                Cadastrar Pet para adoção
+    </a>
+    <!-- Link para página de gerenciamento de pets -->
+    <a href="/user/gerenciamento"
+        class="list-group-item
+                list-group-item-action">
+                Gerenciamento de Pets
+    </a>
+    <!-- Link para página de editar perfil do usuário -->
+    <a href="/user/editar"
+        class="list-group-item
+                list-group-item-action">
+                Editar perfil
+    </a>
+    <!-- Link para página de termos de uso -->
+    <a href="/termos-de-uso"
+        class="list-group-item
+                list-group-item-action">
+                Termos de uso
+    </a>
+    <!-- Link para sair e voltar a página inicial -->
+    <a href="/"
+        class="list-group-item
+                list-group-item-action">
+                Sair
+    </a>
+  </div> 
 </div>
 <%= console.log(logged) %>
 
 <div id="page-content-wrapper">
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <!-- Header -->
+  <nav class="navbar header-nav
+              navbar-expand-lg
+              navbar-light
+              bg-light
+              border-bottom">
     <!-- <a class="navbar-brand <%= sidebarIsVisible ? 'd-none' : '' %>"" href="#">PetAqui</a> -->
     
-    <button class="btn <%= !sidebarIsVisible ? 'd-none' : '' %>" id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <button class="btn
+                  <%= !sidebarIsVisible ? 'd-none' : '' %>"
+            id="menu-toggle">
+                  <i class="fas fa-bars"></i>
+    </button>
 
-    <button class="navbar-toggler <%= sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler
+                  <%= sidebarIsVisible ? 'd-none' : '' %>"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  id="#sidebarCollapse">
+                  <span class="navbar-toggler-icon"></span>
     </button>
 
     <section class="sup-menu">
-      <a class="navbar-brand sup-menu__logo d-md-none" href="#">
+      <a href="#"
+          class="navbar-brand
+                  sup-menu__logo
+                  d-md-none">
         <img src="/images/logo-transparente.png">
       </a>
     </section>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0  <%= logged ? 'd-none': '' %>">
+    <!-- Div com lista de links no header -->
+    <div class="collapse
+                navbar-collapse"
+          id="navbarSupportedContent">
+      <!-- Lista só é mostrada se estiver deslogado -->
+      <ul class="navbar-nav
+                  ml-auto
+                  mt-2 mt-lg-0 
+                  <%= logged ? 'd-none': '' %>">
+        <!-- Lista de links no header para página sobre) -->
         <li class="nav-item active">
-          <a class="nav-link" href="/sobre">Sobre <span class="sr-only">(current)</span></a>
+          <a class="nav-link"
+              href="/sobre">
+              Sobre 
+              <span class="sr-only">
+                (current)
+              </span>
+          </a>
         </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!-- Dropdown para entrar (login e cadastro) -->
+        <li class="nav-item
+                    dropdown">
+          <a class="nav-link"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
             Entrar
             <i class="fas fa-caret-down"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/login">Login</a>
-            <a class="dropdown-item" href="/cadastro">Criar conta</a>
+
+          <div class="dropdown-menu
+                      dropdown-menu-right"
+                aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"
+                href="/login">
+                Login
+            </a>
+            <a class="dropdown-item"
+                href="/cadastrar">
+                Criar conta
+            </a>
           </div>
-        </li>
+        </li> <!-- Fim do dropdown entrar-->
       </ul>
     </div>
   </nav>
+<!-- Comportamento estranho: Div iniciada não pode ser fechada -->
+
+<script type="text/javascript">
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+<!-- Comportamento estranho -->

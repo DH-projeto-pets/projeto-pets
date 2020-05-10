@@ -1,12 +1,17 @@
 .pets-manager {
+    top: var(--margin-header);
+    box-shadow: var(--shadow-box);
+    background-color: var(--cards-bg-color);
     width: 70%;
     position: relative;
     left: 15%;
-    background-color: #FFF2CC;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
   
 }
-.pets-manager h3 { text-align: center }
+.pets-manager h1 { 
+    text-align: center;
+    font-size: var(--title-fontsize);
+}
 
 .select-tipo {
     width: 150px;

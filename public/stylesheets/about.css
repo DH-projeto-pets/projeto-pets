@@ -11,6 +11,11 @@
 .about-container {
   padding: 0;
 }
+.content-about,
+.content-login,
+.content-forgot-password {
+  min-height: 94vh;
+}
 .about {
   background: #fff;
   padding: 15px;
