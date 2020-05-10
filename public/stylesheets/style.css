@@ -40,3 +40,12 @@ body {
     background: none;
     background-color: #fff;
 }
+
+.modal-question {
+  font-weight: 700;
+}
+
+.modal-question:not(:first-child) {
+  margin-bottom: 0;
+}
+

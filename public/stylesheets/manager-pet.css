@@ -1,5 +1,5 @@
 .pets-manager {
-    top: var(--margin-header);
+    /* top: var(--margin-header); */
     box-shadow: var(--shadow-box);
     background-color: var(--cards-bg-color);
     width: 70%;
