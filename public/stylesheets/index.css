@@ -1,3 +1,11 @@
+/* Container para receber todo o código da home para sobrescrever o background */
+.home-main-content__container {
+  background: none;
+  background-color: #fff;
+  /* zera o padding do container-fluid */
+  padding-left: 0;
+  padding-right: 0;
+}
 /* CARROSSEL */
 
 /* Aumenta o tamanho dos botões de navegação */
@@ -73,6 +81,7 @@ Usado no call to action e no grid*/
   background: url('/images/fundo2.png');
   background-size: 70%;
   max-height: 370px;
+  overflow: hidden;
 }
 /* ********** */
 .lateral-cta {
