@@ -1,141 +1,3 @@
-/* CSS DA HOME (LANDING PAGE) */
-
-body, a {
-  color: #323232;
-}
-ul li a:hover {
-  text-decoration: none;
-}
-.barra-superior, .menu-principal{
-  display: flex;
-}
-
-/* BARRA SUPERIOR / MENU PRINCIPAL */
-.barra-superior {
-  background-color: #FF9721;
-  align-items: center;
-  /* min-height: 15vh; */
-}
-.menu-principal{
-  align-items: center;
-  flex-grow: 3;
-}
-.menu-principal ul{
-  display: flex;
-  justify-content: space-around;
-  font-weight: 500;
-  margin-top: 10px;
-}
-.menu-principal li {
-  list-style: none;
-  padding: 0 15px;
-}
-.menu-principal li > a:hover {
-  color: #FFDC73;
-}
-.botoes-login {
-  flex-grow: 2;
-}
-.botoes-login button {
-  width: 11vw;
-}
-.botao-entrar {
-  background-color: #f9f9f9;
-}
-
-/* CARROSSEL */
-
-/* Aumenta o tamanho dos botões de navegação */
-.carousel-control-next-icon, .carousel-control-prev-icon {
-  padding: 40px;
-}
-/* Ajusta altura do banner rotativo da landing page */
-.carousel-item img {
-  min-height: 63vh;
-}
-
-/* GRID DE PETS */
-
-.espaco-branco {
-  min-height: 80px;
-}
-.titulo-centralizado {
-  text-align: center;
-}
-.container-pets {
-  background: url('/images/background-paw.png');
-  /* background-color: #f2f2f2; */
-  min-height: 300px;
-  padding: 15px 150px;
-}
-.grid-perdidos {
-  display: flex;
-  justify-content: space-around;
-}
-.miniatura-grid {
-  width: 250px;
-  height: 320px;
-}
-.grid-item-descricao {
-  background-color: #ffffff;
-  min-height: 60px;
-  text-align: center;
-  font-weight: 600;
-}
-.container-botao {
-  display: flex;
-  justify-content: center;
-}
-.botao-medio-amarelo {
-  color: #000;
-  font-weight: 500;
-  padding: 10px 70px;
-  margin: 10px 0;
-  border: none;
-  background-color: #FFDC73;
-}
-.botao-medio-amarelo:hover {
-  color: #000;
-  background-color: #FF9721;
-}
-
-/* CALL TO ACTION 'COMO POSSO AJUDAR?' */
-
-.container-cta {
-  display: flex;
-  background-image: url('../images/fundo2.png');
-  background-size: 70%;
-  min-height: 300px;
-  justify-content: space-between;
-}
-.container-texto-cta {
-  background-color: rgba(242, 242, 242, 0.9);
-  padding: 30px;
-}
-.container-texto-cta h2{
-  font-weight: 700;
-}
-.imagem-lateral {
-  width: 300px;
-  height: 400px;
-  flex-grow: 1;
-}
-.texto-cta {
-  padding: 20px 280px 20px 40px;    
-}
-.botao-medio-verde {
-  color: #000;
-  font-weight: 500;
-  padding: 15px 80px;
-  margin: 10px 0;
-  border: none;
-  background-color: #4BDBB7;
-}
-.botao-medio-verde:hover {
-  color: #000;
-  background-color: #3D9194;
-}
-
 /* CARROSSEL */
 
 /* Aumenta o tamanho dos botões de navegação */
@@ -148,7 +10,14 @@ ul li a:hover {
 }
 
 /* GRID DE PETS */
-
+.grid-home__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.localizacao-pet {
+  opacity: 0.6;
+}
 .espaco-branco {
   min-height: 80px;
 }
@@ -157,7 +26,6 @@ ul li a:hover {
 }
 .container-pets {
   background: url('/images/background-paw.png');
-  /* background-color: #f2f2f2; */
   min-height: 300px;
   padding: 15px 150px;
 }
@@ -166,8 +34,8 @@ ul li a:hover {
   justify-content: space-around;
 }
 .miniatura-grid {
-  width: 250px;
-  height: 320px;
+  width: 100%;
+  height: 300px;
 }
 .grid-item-descricao {
   background-color: #ffffff;
@@ -198,11 +66,15 @@ ul li a:hover {
 .jumbotron {
   padding: 0;
 }
-.fundo-cta {
+/* ********** */
+/* Área com max-height de 370px e com background de pegadas. 
+Usado no call to action e no grid*/
+.fundo-pegadas-h370 {
   background: url('/images/fundo2.png');
   background-size: 70%;
   max-height: 370px;
 }
+/* ********** */
 .lateral-cta {
   background: url('/images/banner-cachorro-v3.png');
   background-position: right;
@@ -238,4 +110,14 @@ ul li a:hover {
 .botao-medio-verde:hover {
   color: #000;
   background-color: #3D9194;
+}
+
+/* ************** */
+/* RESPONSIVIDADE */
+/* ************** */
+
+@media(max-width: 768px) {
+  .lateral-cta {
+    background: none;
+  }
 }
