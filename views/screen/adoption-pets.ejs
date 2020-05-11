@@ -1,11 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adoção de Pets</title>
-</head>
-<body>
-    <h1>Adoção de Pets</h1>
-</body>
-</html>
+<%- include('../partials/head', { title: 'Pets para Adoção'}) %>
+<section class="d-flex" id="wrapper">
+  <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
+
+    <section class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-10 main__container">
+                <!-- espaço em branco -->
+                <div class="espaco-branco"></div>
+                <!-- container do grid de pets -->
+                <div class="grid-pets__container">
+                    <!-- barra de filtro -->
+                    <div class="filter__container">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <select class="form-control form-control-sm">
+                                        <option>-- Espécie --</option>
+                                        <option>Cachorro</option>
+                                        <option>Gato</option>
+                                        <option>Ave</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <select class="form-control form-control-sm">
+                                        <option>-- Raça --</option>
+                                        <option>SRD</option>
+                                        <option>Poodle</option>
+                                        <option>Rottweiler</option>
+                                        <option>Golden</option>
+                                        <option>Cocker</option>
+                                        <option>Chiwawa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <select class="form-control form-control-sm">
+                                        <option>-- Porte --</option>
+                                        <option>Pequeno</option>
+                                        <option>Médio</option>
+                                        <option>Grande</option>
+                                        <option>Muito Grande</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <select class="form-control form-control-sm">
+                                        <option>-- Sexo --</option>
+                                        <option>Fêmea</option>
+                                        <option>Macho</option>
+                                        <option>Não tenho certeza</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- espaço em branco -->
+                    <div class="espaco-branco"></div>
+                    <h2>Pets para Adoção</h2>
+                    <!-- espaço em branco -->
+                    <div class="espaco-branco"></div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/pet-grid-01.png" alt="Pet perdido/encontrado">
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <p class="card-text">Sem nome</p>
+                                <div class="badge-found">E</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/pet-grid-02.png" alt="Pet perdido/encontrado">
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <p class="card-text">Charlie</p>
+                                <div class="badge-lost">P</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/pet-grid-03.png" alt="Pet perdido/encontrado">
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <p class="card-text">Charlie</p>
+                                <div class="badge-lost">P</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/pet-grid-02.png" alt="Pet perdido/encontrado">
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <p class="card-text">Charlie</p>
+                                <div class="badge-lost">P</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/pet-grid-04.png" alt="Pet perdido/encontrado">
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <p class="card-text">Sem nome</p>
+                                <div class="badge-found">E</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/pet-grid-01.png" alt="Pet perdido/encontrado">
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <p class="card-text">Sem nome</p>
+                                <div class="badge-found">E</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <div class="espaco-branco"></div>
+</section>
+
+
+<%- include('../partials/footer') %>
