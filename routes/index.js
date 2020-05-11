@@ -82,5 +82,9 @@ router.get('/termos-de-uso', (req, res) => {
 router.get('/pets-perdidos-encontrados', (req, res) => {
   return res.render('screen/lost-found-pets', { logged: true });
 });
+// rota para grid de pets perdidos e encontrados
+router.get('/pets-adocao', (req, res) => {
+  return res.render('screen/adoption-pets', { logged: true });
+});
 
 module.exports = router;
