@@ -1,6 +1,6 @@
 <div class="row " >
     <div class="col-12 d-flex column justify-content-around">
-        <div class="card text-center desativado" id="tamanho">
+        <div class="card text-center desativado" id="tamanho"  data-toggle="tooltip" data-placement="bottom" title="Tamanho">
             <div class="card-body py-3">
                 <i class="fa fa-weight-hanging"></i>
                 <!-- <svg height="2em" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
@@ -14,7 +14,7 @@
         </div>
 
 
-        <div class="card text-center" id="vacinado">
+        <div class="card text-center" id="vacinado" data-toggle="tooltip" data-placement="bottom" title="Vacinado">
             <div class="card-body py-3">
                 <i class="fa fa-syringe" ></i>
                 
@@ -30,7 +30,7 @@
         </div>
 
 
-        <div class="card text-center" id="vermifugado">
+        <div class="card text-center" id="vermifugado"  data-toggle="tooltip" data-placement="bottom" title="Vermifugado">
             <div class="card-body py-3">
                 <i class="fas fa-pills "></i>
                 <!-- <svg height="2em" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
@@ -45,7 +45,7 @@
         </div>
 
 
-        <div class="card text-center " id="castrado">
+        <div class="card text-center " id="castrado"  data-toggle="tooltip" data-placement="bottom" title="Castrado">
             <div class="card-body py-3">
                 <i class="fa fa-clipboard-list"></i>
                 <!-- <svg height="2em" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
@@ -60,3 +60,9 @@
 
     </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+        </script>
