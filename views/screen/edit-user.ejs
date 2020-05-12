@@ -1,4 +1,4 @@
-<%- include('../partials/head', { title: 'Cadastrar novo Pet'}) %>
+<%- include('../partials/head', { title: 'Editar usuário'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
   <section class="container formEditUser__container p-0">
@@ -24,12 +24,12 @@
           </section>
           <section class="form-group col-md-12">
             <section class="row">
-              <section class="col-md-3">
-                <img src="/images/default-photo.png" alt="Pre-visualização da foto do perfil" class="img-thumbnail">
+              <section class="col-md-3 form-img-review">
+                <img src="/images/default-photo.png" alt="Pre-visualização da foto do perfil" class="img-thumbnail preview-img">
               </section>
               <section class="col-md-9" style="display: flex; flex-direction: column; justify-content: center;">
                 <section class="custom-file">
-                  <input type="file" class="custom-file-input" id="fotoPerfil">
+                  <input type="file" class="custom-file-input" id="fotoPerfil"  onchange="imgArquivo(event)">
                   <label class="custom-file-label" for="fotoPerfil">Selecionar foto</label>
                 </section>
               </section>

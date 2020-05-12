@@ -35,6 +35,22 @@ body {
   text-decoration: none;
   color: inherit;
 }
+
+/* Container para receber todo o código da home para sobrescrever o background */
+.home-main-content__container {
+    background: none;
+    background-color: #fff;
+}
+
+.modal-question {
+  font-weight: 700;
+}
+
+.modal-question:not(:first-child) {
+  margin-bottom: 0;
+}
+
 .container-fluid {
   overflow: hidden;
 }
+

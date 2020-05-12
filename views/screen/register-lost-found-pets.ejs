@@ -4,8 +4,8 @@
   <section class="container">
     <section class="row formRegisterPet__rowContainer">
       <section class="col-xs-11 col-sm-11 col-md-10 col-xl-6 formRegisterPet__container">
-        <h1 class="col-md-12 text-center">Cadastrar Pet</h1>
-        <form class="col-md-12 formRegisterPet__form">
+        <h1 class="col-md-12 text-center">Cadastrar Pet <i class="far fa-question-circle" data-toggle="modal" data-target="#modal-petEncontrado"></i></h1>
+        <form class="col-md-12 formRegisterPet__form" enctype="multipart/form-data">
           <div class="form-row">
             <div class="form-check form-check-inline">
               <input
@@ -33,8 +33,8 @@
           </div>
           <div class="form-row">
             <section class="form-group col-md-4 pl-0">
-              <section class="form-group col-sm-6 col-md-12 pl-0">
-                <img src="/images/default-photo.png" alt="Visualização de imagem" class="img-thumbnail">
+              <section class="form-group col-sm-6 col-md-12 pl-0 form-img-review">
+                <img src="/images/default-photo.png" alt="Visualização de imagem" class="img-thumbnail preview-img">
               </section>
               <section class="form-group col-sm-12 col-md-12 pl-0">
                 <section class="col-md-12 p-0">Porte:</section>
@@ -141,7 +141,7 @@
                 </section>
                 <section class="form-group col-sm-12 col-md-12">
                   <section class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
+                    <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
                     <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
                   </section>
                 </section>
@@ -153,6 +153,16 @@
                   rows="3"
                   cols="100"
                 ></textarea>
+                </section>
+               
+                <section class="form-group col-sm-12 col-md-12">
+                  <button
+                  type="button"
+                  class="btn btn-block orange"
+                  data-button="getAddress"
+                  >
+                    Adicionar o endereço automaticamente
+                  </button>
                 </section>
                 <section class="form-group col-sm-12 col-md-12">
                   <button
@@ -182,6 +192,8 @@
   <div class="espaco-branco"></div>
 </section>
 <%- include('../partials/footer') %>
+
+<%- include('../components/modal-pet-encontrado') %>
 
   <section
     class="modal fade"

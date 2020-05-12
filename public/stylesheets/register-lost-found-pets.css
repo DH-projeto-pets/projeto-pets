@@ -1,3 +1,5 @@
+.custom-file-label::after{content:"Selecionar"}
+
 .container_registerPetLF {
   height: 90vh;
   display: flex;
@@ -36,7 +38,13 @@
 .register-pet-adoption {
   position: relative;
   background-color: var(--cards-bg-color);
-  top: var(--margin-header);
+  /* top: var(--margin-header); */
   box-shadow: var(--shadow-box);
   margin-bottom: 70px;
+}
+
+.form-img-review img {
+  width: 142px;
+  height: 142px;
+  object-fit: cover;
 }
