@@ -11,6 +11,10 @@
         <h1 class="col-md-12
                     text-center">
                     Cadastrar Pet para adoção
+                    <i class="far fa-question-circle"
+                        data-toggle="modal"
+                        data-target="#modal-petEncontrado">
+                    </i>
         </h1>
         <form class="col-md-12 formRegisterPet__form"
               action="/perfil-dono"
@@ -19,11 +23,8 @@
           <div class="form-row">
             <section class="form-group
                             col-md-4 pl-0">
-              <section class="form-group
-                              col-sm-6 col-md-12 pl-0">
-                <img  src="/images/pet.jpg"
-                      alt="Visualização de imagem"
-                      class="img-thumbnail">
+              <section class="form-group col-sm-6 col-md-12 pl-0 form-img-review">
+                <img src="/images/default-photo.png" alt="Visualização de imagem" class="img-thumbnail preview-img">
               </section>
               <section class="form-group 
                               col-sm-12 col-md-12 pl-0">
@@ -207,9 +208,23 @@
                 </section>
              
 
-              <section>
+              <section class="col-12">
                 <label class="col-12"
                         for="especie">Fotos:</label>
+              </section>
+              <section class="col-12 d-flex justify-content-between flex-wrap">
+                <div class="fotos">
+                  <img src="/images/foto-default-pet.jpeg" alt="">
+                </div>
+                <div class="fotos">
+                  <img src="/images/foto-default-pet.jpeg" alt="">
+                </div>
+                <div class="fotos">
+                  <img src="/images/foto-default-pet.jpeg" alt="">
+                </div>
+                <div class="fotos">
+                  <img src="/images/foto-default-pet.jpeg" alt="">
+                </div>
               </section>
               <section class="form-group col-sm-12 col-md-12">
                 <section class="custom-file">
@@ -219,22 +234,11 @@
                         onchange="imgArquivo(event)">
                   <label class="custom-file-label"
                           for="customFile">
-                          Selecionar arquivo
+                          Selecionar foto
                         </label>
                 </section>
               </section>
-              <section class="form-group 
-                              col-12">
-                <section class="custom-file">
-                  <input
-                      type="file"
-                      class="custom-file-input col-12"
-                      id="customFile">
-                  <label
-                      class="custom-file-label"
-                      for="customFile">Selecionar Foto</label>
-                </section>
-              </section>
+              
 
               <section class="form-row">
                 <section class="form-group col-sm-12 col-md-6">
@@ -406,7 +410,37 @@
                       rows="3"
                       cols="100">
                 </textarea>
-              </section>  
+              </section>
+              <section class="form-group col-sm-12 col-md-12">
+                <button
+                type="button"
+                class="btn btn-block orange"
+                data-button="getAddress"
+                >
+                  Localização atual
+                </button>
+
+              </section>
+              <section class="form-group col-sm-12 col-md-12">
+                <button
+                type="button"
+                class="btn btn-block orange"
+                data-button="getAddress"
+                >
+                  Usar endereço cadastrado
+                </button>
+
+              </section>
+              <section class="form-group col-sm-12">
+                <button
+                type="button"
+                class="btn btn-block orange"
+                data-toggle="modal"
+                data-target="#modal-endereco"
+                >
+                  Adicionar o endereço manualmente
+                </button>
+              </section>
               
               <section class="form-group 
                               col-sm-12 col-md-12

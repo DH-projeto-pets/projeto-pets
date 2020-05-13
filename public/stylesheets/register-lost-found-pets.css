@@ -48,3 +48,17 @@
   height: 142px;
   object-fit: cover;
 }
+
+.fotos {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.fotos, .fotos img {
+  height: 70px;
+}
+.fotos img {
+  margin-right: 4px;
+  border: solid #000 1px;
+  border: var(--border-radius);
+  border: 1px var(--title-bg-color) solid;
+}
