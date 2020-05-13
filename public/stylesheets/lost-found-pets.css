@@ -61,3 +61,8 @@
     color: #fff;
     padding: 5px;
 }
+
+/* Adiciona espaçamento entre os cards */
+.grid-pets-item {
+    margin: 0 1% 1% 0;
+}
