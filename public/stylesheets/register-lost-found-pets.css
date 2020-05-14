@@ -51,14 +51,20 @@
 
 .fotos {
   display: flex;
+  height: 80px;
+  flex-direction: column;
   flex-wrap: nowrap;
-}
-.fotos, .fotos img {
-  height: 70px;
+  align-items: flex-end;
+  margin-right: 4px;
 }
 .fotos img {
-  margin-right: 4px;
-  border: solid #000 1px;
-  border: var(--border-radius);
+  height: 75px;
+}
+.fotos img {
+  border-radius: var(--border-radius);
   border: 1px var(--title-bg-color) solid;
+}
+.fotos i {
+  font-size: 13px;
+  color: var(--title-bg-color);
 }
