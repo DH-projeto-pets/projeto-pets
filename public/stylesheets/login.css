@@ -7,10 +7,10 @@
   max-width: 370px;
   margin: 0 auto 30px;
   margin-top: var(--margin-header);
-  border:0px;
+  border: 0px;
 }
 
-#card-header-login{
+#card-header-login {
   background-color: var(--title-bg-color);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -24,13 +24,12 @@
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
- 
 }
 
 /* Form styles */
 
-.section-form-login{
-   padding: 40px 40px;
+.section-form-login {
+  padding: 40px 40px;
 }
 
 .reauth-email {
@@ -55,9 +54,9 @@
   font-size: 16px;
 }
 
-.form-signin input[type=email],
-.form-signin input[type=password],
-.form-signin input[type=text],
+.form-signin input[type="email"],
+.form-signin input[type="password"],
+.form-signin input[type="text"],
 .form-signin button {
   width: 100%;
   display: block;
@@ -72,8 +71,9 @@
 .form-signin .form-control:focus {
   border-color: rgb(104, 145, 162);
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgb(104, 145, 162);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(104, 145, 162);
 }
 
 .btn-login {
@@ -91,14 +91,17 @@
   -moz-transition: all 0.218s;
   -webkit-transition: all 0.218s;
   transition: all 0.218s;
-  margin-top: 10%
+  margin-top: 10%;
 }
 
-.btn-login:hover{
+.btn-login:hover {
   color: #fff;
 }
-  
+
+.register-login,
+.forgot,
 .register-login:hover,
-.forgot:hover{
+.forgot:hover {
   text-decoration: none;
+  color: inherit;
 }
