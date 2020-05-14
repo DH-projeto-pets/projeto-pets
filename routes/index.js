@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const userController = require('../controllers/UserController');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', logged: false });
@@ -22,9 +24,9 @@ router.get('/user/editar', (req,res) => {
   return res.render('screen/edit-user', { logged: true });
 });
 
-router.get('/login', (req,res) => {
-  return res.render('screen/login', { logged: false });
-});
+router.get('/login', userController.showLogin);
+// router.post('/login', userController.logarUsuario);
+
 
 router.get('/esqueci-senha', (req,res) => {
   return res.render('screen/forgot-password', { logged: false });
