@@ -29,10 +29,13 @@ footer {
 .redes-sociais-footer {
   width: 30%;
   height: 50%;
+  color: black;
 }
 
 /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
-.item-footer { 
+.item-footer {
   list-style-type: none;
   margin-right: 5%; 
+  color: black;
+  font-size: 12px;
 }
