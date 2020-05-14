@@ -2,26 +2,42 @@
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
 
-    <section class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-10 main__container">
-                <!-- espaço em branco -->
-                <div class="espaco-branco"></div>
-                <!-- container do grid de pets -->
-                <div class="grid-pets__container">
-                    <!-- barra de filtro -->
-                    <div>
-                        <form>
-                            <div class="form-row filter__container">
-                                <div class="form-group col-md-3">
-                                    <select class="form-control form-control-sm">
-                                        <option>-- Espécie --</option>
-                                        <option>Cachorro</option>
-                                        <option>Gato</option>
-                                        <option>Ave</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3">
+  <section class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10 main__container">
+            <section class="filter__container">
+                <div class="container">
+                    <div class="row filter-title-row">
+                        <span class="filter-title">
+                            <a href="#collapse-filtro" data-toggle="collapse">
+                                <i class="indicator fa fa-caret-down" aria-hidden="true"></i>
+                                Filtros 
+                            </a>
+
+                        </span>
+                    </div>
+                </div>
+                <div class="container collapse" id="collapse-filtro">
+                    <div class="row">
+                        <form action="" class="col-md-12 d-flex flex-wrap">
+                            <div class="col-md-3 col-12 filter-column">
+                                <h5>Distância</h5>
+                                <input type="radio" name="distancia" id="0to1"><label for="0to1">0 - 1km</label><br>
+                                <input type="radio" name="distancia" id="1to3"><label for="1to3">1km - 3km</label><br>
+                                <input type="radio" name="distancia" id="3to5"><label for="3to5">3 - 5km</label><br>
+                                <input type="radio" name="distancia" id="todos"><label for="todos">Todos</label>
+                            </div>
+                            <div class="col-md-3 col-12 filter-column">
+                                <h5>Espécie</h5>
+                                <select class="form-control form-control-sm">
+                                    <option>-- Espécie --</option>
+                                    <option>Cachorro</option>
+                                    <option>Gato</option>
+                                    <option>Ave</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-12 filter-column">
+                                    <h5>Raça</h5>
                                     <select class="form-control form-control-sm">
                                         <option>-- Raça --</option>
                                         <option>SRD</option>
@@ -31,90 +47,128 @@
                                         <option>Cocker</option>
                                         <option>Chiwawa</option>
                                     </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <select class="form-control form-control-sm">
-                                        <option>-- Porte --</option>
-                                        <option>Pequeno</option>
-                                        <option>Médio</option>
-                                        <option>Grande</option>
-                                        <option>Muito Grande</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <select class="form-control form-control-sm">
-                                        <option>-- Sexo --</option>
-                                        <option>Fêmea</option>
-                                        <option>Macho</option>
-                                        <option>Não tenho certeza</option>
-                                    </select>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <h5>Porte</h5>
+                                <input type="radio" name="distancia" id="p"><label for="p">Pequeno</label><br>
+                                <input type="radio" name="distancia" id="m"><label for="m">Médio</label><br>
+                                <input type="radio" name="distancia" id="g"><label for="g">Grande</label><br>
+                                <input type="radio" name="distancia" id="gg"><label for="gg">Muito Grande</label>
+                            </div>
+                            <div class="col-md-3 col-12 filter-column">
+                                <h5>Vacinado</h5>
+                                <input type="radio" name="distancia" id="sim"><label for="sim">Sim</label><br>
+                                <input type="radio" name="distancia" id="nao"><label for="nao">Não</label><br>
+                            </div>
+                            <div class="col-md-3 col-12 filter-column">
+                                <h5>Vermifugado</h5>
+                                <input type="radio" name="distancia" id="sim"><label for="sim">Sim</label><br>
+                                <input type="radio" name="distancia" id="nao"><label for="nao">Não</label><br>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <h5>Responsável</h5>
+                                <input type="radio" name="distancia" id="ong"><label for="ong">ONG</label><br>
+                                <input type="radio" name="distancia" id="pf"><label for="pf">Pessoa Física</label><br>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <input type="button" value="Filtrar" class="btn btn-primary botao-medio-amarelo">
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <!-- espaço em branco -->
-                    <div class="espaco-branco"></div>
-                    <h2>Pets para Adoção</h2>
-                    <!-- espaço em branco -->
-                    <div class="espaco-branco"></div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/pet-grid-01.png" alt="Pet perdido/encontrado">
-                        <div class="card-body">
-                            <div class="container-card-info">
+                </div>
+
+            </section>
+            
+            <!-- container do grid de pets -->
+            <div class="grid-pets__container">
+                <!-- barra de filtro -->
+
+                <h2>Pets para Adoção</h2>
+
+                <div class="card grid-pets-item" style="width: 18rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-adocao">
                                 <p class="card-text">Sem nome</p>
-                                <!-- <div class="badge-found">E</div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/pet-grid-02.png" alt="Pet perdido/encontrado">
-                        <div class="card-body">
-                            <div class="container-card-info">
-                                <p class="card-text">Charlie</p>
-                                <!-- <div class="badge-lost">P</div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/pet-grid-03.png" alt="Pet perdido/encontrado">
-                        <div class="card-body">
-                            <div class="container-card-info">
-                                <p class="card-text">Charlie</p>
-                                <!-- <div class="badge-lost">P</div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/pet-grid-02.png" alt="Pet perdido/encontrado">
-                        <div class="card-body">
-                            <div class="container-card-info">
-                                <p class="card-text">Charlie</p>
-                                <!-- <div class="badge-lost">P</div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/pet-grid-04.png" alt="Pet perdido/encontrado">
-                        <div class="card-body">
-                            <div class="container-card-info">
-                                <p class="card-text">Sem nome</p>
-                                <!-- <div class="badge-found">E</div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/pet-grid-01.png" alt="Pet perdido/encontrado">
-                        <div class="card-body">
-                            <div class="container-card-info">
-                                <p class="card-text">Sem nome</p>
-                                <!-- <div class="badge-found">E</div> -->
-                            </div>
+                            </a>
+                            <div class="badge-adoption">A</div>
                         </div>
                     </div>
                 </div>
-        </div>
-    </section>
-    <div class="espaco-branco"></div>
+                <div class="card grid-pets-item" style="width: 18rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-adocao">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-adoption">A</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card grid-pets-item" style="width: 18rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-adocao">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-adoption">A</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card grid-pets-item" style="width: 18rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-adocao">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-adoption">A</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card grid-pets-item" style="width: 18rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-adocao">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-adoption">A</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card grid-pets-item" style="width: 18rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-adocao">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-adoption">A</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+<div class="espaco-branco"></div>
 </section>
 
 
