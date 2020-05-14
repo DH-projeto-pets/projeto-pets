@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const { check, validationResult, body } = require('express-validator');
 
 const userController = require('../controllers/UserController');
 
@@ -25,7 +26,10 @@ router.get('/user/editar', (req,res) => {
 });
 
 router.get('/login', userController.showLogin);
-// router.post('/login', userController.logarUsuario);
+router.post('/login', [
+  check('email').isEmail().withMessage("Digite um email válido!"),
+  check('senha').isLength({min:6}).withMessage("A senha tem que conter no mínimo 6 caracteres")
+], userController.logarUsuario);
 
 
 router.get('/esqueci-senha', (req,res) => {
