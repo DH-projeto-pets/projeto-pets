@@ -39,3 +39,7 @@ footer {
   color: black;
   font-size: 12px;
 }
+
+.item-footer:hover {
+  color: unset;
+}

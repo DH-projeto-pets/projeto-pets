@@ -13,7 +13,7 @@ router.get('/:id/editar', PetController.showPetEdicao);
 router.put('/:id/editar', PetController.update)
 router.get('/adocao/:id/editar', PetController.showPetEdicaoAdocao);
 router.put('/adocao/:id/editar', PetController.update);
-router.get('/:id', PetController.show);
+router.get('/:id', PetController.showPetPerfil);
 router.delete('/:id', PetController.delete);
 
 module.exports = router;
