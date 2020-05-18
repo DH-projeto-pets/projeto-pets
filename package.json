@@ -14,9 +14,12 @@
     "express-validator": "^6.4.1",
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.9"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1"
   }
 }

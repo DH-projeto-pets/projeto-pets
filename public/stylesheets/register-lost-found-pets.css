@@ -64,6 +64,10 @@
   border-radius: var(--border-radius);
   border: 1px var(--title-bg-color) solid;
 }
+.fotos img {
+  border-radius: var(--border-radius);
+  border: 1px var(--title-bg-color) solid;
+}
 .fotos i {
   font-size: 13px;
   color: var(--title-bg-color);
