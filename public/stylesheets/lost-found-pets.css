@@ -47,33 +47,6 @@
     text-decoration: none;
     color: #000;
 }
-.badge-found {
-    width: 32px;
-    height: 32px;
-    background-color: #0275D8;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
-}
-.badge-lost {
-    width: 32px;
-    height: 32px;
-    background-color: #EC5353;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
-}
-.badge-adoption {
-    width: 32px;
-    height: 32px;
-    background-color: #4EE066;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
-}
 
 /* Adiciona espaçamento entre os cards */
 .grid-pets-item {
