@@ -10,10 +10,12 @@ background-color: #3DB295;
 border-color: #3DB295;
 }
 
-#botaoadotar:hover{
-background-color: rgb(55, 160, 134);
-border-color: rgb(55, 160, 134);
+#botaoadotar {
+  background-color: #3db295;
+  border-color: #3db295;
 }
 
-
-   
+#botaoadotar:hover {
+  background-color: rgb(55, 160, 134);
+  border-color: rgb(55, 160, 134);
+}
