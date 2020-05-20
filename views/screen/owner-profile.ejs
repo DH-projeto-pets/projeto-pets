@@ -3,13 +3,13 @@
 <div class="d-flex" id="wrapper">
     <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
 
-    <div class="container col-11 justify-content:center rounded mt-5 mb-5" id="containerbody">
+    <div class="container justify-content:center mt-5 mb-5" id="containerbody">
         <br>
-        <h6 class="text-center">Perfil do Responsável</h6>
-        <div class="row ml-2">
-            <h3 class="">Nome do Responsável </h3>
+        <h1 class="ml-2">Nome do usuário</h1>
+        <!-- <div class="row ml-2"> -->
+            <!-- <h3 class="">Nome do Responsável </h3> -->
 
-        </div>
+        <!-- </div> -->
 
         <div class="container p-1 col-12 " id="containerimgs">
             <div class="row">
@@ -74,7 +74,38 @@
 
         
             <div class="container justify-content:center row ml-1 p-1">
-                <div class="card m-1" style="width: 12rem;">
+
+                <div class="card grid-pets-item" style="width: 15rem;">
+                    <a href="/perfil-pet-encontrado">
+                        <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-encontrado">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-found">E</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <div class="card grid-pets-item" style="width: 15rem;">
+                    <a href="/perfil-pet-adocao">
+                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                    </a>
+                    <div class="card-body">
+                        <div class="container-card-info">
+                            <a href="/perfil-pet-encontrado">
+                                <p class="card-text">Sem nome</p>
+                            </a>
+                            <div class="badge-lost">P</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="card m-1" style="width: 12rem;">
                     <img class="card-img-top" src="/images/gato.jpg" alt="Card image cap">
                     <div class="card-body text-center" >
                         <h5 class="card-title">Nome do Pet </h5>
@@ -90,7 +121,7 @@
                         <a href="/perfil-pet-encontrado" class="btn btn-primary" id="botaopets">Ver Perfil</a>
 
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
