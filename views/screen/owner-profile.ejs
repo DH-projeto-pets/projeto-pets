@@ -3,36 +3,24 @@
 <div class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
 
-  <div
-    class="container col-11 justify-content:center rounded mt-5 mb-5"
-    id="containerbody"
-  >
-    <br />
-    <h1 class="text-center">Perfil do Responsável</h1>
-    <div class="row ml-2">
-      <h1 class="">Nome do Responsável</h1>
-    </div>
+  <div class="container justify-content:center mt-5 mb-5" id="containerbody">
 
-    <div class="container p-1 col-12" id="containerimgs">
-      <div class="row">
-        <img
-          src="images/pessoa.jpg"
-          class="img-fluid col-lg-6 col-sm-12 m-2 h-100"
-          alt="Foto da Pessoa"
-          id="fotomaior"
-        />
-        <!-- <div class="w-100"></div> -->
-        <div class="col-lg-5 p-1 col-sm-12" id="descricao">
-          <p class="ml-3">
-            Tootsie roll cake jelly-o dragée tootsie roll. Cotton candy cupcake
-            fruitcake pie tootsie roll. Caramels powder halvah chocolate cake
-            bear claw icing wafer soufflé
-          </p>
+    <div class="row">
+      <h1 class="mt-2 ml-3">Nome do usuário</h1>
 
-          <div class="m-3">
-            <div class="row">
+      <div class="container p-1 col-11 ml-2 m-2" id="containerimgs">
+        <div class="row">
+          <img src="images/pessoa.jpg" class="img-fluid col-lg-7 col-sm-12 h-100" alt="Foto da Pessoa" id="fotomaior">
+          <!-- <div class="w-100"></div> -->
+          <div class="col-lg-5 p-1 col-sm-11" id="descricao">
+            <p class="ml-3">Tootsie roll cake jelly-o dragée tootsie roll. Cotton candy cupcake fruitcake pie tootsie
+              roll.
+              Caramels powder halvah chocolate cake bear claw icing wafer soufflé
+            </p>
+
+            <div class="m-3">
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <i class="fab fa-instagram-square"></i>
                 </div>
                 <div class="col-md-10">
@@ -40,7 +28,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <i class="fab fa-facebook-square"></i>
                 </div>
                 <div class="col-md-10">
@@ -48,7 +36,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <i class="fas fa-envelope-square"></i>
                 </div>
                 <div class="col-md-10">
@@ -56,13 +44,14 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <i class="fab fa-whatsapp-square"></i>
                 </div>
                 <div class="col-md-10">
-                  (11) 95305904
+                  (11) 99999-9999
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -70,72 +59,39 @@
     </div>
 
     <div class="container justify-content:center row ml-1 p-1">
-      <div class="card m-1" style="width: 12rem;">
-        <img class="card-img-top" src="/images/gato.jpg" alt="Card image cap" />
-        <div class="card-body text-center">
-          <h5 class="card-title">Nome do Pet</h5>
-          <a href="/perfil-pet-adocao" class="btn btn-primary" id="botaopets"
-            >Ver Perfil</a
-          >
+
+      <div class="card grid-pets-item" style="width: 18rem;">
+        <a href="/perfil-pet-encontrado">
+          <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+        </a>
+        <div class="card-body">
+          <div class="container-card-info">
+            <a href="/perfil-pet-encontrado">
+              <p class="card-text">Sem nome</p>
+            </a>
+            <%- include('../components/badge-found') %>
+          </div>
         </div>
       </div>
 
       <div class="card grid-pets-item" style="width: 18rem;">
         <a href="/perfil-pet-encontrado">
-          <img
-            class="card-img-top"
-            src="/images/cachorro.jpg"
-            alt="Pet perdido/encontrado"
-          />
+          <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
         </a>
         <div class="card-body">
-          <div class="container-card-info mb-1">
-            <a href="/perfil-pet-encontrado">
+          <div class="container-card-info">
+            <a href="/perfil-pet-adocao">
               <p class="card-text">Sem nome</p>
             </a>
-            <div class="badge-found">E</div>
-          </div>
-          <div class="container-card-info">
-            <!-- <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-5">Editar</a> -->
-            <a href="#" class="btn card-bottom col-5">Excluir</a>
+            <%- include('../components/badge-adoption') %>
           </div>
         </div>
       </div>
-      <div class="card grid-pets-item" style="width: 18rem;">
-  <a href="/perfil-pet-encontrado">
-      <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
-  </a>
-  <div class="card-body">
-      <div class="container-card-info mb-1">
-          <a href="/perfil-pet-encontrado">
-              <p class="card-text">Sem nome</p>
-          </a>
-          <div class="badge-found">E</div>
-      </div>
-      <div class="container-card-info">
-        <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-5">Editar</a>
-  <a href="#" class="btn card-bottom col-5 ">Excluir</a>
+
+
+
     </div>
-  </div>
-</div> 
-<div class="card grid-pets-item" style="width: 18rem;">
-  <a href="/perfil-pet-encontrado">
-      <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
-  </a>
-  <div class="card-body">
-      <div class="container-card-info mb-1">
-          <a href="/perfil-pet-encontrado">
-              <p class="card-text">Sem nome</p>
-          </a>
-          <div class="badge-found">E</div>
-      </div>
-      <div class="container-card-info">
-        <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-5">Editar</a>
-  <a href="#" class="btn card-bottom col-5 ">Excluir</a>
-    </div>
-  </div>
-</div> 
-    </div>
+
   </div>
 
   <%- include('../partials/footer') %>
