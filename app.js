@@ -10,6 +10,8 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var petsRouter = require("./routes/pets");
 
+const { setUser } = require("./middlewares");
+
 var app = express();
 
 // view engine setup
@@ -33,6 +35,7 @@ app.use(
   })
 );
 
+app.use(setUser);
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/pet", petsRouter);
