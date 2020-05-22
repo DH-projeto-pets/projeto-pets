@@ -105,3 +105,9 @@
   text-decoration: none;
   color: inherit;
 }
+
+.span-error {
+  color: red;
+  font-size: 12px;
+}
+
