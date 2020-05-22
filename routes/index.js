@@ -13,6 +13,7 @@ router.post("/login", UserController.login);
 router.get("/cadastrar", checkUserLogado, IndexController.showRegister);
 router.post("/cadastrar", UserController.store);
 // router.get('/recuperar-senha', IndexController.showRecover);
+router.get("/logout", IndexController.logout);
 router.get("/sobre", IndexController.showAbout);
 router.get("/termos-de-uso", IndexController.showTerms);
 router.get("/container", (r, res) => res.render("screen/container"));
