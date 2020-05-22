@@ -9,33 +9,21 @@
       </div>
 
       <section class="section-form-login">
-        <img
-          id="profile-img"
-          class="profile-img-card"
-          src="/images/icone_user.svg"
-        />
+        <img id="profile-img" class="profile-img-card" src="/images/icone_user.svg" />
 
         <form action="/login" method="POST" class="form-signin">
+          <section id="error" class="row d-flex justify-content-center">
+            <span class="span-error d-none">
+              Email ou senha inválidos
+            </span>
+          </section>
           <span id="reauth-email" class="reauth-email"></span>
           <label class="login-email-label">Email:</label>
-          <input
-            type="email"
-            name="email"
-            id="inputEmail"
-            class="form-control text-center"
-            placeholder="Digite seu email"
-            required
-            autofocus
-          />
+          <input type="email" name="email" id="inputEmail" class="form-control text-center"
+            placeholder="Digite seu email" required autofocus />
           <label class="login-senha-label">Senha:</label>
-          <input
-            type="password"
-            name="senha"
-            id="inputPassword"
-            class="form-control text-center"
-            placeholder="Digite sua senha"
-            required
-          />
+          <input type="password" name="senha" id="inputPassword" class="form-control text-center"
+            placeholder="Digite sua senha" required />
 
           <button class="btn btn-login" type="submit">
             Entrar <i class="fas fa-sign-in-alt" id="icone-entrar"></i>
@@ -56,4 +44,5 @@
   </div>
   <!-- /container -->
 </section>
+<script src="javascripts/login.js" />
 <%- include('../partials/footer') %>
