@@ -3,7 +3,15 @@ const { check, validationResult, body } = require("express-validator");
 const { sequelize, User } = require("../models");
 
 let UserController = {
-  store: (req, res) => {
+  store: async (req, res) => {
+    const { email, senha, nome, } = req.body;
+    const usuario = await User.create({
+      email,
+      senha: bcrypt.hashSync(senha, 10),
+      nome
+    });
+    res.send(req.body)
+
     // cria o user no db
   },
   update: (req, res) => {
@@ -14,20 +22,26 @@ let UserController = {
   },
   login: async (req, res) => {
     // console.log(req.body);
+    const { email, senha } = req.body
 
     const usuario = await User.findOne({
       where: {
-        ...req.body,
+        email
       },
     }).then((u) => u);
     // falta validar se o usuario existe ou n
+    if (!usuario) {
+      res.redirect("/login?error=1");
+    }
     // falta validar a senha
-    console.log("usuario", usuario);
+    if (!bcrypt.compareSync(senha, usuario.senha)) {
+      res.redirect("/login?error=1");
+    }
+    // faz login aka salva o cooke
     req.session.user = usuario;
 
     return res.redirect("/");
 
-    // faz login aka salva o cooke
   },
   show: (req, res) => {
     // consulta se o usuario existe
@@ -38,7 +52,7 @@ let UserController = {
     return res.render("screen/owner-profile");
   },
 
-  showUser: (req, res) => {},
+  showUser: (req, res) => { },
   showGerenciamento: (req, res) => res.render("screen/manager-pet"),
   showUpdate: (req, res) => res.render("screen/edit-user"),
 };
