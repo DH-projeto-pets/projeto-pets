@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const { check, validationResult, body } = require("express-validator");
-const { sequelize, User } = require("../models");
+const { sequelize, User, Pet } = require("../models");
 
 let UserController = {
   store: async (req, res) => {
@@ -76,7 +76,13 @@ let UserController = {
     return res.render("screen/owner-profile");
   },
 
-  showGerenciamento: (req, res) => res.render("screen/manager-pet"),
+  showGerenciamento: async (req, res) => {
+    const { id } = req.session.user;
+
+    const user = await User.findOne({ where: { id }, include: ['pets'] });
+
+    res.render("screen/manager-pet", { pets: user.pets })
+  },
   showUpdate: async (req, res) => {
 
     const usuario = await User.findOne({
