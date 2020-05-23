@@ -4,7 +4,7 @@ const { checkUser } = require("../middlewares");
 
 const UserController = require("../controllers/UserController");
 
-router.get("/", UserController.getUser); // busca o usuario com base do id que está no cookie e mostra a página de usuario com as informações
+// router.get("/", UserController.getUser);sa// busca o usuario com base do id que está no cookie e mostra a página de usuario com as informações
 
 router.get("/editar", checkUser, UserController.showUpdate); // mostra o form
 router.put("/editar", UserController.update); // action do form

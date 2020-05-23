@@ -1,7 +1,36 @@
+const { sequelize, Pet } = require("../models");
+const { Op } = require("sequelize");
 module.exports = {
-  showGrid: (req, res) => res.render('screen/lost-found-pets'),
-  showGridAdocao: (req, res) => res.render('screen/adoption-pets'),
-  showPetPerfil: (req, res) => res.render('screen/lost-found-pets-profile'),
+  showGrid: async (req, res) => {
+    const pets = await Pet.findAll({
+      where: {
+        [Op.or]: [
+          { status: 'PERDIDO' },
+          { status: 'ENCONTRADO' }
+        ]
+      }
+    });
+    res.render('screen/lost-found-pets', { pets })
+  },
+  showGridAdocao: async (req, res) => {
+    const pets = await Pet.findAll({
+      where: {
+        status: {
+          [Op.eq]: 'ADOCAO'
+        },
+      }
+    });
+    res.render('screen/adoption-pets', { pets })
+  },
+  showPetPerfil: async (req, res) => {
+    const { id } = req.params;
+    const pet = await Pet.findOne({
+      where: {
+        id
+      }
+    });
+    res.render('screen/lost-found-pets-profile', { pet })
+  },
   showPetCadastro: (req, res) => res.render('screen/register-lost-found-pets'),
   showPetCadastroAdocao: (req, res) => res.render('screen/register-adopted-pets'),
   showPetEdicao: (req, res) => res.render('screen/edit-lost-found-pets'),
@@ -9,10 +38,10 @@ module.exports = {
 
 
   // controla o banco
-  store: (req, res) => {},
-  update: (req, res) => {},
-  delete: (req, res) => {},
-  index: (req, res) => {},
-  show: (req, res) => {},
+  store: (req, res) => { },
+  update: (req, res) => { },
+  delete: (req, res) => { },
+  index: (req, res) => { },
+  show: (req, res) => { },
 };
 
