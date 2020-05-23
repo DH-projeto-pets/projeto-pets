@@ -32,9 +32,9 @@ module.exports = {
     res.render('screen/lost-found-pets-profile', { pet })
   },
   showPetCadastro: (req, res) => res.render('screen/register-lost-found-pets'),
+  showPetEdicao: (req, res) => res.render('screen/edit-lost-found-pets'), // Rose
   showPetCadastroAdocao: (req, res) => res.render('screen/register-adopted-pets'),
-  showPetEdicao: (req, res) => res.render('screen/edit-lost-found-pets'),
-  showPetEdicaoAdocao: (req, res) => res.render('screen/edit-adopted-pets'),
+  showPetEdicaoAdocao: (req, res) => res.render('screen/edit-adopted-pets'), // Rose
 
 
   // controla o banco
