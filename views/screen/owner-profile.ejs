@@ -10,7 +10,7 @@
 
       <div class="container p-1 col-11 ml-2 m-2" id="containerimgs">
         <div class="row">
-          <img src="images/pessoa.jpg" class="img-fluid col-lg-7 col-sm-12 h-100" alt="Foto da Pessoa" id="fotomaior">
+          <img src="/images/pessoa.jpg" class="img-fluid col-lg-7 col-sm-12 h-100" alt="Foto da Pessoa" id="fotomaior">
           <!-- <div class="w-100"></div> -->
           <div class="col-lg-5 p-1 col-sm-11" id="descricao">
             <p class="ml-3">Tootsie roll cake jelly-o dragée tootsie roll. Cotton candy cupcake fruitcake pie tootsie
@@ -61,12 +61,12 @@
     <div class="container justify-content:center row ml-1 p-1">
 
       <div class="card grid-pets-item" style="width: 18rem;">
-        <a href="/perfil-pet-encontrado">
+        <a href="/pet/:id">
           <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
         </a>
         <div class="card-body">
           <div class="container-card-info">
-            <a href="/perfil-pet-encontrado">
+            <a href="/pet/:id">
               <p class="card-text">Sem nome</p>
             </a>
             <%- include('../components/badge-found') %>
@@ -75,12 +75,12 @@
       </div>
 
       <div class="card grid-pets-item" style="width: 18rem;">
-        <a href="/perfil-pet-encontrado">
+        <a href="/pet/:id">
           <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
         </a>
         <div class="card-body">
           <div class="container-card-info">
-            <a href="/perfil-pet-adocao">
+            <a href="/pet/:id">
               <p class="card-text">Sem nome</p>
             </a>
             <%- include('../components/badge-adoption') %>
