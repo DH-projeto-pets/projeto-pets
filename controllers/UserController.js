@@ -5,6 +5,14 @@ const { sequelize, User } = require("../models");
 let UserController = {
   store: async (req, res) => {
     const { email, senha, nome, } = req.body;
+    const usuarioExiste = await User.findOne({
+      where: {
+        email
+      },
+    }).then((u) => u);
+
+    if (usuarioExiste) res.redirect("/cadastrar?error=1");
+
     const usuario = await User.create({
       email,
       senha: bcrypt.hashSync(senha, 10),
@@ -14,8 +22,24 @@ let UserController = {
 
     // cria o user no db
   },
-  update: (req, res) => {
-    // altera o usuario
+  update: async (req, res) => {
+    const id = req.session.user.id;
+    const usuario = await User.update({
+      ...req.body
+    },
+      { where: { id } },
+    );
+
+    const { nome } = await User.findOne({
+      where: {
+        id
+      },
+    });
+
+    req.session.save(() => {
+      req.session.user.nome = nome;
+      return res.redirect("/user/editar");
+    })
   },
   delete: (req, res) => {
     // deleta o usuario
@@ -23,12 +47,12 @@ let UserController = {
   login: async (req, res) => {
     // console.log(req.body);
     const { email, senha } = req.body
-
     const usuario = await User.findOne({
       where: {
         email
       },
     }).then((u) => u);
+
     // falta validar se o usuario existe ou n
     if (!usuario) {
       res.redirect("/login?error=1");
@@ -52,9 +76,17 @@ let UserController = {
     return res.render("screen/owner-profile");
   },
 
-  showUser: (req, res) => { },
   showGerenciamento: (req, res) => res.render("screen/manager-pet"),
-  showUpdate: (req, res) => res.render("screen/edit-user"),
+  showUpdate: async (req, res) => {
+
+    const usuario = await User.findOne({
+      where: {
+        id: req.session.user.id,
+      }
+    })
+    // console.log(usuario)
+    res.render("screen/edit-user", { usuario });
+  },
 };
 
 module.exports = UserController;

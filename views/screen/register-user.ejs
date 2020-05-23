@@ -6,20 +6,22 @@
                 offset-sm-2 col-sm-8
                 offset-lg-3 col-lg-6
                 offset-xl-4 col-xl-4">
-
     <div class="formulario pb-5">
       <form action="/cadastrar" method="POST" class="">
         <h1 class="text-align-center mb-4 p-0">Criar conta</h1>
         <div class="form-group px-5">
           <section class="form-row">
             <label class="col-form-label col-12" for="nome">Nome:</label>
-            <input class="form-control col-12" type="text" name="nome" id="nome">
+            <input class="form-control col-12" type="text" name="nome" id="nome" required>
           </section>
         </div>
         <div class="form-group px-5">
           <section class="form-row">
             <label class="col-form-label col-12" for="email">Email:</label>
-            <input class="form-control col-12" type="email" name="email" id="email">
+            <input class="form-control col-12" type="email" name="email" id="email" required>
+            <div class=" invalid-feedback">
+              Email já utilizado.
+            </div>
           </section>
         </div>
 
@@ -28,7 +30,8 @@
             <label class="col-form-label col-12" for="senha">
               Senha:
             </label>
-            <input class="form-control col-12" type="password" name="senha" id="senha">
+            <input class="form-control col-12" type="password" name="senha" id="senha" required>
+
           </section>
         </div>
         <div class="form-group px-5">
@@ -36,12 +39,12 @@
             <label class="col-form-label col-12" for="confirmar-senha">
               Confirmar senha:
             </label>
-            <input class="form-control col-12" type="password" name="confirmar_senha" id="confirmar-senha">
+            <input class="form-control col-12" type="password" name="confirmar_senha" id="confirmar-senha" required>
           </section>
         </div>
 
         <div class="form-group px-5">
-          <section class="form-row d-flex align-items-center">
+          <!-- <section class="form-row d-flex align-items-center">
             <input type="checkbox" class="col-1" id="termos-de-uso">
             <label class="form-check-label col-10" for="termos-de-uso">
               Ao cadastrar eu concordo com os
@@ -50,11 +53,12 @@
               </a>
               e Políticas de Privacidade.
             </label>
-          </section>
+          </section> -->
         </div>
-        <button type="submit" class="btn offset-3 col-5 btn-login">Cadastrar</button>
+        <button type="submit" id="btn-cadastrar" class="btn offset-3 col-5 btn-login" disabled>Cadastrar</button>
       </form>
     </div>
   </section>
 </section>
 <%- include('../partials/footer') %>
+<script src="javascripts/cadastrar.js"></script>

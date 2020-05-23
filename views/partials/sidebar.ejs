@@ -3,34 +3,34 @@
   <div class="sidebar-heading">
     <img src="/images/logosemborda.png" class="logo-pets" id="sidebar">
   </div>
-  <%- console.log('Locals', locals.user) %>
+  <!-- <%- console.log('Locals', locals.user) %> -->
   <!-- Links da sidebar (menu lateral) -->
   <div class="list-group
     list-group-flush">
-    <a href="/home/user" class="list-group-item
+    <a href="/" class="list-group-item
       list-group-item-action">
       Home
     </a>
-    <a href="/pets/procurando" class="list-group-item
+    <a href="/pet/adocao" class="list-group-item
       list-group-item-action">
       Pets para adoção
     </a>
-    <a href="/pets/procurando" class="list-group-item 
+    <a href="/pet/" class="list-group-item 
       list-group-item-action">
-      Encontrar meu pet
+      Pets perdidos/encontrados
     </a>
     <!-- Link para página de cadastro de pets perdidos ou encontrados -->
-    <a href="/pets-perdidos-encontrados/novo" class="list-group-item
+    <a href="/pet/cadastrar" class="list-group-item
       list-group-item-action">
       Cadastrar Pet Perdido/Encontrado
     </a>
     <!-- Link para página de cadastro de pets para adoção -->
-    <a href="/user/cadastro-pets-adocao" class="list-group-item
+    <a href="/pet/adocao/cadastrar" class="list-group-item
       list-group-item-action">
       Cadastrar Pet para adoção
     </a>
     <!-- Link para página de gerenciamento de pets -->
-    <a href="/user/gerenciamento" class="list-group-item
+    <a href="/user/gerenciar" class="list-group-item
       list-group-item-action">
       Gerenciamento de Pets
     </a>
@@ -44,11 +44,7 @@
       list-group-item-action">
       Termos de uso
     </a>
-    <!-- Link para sair e voltar a página inicial -->
-    <a href="/" class="list-group-item
-      list-group-item-action">
-      Sair
-    </a>
+
   </div>
 </div>
 <div id="page-content-wrapper">

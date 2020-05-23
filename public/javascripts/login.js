@@ -3,4 +3,12 @@ const url = document.location.href.indexOf("error=1");
 if (url === 28) {
   boxError.firstElementChild.classList.remove("d-none");
 }
-console.log("login js");
+
+const inputEmail = document.querySelector('[name="email"]');
+const inputSenha = document.querySelector('[name="senha"]');
+
+// console.log(inputEmail, inputSenha)
+
+
+
+// console.log("login js");
