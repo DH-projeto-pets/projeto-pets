@@ -1,7 +1,5 @@
-.main__container {
+.main-container__pets {
     background-color: #fff;
-    min-height: 65vh;
-    margin-top: 10vh;
     padding-bottom: 10vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 26px;
@@ -11,7 +9,6 @@
 }
 /* Altera a aparência do grid de pets perdidos e encontrados */
 .grid-pets__container {
-    min-height: 60vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
