@@ -14,7 +14,7 @@ module.exports = {
       "vermifugado": 1,
       "cuidados_extras": "",
       "fk_raca": "1",
-      "fk_usuario": "1"
+      "fk_usuario": "2"
     },
     {
       "nome": "Menina",
@@ -27,7 +27,7 @@ module.exports = {
       "vermifugado": 1,
       "cuidados_extras": "",
       "fk_raca": "1",
-      "fk_usuario": "1"
+      "fk_usuario": "2"
     },
     {
       "nome": "Nick",
@@ -40,7 +40,7 @@ module.exports = {
       "vermifugado": 1,
       "cuidados_extras": "",
       "fk_raca": 80,
-      "fk_usuario": "1"
+      "fk_usuario": "2"
     },
     {
       "nome": null,
@@ -53,7 +53,7 @@ module.exports = {
       "vermifugado": 0,
       "cuidados_extras": "",
       "fk_raca": 90,
-      "fk_usuario": "1"
+      "fk_usuario": "2"
     },], {});
   },
 
