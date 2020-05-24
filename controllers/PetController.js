@@ -27,7 +27,8 @@ module.exports = {
     const pet = await Pet.findOne({
       where: {
         id
-      }
+      },
+      include: ["raca"]
     });
     res.render('screen/lost-found-pets-profile', { pet })
   },
@@ -38,7 +39,15 @@ module.exports = {
 
 
   // controla o banco
-  store: (req, res) => { },
+  store: (req, res) => {
+    // console.log(req.body);
+
+    // const pet = Pet.create({
+    //   ...req.body,
+    // });
+
+    // res.redirect("/user/gerenciamento");
+  },
   update: (req, res) => { },
   delete: (req, res) => { },
   index: (req, res) => { },

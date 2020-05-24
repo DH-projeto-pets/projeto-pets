@@ -4,7 +4,10 @@
     border-radius: 50%;
     text-align: center;
     color: #fff;
-    padding: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .badge-found {
     background-color: #0275D8;
