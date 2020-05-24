@@ -27,7 +27,8 @@ module.exports = {
     const pet = await Pet.findOne({
       where: {
         id
-      }
+      },
+      include: ["raca"]
     });
     res.render('screen/lost-found-pets-profile', { pet })
   },
