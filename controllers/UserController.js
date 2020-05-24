@@ -67,13 +67,13 @@ let UserController = {
     return res.redirect("/");
 
   },
-  show: (req, res) => {
-    // consulta se o usuario existe
-    res.render("screen/owner-profile");
-  },
-  getUser: (req, res) => {
-    // mostra o perfil do proprio usuario usando o id que está no cookie
-    return res.render("screen/owner-profile");
+  show: async (req, res) => {
+    const { id } = req.params;
+
+    const user = await User.findOne({ where: { id }, include: ['pets'] });
+    console.log(user)
+    if (!user) return res.render("404-not-found")
+    res.render("screen/owner-profile", { user });
   },
 
   showGerenciamento: async (req, res) => {
