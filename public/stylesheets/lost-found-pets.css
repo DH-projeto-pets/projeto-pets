@@ -15,8 +15,8 @@
     
 }
 .grid-pets__container img {
-    min-height: 140px;
-    min-width: 160px;
+    height: 180px;
+    width: 100%;    
 }
 .grid-pets__container h2 {
     text-align: center;
