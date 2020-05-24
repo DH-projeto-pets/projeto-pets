@@ -3,41 +3,48 @@
 
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
   <%= console.log(pets) %>
-  <div class="pets-manager p-4">
-    <h1 class="">Gerenciamento de Pets</h1>
-    <div class="form-select d-flex align-items-center
-                    justify-content-end col-12 mb-5">
-      <label class="" for="nome">Tipo:</label>
-      <select class="form-control select-tipo ml-3" id="exampleFormControlSelect1">
-        <option>Todos</option>
-        <option>Gato</option>
-        <option>Cachorro</option>
-        <option>Papagaio</option>
-        <option>Passarinho</option>
-        <option>Peixe</option>
-      </select>
-    </div>
-    <div class="d-flex justify-content-center flex-wrap">
-      <%- include('../components/card-pet-manager', 
-            { 
-                nome: 'Aquiles',
-                situation: 'P',
-                image: '/images/modelos-marco/zeus.jpg'
-            }) %>
 
-      <%- include('../components/card-pet-manager', 
-            { 
-                nome: 'Simba',
-                situation: 'E',
-                image: '/images/modelos-marco/aquiles.jpeg' 
-            }) %>
-      <%- include('../components/card-pet-manager', 
-            { 
-                nome: 'Muller',
-                situation: 'E',
-                image: '/images/modelos-marco/muller.jpg'
-            }) %>
+  <section class="container">
+    <div class="row justify-content-md-center">
+      <div class="main-container col-md-10">
+        <div class="row justify-content-center my-3">
+          <h1>Gerenciamento de Pets</h1>
+        </div>
+        <div class="form-select d-flex align-items-center justify-content-end col-12 mb-5">
+          <label class="" for="nome">Tipo:</label>
+          <select class="form-control select-tipo ml-3" id="exampleFormControlSelect1">
+            <option>Todos</option>
+            <option>Gato</option>
+            <option>Cachorro</option>
+            <option>Papagaio</option>
+            <option>Passarinho</option>
+            <option>Peixe</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-center flex-wrap">
+          <%- include('../components/card-pet-manager', 
+                { 
+                    nome: 'Aquiles',
+                    situation: 'P',
+                    image: '/images/modelos-marco/zeus.jpg'
+                }) %>
+    
+          <%- include('../components/card-pet-manager', 
+                { 
+                    nome: 'Simba',
+                    situation: 'E',
+                    image: '/images/modelos-marco/aquiles.jpeg' 
+                }) %>
+          <%- include('../components/card-pet-manager', 
+                { 
+                    nome: 'Muller',
+                    situation: 'E',
+                    image: '/images/modelos-marco/muller.jpg'
+                }) %>
+        </div>
+      </div>
+      </div>
     </div>
-  </div>
+  </section>  
 </section>
 <%- include('../partials/footer') %>

@@ -1,18 +1,21 @@
-<div class="card m-2" style="width: 12rem">
+<div class="card grid-pets-item" style="width: 18rem;">
     <img src="<%= image %>" class="card-img-top pet-foto" alt="...">
     <div class="card-body">
-        <div class="d-flex justify-content-evenly">
+        <div class="container-card-info">
             <h5 class="card-title offset-2 col-8"><%= nome %></h5>
-            <div class="situation"
-            <% if (situation == 'P') { %>
-                style="background-color: green;"
-            <% } %>
-            ><%=situation %></div>
+            <%- include('../components/badge-adoption') %>
+            <!-- Tentativa de adicionar dinamicidade  -->
+            <!-- <div class="situation"
+                <% if (situation == 'P') { %>
+                    style="background-color: green;"
+                <% } %>
+                ><%=situation %>
+            </div> -->
         </div>
-      <div class="d-flex justify-content-around">
-          <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-6">Editar</a>
-          <a href="#" class="btn card-bottom col-6 offset-1">Excluir</a>
-      </div>
+        <div class="d-flex justify-content-around">
+            <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-6">Editar</a>
+            <a href="#" class="btn card-bottom col-6 offset-1">Excluir</a>
+        </div>     
     </div>
 </div>
 

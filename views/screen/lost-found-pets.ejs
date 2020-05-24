@@ -5,7 +5,7 @@
     
     <section class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-10 main__container">
+            <div class="col-md-10 main-container main-container__pets">
                 <section class="filter__container">
                     <div class="container">
                         <div class="row filter-title-row">
@@ -51,10 +51,10 @@
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <h5>Porte</h5>
-                                    <input type="radio" name="distancia" id="p"><label for="p">Pequeno</label><br>
-                                    <input type="radio" name="distancia" id="m"><label for="m">Médio</label><br>
-                                    <input type="radio" name="distancia" id="g"><label for="g">Grande</label><br>
-                                    <input type="radio" name="distancia" id="gg"><label for="gg">Muito Grande</label>
+                                    <input type="radio" name="porte" id="p"><label for="p">Pequeno</label><br>
+                                    <input type="radio" name="porte" id="m"><label for="m">Médio</label><br>
+                                    <input type="radio" name="porte" id="g"><label for="g">Grande</label><br>
+                                    <input type="radio" name="porte" id="gg"><label for="gg">Muito Grande</label>
                                 </div>
                                 <div class="row w-100">
                                     <div class="col-md-12 d-flex justify-content-center">
@@ -68,12 +68,40 @@
                 </section>
                 
                 <!-- container do grid de pets -->
-                <div class="grid-pets__container">
-                    <!-- barra de filtro -->
+                <section class="grid-pets__container">
+                    <div class="row w-100 justify-content-center my-3">
+                        <h1>Pets Perdidos & Encontrados</h1>
+                    </div>
+                    <!-- Grid Dinâmico -->
+                    <% for (pet of pets) {%>
+                        <div class="card grid-pets-item" style="width: 18rem;">
+                            <a href="/pet/:id">
+                                <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+                            </a>
+                            <div class="card-body">
+                                <div class="container-card-info">
+                                    <a href="/pet/:id">
+                                        <p class="card-text">
+                                            <% if (pet.nome) { %>
+                                                <%= pet.nome %>
+                                            <% } else { %>
+                                                Sem nome
+                                            <% } %>
+                                        </p>
+                                    </a>
+                                    <% if(pet.status == "PERDIDO"){ %>
+                                        <%- include('../components/badge-lost') %>
+                                    <% } %>
+                                    <% if(pet.status == "ENCONTRADO"){ %>
+                                        <%- include('../components/badge-found') %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
 
-                    <h1>Pets Perdidos & Encontrados</h1>
-
-                    <div class="card grid-pets-item" style="width: 18rem;">
+                    <!-- Grid Estático -->
+                    <!-- <div class="card grid-pets-item" style="width: 18rem;">
                         <a href="/pet/:id">
                             <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
                         </a>
@@ -195,8 +223,8 @@
                                 <%- include('../components/badge-found') %>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                </section>
         </div>
     </section>
     <div class="espaco-branco"></div>
