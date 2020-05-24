@@ -32,7 +32,22 @@ module.exports = {
     res.render('screen/lost-found-pets-profile', { pet })
   },
   showPetCadastro: (req, res) => res.render('screen/register-lost-found-pets'),
-  showPetEdicao: (req, res) => res.render('screen/edit-lost-found-pets'), // Rose
+  showPetEdicao: async (req, res) => {
+    
+    const pet = await Pet.findOne({
+      where: {
+        [Op.and]:[
+          {fk_usuario: req.session.user.id},
+          {id: req.params.id}
+        ]
+      }
+      
+    })
+      console.log(pet)
+    res.render('screen/edit-lost-found-pets', { pet })
+  }, // Rose
+
+
   showPetCadastroAdocao: (req, res) => res.render('screen/register-adopted-pets'),
   showPetEdicaoAdocao: (req, res) => res.render('screen/edit-adopted-pets'), // Rose
 
