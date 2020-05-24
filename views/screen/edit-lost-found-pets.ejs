@@ -5,14 +5,16 @@
     <section class="row formRegisterPet__rowContainer">
       <section class="col-xs-11 col-sm-11 col-md-10 col-xl-6 formRegisterPet__container">
         <h1 class="col-md-12 text-center">Editar Pet</h1>
-        <form class="col-md-12 formRegisterPet__form">
+        <form class="col-md-12 formRegisterPet__form" method="POST" action="editar?_method=PUT">
           <div class="form-row">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="encontrado" />
+              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="encontrado"
+              <%= pet.status == "ENCONTRADO" ? "checked": "" %>>
               <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="perdido" />
+              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="perdido" 
+              <%= pet.status == "PERDIDO" ? "checked": "" %>>
               <label class="form-check-label" for="petPerdido">Pet Perdido</label>
 
             </div>
@@ -26,20 +28,24 @@
                 <section class="col-md-12 p-0">Porte:</section>
                 <section class="form-row">
                   <div class="form-check form-check-inline col-sm-3 col-md-12 ">
-                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="pequeno" />
+                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="pequeno" 
+                    <%= pet.porte == "PEQUENO" ? "checked": "" %>>
                     <label class="form-check-label" for="pequeno">Pequeno</label>
                   </div>
                   <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="medio" value="medio" />
+                    <input class="form-check-input" name="porte" type="radio" id="medio" value="medio" 
+                    <%= pet.porte == "MEDIO" ? "checked": "" %>>
                     <label class="form-check-label" for="medio">Médio</label>
                   </div>
                   <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="grande" value="grande" />
+                    <input class="form-check-input" name="porte" type="radio" id="grande" value="grande" 
+                    <%= pet.porte == "GRANDE" ? "checked": "" %>>
                     <label class="form-check-label" for="grande">Grande</label>
                   </div>
                   <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="null" value="null" />
-                    <label class="form-check-label" for="null">Não tenho certeza</label>
+                    <input class="form-check-input" name="porte" type="radio" id="desconhecido" value="desconhecido" 
+                    <%= pet.porte == "DESCONHECIDO" ? "checked": "" %>>
+                    <label class="form-check-label" for="null">Desconhecido</label>
                   </div>
                 </section>
               </section>
@@ -64,17 +70,20 @@
                   <label>Sexo</label>
                   <section class="form-row">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="femea" />
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="femea" 
+                      <%= pet.sexo == "FEMEA" ? "checked": "" %>>
                       <label class="form-check-label" for="radio-femea">Fêmea</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="macho" />
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="macho" 
+                      <%= pet.sexo == "MACHO" ? "checked": "" %>>
                       <label class="form-check-label" for="radio-macho">Macho</label>
                     </div>
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="null" />
-                      <label class="form-check-label" for="radio-null">Não tenho certeza</label>
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-desconhecido" value="desconhecido" 
+                      <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %>> 
+                      <label class="form-check-label" for="radio-null">Desconhecido</label>
                     </div>
 
                   </section>
@@ -87,7 +96,7 @@
                 </section>
                 <section class="form-group col-sm-12 col-md-12">
                   <label for="descricao">Descrição</label>
-                  <textarea class="form-control" id="descricao" rows="3" cols="100"></textarea>
+                  <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"><%= pet.descricao %></textarea>
                 </section>
                 <section class="form-group col-sm-12 col-md-12">
                   <button type="button" class="btn btn-block orange" data-toggle="modal" data-target="#modal-endereco">
@@ -100,7 +109,7 @@
                     Cancelar
                   </button>
                   <button type="submit" class="btn orange">
-                    Cadastrar
+                    Salvar Alterações
                   </button>
                 </section>
 
@@ -156,7 +165,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Fechar
         </button>
-        <button type="button" class="btn orange">Salvar</button>
+        <button type="submit" class="btn orange">Salvar</button>
       </section>
     </section>
   </section>

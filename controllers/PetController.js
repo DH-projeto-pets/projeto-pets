@@ -33,12 +33,52 @@ module.exports = {
     res.render('screen/lost-found-pets-profile', { pet })
   },
   showPetCadastro: (req, res) => res.render('screen/register-lost-found-pets'),
-  showPetEdicao: (req, res) => res.render('screen/edit-lost-found-pets'), // Rose
+  showPetEdicao: async (req, res) => {
+    const pet = await Pet.findOne({
+      where: {
+        [Op.or]: [{status: 'ENCONTRADO'}, {status: 'PERDIDO'}],
+        [Op.and]:[
+          {id: req.params.id},
+          {fk_usuario: req.session.user.id}
+          ]
+      }
+      
+    })
+      console.log(pet)
+    res.render('screen/edit-lost-found-pets', {pet})
+  },
+
   showPetCadastroAdocao: (req, res) => res.render('screen/register-adopted-pets'),
-  showPetEdicaoAdocao: (req, res) => res.render('screen/edit-adopted-pets'), // Rose
+  showPetEdicaoAdocao: async (req, res) => {
+        const pet = await Pet.findOne({
+          where: {
+            [Op.and]:[
+              {fk_usuario: req.session.user.id},
+              {id: req.params.id},
+              {status: 'ADOCAO'}
+            ]
+          }
+        })
+        console.log(pet)
+    res.render('screen/edit-adopted-pets', {pet})
+}, // Rose
 
 
   // controla o banco
+
+
+  update: async (req, res) => {
+    
+    const pet = await Pet.update({
+      ...req.body
+    },
+    { where: {id: req.params.id} },
+   
+    );
+    return res.redirect("/user/gerenciamento");
+  
+   },
+
   store: (req, res) => {
     // console.log(req.body);
 
@@ -48,7 +88,6 @@ module.exports = {
 
     // res.redirect("/user/gerenciamento");
   },
-  update: (req, res) => { },
   delete: (req, res) => { },
   index: (req, res) => { },
   show: (req, res) => { },
