@@ -86,7 +86,31 @@
                 <div class="row w-100 justify-content-center my-3">
                     <h1>Pets para Adoção</h1>
                 </div>
-                <div class="card grid-pets-item" style="width: 18rem;">
+                <!-- Grid Dinâmico -->
+                <% for (pet of pets) {%>
+                    <div class="card grid-pets-item" style="width: 18rem;">
+                        <a href="/pet/:id">
+                            <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+                        </a>
+                        <div class="card-body">
+                            <div class="container-card-info">
+                                <a href="/pet/:id">
+                                    <p class="card-text">
+                                        <% if (pet.nome) { %>
+                                            <%= pet.nome %>
+                                        <% } else { %>
+                                            Sem nome
+                                        <% } %>
+                                    </p>
+                                </a>
+                                <%- include('../components/badge-adoption') %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Grid Estático -->
+                <!-- <div class="card grid-pets-item" style="width: 18rem;">
                     <a href="/pet/:id">
                         <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
                     </a>
@@ -163,7 +187,7 @@
                             <%- include('../components/badge-adoption') %>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </section>
     </div>
 </section>

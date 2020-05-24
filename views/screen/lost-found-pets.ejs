@@ -72,8 +72,36 @@
                     <div class="row w-100 justify-content-center my-3">
                         <h1>Pets Perdidos & Encontrados</h1>
                     </div>
+                    <!-- Grid Dinâmico -->
+                    <% for (pet of pets) {%>
+                        <div class="card grid-pets-item" style="width: 18rem;">
+                            <a href="/pet/:id">
+                                <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+                            </a>
+                            <div class="card-body">
+                                <div class="container-card-info">
+                                    <a href="/pet/:id">
+                                        <p class="card-text">
+                                            <% if (pet.nome) { %>
+                                                <%= pet.nome %>
+                                            <% } else { %>
+                                                Sem nome
+                                            <% } %>
+                                        </p>
+                                    </a>
+                                    <% if(pet.status == "PERDIDO"){ %>
+                                        <%- include('../components/badge-lost') %>
+                                    <% } %>
+                                    <% if(pet.status == "ENCONTRADO"){ %>
+                                        <%- include('../components/badge-found') %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
 
-                    <div class="card grid-pets-item" style="width: 18rem;">
+                    <!-- Grid Estático -->
+                    <!-- <div class="card grid-pets-item" style="width: 18rem;">
                         <a href="/pet/:id">
                             <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
                         </a>
@@ -195,7 +223,7 @@
                                 <%- include('../components/badge-found') %>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </section>
         </div>
     </section>
