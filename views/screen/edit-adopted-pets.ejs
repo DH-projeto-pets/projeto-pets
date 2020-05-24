@@ -72,31 +72,6 @@
                   </section>
                 </section>
 
-                <section class="form-group col-sm-12 col-md-12">
-                  <label class="mr-2">Idade</label>
-                  <section class="form-row">
-                    <div class="form-check ml-2 form-check-inline">
-                      <select class="form-control col-8" id="especie">
-                        <option selected>-</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
-                      <label class="form-check-label ml-2" for="radio-femea">Anos</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <select class="form-control col-8 ml-2" id="especie">
-                        <option selected>-</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
-                      <label class="form-check-label ml-2" for="radio-macho">Meses</label>
-                    </div>
-                  </section>
-                </section>
-              </section>
-
               <section>
                 <label for="especie">Fotos</label>
               </section>
@@ -131,12 +106,12 @@
                   <label class="col-6">Vacinado</label>
                   <section class="form-row col-6">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-sim" value="sim" 
+                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-sim" value="1" 
                       <%= pet.vacinado == 1 ? "checked": "" %>>
                       <label class="form-check-label" for="vacinado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-nao" value="nao" 
+                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-nao" value="0" 
                       <%= pet.vacinado == 0 ? "checked": "" %>>
                       <label class="form-check-label" for="vacinado-nao">Não</label>
                     </div>
@@ -148,12 +123,12 @@
                   <label class="col-6">Castrado</label>
                   <section class="form-row col-6">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="castrado" type="radio" id="castrado-sim" value="sim" 
+                      <input class="form-check-input" name="castrado" type="radio" id="castrado-sim" value="1" 
                       <%= pet.castrado == 1 ? "checked": "" %>>
                       <label class="form-check-label" for="castrado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="castrado" type="radio" id="castrado-nao" value="nao" 
+                      <input class="form-check-input" name="castrado" type="radio" id="castrado-nao" value="0" 
                       <%= pet.castrado == 0 ? "checked": "" %>>
                       <label class="form-check-label" for="castrado-nao">Não</label>
                     </div>
@@ -165,28 +140,16 @@
                   <section class="form-row col-6">
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-sim"
-                        value="sim" <%= pet.vermifugado == 1 ? "checked": "" %>>
+                        value="1" <%= pet.vermifugado == 1 ? "checked": "" %>>
                       <label class="form-check-label" for="vermifugado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-nao"
-                        value="nao" <%= pet.vermifugado == 0 ? "checked": "" %>>
+                        value="0" <%= pet.vermifugado == 0 ? "checked": "" %>>
                       <label class="form-check-label" for="vermifugado-nao">Não</label>
                     </div>
                   </section>
 
-
-                  <section class="form-group  row 
-                                  col-sm-12 col-md-12">
-                    <label class="col-form-label mr-5" for="comportamento">Comportamento</label>
-                    <select class="form-control
-                                   col-5 col-sm-4" id="" multiple>
-                      <option>Dócil</option>
-                      <option>Agressivo</option>
-                      <option>Assustado</option>
-                      <option>Afetuoso</option>
-                    </select>
-                  </section>
 
                   <section class="form-group 
                                 col-sm-12 col-md-12">

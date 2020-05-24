@@ -58,7 +58,7 @@ module.exports = {
             ]
           }
         })
-        // console.log(pet)
+        console.log(pet)
     res.render('screen/edit-adopted-pets', {pet})
 }, // Rose
 
@@ -73,7 +73,7 @@ module.exports = {
     { where: {id: req.params.id} },
    
     );
-    // return res.redirect("/pet/id/editar");
+    return res.redirect("/user/gerenciamento");
   
    },
   delete: (req, res) => { },
