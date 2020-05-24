@@ -1,22 +1,18 @@
-<%- include('../partials/head', { title: 'Cadastrar Pet para adoção'}) %>
+<%- include('../partials/head', { title: 'Editar Pet para adoção'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
   <section class="container">
     <section class="row formRegisterPet__rowContainer">
       <section class="col-xs-11 col-sm-11 col-md-10 col-xl-8 formRegisterPet__container">
-        <h1 class="col-md-12 text-center">Cadastrar Pet para adoção</h1>
-        <form class="col-md-12 formRegisterPet__form"
-              action="/perfil-dono"
-              method="GET">
+        <h1 class="col-md-12 text-center">Editar Pet para adoção</h1>
+        <form class="col-md-12 formRegisterPet__form" action="/perfil-dono" method="GET">
 
           <div class="form-row">
             <section class="form-group
                             col-md-4 pl-0">
               <section class="form-group
                               col-sm-6 col-md-12 pl-0">
-                <img  src="/images/pet.jpg"
-                      alt="Visualização de imagem"
-                      class="img-thumbnail">
+                <img src="/images/pet.jpg" alt="Visualização de imagem" class="img-thumbnail">
               </section>
               <section class="form-group 
                               col-sm-12 col-md-12 pl-0">
@@ -25,46 +21,22 @@
                 <section class="form-row">
                   <div class="form-check form-check-inline
                               col-sm-3 col-md-12 ">
-                    <input
-                      class="form-check-input"
-                      name="porte"
-                      type="radio"
-                      id="pequeno"
-                      value="pequeno"
-                    />
+                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="pequeno" />
                     <label class="form-check-label" for="pequeno">Pequeno</label>
                   </div>
                   <div class="form-check form-check-inline
                               col-sm-3 col-md-12">
-                    <input
-                      class="form-check-input"
-                      name="porte"
-                      type="radio"
-                      id="medio"
-                      value="medio"
-                    />
+                    <input class="form-check-input" name="porte" type="radio" id="medio" value="medio" />
                     <label class="form-check-label" for="medio">Médio</label>
                   </div>
                   <div class="form-check form-check-inline
                               col-sm-3 col-md-12">
-                    <input
-                      class="form-check-input"
-                      name="porte"
-                      type="radio"
-                      id="grande"
-                      value="grande"
-                    />
+                    <input class="form-check-input" name="porte" type="radio" id="grande" value="grande" />
                     <label class="form-check-label" for="grande">Grande</label>
                   </div>
                   <div class="form-check form-check-inline
                               col-sm-3 col-md-12">
-                    <input
-                          class="form-check-input"
-                          name="porte"
-                          type="radio"
-                          id="null"
-                          value="null"
-                          />
+                    <input class="form-check-input" name="porte" type="radio" id="null" value="null" />
                     <label class="form-check-label" for="null">Não sei</label>
                   </div>
                 </section>
@@ -75,47 +47,25 @@
             <div class="form-group col-md-8">
               <section class="form-row">
                 <label class="col-12 col-md-3" for="especie">Nome*</label>
-                <input 
-                    class="form-control col-12 col-md-9"
-                    type="text"
-                    name="nome"
-                    id="">
+                <input class="form-control col-12 col-md-9" type="text" name="nome" id="">
                 <section class="form-group col-sm-12 col-md-12">
                   <label class="mr-2">Sexo*</label>
                   <section class="form-row">
                     <div class="form-check ml-2 form-check-inline">
-                      <input
-                          class="form-check-input"
-                          name="sexo"
-                          type="radio"
-                          id="radio-femea"
-                          value="femea"
-                        />
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="femea" />
                       <label class="form-check-label" for="radio-femea">Fêmea</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input
-                          class="form-check-input"
-                          name="sexo"
-                          type="radio"
-                          id="radio-macho"
-                          value="macho"
-                      />
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="macho" />
                       <label class="form-check-label" for="radio-macho">Macho</label>
                     </div>
-                      <div class="form-check form-check-inline"> 
-                        <input
-                            class="form-check-input"
-                            name="sexo"
-                            type="radio"
-                            id="radio-null"
-                            value="null"
-                        />
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="null" />
                       <label class="form-check-label" for="radio-null">Não sei</label>
                     </div>
                   </section>
                 </section>
-            
+
                 <section class="form-group col-sm-12 col-md-12">
                   <label class="mr-2">Idade*</label>
                   <section class="form-row">
@@ -136,7 +86,7 @@
                         <option>3</option>
                       </select>
                       <label class="form-check-label ml-2" for="radio-macho">Meses</label>
-                    </div>  
+                    </div>
                   </section>
                 </section>
               </section>
@@ -148,23 +98,15 @@
               <section class="form-group 
                               col-sm-12 col-md-12">
                 <section class="custom-file">
-                  <input
-                      type="file"
-                      class="custom-file-input"
-                      id="customFile">
-                  <label
-                      class="custom-file-label"
-                      for="customFile">Selecionar arquivo</label>
+                  <input type="file" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
                 </section>
               </section>
 
               <section class="form-row">
                 <section class="form-group col-sm-12 col-md-6">
                   <label for="especie">Espécie*</label>
-                  <select
-                      class="form-control"
-                      name="especie"
-                      id="especie">
+                  <select class="form-control" name="especie" id="especie">
                     <option value="cachorro">Cachorro</option>
                     <option value="gato">Gato</option>
                     <option value="passaro">Passáro</option>
@@ -173,69 +115,37 @@
 
                 <section class="form-group col-sm-12 col-md-6">
                   <label for="raca">Raça</label>
-                  <select class="form-control"
-                          name="raca"
-                          id="raca">
+                  <select class="form-control" name="raca" id="raca">
                     <option value="indefinido">Indefinida</option>
                   </select>
                 </section>
-                
+
                 <section class="form-group row
                                 col-sm-12 col-md-12">
                   <label class="col-6">Vacinado*</label>
                   <section class="form-row col-6">
                     <div class="form-check form-check-inline">
-                      <input
-                      class="form-check-input"
-                      name="vacinado"
-                      type="radio"
-                      id="vacinado-sim"
-                      value="sim"/>
-                      <label
-                        class="form-check-label"
-                        for="vacinado-sim">Sim</label>
+                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-sim" value="sim" />
+                      <label class="form-check-label" for="vacinado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input
-                          class="form-check-input"
-                          name="vacinado"
-                          type="radio"
-                          id="vacinado-nao"
-                          value="nao"/>
-                      <label
-                        class="form-check-label"
-                        for="vacinado-nao">Não</label>
+                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-nao" value="nao" />
+                      <label class="form-check-label" for="vacinado-nao">Não</label>
                     </div>
                   </section>
                 </section>
-                
+
                 <section class="form-group row
                                 col-sm-12 col-md-12">
                   <label class="col-6">Castrado*</label>
                   <section class="form-row col-6">
                     <div class="form-check form-check-inline">
-                      <input
-                      class="form-check-input"
-                      name="castrado"
-                      type="radio"
-                      id="castrado-sim"
-                      value="sim"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="castrado-sim">Sim</label>
+                      <input class="form-check-input" name="castrado" type="radio" id="castrado-sim" value="sim" />
+                      <label class="form-check-label" for="castrado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        name="castrado"
-                        type="radio"
-                        id="castrado-nao"
-                        value="nao"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="castrado-nao">Não</label>
+                      <input class="form-check-input" name="castrado" type="radio" id="castrado-nao" value="nao" />
+                      <label class="form-check-label" for="castrado-nao">Não</label>
                     </div>
                   </section>
                 </section>
@@ -244,65 +154,43 @@
                   <label class="col-6">Vermifugado*</label>
                   <section class="form-row col-6">
                     <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        name="vermifugado"
-                        type="radio"
-                        id="vermifugado-sim"
-                        value="sim"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="vermifugado-sim">Sim</label>
+                      <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-sim"
+                        value="sim" />
+                      <label class="form-check-label" for="vermifugado-sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input
-                          class="form-check-input"
-                          name="vermifugado"
-                          type="radio"
-                          id="vermifugado-nao"
-                          value="nao"
-                      />
-                      <label
-                      class="form-check-label"
-                      for="vermifugado-nao">Não</label>
+                      <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-nao"
+                        value="nao" />
+                      <label class="form-check-label" for="vermifugado-nao">Não</label>
                     </div>
                   </section>
-                  
-                  
+
+
                   <section class="form-group  row 
                                   col-sm-12 col-md-12">
-                    <label
-                        class="col-form-label mr-5"
-                        for="comportamento">Comportamento*</label>
+                    <label class="col-form-label mr-5" for="comportamento">Comportamento*</label>
                     <select class="form-control
-                                   col-5 col-sm-4" 
-                            id="" multiple>
+                                   col-5 col-sm-4" id="" multiple>
                       <option>Dócil</option>
                       <option>Agressivo</option>
                       <option>Assustado</option>
                       <option>Afetuoso</option>
                     </select>
                   </section>
-                  
-                <section class="form-group 
+
+                  <section class="form-group 
                                 col-sm-12 col-md-12">
-                  <label for="descricao">Descrição</label>
-                  <textarea
-                        class="form-control"
-                        id="descricao"
-                        rows="3"
-                        cols="100"
-                  ></textarea>
-                </section>  
-              </section>
-              <section class="form-group 
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" rows="3" cols="100"></textarea>
+                  </section>
+                </section>
+                <section class="form-group 
                               col-sm-12 col-md-12
                               d-flex justify-content-end">
-                <button type="button" class="btn orange--offset mr-2">Cancelar</button>
+                  <button type="button" class="btn orange--offset mr-2">Cancelar</button>
 
-                <button type="submit" class="btn orange">Cadastrar</button>
-              </section>          
+                  <button type="submit" class="btn orange">Cadastrar</button>
+                </section>
             </div>
           </div>
         </form>
