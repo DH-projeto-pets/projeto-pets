@@ -9,6 +9,6 @@ const UserController = require("../controllers/UserController");
 router.get("/editar", checkUser, UserController.showUpdate); // mostra o form
 router.put("/editar", UserController.update); // action do form
 router.get("/gerenciamento", checkUser, UserController.showGerenciamento); // mostra a tela de gerenciamento
-router.get("/:id", UserController.show); // busca o usuario com base no id da rota e exibe a pagina de usuario com as informações
+router.get("/:id?", UserController.show); // busca o usuario com base no id da rota e exibe a pagina de usuario com as informações
 
 module.exports = router;
