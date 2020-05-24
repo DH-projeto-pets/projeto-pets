@@ -12,7 +12,7 @@ module.exports = {
       "vacinado": 1,
       "castrado": 1,
       "vermifugado": 1,
-      "cuidados_extras": "",
+      "cuidados_extras": "alergia",
       "fk_raca": "1",
       "fk_usuario": "2"
     },
