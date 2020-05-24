@@ -58,14 +58,24 @@ module.exports = {
             ]
           }
         })
-        console.log(pet)
+        // console.log(pet)
     res.render('screen/edit-adopted-pets', {pet})
 }, // Rose
 
 
   // controla o banco
   store: (req, res) => { },
-  update: (req, res) => { },
+  update: async (req, res) => {
+    
+    const pet = await Pet.update({
+      ...req.body
+    },
+    { where: {id: req.params.id} },
+   
+    );
+    // return res.redirect("/pet/id/editar");
+  
+   },
   delete: (req, res) => { },
   index: (req, res) => { },
   show: (req, res) => { },
