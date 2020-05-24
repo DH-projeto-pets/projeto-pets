@@ -6,13 +6,16 @@
     <div class="container col-12 justify-content:center mt-5 mb-5" id="containerbody">
         <br>
         <div class="row ml-3">
-            <h1 class="">Nome do Pet </h1>
+            <h1 class=""><%= pet.nome %></h1>
             <!-- botão para pet encontrado -->
 
-            <div class="col" style="text-align: right;">
-                <button type="button" class="btn btn-primary btn-sm disabled mr-4 mt-1" id="classedepet" disabled aria-disabled="true">Encontrado</button>
+            <div class="col" style="text-align: left;">
+                <%- include('../components/badge-found') %>
+                <!-- <%- include('../components/badge-adoption') %>
+                <%- include('../components/badge-lost') %> -->
+                <!-- <button type="button" class="btn btn-primary btn-sm disabled mr-4 mt-1" id="classedepet" disabled aria-disabled="true">Encontrado</button> -->
             </div>
-          <!-- botão para pet perdido -->
+            <!-- botão para pet perdido -->
 
             <!-- <div class="col" style="text-align: right;">
                 <button type="button" class="btn btn-danger btn-sm disabled" id="classedepet" disabled aria-disabled="true">Perdido</button>
@@ -44,23 +47,28 @@
                 </svg>
                 <h6>3km de você</h6>
             </div>
-            <p class="ml-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            <ul>
+                <li>Raça: <%= pet.fk_raca%></li>
+                <li>Sexo: <%= pet.sexo%></li>
+                <li>Porte: <%= pet.porte%></li>
+                <li>Cuidados extras: <%= pet.cuidados_extras%></li>
+            </ul>
+            <p class="ml-1"><%= pet.descricao %>
+                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo
                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                 pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.
+                laborum. -->
             </p>
-            <ul>
-                <li>Me dou bem com:</li>
-                <li>Cuidados extras:</li>
-            </ul>
+
             <div class="text-center">
-                <a class="btn btn-primary btn-lg " href="/user" role="button" id="botaocontato">Entrar em contato</a>
+                <a class="btn btn-primary btn-lg " href="/user/<%= pet.fk_usuario %>" role="button"
+                    id="botaocontato">Entrar em contato</a>
             </div>
         </div>
     </div>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
