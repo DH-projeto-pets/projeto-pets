@@ -2,20 +2,18 @@
 
 <div class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-
+  <% console.log(user) %>
   <div class="container justify-content:center mt-5 mb-5" id="containerbody">
 
     <div class="row">
-      <h1 class="mt-2 ml-3">Nome do usuário</h1>
+      <h1 class="mt-2 ml-3"><%= user.nome %></h1>
 
       <div class="container p-1 col-11 ml-2 m-2" id="containerimgs">
         <div class="row">
           <img src="/images/pessoa.jpg" class="img-fluid col-lg-7 col-sm-12 h-100" alt="Foto da Pessoa" id="fotomaior">
           <!-- <div class="w-100"></div> -->
           <div class="col-lg-5 p-1 col-sm-11" id="descricao">
-            <p class="ml-3">Tootsie roll cake jelly-o dragée tootsie roll. Cotton candy cupcake fruitcake pie tootsie
-              roll.
-              Caramels powder halvah chocolate cake bear claw icing wafer soufflé
+            <p class="ml-3"><%= user.descricao ? user.descricao : "Sem descrição" %>
             </p>
 
             <div class="m-3">
@@ -24,7 +22,7 @@
                   <i class="fab fa-instagram-square"></i>
                 </div>
                 <div class="col-md-10">
-                  @alguma0coisa
+                  <%= user.instagram ? user.instagram : "Não informado" %>
                 </div>
               </div>
               <div class="row">
@@ -32,7 +30,7 @@
                   <i class="fab fa-facebook-square"></i>
                 </div>
                 <div class="col-md-10">
-                  nome do usuario
+                  <%= user.facebook ? user.facebook : "Não informado" %>
                 </div>
               </div>
               <div class="row">
@@ -40,7 +38,7 @@
                   <i class="fas fa-envelope-square"></i>
                 </div>
                 <div class="col-md-10">
-                  nome@proxy.com
+                  <%= user.email %>
                 </div>
               </div>
               <div class="row">
@@ -48,7 +46,7 @@
                   <i class="fab fa-whatsapp-square"></i>
                 </div>
                 <div class="col-md-10">
-                  (11) 99999-9999
+                  <%= user.telefone ? user.telefone : "Não informado" %>
                 </div>
               </div>
 
@@ -58,39 +56,35 @@
       </div>
     </div>
 
-    <div class="container justify-content:center row ml-1 p-1">
+    <div class="container user-pet-list">
+      <% for(const pet of user.pets) {%>
 
-
-      <div class="card grid-pets-item" style="width: 14rem;">
-        <a href="/pet/:id">
+      <div class="card grid-pets-item" style="width: 14.5rem;">
+        <a href="/pet/<%=pet.id %>">
           <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
 
         </a>
         <div class="card-body">
           <div class="container-card-info">
-            <a href="/pet/:id">
-              <p class="card-text">Sem nome</p>
-            </a>
+            <!-- <a href="/pet/<%=pet.id %>"> -->
+            <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
+            <!-- </a> -->
+            <% if(pet.status == "PERDIDO"){ %>
+            <%- include('../components/badge-lost') %>
+            <% } %>
+            <% if(pet.status == "ENCONTRADO"){ %>
             <%- include('../components/badge-found') %>
-          </div>
-        </div>
-      </div>
-
-      <div class="card grid-pets-item" style="width: 14rem;">
-
-        <a href="/pet/:id">
-          <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-        </a>
-        <div class="card-body">
-          <div class="container-card-info">
-            <a href="/pet/:id">
-              <p class="card-text">Sem nome</p>
-            </a>
+            <% } %>
+            <% if(pet.status == "ADOCAO"){ %>
             <%- include('../components/badge-adoption') %>
+            <% } %>
+
           </div>
         </div>
       </div>
-      
+      <% } %>
+
+
     </div>
 
   </div>
