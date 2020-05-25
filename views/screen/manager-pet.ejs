@@ -2,7 +2,6 @@
 <section class="d-flex" id="wrapper">
 
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
-  <%= console.log(pets) %>
 
   <section class="container">
     <div class="row justify-content-md-center">
@@ -28,7 +27,7 @@
                     situation: 'P',
                     image: '/images/modelos-marco/zeus.jpg'
                 }) %>
-    
+
           <%- include('../components/card-pet-manager', 
                 { 
                     nome: 'Simba',
@@ -43,8 +42,8 @@
                 }) %>
         </div>
       </div>
-      </div>
     </div>
-  </section>  
+    </div>
+  </section>
 </section>
 <%- include('../partials/footer') %>

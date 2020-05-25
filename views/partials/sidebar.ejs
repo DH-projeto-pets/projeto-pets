@@ -1,10 +1,8 @@
 <div class="bg-light border-right sidebar
-  <%= !sidebarIsVisible ? 'd-none' : '' %>" id="sidebar-wrapper">
+  <%= !locals.user ? 'd-none' : '' %>" id="sidebar-wrapper">
   <div class="sidebar-heading">
-    <img  src="/images/logo-pet-aqui.png"
-          class="logo-pets" id="sidebar">
+    <img src="/images/logo-pet-aqui.png" class="logo-pets" id="sidebar">
   </div>
-  <!-- <%- console.log('Locals', locals.user) %> -->
   <!-- Links da sidebar (menu lateral) -->
   <div class="list-group
     list-group-flush">
@@ -66,13 +64,15 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="#sidebarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <section class="sup-menu">
-      <a href="#" class="navbar-brand
-      sup-menu__logo
-      d-md-none">
-        <img src="/images/logo-pet-aqui.png">
-      </a>
-    </section>
+    <% if(!locals.user) { %>
+    <a href="/" class="navbar-brand
+      sup-menu__logo">
+      <img src="/images/logo-pet-aqui.png">
+    </a>
+    <% } %>
+    <!-- <section class="sup-menu">
+      
+    </section> -->
     <!-- Div com lista de links no header -->
     <div class="collapse
     navbar-collapse" id="navbarSupportedContent">
@@ -103,10 +103,20 @@
         <li class="nav-item active">
           <a class="nav-link" href="/sobre">
             Sobre
-            <span class="sr-only">
-              (current)
-            </span>
           </a>
+        </li>
+        <li>
+
+          <a class="nav-link" href="/pet/adocao">
+            Pets p/ adoção
+          </a>
+        </li>
+        <li>
+
+          <a class="nav-link" href="/pet">
+            Pets perdidos/Encontrados
+          </a>
+        </li>
         </li>
         <!-- Dropdown para entrar (login e cadastro) -->
         <li class="nav-item

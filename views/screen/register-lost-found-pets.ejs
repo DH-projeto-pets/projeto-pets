@@ -9,11 +9,12 @@
         <form class="col-md-12 formRegisterPet__form" action="cadastrar" method="POST">
           <div class="form-row">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ENCONTRADO" />
+              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ENCONTRADO"
+                required />
               <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="PERDIDO" />
+              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="PERDIDO" required />
               <label class="form-check-label" for="petPerdido">Pet Perdido</label>
 
             </div>
@@ -27,19 +28,19 @@
                 <section class="col-md-12 p-0">Porte:</section>
                 <section class="form-row">
                   <div class="form-check form-check-inline col-sm-3 col-md-12 ">
-                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="PEQUENO" />
+                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="PEQUENO" required />
                     <label class="form-check-label" for="pequeno">Pequeno</label>
                   </div>
                   <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="medio" value="MEDIO" />
+                    <input class="form-check-input" name="porte" type="radio" id="medio" value="MEDIO" required />
                     <label class="form-check-label" for="medio">Médio</label>
                   </div>
                   <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="grande" value="GRANDE" />
+                    <input class="form-check-input" name="porte" type="radio" id="grande" value="GRANDE" required />
                     <label class="form-check-label" for="grande">Grande</label>
                   </div>
                   <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="null" value="" />
+                    <input class="form-check-input" name="porte" type="radio" id="null" value="" required />
                     <label class="form-check-label" for="null">Não tenho certeza</label>
                   </div>
                 </section>
@@ -55,7 +56,8 @@
               <section class="form-row">
                 <section class="form-group col-sm-12 col-md-6">
                   <label for="especie">Espécie</label>
-                  <select class="form-control" id="especie">
+                  <select class="form-control" name="especie" id="especie" required>
+                    <option>Selecione uma especie</option>
                     <option value="1">Gato</option>
                     <option value="2">Cachorro</option>
                     <!-- <option>Passáro</option> -->
@@ -63,8 +65,10 @@
                 </section>
                 <section class="form-group col-sm-12 col-md-6">
                   <label for="raca">Raça</label>
-                  <select class="form-control" id="raca">
-                    <option>SRD</option>
+                  <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
+                    required>
+                    <option>Selecione uma raça</option>
+                    <option value="1">SRD</option>
                   </select>
                 </section>
                 <section class="form-group col-sm-12 col-md-12">
@@ -80,7 +84,7 @@
                     </div>
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="" />
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="" checked />
                       <label class="form-check-label" for="radio-null">Não tenho certeza</label>
                     </div>
 
