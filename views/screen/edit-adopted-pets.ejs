@@ -66,8 +66,9 @@
                       <label class="form-check-label" for="radio-macho">Macho</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="null" />
-                      <label class="form-check-label" for="radio-null">Não sei</label>
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="desconhecido" 
+                      <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %>>
+                      <label class="form-check-label" for="radio-null">Desconhecido</label>
                     </div>
                   </section>
                 </section>
