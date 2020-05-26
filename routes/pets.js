@@ -19,6 +19,6 @@ router.put("/:id/editar", PetController.update);
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
 router.put("/adocao/:id/editar", PetController.update);
 router.get("/:id", PetController.showPetPerfil);
-router.delete("/:id", PetController.delete);
+router.delete("/delete", PetController.delete);
 
 module.exports = router;

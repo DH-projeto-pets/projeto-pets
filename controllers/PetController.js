@@ -96,8 +96,10 @@ module.exports = {
     const { id: userId } = req.session.user;
     const pet = await Pet.destroy({
       where: {
-        id: petId,
-        fk_usuario: userId
+        [Op.and]: [
+          { id: petId },
+          { fk_usuario: userId }
+        ]
       }
     });
 
