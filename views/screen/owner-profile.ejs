@@ -2,92 +2,88 @@
 
 <div class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-  <% console.log(user) %>
-  <div class="container justify-content:center mt-5 mb-5" id="containerbody">
-
-    <div class="row">
-      <h1 class="mt-2 ml-3"><%= user.nome %></h1>
-
-      <div class="container p-1 col-11 ml-2 m-2" id="containerimgs">
-        <div class="row">
-          <img src="/images/pessoa.jpg" class="img-fluid col-lg-7 col-sm-12 h-100" alt="Foto da Pessoa" id="fotomaior">
-          <!-- <div class="w-100"></div> -->
-          <div class="col-lg-5 p-1 col-sm-11" id="descricao">
-            <p class="ml-3"><%= user.descricao ? user.descricao : "Sem descrição" %>
-            </p>
-
-            <div class="m-3">
-              <div class="row">
-                <div class="col-md-1">
-                  <i class="fab fa-instagram-square"></i>
-                </div>
-                <div class="col-md-10">
-                  <%= user.instagram ? user.instagram : "Não informado" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-1">
-                  <i class="fab fa-facebook-square"></i>
-                </div>
-                <div class="col-md-10">
-                  <%= user.facebook ? user.facebook : "Não informado" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-1">
-                  <i class="fas fa-envelope-square"></i>
-                </div>
-                <div class="col-md-10">
-                  <%= user.email %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-1">
-                  <i class="fab fa-whatsapp-square"></i>
-                </div>
-                <div class="col-md-10">
-                  <%= user.telefone ? user.telefone : "Não informado" %>
-                </div>
-              </div>
-
+  <div class="container justify-content:center" id="containerbody">
+    <div class="row pb-4">
+      <div class="col-md-12">
+        <h1><%= user.nome %></h1>
+      </div>
+      <div class="col-md-6">
+        <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-12">
+          <%= user.descricao ? user.descricao : "Sem descrição" %>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.instagram ? user.instagram : "Não informado" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fab fa-facebook-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.facebook ? user.facebook : "Não informado" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fas fa-envelope-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.email %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fab fa-whatsapp-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.telefone ? user.telefone : "Não informado" %>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="col-md-12 mt-4">
+        <div class="container user-pet-list">
+          <% for(const pet of user.pets) {%>
+          <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
+            <div class="card grid-pets-item" style="width: 14.5rem;">
+              <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
 
-    <div class="container user-pet-list">
-      <% for(const pet of user.pets) {%>
+              <div class="card-body">
+                <div class="container-card-info">
+                  <!-- <a href="/pet/<%=pet.id %>"> -->
+                  <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
+                  <!-- </a> -->
+                  <% if(pet.status == "PERDIDO"){ %>
+                  <%- include('../components/badge-lost') %>
+                  <% } %>
+                  <% if(pet.status == "ENCONTRADO"){ %>
+                  <%- include('../components/badge-found') %>
+                  <% } %>
+                  <% if(pet.status == "ADOCAO"){ %>
+                  <%- include('../components/badge-adoption') %>
+                  <% } %>
 
-      <div class="card grid-pets-item" style="width: 14.5rem;">
-        <a href="/pet/<%=pet.id %>">
-          <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+                </div>
+              </div>
+            </div>
+          </a>
+          <% } %>
 
-        </a>
-        <div class="card-body">
-          <div class="container-card-info">
-            <!-- <a href="/pet/<%=pet.id %>"> -->
-            <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
-            <!-- </a> -->
-            <% if(pet.status == "PERDIDO"){ %>
-            <%- include('../components/badge-lost') %>
-            <% } %>
-            <% if(pet.status == "ENCONTRADO"){ %>
-            <%- include('../components/badge-found') %>
-            <% } %>
-            <% if(pet.status == "ADOCAO"){ %>
-            <%- include('../components/badge-adoption') %>
-            <% } %>
 
-          </div>
         </div>
       </div>
-      <% } %>
-
-
     </div>
-
   </div>
 
-  <%- include('../partials/footer') %>
 </div>
+
+</div>
+<%- include('../partials/footer') %>

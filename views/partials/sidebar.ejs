@@ -56,11 +56,11 @@
   sibedar-navbar">
     <!-- <a class="navbar-brand <%= sidebarIsVisible ? 'd-none' : '' %>"" href="#">PetAqui</a> -->
     <button class="btn
-    <%= !sidebarIsVisible ? 'd-none' : '' %>" id="menu-toggle">
+    <%= !locals.user ? 'd-none' : '' %>" id="menu-toggle">
       <i class="fas fa-bars"></i>
     </button>
     <button class="navbar-toggler
-    <%= sidebarIsVisible ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <%= !locals.user ? 'd-none' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="#sidebarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>

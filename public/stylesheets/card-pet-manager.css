@@ -19,3 +19,12 @@
     text-align: center;
     vertical-align: middle;
 }
+
+.pet-card-M-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pet-card-M-line.btns {
+  width: 100%;
+}

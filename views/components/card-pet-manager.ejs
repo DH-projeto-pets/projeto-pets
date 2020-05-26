@@ -1,38 +1,43 @@
-<div class="card grid-pets-item" style="width: 18rem;">
-    <img src="<%= image %>" class="card-img-top pet-foto" alt="...">
-    <div class="card-body">
-        <div class="container-card-info">
-            <h5 class="card-title offset-2 col-8"><%= nome %></h5>
-            <%- include('../components/badge-adoption') %>
-            <!-- Tentativa de adicionar dinamicidade  -->
-            <!-- <div class="situation"
-                <% if (situation == 'P') { %>
-                    style="background-color: green;"
-                <% } %>
-                ><%=situation %>
-            </div> -->
-        </div>
-        <div class="d-flex justify-content-around">
-            <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-6">Editar</a>
-            <a href="#" class="btn card-bottom col-6 offset-1">Excluir</a>
-        </div>     
-    </div>
-</div>
-
-<!-- <div class="card grid-pets-item" style="width: 18rem;">
-  <a href="/perfil-pet-encontrado">
+<div class="col-md-4 col-sm-12">
+  <div class="card">
+    <a href="/pet/<%=pet.id %>">
       <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
-  </a>
-  <div class="card-body">
-      <div class="container-card-info mb-1">
-          <a href="/perfil-pet-encontrado">
-              <p class="card-text">Sem nome</p>
+    </a>
+    <div class="card-body">
+      <div class="container-card-info" style="flex-wrap: wrap;">
+
+        <a href="/pet/<%=pet.id %>" style="width: 100%;">
+          <section class="pet-card-M-line">
+            <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
+            <% if(pet.status == "PERDIDO"){ %>
+            <%- include('../components/badge-lost') %>
+            <% } %>
+            <% if(pet.status == "ENCONTRADO"){ %>
+            <%- include('../components/badge-found') %>
+            <% } %>
+            <% if(pet.status == "ADOCAO"){ %>
+            <%- include('../components/badge-adoption') %>
+            <% } %>
+          </section>
+        </a>
+        <section class="pet-card-M-line btns">
+          <!-- <% if(pet.status == "ADOCAO"){ %> -->
+          <a class="btn btn-warning orange <%= pet.status !== 'ADOCAO' ? 'd-none' : '' %>"
+            href="/pet/adocao/<%=pet.id%>/editar">
+            Editar
           </a>
-          <div class="badge-found">E</div>
+          <!-- <% } else { %> -->
+          <a class="btn btn-warning orange <%= pet.status === 'ADOCAO' ? 'd-none' : ''  %>"
+            href="/pet/<%=pet.id%>/editar">
+            Editar
+          </a>
+          <!-- <% } %> -->
+          <form method="POST" action="/pet/delete?_method=DELETE">
+            <input hidden name="id" value="<%=pet.id%>" />
+            <button type="submit" class="btn btn-outline-warning">Excluir</button>
+          </form>
+        </section>
       </div>
-      <div class="container-card-info">
-        <a href="/pets-perdidos-encontrados/editar-pet" class="btn card-bottom col-5">Editar</a>
-  <a href="#" class="btn card-bottom col-5 ">Excluir</a>
     </div>
   </div>
-</div> -->
+</div>
