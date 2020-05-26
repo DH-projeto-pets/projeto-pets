@@ -37,7 +37,7 @@
 
             <%- include('../components/pet-status-line') %>
         </div>
-        <div class="texto pt-1 pb-3 ml-3">
+        <div class="texto pt-1 pb-4 ml-3">
 
             <div class="row ml-3">
                 <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
@@ -47,23 +47,16 @@
                         clip-rule="evenodd" />
                 </svg>
                 <h6>3km de você</h6>
-            </div>
+            </div>  
+            
 
             <p class="ml-3"><%= pet.descricao %>
-                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum. -->
+   
             </p>
             <ul>
-                <li>Raça: <%= pet.fk_raca%></li>
+                <li>Raça: <%= pet.raca.nome %></li>
                 <li>Sexo: <%= pet.sexo%></li>
                 <li>Porte: <%= pet.porte%></li>
-                <li>Cuidados extras: <%= pet.cuidados_extras%></li>
             </ul>
             <div class="text-center">
                 <a class="btn btn-primary btn-lg " href="/user/<%= pet.fk_usuario %>" role="button"
