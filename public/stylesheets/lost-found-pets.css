@@ -1,25 +1,19 @@
-.main__container {
-    background-color: #fff;
-    min-height: 65vh;
-    margin-top: 10vh;
+.main-container__pets {
     padding-bottom: 10vh;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 26px;
     /* sobrescreve o padding da classe col-md-10 */
     padding-right: 0;
     padding-left: 5px;
 }
 /* Altera a aparência do grid de pets perdidos e encontrados */
 .grid-pets__container {
-    min-height: 60vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     
 }
 .grid-pets__container img {
-    min-height: 140px;
-    min-width: 160px;
+    height: 180px;
+    width: 100%;    
 }
 .grid-pets__container h2 {
     text-align: center;
@@ -46,33 +40,6 @@
 .container-card-info a {
     text-decoration: none;
     color: #000;
-}
-.badge-found {
-    width: 32px;
-    height: 32px;
-    background-color: #0275D8;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
-}
-.badge-lost {
-    width: 32px;
-    height: 32px;
-    background-color: #EC5353;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
-}
-.badge-adoption {
-    width: 32px;
-    height: 32px;
-    background-color: #4EE066;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
 }
 
 /* Adiciona espaçamento entre os cards */

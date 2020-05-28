@@ -1,0 +1,20 @@
+.badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.badge-found {
+    background-color: #0275D8;
+}
+.badge-lost {
+    background-color: #EC5353;
+}
+.badge-adoption {
+    background-color: #4EE066;
+}

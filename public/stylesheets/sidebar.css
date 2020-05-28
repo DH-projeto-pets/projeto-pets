@@ -58,7 +58,11 @@
   justify-content: center;
 }
 
-.sup-menu__logo img, .logo-pets {
+.sup-menu__logo img {
+  height: 37px;
+}
+
+.logo-pets {
   height: 40px;
 }
 
@@ -79,4 +83,11 @@
 
 .sibedar-navbar {
   margin-bottom: var(--margin-header);
+}
+
+.dropdown-item.active, .dropdown-item:active, 
+.btn-primary.focus, .btn-primary:focus{
+  color: #000;
+  text-decoration: none;
+  background-color: #fff2cc;
 }

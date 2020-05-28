@@ -1,7 +1,7 @@
 <%- include('partials/head', { title: 'Home'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('partials/sidebar', { sidebarIsVisible: false }) %>
-  <section class="container-fluid home-main-content__container">
+  <section class="container-fluid home-main-content__container" style="margin-top: -40px;">
     <!-- CARROSSEL -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -11,30 +11,30 @@
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Próximo</span>
-        </a>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+      </a>
     </div>
-      
+
     <!-- Espaçamento em branco -->
     <div class="espaco-branco"></div>
-  
+
     <!-- Grid Pets Perdidos -->
-    <h2 class="display-4 text-center my-4">Últimos Pets Perdidos</h2>
+    <h2 class="display-4 text-center my-4">Últimos Pets Perdidos e Encontrados</h2>
     <section class="container-fluid fundo-pegadas-h370">
       <div class="row">
         <div class="col-md-12 grid-home__container">
           <!-- Card 1 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/perfil-pet-perdido">
+            <a href="/pet/perfil">
               <img src="/images/cachorro.jpg" class="card-img-top grid-miniatura">
             </a>
             <div class="card-body d-flex justify-content-between">
               <div class="card-text">
-                <strong>Nome: </strong> 
+                <strong>Nome: </strong>
               </div>
               <div class="localizacao-pet">
                 <i class="fa fa-map-marker" aria-hidden="true"> 2 km</i>
@@ -44,12 +44,12 @@
 
           <!-- Card 2 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/perfil-pet-perdido">
+            <a href="/pet/perfil">
               <img src="/images/cachorro.jpg" class="card-img-top grid-miniatura">
             </a>
             <div class="card-body d-flex justify-content-between">
               <div class="card-text">
-                <strong>Nome: </strong> 
+                <strong>Nome: </strong>
               </div>
               <div class="localizacao-pet">
                 <i class="fa fa-map-marker" aria-hidden="true"> 1 km</i>
@@ -59,12 +59,12 @@
 
           <!-- Card 3 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/perfil-pet-perdido">
+            <a href="/pet/perfil">
               <img src="/images/cachorro.jpg" class="card-img-top grid-miniatura">
             </a>
             <div class="card-body d-flex justify-content-between">
               <div class="card-text">
-                <strong>Nome: </strong> 
+                <strong>Nome: </strong>
               </div>
               <div class="localizacao-pet">
                 <i class="fa fa-map-marker" aria-hidden="true"> 2 km</i>
@@ -77,7 +77,7 @@
 
     <!-- Botao Ver todos -->
     <div class="container-botao">
-      <a class="btn btn-primary botao-medio-amarelo" href="/pets-perdidos-encontrados">VER TODOS</a>
+      <a class="btn btn-primary botao-medio-amarelo" href="/pet/">VER TODOS</a>
     </div>
 
     <!-- Espaçamento em branco -->
@@ -90,7 +90,7 @@
         <div class="col-md-12 grid-home__container">
           <!-- Card 1 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/perfil-pet-adocao">
+            <a href="/pet/perfil">
               <img src="/images/gato.jpg" class="card-img-top grid-miniatura">
             </a>
             <div class="card-body d-flex justify-content-between">
@@ -105,7 +105,7 @@
 
           <!-- Card 2 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/perfil-pet-adocao">
+            <a href="/pet/perfil">
               <img src="/images/gato.jpg" class="card-img-top grid-miniatura">
             </a>
             <div class="card-body d-flex justify-content-between">
@@ -120,7 +120,7 @@
 
           <!-- Card 3 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/perfil-pet-adocao">
+            <a href="/pet/perfil">
               <img src="/images/gato.jpg" class="card-img-top grid-miniatura">
             </a>
             <div class="card-body d-flex justify-content-between">
@@ -138,7 +138,7 @@
 
     <!-- Botao Ver todos -->
     <div class="container-botao">
-      <a class="btn btn-primary botao-medio-amarelo" href="/pets-adocao">VER TODOS</a>
+      <a class="btn btn-primary botao-medio-amarelo" href="/pet/adocao">VER TODOS</a>
     </div>
 
     <!-- Espaçamento em branco -->
@@ -154,9 +154,9 @@
             <div class="col-lg-9 col-sm-12 col-12 area-texto-cta">
               <h1 class="display-4">Como posso ajudar?</h1>
               <p class="">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Ex et id incidunt voluptatum earum. Accusantium praesentium, 
-                voluptatem commodi consectetur minus adipisci porro eos placeat 
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Ex et id incidunt voluptatum earum. Accusantium praesentium,
+                voluptatem commodi consectetur minus adipisci porro eos placeat
                 est ullam dolorum accusamus corporis iste. </p>
               <a class="btn btn-primary botao-medio-verde" href="/sobre">CONHECER MAIS</a>
             </div>
@@ -164,8 +164,8 @@
         </div>
       </div>
     </div>
-      <!-- Espaço em branco -->
-      <div class="espaco-branco"></div>
-      <%- include('partials/footer') %>
-    </section>
+    <!-- Espaço em branco -->
+    <div class="espaco-branco"></div>
+    <%- include('partials/footer') %>
   </section>
+</section>

@@ -1,11 +1,24 @@
-<section class="hr">
-  <hr class="style18">
-  </section>
-<div class="card-header bg-transparent">Pets para adoção</div>
-<div class="card-body">
-  <img class="card-img-top" src="/images/buldog.png" alt="Card image cap" />
-</div>
-<div class="card-footer">
-  <span class="card-footer bg-transparent ">Tom</span>
-  <span class="card-footer bg-transparent ">18:51</span>
-</div>
+<section class="card container border mb-1">
+  <div class="row justify-content-end mt-3 mr-2 pb-0">
+    <% if(pet.status == "PERDIDO"){ %>
+      <%- include('../components/badge-lost') %>
+      <% } %>
+      <% if(pet.status == "ENCONTRADO"){ %>
+      <%- include('../components/badge-found') %>
+      <% } %>
+      <% if(pet.status == "ADOCAO"){ %>
+      <%- include('../components/badge-adoption') %>
+      <% } %>
+  </div>
+  <div class="row">
+  <div class="card-body col-md-12 pt-2 pb-2">
+    <img class="card-img-top" src="/images/buldog.png" alt="Card image cap" />
+  </div>
+    <div class="col-md-12 text-start mb-2" style="display:flex; justify-content: space-between;">
+      <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
+    <!-- </div>
+    <div class="col text-start mb-3"> -->
+      <span class="bg-transparent">18:51</span>
+    </div>
+  </div>
+</section>

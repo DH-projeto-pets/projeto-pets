@@ -1,13 +1,18 @@
 footer {
   background-color: #3d9194;
   text-align: center;
-  padding: 10px;
+  padding-top: 3px;
+  padding-right: 5%;
+  padding-left: 5%;
+  padding-bottom: 3px;
   width: 100%;
   bottom: 0;
 }
-.contato a {
-  margin-right: 10px;
+
+.item-footer {
+  margin-top: 3%;
 }
+
 /* FOOTER */
 
 /* configurando o logo(margem, tamanho, espaçamento) */
@@ -15,11 +20,16 @@ footer {
   width: 130px;
   background-color: #3d9194;
 }
-@media(max-width: 576px) { .img-responsive { width: 110px }}
+
+@media (max-width: 576px) {
+  .img-responsive {
+    width: 110px;
+  }
+}
 
 /* implementando a cor de fundo no footer */
 
-.ul-footer{
+.ul-footer {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -35,7 +45,7 @@ footer {
 /* Deixando os ícones das redes sociais todos pretos e implementando espaçamento */
 .item-footer {
   list-style-type: none;
-  margin-right: 5%; 
+  margin-right: 5%;
   color: black;
   font-size: 12px;
 }

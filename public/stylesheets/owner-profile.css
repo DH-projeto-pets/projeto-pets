@@ -14,6 +14,13 @@ background-color: rgb(55, 160, 134);
 border-color: rgb(55, 160, 134);
 }
 
+
+.user-pet-list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 /* 
    #containerimgs{
        background-color: tomato;

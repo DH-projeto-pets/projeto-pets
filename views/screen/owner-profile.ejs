@@ -2,117 +2,88 @@
 
 <div class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-
-  <div
-    class="container col-11 justify-content:center rounded mt-5 mb-5"
-    id="containerbody"
-  >
-    <br />
-    <h6 class="text-center">Perfil do Responsável</h6>
-    <div class="row ml-2">
-      <h3 class="">Nome do Responsável</h3>
-    </div>
-
-    <div class="container p-1 col-12" id="containerimgs">
-      <div class="row">
-        <img
-          src="images/pessoa.jpg"
-          class="img-fluid col-lg-6 col-sm-12 m-2 h-100"
-          alt="Foto da Pessoa"
-          id="fotomaior"
-        />
-        <!-- <div class="w-100"></div> -->
-        <div class="col-lg-5 p-1 col-sm-12" id="descricao">
-          <p class="ml-3">
-            Tootsie roll cake jelly-o dragée tootsie roll. Cotton candy cupcake
-            fruitcake pie tootsie roll. Caramels powder halvah chocolate cake
-            bear claw icing wafer soufflé
-          </p>
-
-          <div class="m-3">
-            <div class="row">
-              <div class="row">
-                <div class="col-md-2">
-                  <i class="fab fa-instagram-square"></i>
-                </div>
-                <div class="col-md-10">
-                  @alguma0coisa
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-2">
-                  <i class="fab fa-facebook-square"></i>
-                </div>
-                <div class="col-md-10">
-                  nome do usuario
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-2">
-                  <i class="fas fa-envelope-square"></i>
-                </div>
-                <div class="col-md-10">
-                  nome@proxy.com
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-2">
-                  <i class="fab fa-whatsapp-square"></i>
-                </div>
-                <div class="col-md-10">
-                  (11) 95305904
-                </div>
-              </div>
-            </div>      
-            
-            
-
-            
+  <div class="container justify-content:center" id="containerbody">
+    <div class="row pb-4">
+      <div class="col-md-12">
+        <h1><%= user.nome %></h1>
+      </div>
+      <div class="col-md-6">
+        <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-12">
+          <%= user.descricao ? user.descricao : "Sem descrição" %>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.instagram ? user.instagram : "Não informado" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fab fa-facebook-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.facebook ? user.facebook : "Não informado" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fas fa-envelope-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.email %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <i class="fab fa-whatsapp-square"></i>
+            </div>
+            <div class="col-md-10">
+              <%= user.telefone ? user.telefone : "Não informado" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="col-md-12 mt-4">
+        <div class="container user-pet-list">
+          <% for(const pet of user.pets) {%>
+          <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
+            <div class="card grid-pets-item" style="width: 14.5rem;">
+              <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
 
-    <div class="container justify-content:center row ml-1 p-1">
-      <div class="card m-1" style="width: 12rem;">
-        <img class="card-img-top" src="/images/gato.jpg" alt="Card image cap" />
-        <div class="card-body text-center">
-          <h5 class="card-title">Nome do Pet</h5>
-          <a href="/perfil-pet-adocao" class="btn btn-primary" id="botaopets"
-            >Ver Perfil</a
-          >
-        </div>
-      </div>
+              <div class="card-body">
+                <div class="container-card-info">
+                  <!-- <a href="/pet/<%=pet.id %>"> -->
+                  <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
+                  <!-- </a> -->
+                  <% if(pet.status == "PERDIDO"){ %>
+                  <%- include('../components/badge-lost') %>
+                  <% } %>
+                  <% if(pet.status == "ENCONTRADO"){ %>
+                  <%- include('../components/badge-found') %>
+                  <% } %>
+                  <% if(pet.status == "ADOCAO"){ %>
+                  <%- include('../components/badge-adoption') %>
+                  <% } %>
 
-      <div class="card m-1" style="width: 12rem;">
-        <img
-          class="card-img-top"
-          src="/images/cachorro.jpg"
-          alt="Card image cap"
-        />
-        <div class="card-body text-center">
-          <h5 class="card-title">
-            Nome do Pet
-            <button
-              type="button"
-              class="btn btn-primary btn-sm disabled rounded-pill"
-              id="classedepet"
-              disabled
-              aria-disabled="true"
-            >
-              E
-            </button>
-          </h5>
-          <a
-            href="/perfil-pet-encontrado"
-            class="btn btn-primary"
-            id="botaopets"
-            >Ver Perfil</a
-          >
+                </div>
+              </div>
+            </div>
+          </a>
+          <% } %>
+
+
         </div>
       </div>
     </div>
   </div>
 
-  <%- include('../partials/footer') %>
 </div>
+
+</div>
+<%- include('../partials/footer') %>

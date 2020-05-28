@@ -5,7 +5,7 @@
   <div class="container">
     <div class="card card-container-login">
       <div class="card-header text-center" id="card-header-login">
-        <h5 class="h5-card-header-login">Login</h5>
+        <h1 class="h5-card-header-login">Login</h1>
       </div>
 
       <section class="section-form-login">
@@ -14,8 +14,13 @@
           class="profile-img-card"
           src="/images/icone_user.svg"
         />
-     
-        <form action="/home/user" method="POST" class="form-signin">
+
+        <form action="/login" method="POST" class="form-signin">
+          <section id="error" class="row d-flex justify-content-center">
+            <span class="span-error d-none">
+              Email ou senha inválidos
+            </span>
+          </section>
           <span id="reauth-email" class="reauth-email"></span>
           <label class="login-email-label">Email:</label>
           <input
@@ -44,11 +49,11 @@
         <!-- /form -->
         <div class="row">
           <div class="col">
-            <a href="/cadastro" class="register-login">Registre-se</a>
+            <a href="/cadastrar" class="register-login">Registre-se</a>
           </div>
-          <div class="col text-right">
+          <!-- <div class="col text-right">
             <a href="/esqueci-senha" class="forgot ">Esqueci a senha</a>
-          </div>
+          </div> -->
         </div>
       </section>
     </div>
@@ -57,3 +62,4 @@
   <!-- /container -->
 </section>
 <%- include('../partials/footer') %>
+<script src="javascripts/login.js"></script>
