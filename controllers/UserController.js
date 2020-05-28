@@ -70,10 +70,10 @@ let UserController = {
   show: async (req, res) => {
     const { id } = req.params;
 
-    const user = await User.findOne({ where: { id }, include: ['pets'] });
+    const usuario = await User.findOne({ where: { id }, include: ['pets'] });
     // console.log(user)
-    if (!user) return res.render("404-not-found")
-    res.render("screen/owner-profile", { user });
+    if (!usuario) return res.render("404-not-found")
+    res.render("screen/owner-profile", { usuario });
   },
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
