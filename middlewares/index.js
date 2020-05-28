@@ -13,6 +13,5 @@ module.exports = {
   },
   // checkUserDB: (req, res, next) => {
   //   const { email, senha } = req.body
-
   // }
 };
