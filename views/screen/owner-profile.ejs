@@ -5,14 +5,14 @@
   <div class="container justify-content:center" id="containerbody">
     <div class="row pb-4">
       <div class="col-md-12">
-        <h1><%= user.nome %></h1>
+        <h1><%= usuario.nome %></h1>
       </div>
       <div class="col-md-6">
         <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
       </div>
       <div class="col-md-6">
         <div class="col-md-12">
-          <%= user.descricao ? user.descricao : "Sem descrição" %>
+          <%= usuario.descricao ? user.descricao : "Sem descrição" %>
         </div>
         <div class="col-md-12">
           <div class="row">
@@ -20,7 +20,7 @@
               <i class="fab fa-instagram-square"></i>
             </div>
             <div class="col-md-10">
-              <%= user.instagram ? user.instagram : "Não informado" %>
+              <%= usuario.instagram ? user.instagram : "Não informado" %>
             </div>
           </div>
           <div class="row">
@@ -28,7 +28,7 @@
               <i class="fab fa-facebook-square"></i>
             </div>
             <div class="col-md-10">
-              <%= user.facebook ? user.facebook : "Não informado" %>
+              <%= usuario.facebook ? user.facebook : "Não informado" %>
             </div>
           </div>
           <div class="row">
@@ -36,7 +36,7 @@
               <i class="fas fa-envelope-square"></i>
             </div>
             <div class="col-md-10">
-              <%= user.email %>
+              <%= usuario.email %>
             </div>
           </div>
           <div class="row">
@@ -44,14 +44,14 @@
               <i class="fab fa-whatsapp-square"></i>
             </div>
             <div class="col-md-10">
-              <%= user.telefone ? user.telefone : "Não informado" %>
+              <%= usuario.telefone ? user.telefone : "Não informado" %>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-12 mt-4">
         <div class="container user-pet-list">
-          <% for(const pet of user.pets) {%>
+          <% for(const pet of usuario.pets) {%>
           <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
             <div class="card grid-pets-item" style="width: 14.5rem;">
               <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">

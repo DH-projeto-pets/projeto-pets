@@ -1,49 +1,90 @@
 <%- include('../partials/head', { title: 'Cadastrar novo Pet'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
-  <section class="container">
-    <section class="row formRegisterPet__rowContainer">
-      <section class="col-xs-11 col-sm-11 col-md-10 col-xl-6 formRegisterPet__container">
-        <h1 class="col-md-12 text-center">Cadastrar Pet
-          <!-- <i class="far fa-question-circle" data-toggle="modal"
-            data-target="#modal-petEncontrado"></i> -->
-        </h1>
-        <form class="col-md-12 formRegisterPet__form" action="cadastrar" method="POST">
-          <div class="form-row">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ENCONTRADO"
-                required />
-              <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="PERDIDO" required />
-              <label class="form-check-label" for="petPerdido">Pet Perdido</label>
-
-            </div>
+  <section class="container-fluid main-container">
+    <!-- <section class="row formRegisterPet__rowContainer"> -->
+    <section class="mt-2">
+      <h1 class="col-md-12 text-center">Cadastrar Pet <i class="far fa-question-circle" data-toggle="modal"
+          data-target="#modal-petEncontrado"></i></h1>
+      <form class="col-md-12" action="cadastrar" method="POST">
+        <div class="form-row">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ENCONTRADO" required />
+            <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
           </div>
-          <div class="form-row">
-            <section class="form-group col-md-4 pl-0">
-              <section class="form-group col-sm-6 col-md-12 pl-0 form-img-review">
-                <img src="/images/default-photo.png" alt="Visualização de imagem" class="img-thumbnail preview-img">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="status" type="radio" id="petPerdido" value="PERDIDO" required />
+            <label class="form-check-label" for="petPerdido">Pet Perdido</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <section class="form-group col-md-4 pl-0">
+            <section class="form-group col-sm-6 col-md-12 pl-0 form-img-review">
+              <img src="/images/default-photo.png" alt="Visualização de imagem" class="img-thumbnail preview-img">
+            </section>
+            <section class="form-group col-sm-12 col-md-12 pl-0">
+              <section class="col-md-12 p-0">Porte:</section>
+              <section class="form-row">
+                <div class="form-check form-check-inline col-sm-3 col-md-12 ">
+                  <input class="form-check-input" name="porte" type="radio" id="pequeno" value="PEQUENO" required />
+                  <label class="form-check-label" for="pequeno">Pequeno</label>
+                </div>
+                <div class="form-check form-check-inline col-sm-3 col-md-12">
+                  <input class="form-check-input" name="porte" type="radio" id="medio" value="MEDIO" required />
+                  <label class="form-check-label" for="medio">Médio</label>
+                </div>
+                <div class="form-check form-check-inline col-sm-3 col-md-12">
+                  <input class="form-check-input" name="porte" type="radio" id="grande" value="GRANDE" required />
+                  <label class="form-check-label" for="grande">Grande</label>
+                </div>
+                <div class="form-check form-check-inline col-sm-3 col-md-12">
+                  <input class="form-check-input" name="porte" type="radio" id="null" value="" required />
+                  <label class="form-check-label" for="null">Não tenho certeza</label>
+                </div>
               </section>
-              <section class="form-group col-sm-12 col-md-12 pl-0">
-                <section class="col-md-12 p-0">Porte:</section>
+            </section>
+          </section>
+          <section class="form-group col-md-8">
+            <section class="form-row">
+              <label class="col-12" for="nome">
+                Nome:
+              </label>
+              <input class="form-control
+                    col-12" type="text" name="nome" id="nome">
+            </section>
+            <section class="form-row">
+              <section class="form-group col-sm-12 col-md-6">
+                <label for="especie">Espécie</label>
+                <select class="form-control" name="especie" id="especie" required>
+                  <option>Selecione uma especie</option>
+                  <option value="1">Gato</option>
+                  <option value="2">Cachorro</option>
+                  <!-- <option>Passáro</option> -->
+                </select>
+              </section>
+              <section class="form-group col-sm-12 col-md-6">
+                <label for="raca">Raça</label>
+                <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
+                  required>
+                  <option>Selecione uma raça</option>
+                </select>
+              </section>
+              <section class="form-group col-sm-12 col-md-12">
+                <label>Sexo</label>
                 <section class="form-row">
-                  <div class="form-check form-check-inline col-sm-3 col-md-12 ">
-                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="PEQUENO" required />
-                    <label class="form-check-label" for="pequeno">Pequeno</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="FEMEA" />
+                    <label class="form-check-label" for="radio-femea">Fêmea</label>
                   </div>
-                  <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="medio" value="MEDIO" required />
-                    <label class="form-check-label" for="medio">Médio</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="MACHO" />
+                    <label class="form-check-label" for="radio-macho">Macho</label>
                   </div>
-                  <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="grande" value="GRANDE" required />
-                    <label class="form-check-label" for="grande">Grande</label>
-                  </div>
-                  <div class="form-check form-check-inline col-sm-3 col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="null" value="" required />
-                    <label class="form-check-label" for="null">Não tenho certeza</label>
+                  <div class="form-check form-check-inline">
+
+                    <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="DESCONHECIDO"
+                      checked />
+                    <label class="form-check-label" for="radio-null">Não tenho certeza</label>
                   </div>
                 </section>
               </section>
@@ -116,72 +157,70 @@
                   </button>
                 </section>
 
-                <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
-                  <button type="button" class="btn orange--offset mr-2">
-                    Cancelar
-                  </button>
-                  <button type="submit" class="btn orange">
-                    Cadastrar
-                  </button>
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <section class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
+                      <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+                    </section>
+                  </section>
                 </section>
 
-          </div>
-        </form>
-      </section>
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"></textarea>
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <button type="button" class="btn btn-block orange" data-button="getAddress">
+                      Adicionar o endereço automaticamente
+                    </button>
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-md-12">
+                    <label for="endereco">Endereço</label>
+                    <input type="email" class="form-control" id="logradouro" />
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-md-6">
+                    <label for="CEP">CEP</label>
+                    <input type="numeric" class="form-control" id="CEP" />
+                  </section>
+                  <section class="form-group col-md-6">
+                    <label for="bairro">Bairro</label>
+                    <input type="email" class="form-control" id="bairro" />
+                  </section>
+                </section>
+                <section class="form-row">
+                  <section class="form-group col-md-6">
+                    <label for="cidade">Cidade</label>
+                    <input type="numeric" class="form-control" id="cidade" />
+                  </section>
+                  <section class="form-group col-md-6">
+                    <label for="estado">Estado</label>
+                    <input type="email" class="form-control" id="estado" />
+                  </section>
+                </section>
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
+                    <button type="button" class="btn orange--offset mr-2">
+                      Cancelar
+                    </button>
+                    <button type="submit" class="btn orange">
+                      Cadastrar
+                    </button>
+                  </section>
+      </form>
     </section>
   </section>
-  <div class="espaco-branco"></div>
+</section>
+</section>
 </section>
 <%- include('../partials/footer') %>
-
-<%- include('../components/modal-pet-encontrado') %>
-
-<section class="modal fade" id="modal-endereco" tabindex="-1" role="dialog" aria-hidden="true">
-  <section class="modal-dialog" role="document">
-    <section class="modal-content">
-      <section class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Endereço:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </section>
-      <section class="modal-body">
-        <form>
-          <section class="form-row">
-            <section class="form-group col-md-12">
-              <label for="endereco">Endereço</label>
-              <input type="email" class="form-control" id="endereco" />
-            </section>
-          </section>
-          <section class="form-row">
-            <section class="form-group col-md-6">
-              <label for="CEP">CEP</label>
-              <input type="numeric" class="form-control" id="CEP" />
-            </section>
-            <section class="form-group col-md-6">
-              <label for="bairro">Bairro</label>
-              <input type="email" class="form-control" id="bairro" />
-            </section>
-          </section>
-          <section class="form-row">
-            <section class="form-group col-md-6">
-              <label for="cidade">Cidade</label>
-              <input type="numeric" class="form-control" id="cidade" />
-            </section>
-            <section class="form-group col-md-6">
-              <label for="estado">Estado</label>
-              <input type="email" class="form-control" id="estado" />
-            </section>
-          </section>
-        </form>
-      </section>
-      <section class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Fechar
-        </button>
-        <button type="button" class="btn orange">Salvar</button>
-      </section>
-    </section>
-  </section>
-</section>
-</div>
