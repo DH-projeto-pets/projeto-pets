@@ -89,67 +89,134 @@
                 </section>
               </section>
             </section>
-
-            <section class="form-row">
-              <section class="form-group col-sm-12 col-md-12">
-                <section class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
-                  <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+            <section class="form-group col-md-8">
+              <section class="form-row">
+                <label class="col-12" for="especie">
+                  Nome:
+                </label>
+                <input class="form-control
+                    col-12" type="text" name="nome" id="">
+              </section>
+              <section class="form-row">
+                <section class="form-group col-sm-12 col-md-6">
+                  <label for="especie">Espécie</label>
+                  <select class="form-control" name="especie" id="especie" required>
+                    <option value="">Selecione uma especie</option>
+                    <option value="1">Gato</option>
+                    <option value="2">Cachorro</option>
+                    <!-- <option>Passáro</option> -->
+                  </select>
                 </section>
-              </section>
-            </section>
+                <section class="form-group col-sm-12 col-md-6">
+                  <label for="raca">Raça</label>
+                  <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
+                    required>
+                    <option value="">Selecione uma raça</option>
+                    <option value="1">SRD</option>
+                  </select>
+                </section>
+                <section class="form-group col-sm-12 col-md-12">
+                  <label>Sexo</label>
+                  <section class="form-row">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="FEMEA" />
+                      <label class="form-check-label" for="radio-femea">Fêmea</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="MACHO" />
+                      <label class="form-check-label" for="radio-macho">Macho</label>
+                    </div>
+                    <div class="form-check form-check-inline">
 
-            <section class="form-row">
-              <section class="form-group col-sm-12 col-md-12">
-                <label for="descricao">Descrição</label>
-                <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"></textarea>
-              </section>
-            </section>
+                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="DESCONHECIDO"
+                        checked />
+                      <label class="form-check-label" for="radio-null">Não tenho certeza</label>
+                    </div>
 
-            <section class="form-row">
-              <section class="form-group col-sm-12 col-md-12">
-                <button type="button" class="btn btn-block orange" data-button="getAddress">
-                  Adicionar o endereço automaticamente
-                </button>
-              </section>
-            </section>
+                  </section>
+                </section>
+                <section class="form-group col-sm-12 col-md-12">
+                  <section class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
+                    <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+                  </section>
+                </section>
+                <section class="form-group col-sm-12 col-md-12">
+                  <label for="descricao">Descrição</label>
+                  <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"></textarea>
+                </section>
 
-            <section class="form-row">
-              <section class="form-group col-md-12">
-                <label for="endereco">Endereço</label>
-                <input type="email" class="form-control" id="logradouro" />
-              </section>
-            </section>
+                <section class="form-group col-sm-12 col-md-12">
+                  <button type="button" class="btn btn-block orange" data-button="getAddress">
+                    Adicionar o endereço automaticamente
+                  </button>
+                </section>
+                <section class="form-group col-sm-12 col-md-12">
+                  <button type="button" class="btn btn-block orange" data-toggle="modal" data-target="#modal-endereco">
+                    Adicionar o endereço manualmente
+                  </button>
+                </section>
 
-            <section class="form-row">
-              <section class="form-group col-md-6">
-                <label for="CEP">CEP</label>
-                <input type="numeric" class="form-control" id="CEP" />
-              </section>
-              <section class="form-group col-md-6">
-                <label for="bairro">Bairro</label>
-                <input type="email" class="form-control" id="bairro" />
-              </section>
-            </section>
-            <section class="form-row">
-              <section class="form-group col-md-6">
-                <label for="cidade">Cidade</label>
-                <input type="numeric" class="form-control" id="cidade" />
-              </section>
-              <section class="form-group col-md-6">
-                <label for="estado">Estado</label>
-                <input type="email" class="form-control" id="estado" />
-              </section>
-            </section>
-            <section class="form-row">
-              <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
-                <button type="button" class="btn orange--offset mr-2">
-                  Cancelar
-                </button>
-                <button type="submit" class="btn orange">
-                  Cadastrar
-                </button>
-              </section>
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <section class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
+                      <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+                    </section>
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"></textarea>
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <button type="button" class="btn btn-block orange" data-button="getAddress">
+                      Adicionar o endereço automaticamente
+                    </button>
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-md-12">
+                    <label for="endereco">Endereço</label>
+                    <input type="email" class="form-control" id="logradouro" />
+                  </section>
+                </section>
+
+                <section class="form-row">
+                  <section class="form-group col-md-6">
+                    <label for="CEP">CEP</label>
+                    <input type="numeric" class="form-control" id="CEP" />
+                  </section>
+                  <section class="form-group col-md-6">
+                    <label for="bairro">Bairro</label>
+                    <input type="email" class="form-control" id="bairro" />
+                  </section>
+                </section>
+                <section class="form-row">
+                  <section class="form-group col-md-6">
+                    <label for="cidade">Cidade</label>
+                    <input type="numeric" class="form-control" id="cidade" />
+                  </section>
+                  <section class="form-group col-md-6">
+                    <label for="estado">Estado</label>
+                    <input type="email" class="form-control" id="estado" />
+                  </section>
+                </section>
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
+                    <button type="button" class="btn orange--offset mr-2">
+                      Cancelar
+                    </button>
+                    <button type="submit" class="btn orange">
+                      Cadastrar
+                    </button>
+                  </section>
       </form>
     </section>
   </section>
