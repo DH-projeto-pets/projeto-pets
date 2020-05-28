@@ -9,6 +9,7 @@ var expressSession = require("express-session");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var petsRouter = require("./routes/pets");
+var racasRouter = require("./routes/racas");
 
 const { setUser } = require("./middlewares");
 
@@ -34,6 +35,9 @@ app.use(
     },
   })
 );
+
+app.use(express.json());
+app.use("/racas", racasRouter);
 
 app.use(setUser);
 app.use("/", indexRouter);
