@@ -1,24 +1,27 @@
 <section class="card container border mb-1">
-  <div class="row justify-content-end mt-3 mr-2 pb-0">
-    <% if(pet.status == "PERDIDO"){ %>
-      <%- include('../components/badge-lost') %>
-      <% } %>
-      <% if(pet.status == "ENCONTRADO"){ %>
-      <%- include('../components/badge-found') %>
-      <% } %>
-      <% if(pet.status == "ADOCAO"){ %>
-      <%- include('../components/badge-adoption') %>
-      <% } %>
-  </div>
-  <div class="row">
-  <div class="card-body col-md-12 pt-2 pb-2">
-    <img class="card-img-top" src="/images/buldog.png" alt="Card image cap" />
-  </div>
-    <div class="col-md-12 text-start mb-2" style="display:flex; justify-content: space-between;">
+  <section class="row justify-content-end mt-3">
+    <div class="col-md-12 pl-4 pr-4 d-flex justify-content-between">
       <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
-    <!-- </div>
-    <div class="col text-start mb-3"> -->
-      <span class="bg-transparent">18:51</span>
+    <% if(pet.status == "PERDIDO"){ %>
+    <%- include('../components/badge-lost') %>
+    <% } %>
+    <% if(pet.status == "ENCONTRADO"){ %>
+    <%- include('../components/badge-found') %>
+    <% } %>
+    <% if(pet.status == "ADOCAO"){ %>
+    <%- include('../components/badge-adoption') %>
+    <% } %>
     </div>
-  </div>
+  </section>
+  <section class="row">
+    <div class="card-body col-md-12 pt-2 pb-2">
+      <img class="card-img-top" src="/images/buldog.png" alt="Card image cap" />
+    </div>
+  </section>
+  <section class="row">
+    <div class="col-md-12 pl-4 pr-4 mb-3 d-flex justify-content-between">
+      <span class="bg-transparent "><%= pet.nome ? pet.nome : "Sem nome" %></span>  <!-- Colocar aqui a distância ao invés do nome -->
+      <span class="bg-transparent"><%= pet.createdAt %></span>
+    </div>
+  </section>
 </section>
