@@ -24,6 +24,13 @@ module.exports = {
     castrado: Sequelize.STRING(40),
     vermifugado: Sequelize.STRING(40),
     cuidados_extras: Sequelize.STRING(100),
+    logradouro: Sequelize.STRING(256),
+    numero: Sequelize.STRING(256),
+    bairro: Sequelize.STRING(256),
+    cidade: Sequelize.STRING(256),
+    estado: Sequelize.STRING(256),
+    latitude: Sequelize.DOUBLE,
+    longitude: Sequelize.DOUBLE,
     fk_raca: {
       type: Sequelize.INTEGER,
       allowNull: false,

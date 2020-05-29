@@ -22,6 +22,13 @@ module.exports = {
     facebook: Sequelize.STRING(40),
     instagram: Sequelize.STRING(40),
     twitter: Sequelize.STRING(40),
+    logradouro: Sequelize.STRING(256),
+    numero: Sequelize.STRING(256),
+    bairro: Sequelize.STRING(256),
+    cidade: Sequelize.STRING(256),
+    estado: Sequelize.STRING(256),
+    latitude: Sequelize.DOUBLE,
+    longitude: Sequelize.DOUBLE,
   }),
 
   down: (queryInterface, Sequelize) => queryInterface.dropTable('usuarios'),

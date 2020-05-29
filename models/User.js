@@ -24,6 +24,13 @@ module.exports = (sequelize, DataTypes) => {
       facebook: DataTypes.STRING(40),
       instagram: DataTypes.STRING(40),
       twitter: DataTypes.STRING(40),
+      logradouro: DataTypes.STRING(256),
+      numero: DataTypes.STRING(256),
+      bairro: DataTypes.STRING(256),
+      cidade: DataTypes.STRING(256),
+      estado: DataTypes.STRING(256),
+      latitude: DataTypes.DOUBLE,
+      longitude: DataTypes.DOUBLE,
     },
     {
       tableName: 'usuarios',

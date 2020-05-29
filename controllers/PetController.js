@@ -1,5 +1,18 @@
 const { sequelize, Pet } = require("../models");
 const { Op } = require("sequelize");
+const NodeGeocoder = require('node-geocoder');
+ 
+const options = {
+  provider: 'google',
+
+  apiKey: 'AIzaSyDnXRFp7aVOort6ZYlfFgeAMDBZta667fE', // for Mapquest, OpenCage, Google Premier
+  formatter: null // 'gpx', 'string', ...
+};
+ 
+const geocoder = NodeGeocoder(options);
+ 
+
+
 module.exports = {
   showGrid: async (req, res) => {
     const pets = await Pet.findAll({
@@ -88,7 +101,8 @@ module.exports = {
       fk_raca: req.body.raca
     }).then(pet => pet).catch(err => err);
     console.log("==>", pet)
-
+    // Using callback
+    // const res1 = await geocoder.geocode('54 Renato Azevedo Manga Inhauma Minas Gerais');
     res.redirect("/user/gerenciamento");
   },
   delete: async (req, res) => {

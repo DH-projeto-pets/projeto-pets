@@ -1,7 +1,16 @@
 const bcrypt = require("bcrypt");
 const { check, validationResult, body } = require("express-validator");
 const { sequelize, User } = require("../models");
+const NodeGeocoder = require('node-geocoder');
+ 
+const options = {
+  provider: 'google',
 
+  apiKey: 'AIzaSyDnXRFp7aVOort6ZYlfFgeAMDBZta667fE',
+  formatter: null
+};
+ 
+const geocoder = NodeGeocoder(options);
 let UserController = {
   store: async (req, res) => {
     const { email, senha, nome, } = req.body;
@@ -24,12 +33,17 @@ let UserController = {
   },
   update: async (req, res) => {
     const id = req.session.user.id;
+    const { logradouro, numero, bairro, cep, cidade, estado } = req.body;
+    const endereco = `${logradouro} ${numero} ${bairro} ${cep} ${cidade} ${estado}`;
+    const geoLoc = await geocoder.geocode(endereco);
     const usuario = await User.update({
-      ...req.body
+      ...req.body,
+      latitude: geoLoc[0].latitude,
+      longitude: geoLoc[0].longitude,
     },
-      { where: { id } },
+    { where: { id } },
     );
-
+ 
     const { nome } = await User.findOne({
       where: {
         id

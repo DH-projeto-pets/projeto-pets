@@ -26,6 +26,13 @@ module.exports = (sequelize, DataTypes) => {
       castrado: DataTypes.STRING(40),
       vermifugado: DataTypes.STRING(40),
       cuidados_extras: DataTypes.STRING(100),
+      logradouro: DataTypes.STRING(256),
+      numero: DataTypes.STRING(256),
+      bairro: DataTypes.STRING(256),
+      cidade: DataTypes.STRING(256),
+      estado: DataTypes.STRING(256),
+      latitude: DataTypes.DOUBLE,
+      longitude: DataTypes.DOUBLE,
       fk_raca: {
         type: DataTypes.INTEGER,
         allowNull: false,
