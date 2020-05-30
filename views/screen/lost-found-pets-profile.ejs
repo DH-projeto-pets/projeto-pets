@@ -6,7 +6,7 @@
     <div class="container col-12 mt-5 mb-5" id="containerbody">
 
         <br>
-        <div class="row ml-3">
+        <div class="row mt-1 ml-2">
             <h1 class=""><%= pet.nome %></h1>
             <!-- botão para pet encontrado -->
 
@@ -26,7 +26,7 @@
         <div class="container col-12" id="containerimgs">
             <div class="row p-2 d-flex justify-content-center">
 
-                <img src="/images/cachorro.jpg" class="img-fluid col-8 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
+                <img src="/images/cachorro.jpg" class="img-fluid col-9 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
 
                 <div class="col-3 p-0 float-right " id="thumbspets">
                     <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
@@ -36,9 +36,9 @@
             </div>
                             <%- include('../components/pet-status-line') %>
                     </div>
-        <div class="texto  pt-1 pb-3 ml-3">
+        <div class="texto  pt-1 pb-3 ml-2">
 
-            <div class="row pl-4">
+            <div class="row pl-3">
                 <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -48,7 +48,7 @@
                 <h6> 3km de você</h6>
             </div>
 
-            <p class="ml-3"><%= pet.descricao %>
+            <p class="ml-2"><%= pet.descricao %>
                 <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
