@@ -1,17 +1,20 @@
+//  Importando dotenv para pegar chave da API
+require('dotenv').config();
+
 const { sequelize, Pet } = require("../models");
 const { Op } = require("sequelize");
+
+// Importando pacote para usar com a API
 const NodeGeocoder = require('node-geocoder');
- 
+// Configurações da API
 const options = {
   provider: 'google',
-
-  apiKey: 'AIzaSyDnXRFp7aVOort6ZYlfFgeAMDBZta667fE', // for Mapquest, OpenCage, Google Premier
-  formatter: null // 'gpx', 'string', ...
+  apiKey: process.env.API_KEY,
+  formatter: null,
 };
- 
+// Chamando API
 const geocoder = NodeGeocoder(options);
  
-
 
 module.exports = {
   showGrid: async (req, res) => {
