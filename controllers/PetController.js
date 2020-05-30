@@ -2,15 +2,25 @@ const { sequelize, Pet } = require("../models");
 const { Op } = require("sequelize");
 module.exports = {
   showGrid: async (req, res) => {
-    const pets = await Pet.findAll({
-      where: {
-        [Op.or]: [
-          { status: 'PERDIDO' },
-          { status: 'ENCONTRADO' }
-        ]
-      }
+    let { page = 1 } = req.query;
+    const { count:total, rows:pets } = await Pet.findAndCountAll(
+      {
+        limit: 6,
+        offset: (page - 1) * 6
+      },
+      {
+        where: {
+          [Op.or]: [
+            { status: 'PERDIDO' },
+            { status: 'ENCONTRADO' }
+          ]
+        },
+      order: [
+        ['id', 'DESC']
+      ]
     });
-    res.render('screen/lost-found-pets', { pets })
+    let totalPagina = Math.ceil(total / 6);
+    res.render('screen/lost-found-pets', { pets, totalPagina })
   },
   showGridAdocao: async (req, res) => {
     const pets = await Pet.findAll({
