@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       castrado: DataTypes.STRING(40),
       vermifugado: DataTypes.STRING(40),
       cuidados_extras: DataTypes.STRING(100),
+
+
+      // Pequena alteração no banco para testes com geolocalização
       logradouro: DataTypes.STRING(256),
       numero: DataTypes.STRING(256),
       bairro: DataTypes.STRING(256),
@@ -33,6 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       estado: DataTypes.STRING(256),
       latitude: DataTypes.DOUBLE,
       longitude: DataTypes.DOUBLE,
+      // fim da alteração
+      
       fk_raca: {
         type: DataTypes.INTEGER,
         allowNull: false,

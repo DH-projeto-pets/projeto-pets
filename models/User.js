@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       facebook: DataTypes.STRING(40),
       instagram: DataTypes.STRING(40),
       twitter: DataTypes.STRING(40),
+
+      // Pequena alteração no banco para testes com geolocalização
       logradouro: DataTypes.STRING(256),
       numero: DataTypes.STRING(256),
       bairro: DataTypes.STRING(256),
@@ -31,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       estado: DataTypes.STRING(256),
       latitude: DataTypes.DOUBLE,
       longitude: DataTypes.DOUBLE,
+      // Fim da alteração para teste
     },
     {
       tableName: 'usuarios',
