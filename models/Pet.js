@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       descricao: DataTypes.STRING(255),
-      vacinado: DataTypes.STRING(10),
-      castrado: DataTypes.STRING(40),
-      vermifugado: DataTypes.STRING(40),
+      vacinado: DataTypes.BOOLEAN,
+      castrado: DataTypes.BOOLEAN,
+      vermifugado: DataTypes.BOOLEAN,
       cuidados_extras: DataTypes.STRING(100),
       fk_raca: {
         type: DataTypes.INTEGER,
