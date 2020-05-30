@@ -1,7 +1,7 @@
 <section class="card container border mb-1">
   <section class="row justify-content-end mt-3">
     <div class="col-md-12 pl-4 pr-4 d-flex justify-content-between">
-      <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
+      <a class="link-card-feed" href=/pet/<%= pet.id %>><span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span></a>
       <% if(pet.status == "PERDIDO"){ %> 
       <%- include('../components/badge-lost') %> 
       <% } %> 
@@ -15,12 +15,12 @@
   </section>
   <section class="row">
     <div class="card-body col-md-12 pt-2 pb-2">
-      <img class="card-img-top" src="/images/buldog.png" alt="Card image cap" />
+      <a class="link-card-feed" href=/pet/<%= pet.id %>><img class="card-img-top" src="/images/buldog.png" alt="Card image cap" /></a
     </div>
   </section>
   <section class="row">
     <div class="col-md-12 pl-4 pr-4 mb-3 d-flex justify-content-between">
-      <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
+     <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
       <!-- Colocar aqui a distância ao invés do nome -->
       <span class="bg-transparent">
       <% var monthNames = [
