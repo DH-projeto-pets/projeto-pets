@@ -2,15 +2,15 @@
   <section class="row justify-content-end mt-3">
     <div class="col-md-12 pl-4 pr-4 d-flex justify-content-between">
       <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
-    <% if(pet.status == "PERDIDO"){ %>
-    <%- include('../components/badge-lost') %>
-    <% } %>
-    <% if(pet.status == "ENCONTRADO"){ %>
-    <%- include('../components/badge-found') %>
-    <% } %>
-    <% if(pet.status == "ADOCAO"){ %>
-    <%- include('../components/badge-adoption') %>
-    <% } %>
+      <% if(pet.status == "PERDIDO"){ %> 
+      <%- include('../components/badge-lost') %> 
+      <% } %> 
+      <% if(pet.status == "ENCONTRADO"){ %> 
+      <%- include('../components/badge-found') %> 
+      <% } %> 
+      <% if(pet.status == "ADOCAO"){ %> 
+      <%- include('../components/badge-adoption') %> 
+      <% } %>
     </div>
   </section>
   <section class="row">
@@ -20,8 +20,24 @@
   </section>
   <section class="row">
     <div class="col-md-12 pl-4 pr-4 mb-3 d-flex justify-content-between">
-      <span class="bg-transparent "><%= pet.nome ? pet.nome : "Sem nome" %></span>  <!-- Colocar aqui a distância ao invés do nome -->
-      <span class="bg-transparent"><%= pet.createdAt %></span>
+      <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
+      <!-- Colocar aqui a distância ao invés do nome -->
+      <span class="bg-transparent">
+      <% var monthNames = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio","Junho", "Julho",
+       "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]; 
+
+        var dataCadastro = pet.createdAt; 
+        var d =dataCadastro.getDate(); 
+        var m = monthNames[dataCadastro.getMonth()]; 
+        var y = dataCadastro.getFullYear(); 
+        var h = dataCadastro.getHours(); 
+        var min = dataCadastro.getMinutes(); 
+
+        if(min<=9){ min='0'+min } %> 
+        
+      <%= d+ ' ' +m+ ' ' +y+ ' ' +h+ ':'+min %>
+      </span>
     </div>
   </section>
 </section>
