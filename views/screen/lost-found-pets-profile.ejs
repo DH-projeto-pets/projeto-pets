@@ -4,52 +4,50 @@
     <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
 
     <div class="container col-12 mt-5 mb-5" id="containerbody">
-<div class="col-12">
-        <br>
-        <div class="row mt-1 ml-2">
-            <h1 class=""><%= pet.nome %></h1>
-            <!-- botão para pet encontrado -->
+        <div class="col-12">
+            <br>
+            <div class="col-12">
+                <div class="row mt-1 ml-2">
+                    <h1 class=""><%= pet.nome %></h1>
+                    <!-- botão para pet encontrado -->
 
-            <div class="col" style="text-align: left;">
-                <% if(pet.status == "ENCONTRADO"){ %>
-                <%- include('../components/badge-found') %>
-                <% } %>
-                <% if(pet.status == "PERDIDO"){ %>
-                <%- include('../components/badge-lost') %>
-                <% } %>
-                <% if(pet.status == "ADOCAO"){ %>
-                <%- include('../components/badge-adoption') %>
-                <% } %>
-            </div>
-        </div>
+                    <div class="col-8" style="text-align: left;">
+                        <% if(pet.status == "ENCONTRADO"){ %>
+                        <%- include('../components/badge-found') %>
+                        <% } %>
+                        <% if(pet.status == "PERDIDO"){ %>
+                        <%- include('../components/badge-lost') %>
+                        <% } %>
+                        <% if(pet.status == "ADOCAO"){ %>
+                        <%- include('../components/badge-adoption') %>
+                        <% } %>
+                    </div>
 
-        <div class="container col-12" id="containerimgs">
-            <div class="row p-2 d-flex justify-content-center">
-
-                <img src="/images/cachorro.jpg" class="img-fluid col-9 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
-
-                <div class="col-3 p-0 float-right " id="thumbspets">
-                    <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
-                    <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
-                    <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid p-0">
+                    <div class="col pt-2 pl-3 text-nowrap" style="text-align: right;">
+                        <a class="pr-1 pl-1"> <i style="font-size: 13px" class="mt-1 fas fa-map-marker-alt"></i> 13km de
+                            você</a>
+                    </div>
                 </div>
             </div>
-                            <%- include('../components/pet-status-line') %>
+
+            <div class="container col-12" id="containerimgs">
+                <div class="row p-2 d-flex justify-content-center">
+
+                    <img src="/images/cachorro.jpg" class="img-fluid col-9 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
+
+                    <div class="col-3 p-0 float-right " id="thumbspets">
+                        <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
+                        <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
+                        <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid p-0">
                     </div>
-        <div class="texto  pt-1 pb-3 ml-2">
-
-            <div class="row pl-3">
-                <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z"
-                        clip-rule="evenodd" />
-                </svg>
-                <h6> 3km de você</h6>
+                </div>
+                <%- include('../components/pet-status-line') %>
             </div>
+            <div class="texto  pt-1 pb-3 ml-2">
 
-            <p class="ml-2"><%= pet.descricao %>
-                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                <br>
+                <p class="ml-2"><%= pet.descricao %>
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                 commodo
@@ -57,18 +55,18 @@
                 pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
                 laborum. -->
-            </p>
-            <ul class="list-unstyled ml-2">
-                <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.fk_raca%></a></li>
-                <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
-                <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
-                
-            </ul>
-            <div class="text-center">
-                <a class="btn btn-primary btn-lg " href="/user/<%= pet.fk_usuario %>" role="button"
-                    id="botaocontato">Entrar em contato</a>
+                </p>
+                <ul class="list-unstyled ml-2">
+                    <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.fk_raca%></a></li>
+                    <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
+                    <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
+
+                </ul>
+                <div class="text-center">
+                    <a class="btn btn-primary btn-lg " href="/user/<%= pet.fk_usuario %>" role="button"
+                        id="botaocontato">Entrar em contato</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <%- include('../partials/footer') %>
