@@ -61,11 +61,17 @@ let UserController = {
   // Uso da API
   update: async (req, res) => {
     const id = req.session.user.id;
+    // Pegando o endereço colocado no formulario de edição do usuario
     const { logradouro, numero, bairro, cep, cidade, estado } = req.body;
+    // Contatenando endereço (parâmetro a passar para API)
     const endereco = `${logradouro} ${numero} ${bairro} ${cep} ${cidade} ${estado}`;
+    // Usando API para obter objeto que contém as coordenadas
     const geoLoc = await geocoder.geocode(endereco);
+    // Para ver o objeto retornado pela API
+    // console.log(geoLoc)
     const usuario = await User.update({
       ...req.body,
+      // Colocando coordenadas no banco de dados
       latitude: geoLoc[0].latitude,
       longitude: geoLoc[0].longitude,
     },

@@ -24,6 +24,8 @@ module.exports = {
     castrado: Sequelize.STRING(40),
     vermifugado: Sequelize.STRING(40),
     cuidados_extras: Sequelize.STRING(100),
+
+    // Alteração provisória no banco
     logradouro: Sequelize.STRING(256),
     numero: Sequelize.STRING(256),
     bairro: Sequelize.STRING(256),

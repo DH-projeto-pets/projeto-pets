@@ -22,6 +22,8 @@ module.exports = {
     facebook: Sequelize.STRING(40),
     instagram: Sequelize.STRING(40),
     twitter: Sequelize.STRING(40),
+
+    // Alteração provisória no banco
     logradouro: Sequelize.STRING(256),
     numero: Sequelize.STRING(256),
     bairro: Sequelize.STRING(256),
