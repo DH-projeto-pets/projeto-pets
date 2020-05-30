@@ -27,6 +27,35 @@
     <section class="container-fluid fundo-pegadas-h370">
       <div class="row">
         <div class="col-md-12 grid-home__container">
+
+          <!-- Grid Dinâmico -->
+          <% for (pet of pets) {%>
+          <div class="card grid-pets-item" style="width: 18rem;">
+            <a href="/pet/<%= pet.id %>">
+              <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+            </a>
+            <div class="card-body">
+              <div class="container-card-info">
+                <a href="/pet/:id">
+                  <p class="card-text">
+                    <% if (pet.nome) { %>
+                    <%= pet.nome %>
+                    <% } else { %>
+                    Sem nome
+                    <% } %>
+                  </p>
+                </a>
+                <% if(pet.status == "PERDIDO"){ %>
+                <%- include('../components/badge-lost') %>
+                <% } %>
+                <% if(pet.status == "ENCONTRADO"){ %>
+                <%- include('../components/badge-found') %>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          
           <!-- Card 1 -->
           <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
             <a href="/pet/perfil">
