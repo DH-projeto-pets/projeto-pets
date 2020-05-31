@@ -1,5 +1,21 @@
+//  Importando dotenv para pegar chave da API
+require('dotenv').config();
+
 const { sequelize, Pet } = require("../models");
 const { Op } = require("sequelize");
+
+// Importando pacote para usar com a API
+const NodeGeocoder = require('node-geocoder');
+// Configurações da API
+const options = {
+  provider: 'google',
+  apiKey: process.env.API_KEY,
+  formatter: null,
+};
+// Chamando API
+const geocoder = NodeGeocoder(options);
+ 
+
 module.exports = {
   showGrid: async (req, res) => {
     const pets = await Pet.findAll({
@@ -88,7 +104,8 @@ module.exports = {
       fk_raca: req.body.raca
     }).then(pet => pet).catch(err => err);
     console.log("==>", pet)
-
+    // Using callback
+    // const res1 = await geocoder.geocode('54 Renato Azevedo Manga Inhauma Minas Gerais');
     res.redirect("/user/gerenciamento");
   },
   delete: async (req, res) => {
