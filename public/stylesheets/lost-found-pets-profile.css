@@ -15,5 +15,12 @@ background-color: rgb(55, 160, 134);
 border-color: rgb(55, 160, 134);
 }
 
+.link {
+  text-transform: lowercase;
+display: inline-block;
+}
 
+.link::first-line {
+  text-transform: capitalize;
+}
    
