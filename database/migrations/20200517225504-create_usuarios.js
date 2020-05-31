@@ -22,6 +22,7 @@ module.exports = {
     facebook: Sequelize.STRING(40),
     instagram: Sequelize.STRING(40),
     twitter: Sequelize.STRING(40),
+
   }),
 
   down: (queryInterface, Sequelize) => queryInterface.dropTable('usuarios'),

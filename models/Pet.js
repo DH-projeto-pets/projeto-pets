@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       castrado: DataTypes.STRING(40),
       vermifugado: DataTypes.STRING(40),
       cuidados_extras: DataTypes.STRING(100),
+
+      
       fk_raca: {
         type: DataTypes.INTEGER,
         allowNull: false,
