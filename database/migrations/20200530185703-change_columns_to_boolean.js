@@ -13,4 +13,18 @@ module.exports = {
       type: Sequelize.BOOLEAN,
     });
   },
-};
+
+
+down: async (queryInterface, Sequelize) => {
+  await queryInterface.changeColumn("pets", "vacinado", {
+    type: Sequelize.STRING(40),
+  });
+
+  queryInterface.changeColumn("pets", "castrado", {
+    type: Sequelize.STRING(40),
+  });
+  queryInterface.changeColumn("pets", "vermifugado", {
+    type: Sequelize.STRING(40),
+  });
+},
+}
