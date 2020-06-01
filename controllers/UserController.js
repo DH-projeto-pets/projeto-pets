@@ -87,7 +87,7 @@ let UserController = {
     req.session.save(() => {
       req.session.user.nome = nome;
       return res.redirect("/user/editar");
-    })
+    });
   },
   delete: (req, res) => {
     // deleta o usuario
