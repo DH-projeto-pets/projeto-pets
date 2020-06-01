@@ -39,14 +39,22 @@ module.exports = {
     res.render('screen/lost-found-pets', { pets, totalPagina })
   },
   showGridAdocao: async (req, res) => {
-    const pets = await Pet.findAll({
-      where: {
-        status: {
-          [Op.eq]: 'ADOCAO'
+    let { page = 1 } = req.query;
+    const { count:total, rows:pets } = await Pet.findAndCountAll(
+      {
+        limit: 6,
+        offset: (page - 1) * 6
+      },
+      {
+        where: {
+          [Op.or]: 'ADOCAO'
         },
-      }
+      order: [
+        ['id', 'DESC']
+      ]
     });
-    res.render('screen/adoption-pets', { pets })
+    let totalPagina = Math.ceil(total / 6);
+    res.render('screen/adoption-pets', { pets, totalPagina })
   },
   showPetPerfil: async (req, res) => {
     const { id } = req.params;

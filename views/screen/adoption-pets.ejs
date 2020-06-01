@@ -110,87 +110,19 @@
             </div>
           </div>
           <% } %>
-
-          <!-- Grid Estático -->
-          <!-- <div class="card grid-pets-item" style="width: 18rem;">
-                    <a href="/pet/:id">
-                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-                    </a>
-                    <div class="card-body">
-                        <div class="container-card-info">
-                            <a href="/pet/:id">
-                                <p class="card-text">Sem nome</p>
-                            </a>
-                            <%- include('../components/badge-adoption') %>
-                        </div>
-                    </div>
-                </div>
-                <div class="card grid-pets-item" style="width: 18rem;">
-                    <a href="/pet/:id">
-                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-                    </a>
-                    <div class="card-body">
-                        <div class="container-card-info">
-                            <a href="/pet/:id">
-                                <p class="card-text">Sem nome</p>
-                            </a>
-                            <%- include('../components/badge-adoption') %>
-                        </div>
-                    </div>
-                </div>
-                <div class="card grid-pets-item" style="width: 18rem;">
-                    <a href="/pet/:id">
-                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-                    </a>
-                    <div class="card-body">
-                        <div class="container-card-info">
-                            <a href="/pet/:id">
-                                <p class="card-text">Sem nome</p>
-                            </a>
-                            <%- include('../components/badge-adoption') %>
-                        </div>
-                    </div>
-                </div>
-                <div class="card grid-pets-item" style="width: 18rem;">
-                    <a href="/pet/:id">
-                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-                    </a>
-                    <div class="card-body">
-                        <div class="container-card-info">
-                            <a href="/pet/:id">
-                                <p class="card-text">Sem nome</p>
-                            </a>
-                            <%- include('../components/badge-adoption') %>
-                        </div>
-                    </div>
-                </div>
-                <div class="card grid-pets-item" style="width: 18rem;">
-                    <a href="/pet/:id">
-                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-                    </a>
-                    <div class="card-body">
-                        <div class="container-card-info">
-                            <a href="/pet/:id">
-                                <p class="card-text">Sem nome</p>
-                            </a>
-                            <%- include('../components/badge-adoption') %>
-                        </div>
-                    </div>
-                </div>
-                <div class="card grid-pets-item" style="width: 18rem;">
-                    <a href="/pet/:id">
-                        <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-                    </a>
-                    <div class="card-body">
-                        <div class="container-card-info">
-                            <a href="/pet/:id">
-                                <p class="card-text">Sem nome</p>
-                            </a>
-                            <%- include('../components/badge-adoption') %>
-                        </div>
-                    </div>
-                </div> -->
         </section>
+
+        <!-- Paginação -->
+        <section class="container my-3">
+          <div class="row justify-content-center">
+            <ul class="pagination">
+              <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
+                <li class="page-item"><a href="?page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
+              <% } %>
+            </ul> 
+          </div>
+        </section>
+        
       </div>
   </section>
   <div class="espaco-branco"></div>
