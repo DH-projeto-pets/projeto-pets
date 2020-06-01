@@ -9,7 +9,8 @@
 /* CARROSSEL */
 
 /* Aumenta o tamanho dos botões de navegação */
-.carousel-control-next-icon, .carousel-control-prev-icon {
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
   padding: 30px;
 }
 /* Ajusta altura do banner rotativo da landing page */
@@ -35,7 +36,7 @@
   text-align: center;
 }
 .container-pets {
-  background: url('/images/background-paw.png');
+  background: url("/images/background-paw.png");
   min-height: 300px;
   padding: 15px 150px;
 }
@@ -59,11 +60,11 @@
   padding: 10px 70px;
   margin: 10px 0;
   border: none;
-  background-color: #FFDC73;
+  background-color: #ffdc73;
 }
 .botao-medio-amarelo:hover {
   color: #000;
-  background-color: #FF9721;
+  background-color: #ff9721;
 }
 
 /* CALL TO ACTION 'COMO POSSO AJUDAR?' */
@@ -76,13 +77,13 @@
 /* Área com max-height de 370px e com background de pegadas. 
 Usado no call to action e no grid*/
 .fundo-pegadas-h370 {
-  background: url('/images/fundo2.png');
+  background: url("/images/fundo2.png");
   background-size: 70%;
   /* max-height: 370px; */
 }
 /* ********** */
 .lateral-cta {
-  background: url('/images/banner-cachorro-v3.png');
+  background: url("/images/banner-cachorro-v3.png");
   background-position: right;
   background-size: 22%;
   background-repeat: no-repeat;
@@ -100,18 +101,22 @@ Usado no call to action e no grid*/
   padding: 15px 80px;
   margin: 10px 0;
   border: none;
-  background-color: #4BDBB7;
+  background-color: #4bdbb7;
 }
 .botao-medio-verde:hover {
   color: #000;
-  background-color: #3D9194;
+  background-color: #3d9194;
+}
+
+.bootstrap-select .dropdown-menu {
+  width: 100%;
 }
 
 /* ************** */
 /* RESPONSIVIDADE */
 /* ************** */
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .lateral-cta {
     background: none;
   }
