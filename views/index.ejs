@@ -22,56 +22,38 @@
     <!-- Espaçamento em branco -->
     <div class="espaco-branco"></div>
 
-    <!-- Grid Pets Perdidos -->
+    <!-- Grid Dinâmico -->
+    <!-- Pets Perdidos e Encontrados -->
     <h2 class="display-4 text-center my-4">Últimos Pets Perdidos e Encontrados</h2>
     <section class="container-fluid fundo-pegadas-h370">
       <div class="row">
         <div class="col-md-12 grid-home__container">
+          <% for (pet of pets) {%>
+            <div class="card grid-pets-item" style="width: 18rem;">
+              <a href="/pet/<%= pet.id %>">
+                <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+                <div class="card-body">
+                  <div class="container-card-info">
+                      <p class="card-text">
+                        <% if (pet.nome) { %>
+                          <%= pet.nome %>
+                        <% } else { %>
+                          Sem nome
+                        <% } %>
+                      </p>
+                    <% if(pet.status == "PERDIDO"){ %>
+                      <%- include('components/badge-lost') %>
+                    <% } %>
+                    <% if(pet.status == "ENCONTRADO"){ %>
+                      <%- include('components/badge-found') %>
+                    <% } %>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+            <% } %>
           
-          <!-- Card 1 -->
-          <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/pet/perfil">
-              <img src="/images/cachorro.jpg" class="card-img-top grid-miniatura">
-            </a>
-            <div class="card-body d-flex justify-content-between">
-              <div class="card-text">
-                <strong>Nome: </strong>
-              </div>
-              <div class="localizacao-pet">
-                <i class="fa fa-map-marker" aria-hidden="true"> 2 km</i>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/pet/perfil">
-              <img src="/images/cachorro.jpg" class="card-img-top grid-miniatura">
-            </a>
-            <div class="card-body d-flex justify-content-between">
-              <div class="card-text">
-                <strong>Nome: </strong>
-              </div>
-              <div class="localizacao-pet">
-                <i class="fa fa-map-marker" aria-hidden="true"> 1 km</i>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/pet/perfil">
-              <img src="/images/cachorro.jpg" class="card-img-top grid-miniatura">
-            </a>
-            <div class="card-body d-flex justify-content-between">
-              <div class="card-text">
-                <strong>Nome: </strong>
-              </div>
-              <div class="localizacao-pet">
-                <i class="fa fa-map-marker" aria-hidden="true"> 2 km</i>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -89,50 +71,27 @@
     <section class="container-fluid fundo-pegadas-h370">
       <div class="row">
         <div class="col-md-12 grid-home__container">
-          <!-- Card 1 -->
-          <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/pet/perfil">
-              <img src="/images/gato.jpg" class="card-img-top grid-miniatura">
-            </a>
-            <div class="card-body d-flex justify-content-between">
-              <div class="card-text">
-                <strong>Nome: </strong> Chico
-              </div>
-              <div class="localizacao-pet">
-                <i class="fa fa-map-marker" aria-hidden="true"> 2 km</i>
-              </div>
-            </div>
-          </div>
 
-          <!-- Card 2 -->
-          <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/pet/perfil">
-              <img src="/images/gato.jpg" class="card-img-top grid-miniatura">
-            </a>
-            <div class="card-body d-flex justify-content-between">
-              <div class="card-text">
-                <strong>Nome: </strong> Chico
-              </div>
-              <div class="localizacao-pet">
-                <i class="fa fa-map-marker" aria-hidden="true"> 4 km</i>
-              </div>
+          <% for (petAdocao of petsAdocao) {%>
+            <div class="card grid-pets-item" style="width: 18rem;">
+              <a href="/pet/<%= pet.id %>">
+                <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+      
+                <div class="card-body">
+                  <div class="container-card-info">
+                      <p class="card-text">
+                        <% if (pet.nome) { %>
+                          <%= pet.nome %>
+                        <% } else { %>
+                          Sem nome
+                        <% } %>
+                      </p>
+                    <%- include('components/badge-adoption') %>
+                  </div>
+                </div>
+              </a>
             </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="card grid-item col-12 col-md-3" style="width: 18rem;">
-            <a href="/pet/perfil">
-              <img src="/images/gato.jpg" class="card-img-top grid-miniatura">
-            </a>
-            <div class="card-body d-flex justify-content-between">
-              <div class="card-text">
-                <strong>Nome: </strong> Chico
-              </div>
-              <div class="localizacao-pet">
-                <i class="fa fa-map-marker" aria-hidden="true"> 4 km</i>
-              </div>
-            </div>
-          </div>
+            <% } %>
         </div>
       </div>
     </section>
@@ -144,7 +103,6 @@
 
     <!-- Espaçamento em branco -->
     <div class="espaco-branco"></div>
-
     <!-- Espaçamento em branco -->
     <div class="espaco-branco"></div>
 

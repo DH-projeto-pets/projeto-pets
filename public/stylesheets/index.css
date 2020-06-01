@@ -107,6 +107,20 @@ Usado no call to action e no grid*/
   background-color: #3D9194;
 }
 
+/* Adiciona altura fixa para as imagens de pets da home */
+.grid-pets-item img{
+  height: 280px;
+}
+
+/* Altera a aparência do "link" dos cards */
+.grid-pets-item a{
+  text-decoration: none;
+  color: inherit;
+}
+.grid-pets-item a:hover {
+  font-weight: 600;
+}
+
 /* ************** */
 /* RESPONSIVIDADE */
 /* ************** */
