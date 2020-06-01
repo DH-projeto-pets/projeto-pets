@@ -118,6 +118,60 @@
               <option value="whatsapp">Whatsapp</option>
             </select>
           </section> -->
+          <section class="form-row col-12">
+            <section class="form-group col-md-5">
+              <label for="endereco">Logradouro:</label>
+              <input type="text"
+                      name="logradouro"
+                      class="form-control"
+                      id="endereco"
+                      value="<%=usuario.logradouro%>" />
+            </section>
+            <section class="form-group col-md-3">
+              <label for="numero">Número:</label>
+              <input type="text"
+                      name="numero"
+                      class="form-control"
+                      id="numero"
+                      value="<%=usuario.numero%>" />
+            </section>
+          </section>
+          <section class="form-row col-12">
+            <section class="form-group col-md-5">
+              <label for="bairro">Bairro:</label>
+              <input type="text"
+                      name="bairro"
+                      class="form-control"
+                      id="bairro"
+                      value="<%=usuario.bairro%>"/>
+            </section>
+            <section class="form-group col-md-3">
+              <label for="cep">CEP:</label>
+              <input type="text"
+                      name="cep"
+                      class="form-control"
+                      id="cep"
+                      value="<%=usuario.cep%>" />
+            </section>
+          </section>
+          <section class="form-row col-12">
+            <section class="form-group col-md-5">
+              <label for="cidade">Cidade:</label>
+              <input type="text"
+                      name="cidade"
+                      class="form-control"
+                      id="cidade"
+                      value="<%=usuario.cidade%>" />
+            </section>
+            <section class="form-group col-md-3">
+              <label for="estado">Estado:</label>
+              <input type="text"
+                      name="estado"
+                      class="form-control"
+                      id="estado"
+                      value="<%=usuario.estado%>" />
+            </section>
+          </section>
           <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
             <button type="button" class="btn orange--offset mr-2">
               Cancelar
@@ -143,40 +197,15 @@
         </button>
       </section>
       <section class="modal-body">
-        <form>
-          <section class="form-row">
-            <section class="form-group col-md-12">
-              <label for="endereco">Endereço</label>
-              <input type="email" class="form-control" id="endereco" />
-            </section>
-          </section>
-          <section class="form-row">
-            <section class="form-group col-md-6">
-              <label for="CEP">CEP</label>
-              <input type="numeric" class="form-control" id="CEP" />
-            </section>
-            <section class="form-group col-md-6">
-              <label for="bairro">Bairro</label>
-              <input type="email" class="form-control" id="bairro" />
-            </section>
-          </section>
-          <section class="form-row">
-            <section class="form-group col-md-6">
-              <label for="cidade">Cidade</label>
-              <input type="numeric" class="form-control" id="cidade" />
-            </section>
-            <section class="form-group col-md-6">
-              <label for="estado">Estado</label>
-              <input type="email" class="form-control" id="estado" />
-            </section>
-          </section>
+        <form action="" method="post"></form>
+          
         </form>
       </section>
       <section class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Fechar
         </button>
-        <button type="button" class="btn orange">Salvar</button>
+        <button type="submit" class="btn orange">Salvar</button>
       </section>
     </section>
   </section>

@@ -1,13 +1,19 @@
 .formulario {
-    position: relative;
     box-shadow: var(--shadow-box);
     margin-top: var(--margin-header);
     border-radius: var(--border-radius);
     background-color: var(--cards-bg-color);
+
+}
+.formulario {
+    position: relative;
+}
+
+.formulario h1 {
+    background-color: var(--title-bg-color);
 }
 .formulario h1 { 
     text-align: center;
-    background-color: var(--title-bg-color);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
