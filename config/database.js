@@ -8,3 +8,4 @@ module.exports = {
   port: process.env.DB_PORT,
   dialect: 'mysql',
 };
+// Ich stelle dir meine Freund vor

@@ -24,6 +24,9 @@ module.exports = {
     castrado: Sequelize.STRING(40),
     vermifugado: Sequelize.STRING(40),
     cuidados_extras: Sequelize.STRING(100),
+
+    // Alteração provisória no banco
+
     fk_raca: {
       type: Sequelize.INTEGER,
       allowNull: false,
