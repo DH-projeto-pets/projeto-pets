@@ -1,4 +1,6 @@
-.custom-file-label::after{content:"Selecionar"}
+.custom-file-label::after {
+  content: "Selecionar";
+}
 
 .container_registerPetLF {
   height: 90vh;
@@ -67,4 +69,15 @@
 .fotos i {
   font-size: 13px;
   color: var(--title-bg-color);
+}
+
+.imgs-preview {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.imgs-preview img {
+  flex: 1;
+  max-width: 116.99px;
 }
