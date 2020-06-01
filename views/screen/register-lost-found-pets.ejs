@@ -5,7 +5,7 @@
     <!-- <section class="row formRegisterPet__rowContainer"> -->
     <section class="mt-2">
       <h1 class="col-md-12 text-center">Cadastrar Pet</h1>
-      <form class="col-md-12" action="cadastrar" method="POST">
+      <form class="col-md-12" action="cadastrar" method="POST" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-check form-check-inline">
             <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ENCONTRADO" required />
@@ -91,9 +91,16 @@
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-12">
                 <section class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
-                  <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+                  <input type="file" class="custom-file-input" name="fotos" id="customFile"
+                    onchange="renderFotos(event)" multiple>
+                  <label class="custom-file-label" for="customFile">Selecionar arquivos</label>
                 </section>
+              </section>
+              <section class="form-group col-sm-12 col-md-12 imgs-preview">
+                <img data-name="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
               </section>
             </section>
 
