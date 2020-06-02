@@ -23,10 +23,31 @@
               <form action="/pet/" method="GET" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
-                  <input type="radio" name="distancia" id="0to1"><label for="0to1">0 - 1km</label><br>
-                  <input type="radio" name="distancia" id="1to3"><label for="1to3">1km - 3km</label><br>
-                  <input type="radio" name="distancia" id="3to5"><label for="3to5">3 - 5km</label><br>
-                  <input type="radio" name="distancia" id="todos"><label for="todos">Todos</label>
+                  <div class="form-group">
+                    <input type="range" min="0" max="10" step="1" list="tickmarks"
+                    class="form-control-range" id="formControlRange">
+                    <div class="slidecontainer">
+                      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    </div>
+                    <datalist id="tickmarks">
+                      <option value="0" label="0km">
+                      <option value="1" label="1km">
+                      <option value="2" label="2km">
+                      <option value="3" label="3km">
+                      <option value="4" label="4km">
+                      <option value="5" label="5km">
+                      <option value="10" label="10km">
+                      <option value="15" label="15km">
+                      <option value="20" label="20km">
+                      <option value="30" label="30km">
+                      <option value="40" label="40km">
+                      <option value="50" label="50km">
+                      <option value="70" label="70km">
+                      <option value="80" label="80km">
+                      <option value="90" label="90km">
+                      <option value="100" label="100km">
+                    </datalist>
+                  </div>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Espécie</h5>
