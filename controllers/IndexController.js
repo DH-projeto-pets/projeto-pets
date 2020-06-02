@@ -16,6 +16,13 @@ module.exports = {
     res.render("screen/login", { errors: {}, usuario: {} }),
   showRegister: (req, res) => res.render("screen/register-user"),
   //showRecover: (req, res) => res.render(),
-  showAbout: (req, res) => res.render("screen/about"),
-  showTerms: (req, res) => res.render("screen/terms-of-use"),
+
+  showAbout: (req, res) => res.render('screen/about'),
+  showTerms: (req, res) => res.render('screen/terms-of-use'),
+  // sendPets: async (req, res) => {
+  //   // envia os pets para a index caso não esteja logado
+  //   const pets = await Pet.findAll()
+  //   return res.render('index', {pets});
+  // }
 };
+

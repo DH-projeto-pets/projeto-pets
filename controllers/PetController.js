@@ -16,6 +16,43 @@ const geocoder = NodeGeocoder(options);
 
 module.exports = {
   showGrid: async (req, res) => {
+    let { page = 1 } = req.query;
+    const { count:total, rows:pets } = await Pet.findAndCountAll(
+      {
+        limit: 6,
+        offset: (page - 1) * 6
+      },
+      {
+        where: {
+          [Op.or]: [
+            { status: 'PERDIDO' },
+            { status: 'ENCONTRADO' }
+          ]
+        },
+      order: [
+        ['id', 'DESC']
+      ]
+    });
+    let totalPagina = Math.ceil(total / 6);
+    res.render('screen/lost-found-pets', { pets, totalPagina })
+  },
+  showGridAdocao: async (req, res) => {
+    let { page = 1 } = req.query;
+    const { count:total, rows:pets } = await Pet.findAndCountAll(
+      {
+        limit: 6,
+        offset: (page - 1) * 6
+      },
+      {
+        where: {
+          [Op.or]: 'ADOCAO'
+        },
+      order: [
+        ['id', 'DESC']
+      ]
+    });
+    let totalPagina = Math.ceil(total / 6);
+    res.render('screen/adoption-pets', { pets, totalPagina })
     const pets = await Pet.findAll({
       where: {
         [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
