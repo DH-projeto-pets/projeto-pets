@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const bcrypt = require("bcrypt");
 const { check, validationResult, body } = require("express-validator");
-const { sequelize, User } = require("../models");
+const { sequelize, User, Pet } = require("../models");
 
 // Importando pacote para usar com a API
 const NodeGeocoder = require('node-geocoder');
@@ -40,10 +40,10 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 // Controller normal
 let UserController = {
   store: async (req, res) => {
-    const { email, senha, nome, } = req.body;
+    const { email, senha, nome } = req.body;
     const usuarioExiste = await User.findOne({
       where: {
-        email
+        email,
       },
     }).then((u) => u);
 
@@ -52,52 +52,67 @@ let UserController = {
     const usuario = await User.create({
       email,
       senha: bcrypt.hashSync(senha, 10),
-      nome
+      nome,
     });
-    res.send(req.body)
+    res.send(req.body);
 
     // cria o user no db
   },
   // Uso da API
   update: async (req, res) => {
+    const errors = validationResult(req);
+    // console.log(errors, req.body);
+    // if (errors.isEmpty()) {
     const id = req.session.user.id;
-    // Pegando o endereço colocado no formulario de edição do usuario
-    const { logradouro, numero, bairro, cep, cidade, estado } = req.body;
-    // Contatenando endereço (parâmetro a passar para API)
-    const endereco = `${logradouro} ${numero} ${bairro} ${cep} ${cidade} ${estado}`;
-    // Usando API para obter objeto que contém as coordenadas
-    const geoLoc = await geocoder.geocode(endereco);
-    // Para ver o objeto retornado pela API
-    // console.log(geoLoc)
-    const usuario = await User.update({
-      ...req.body,
-      // Colocando coordenadas no banco de dados
-      latitude: geoLoc[0].latitude,
-      longitude: geoLoc[0].longitude,
-    },
-    { where: { id } },
+    if (req.file) {
+      var image = `/images/dinamics/${req.file.originalname}`;
+    }
+    const usuario = await User.update(
+      {
+        ...req.body,
+        image,
+      },
+      { where: { id } }
     );
+
+//     // Pegando o endereço colocado no formulario de edição do usuario
+//     const { logradouro, numero, bairro, cep, cidade, estado } = req.body;
+//     // Contatenando endereço (parâmetro a passar para API)
+//     const endereco = `${logradouro} ${numero} ${bairro} ${cep} ${cidade} ${estado}`;
+//     // Usando API para obter objeto que contém as coordenadas
+//     const geoLoc = await geocoder.geocode(endereco);
+//     // Para ver o objeto retornado pela API
+//     // console.log(geoLoc)
+//     const usuario = await User.update({
+//       ...req.body,
+//       // Colocando coordenadas no banco de dados
+//       latitude: geoLoc[0].latitude,
+//       longitude: geoLoc[0].longitude,
+//     },
+//     { where: { id } },
+//     );
  
     const { nome } = await User.findOne({
       where: {
-        id
+        id,
       },
     });
-
     req.session.save(() => {
       req.session.user.nome = nome;
       return res.redirect("/user/editar");
-    })
+    });
+    // }
+    // res.render("screen/edit-user", { errors });
   },
   delete: (req, res) => {
     // deleta o usuario
   },
   login: async (req, res) => {
     // console.log(req.body);
-    const { email, senha } = req.body
+    const { email, senha } = req.body;
     const usuario = await User.findOne({
       where: {
-        email
+        email,
       },
     }).then((u) => u);
 
@@ -113,30 +128,38 @@ let UserController = {
     req.session.user = usuario;
 
     return res.redirect("/");
-
   },
   show: async (req, res) => {
     const { id } = req.params;
 
-    const usuario = await User.findOne({ where: { id }, include: ['pets'] });
+    const usuario = await User.findOne({ where: { id }, include: ["pets"] });
     // console.log(user)
-    if (!usuario) return res.render("404-not-found")
+    if (!usuario) return res.render("404-not-found");
     res.render("screen/owner-profile", { usuario });
   },
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
 
-    const user = await User.findOne({ where: { id }, include: ['pets'] });
+    const user = await User.findOne({
+      where: { id },
+      include: [
+        // "pets",
+        {
+          model: Pet,
+          as: "pets",
+          include: "fotoPrincipal",
+        },
+      ],
+    });
 
-    res.render("screen/manager-pet", { pets: user.pets })
+    res.render("screen/manager-pet", { pets: user.pets });
   },
   showUpdate: async (req, res) => {
-
     const usuario = await User.findOne({
       where: {
         id: req.session.user.id,
-      }
-    })
+      },
+    });
     // console.log(usuario)
     res.render("screen/edit-user", { usuario });
   },

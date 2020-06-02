@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const pet = sequelize.define(
-    'Pet',
+    "Pet",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       nome: DataTypes.STRING(100),
       porte: {
-        type: DataTypes.ENUM('PEQUENO', 'MEDIO', 'GRANDE'),
+        type: DataTypes.ENUM("PEQUENO", "MEDIO", "GRANDE"),
         allowNull: false,
       },
       sexo: {
-        type: DataTypes.ENUM('MACHO', 'FEMEA', 'DESCONHECIDO'),
+        type: DataTypes.ENUM("MACHO", "FEMEA", "DESCONHECIDO"),
         allowNull: false,
       },
       status: {
-        type: DataTypes.ENUM('PERDIDO', 'ENCONTRADO', 'ADOCAO'),
+        type: DataTypes.ENUM("PERDIDO", "ENCONTRADO", "ADOCAO"),
         allowNull: false,
       },
       descricao: DataTypes.STRING(255),
@@ -44,30 +44,35 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: 'pets',
+      tableName: "pets",
       timestamps: true,
-    },
+    }
   );
 
   pet.associate = (models) => {
     pet.belongsTo(models.User, {
-      foreignKey: 'fk_usuario',
-      as: 'usuario',
+      foreignKey: "fk_usuario",
+      as: "usuario",
     });
 
     pet.belongsTo(models.Raca, {
-      foreignKey: 'fk_raca',
-      as: 'raca',
+      foreignKey: "fk_raca",
+      as: "raca",
     });
 
     pet.hasMany(models.Foto, {
-      foreignKey: 'fk_pet',
-      as: 'fotos',
+      foreignKey: "fk_pet",
+      as: "fotos",
     });
 
     pet.hasOne(models.Endereco, {
-      foreignKey: 'fk_pet',
-      as: 'endereco',
+      foreignKey: "fk_pet",
+      as: "endereco",
+    });
+
+    pet.belongsTo(models.Foto, {
+      foreignKey: "fk_foto_principal",
+      as: "fotoPrincipal",
     });
   };
 

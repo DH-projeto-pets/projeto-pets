@@ -4,9 +4,8 @@
   <section class="container-fluid main-container">
     <!-- <section class="row formRegisterPet__rowContainer"> -->
     <section class="mt-2">
-      <h1 class="col-md-12 text-center">Cadastrar Pet <i class="far fa-question-circle" data-toggle="modal"
-          data-target="#modal-petEncontrado"></i></h1>
-      <form class="col-md-12" action="cadastrar" method="POST">
+      <h1 class="col-md-12 text-center">Cadastrar Pet</h1>
+      <form class="col-md-12" action="cadastrar" method="POST" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-check form-check-inline">
             <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ENCONTRADO" required />
@@ -56,7 +55,7 @@
               <section class="form-group col-sm-12 col-md-6">
                 <label for="especie">Espécie</label>
                 <select class="form-control" name="especie" id="especie" required>
-                  <option>Selecione uma especie</option>
+                  <option value="">Selecione uma especie</option>
                   <option value="1">Gato</option>
                   <option value="2">Cachorro</option>
                   <!-- <option>Passáro</option> -->
@@ -66,7 +65,7 @@
                 <label for="raca">Raça</label>
                 <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
                   required>
-                  <option>Selecione uma raça</option>
+                  <option value="">Selecione uma raça</option>
                 </select>
               </section>
               <section class="form-group col-sm-12 col-md-12">
@@ -81,7 +80,6 @@
                     <label class="form-check-label" for="radio-macho">Macho</label>
                   </div>
                   <div class="form-check form-check-inline">
-
                     <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="DESCONHECIDO"
                       checked />
                     <label class="form-check-label" for="radio-null">Não tenho certeza</label>
@@ -93,9 +91,16 @@
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-12">
                 <section class="custom-file">
-                  <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
-                  <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
+                  <input type="file" class="custom-file-input" name="fotos" id="customFile"
+                    onchange="renderFotos(event)" multiple>
+                  <label class="custom-file-label" for="customFile">Selecionar arquivos</label>
                 </section>
+              </section>
+              <section class="form-group col-sm-12 col-md-12 imgs-preview">
+                <img data-name="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
               </section>
             </section>
 
