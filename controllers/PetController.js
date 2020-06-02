@@ -1,20 +1,18 @@
-
 const { sequelize, Pet, Foto } = require("../models");
 //  Importando dotenv para pegar chave da API
-require('dotenv').config();
+require("dotenv").config();
 const { Op } = require("sequelize");
 
 // Importando pacote para usar com a API
-const NodeGeocoder = require('node-geocoder');
+const NodeGeocoder = require("node-geocoder");
 // Configurações da API
 const options = {
-  provider: 'google',
+  provider: "google",
   apiKey: process.env.API_KEY,
   formatter: null,
 };
 // Chamando API
 const geocoder = NodeGeocoder(options);
- 
 
 module.exports = {
   showGrid: async (req, res) => {
@@ -97,18 +95,17 @@ module.exports = {
       .catch((err) => err);
 
     if (pet) {
-      const images = req.files.map((file) => ({
-        caminho: `/images/dinamics/${file.originalname}-${Math.floor(
-          Math.random() * 1000
-        )}`,
-        fk_pet: pet.id,
-      }));
+      const images = req.files.map(
+        (file) =>
+          `/images/${Math.floor(Math.random() * 1000)}-${file.originalname}`
+      );
 
       // await Foto.bulkCreate(images);
 
       for (img of images) {
         await Foto.create({
-          ...img,
+          caminho: img,
+          fk_pet: pet.id,
         });
       }
 

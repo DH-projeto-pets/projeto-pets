@@ -27,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
       vermifugado: DataTypes.BOOLEAN,
       cuidados_extras: DataTypes.STRING(100),
 
-      
       fk_raca: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -71,6 +70,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     pet.belongsTo(models.Foto, {
+      onDelete: "cascade",
       foreignKey: "fk_foto_principal",
       as: "fotoPrincipal",
     });
