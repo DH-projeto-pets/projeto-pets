@@ -44,7 +44,7 @@
 
 /* Adiciona espaçamento entre os cards */
 .grid-pets-item {
-    margin: 0 1% 1% 0;
+    margin: 1% 1% 1% 1%;
 }
 
 /* Altera a aparência do filtro */
