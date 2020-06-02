@@ -9,7 +9,11 @@ const { checkUser, checkUserLogado } = require("../middlewares");
 // add middleware na rota /
 router.get("/", checkUser, IndexController.auth);
 router.get("/login", checkUserLogado, IndexController.showLogin);
-router.post("/login", UserController.login);
+router.post(
+  "/login",
+  [check("email").isEmail(), check("senha").isLength({ min: 4 })],
+  UserController.login
+);
 router.get("/cadastrar", checkUserLogado, IndexController.showRegister);
 router.post("/cadastrar", UserController.store);
 // router.get('/recuperar-senha', IndexController.showRecover);
