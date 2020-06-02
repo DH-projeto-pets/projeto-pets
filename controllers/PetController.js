@@ -18,43 +18,6 @@ const geocoder = NodeGeocoder(options);
 
 module.exports = {
   showGrid: async (req, res) => {
-    let { page = 1 } = req.query;
-    const { count:total, rows:pets } = await Pet.findAndCountAll(
-      {
-        limit: 6,
-        offset: (page - 1) * 6
-      },
-      {
-        where: {
-          [Op.or]: [
-            { status: 'PERDIDO' },
-            { status: 'ENCONTRADO' }
-          ]
-        },
-      order: [
-        ['id', 'DESC']
-      ]
-    });
-    let totalPagina = Math.ceil(total / 6);
-    res.render('screen/lost-found-pets', { pets, totalPagina })
-  },
-  showGridAdocao: async (req, res) => {
-    let { page = 1 } = req.query;
-    const { count:total, rows:pets } = await Pet.findAndCountAll(
-      {
-        limit: 6,
-        offset: (page - 1) * 6
-      },
-      {
-        where: {
-          [Op.or]: 'ADOCAO'
-        },
-      order: [
-        ['id', 'DESC']
-      ]
-    });
-    let totalPagina = Math.ceil(total / 6);
-    res.render('screen/adoption-pets', { pets, totalPagina })
     const pets = await Pet.findAll({
       where: {
         [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
@@ -124,7 +87,7 @@ module.exports = {
 
   store: async (req, res) => {
     // console.log("Files ", req);
-    console.log(req.body);
+
     const pet = await Pet.create({
       ...req.body,
       fk_usuario: req.session.user.id,
@@ -132,18 +95,22 @@ module.exports = {
     })
       .then((pet) => pet)
       .catch((err) => err);
-    console.log(pet);
+
     if (pet) {
-  
-      const images = req.files.map((file) => `/images/${file.originalname}`);
-      for (img of images) {         
-        await Foto.create({           
-          caminho: img,    
-          fk_pet: pet.id,         
-        });       }
+      const images = req.files.map((file) => ({
+        caminho: `/images/dinamics/${file.originalname}-${Math.floor(
+          Math.random() * 1000
+        )}`,
+        fk_pet: pet.id,
+      }));
+
       // await Foto.bulkCreate(images);
 
-    
+      for (img of images) {
+        await Foto.create({
+          ...img,
+        });
+      }
 
       const [caminho] = images;
       const foto = await Foto.findOne({
@@ -151,6 +118,7 @@ module.exports = {
           caminho,
         },
       });
+
       await Pet.update(
         {
           fk_foto_principal: foto.id,
