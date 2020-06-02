@@ -124,8 +124,6 @@ module.exports = {
       );
     }
 
-    // const res1 = await geocoder.geocode('54 Renato Azevedo Manga Inhauma Minas Gerais');
-
     res.redirect("/user/gerenciamento");
   },
   delete: async (req, res) => {
