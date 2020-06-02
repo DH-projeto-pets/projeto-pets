@@ -10,6 +10,13 @@ const getRacas = async (especieId) => {
   return racas;
 };
 
+const createOpt = (value, text) => {
+  const opt = document.createElement("option");
+  opt.value = value;
+  opt.innerText = text;
+  return opt;
+};
+
 if (especieSelect) {
   especieSelect.addEventListener("change", async (e) => {
     const especie = e.target.value;
@@ -17,10 +24,10 @@ if (especieSelect) {
       const racas = await getRacas(especie);
       $("select").selectpicker("destroy");
       racasSelect.innerHTML = "";
+      const defaultOpt = createOpt("", "Selecione uma raça");
+      racasSelect.append(defaultOpt);
       for (raca of racas) {
-        const opt = document.createElement("option");
-        opt.value = raca.id;
-        opt.innerText = raca.nome;
+        const opt = createOpt(raca.id, raca.nome);
         racasSelect.append(opt);
       }
       $("select").selectpicker();
