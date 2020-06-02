@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const { check, validationResult, body } = require("express-validator");
 const { sequelize, User, Pet } = require("../models");
 
+const { costumizeErrors } = require("../helpers/utils");
+
 // Importando pacote para usar com a API
 const NodeGeocoder = require("node-geocoder");
 // Configurações da API
@@ -125,19 +127,41 @@ let UserController = {
 
       // falta validar se o usuario existe ou n
       if (!usuario) {
-        res.redirect("/login?error=1");
+        // res.redirect("/login?error=1");
+        res.render("screen/login", {
+          errors: {
+            email: "Email inválido",
+            senha: "Senha inválida",
+          },
+          usuario: {
+            ...req.body,
+          },
+        });
       }
       // falta validar a senha
       if (!bcrypt.compareSync(senha, usuario.senha)) {
-        res.redirect("/login?error=1");
+        res.render("screen/login", {
+          errors: {
+            email: "Email inválido",
+            senha: "Senha inválida",
+          },
+          usuario: {
+            ...req.body,
+          },
+        });
       }
       // faz login aka salva o cooke
       req.session.user = usuario;
 
       return res.redirect("/");
     }
-
-    res.render("screen/login", { errors });
+    const e = costumizeErrors(errors);
+    res.render("screen/login", {
+      errors: e,
+      usuario: {
+        ...req.body,
+      },
+    });
   },
   show: async (req, res) => {
     const { id } = req.params;
