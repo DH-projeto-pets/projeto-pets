@@ -9,7 +9,17 @@ const { checkUser, checkUserLogado } = require("../middlewares");
 // add middleware na rota /
 router.get("/", checkUser, IndexController.auth);
 router.get("/login", checkUserLogado, IndexController.showLogin);
-router.post("/login", UserController.login);
+router.post(
+  "/login",
+  [
+    check("email").isEmail().withMessage("Email inválido"),
+    // check("senha").isEmpty().withMessage("Senha deve estar preenchida"),
+    check("senha")
+      .isLength({ min: 1 })
+      .withMessage("Senha deve estar preenchida"),
+  ],
+  UserController.login
+);
 router.get("/cadastrar", checkUserLogado, IndexController.showRegister);
 router.post("/cadastrar", UserController.store);
 // router.get('/recuperar-senha', IndexController.showRecover);
