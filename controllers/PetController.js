@@ -87,7 +87,7 @@ module.exports = {
 
   store: async (req, res) => {
     // console.log("Files ", req);
-
+    console.log(req.body);
     const pet = await Pet.create({
       ...req.body,
       fk_usuario: req.session.user.id,
@@ -95,22 +95,18 @@ module.exports = {
     })
       .then((pet) => pet)
       .catch((err) => err);
-
+    console.log(pet);
     if (pet) {
-      const images = req.files.map((file) => ({
-        caminho: `/images/dinamics/${file.originalname}-${Math.floor(
-          Math.random() * 1000
-        )}`,
-        fk_pet: pet.id,
-      }));
-
+  
+      const images = req.files.map((file) => `/images/${file.originalname}`);
+      for (img of images) {         
+        await Foto.create({           
+          caminho: img,    
+          fk_pet: pet.id,         
+        });       }
       // await Foto.bulkCreate(images);
 
-      for (img of images) {
-        await Foto.create({
-          ...img,
-        });
-      }
+    
 
       const [caminho] = images;
       const foto = await Foto.findOne({
@@ -118,7 +114,6 @@ module.exports = {
           caminho,
         },
       });
-
       await Pet.update(
         {
           fk_foto_principal: foto.id,

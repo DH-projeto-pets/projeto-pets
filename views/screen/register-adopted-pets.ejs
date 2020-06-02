@@ -14,8 +14,10 @@
           <!-- <i class="far fa-question-circle" data-toggle="modal" data-target="#modal-petEncontrado">
           </i> -->
         </h1>
-        <form class="col-md-12 formRegisterPet__form" action="/perfil-dono" method="GET">
-
+        <form class="col-md-12 formRegisterPet__form"
+              action="cadastrar" method="POST"
+              enctype="multipart/form-data">
+          <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="ADOCAO" checked/>
           <div class="form-row">
             <section class="form-group
                             col-md-4 pl-0">
@@ -107,60 +109,20 @@
                     </div>
                   </section>
                 </section>
-                <!-- Campo de idade do pet -->
-                <!-- <section class="form-group
-                                col-sm-12
-                                col-md-12">
-                  <label class="mr-2">Idade:</label>
-                  <section class="form-row">
-                    <!-- Anos -->
-                <!-- <div class="form-check
-                                form-check-inline
-                                ml-2">
-                      <select class="form-control
-                                      col-8"
-                              id="especie">
-                        <option selected>-</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
-                      <label class="form-check-label
-                                    ml-2"
-                              for="radio-femea">
-                              Anos
-                      </label>
-                    </div> -->
-                <!-- Meses -->
-                <!-- <div class="form-check
-                                form-check-inline">
-                      <select class="form-control
-                                      col-8
-                                      ml-2"
-                              id="especie">
-                        <option selected>-</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
-                      <label class="form-check-label
-                                    ml-2"
-                              for="radio-macho">
-                              Meses
-                      </label>
-                    </div>
+        
+                <section class="form-row">
+                  <section class="form-group col-sm-12 col-md-12">
+                    <section class="custom-file">
+                      <input type="file" class="custom-file-input" name="fotos" id="customFile"
+                        onchange="renderFotos(event)" multiple>
+                      <label class="custom-file-label" for="customFile">Selecionar arquivos</label>
+                    </section>
                   </section>
-                </section> -->
-
-
-
-
-                <section class="form-group col-sm-12 col-md-12">
-                  <section class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
-                    <label class="custom-file-label" for="customFile">
-                      Selecionar foto
-                    </label>
+                  <section class="form-group col-sm-12 col-md-12 imgs-preview">
+                    <img data-name="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
+                    <img data-id="multiplePreview" class="img-thumbnail">
+                    <img data-id="multiplePreview" class="img-thumbnail">
+                    <img data-id="multiplePreview" class="img-thumbnail">
                   </section>
                 </section>
 
