@@ -1,6 +1,40 @@
+const { Pet } = require("../models");
+const { Op } = require("sequelize");
+
 module.exports = {
-  checkUser: (req, res, next) => {
-    if (!req.session.user) return res.render("index");
+  checkUser: async (req, res, next) => {
+    const pets  = await Pet.findAll(
+      {
+      limit: 3
+    },
+    {
+      where: {
+        [Op.or]: [
+          { status: 'PERDIDO' },
+          { status: 'ENCONTRADO' },
+        ]
+      },
+    order: [
+      ['id', 'DESC']
+    ]
+    });
+
+    const petsAdocao  = await Pet.findAll(
+      {
+      limit: 3
+    },
+    {
+      where: {
+        [Op.or]: [
+          { status: 'ADOCAO' }
+        ]
+      },
+    order: [
+      ['id', 'DESC']
+    ]
+    });
+
+    if (!req.session.user) return res.render("index", {pets, petsAdocao});
     return next();
   },
   checkUserLogado: (req, res, next) => {
