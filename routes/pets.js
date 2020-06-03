@@ -17,7 +17,12 @@ router.post(
   PetController.store
 );
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);
-router.post("/adocao/cadastrar", upload.array("fotos"), PetController.store);
+router.post("/adocao/cadastrar", 
+      // [ check("name").isLength({min:3}).withMessage(""),
+      //   check("email").isEmail().withMessage(""),
+      //   check("password").isLength({min:8}).withMessage(""),
+      //   check("password2").isLength({min:8}).withMessage(""),],
+          upload.array("fotos"), PetController.store);
 router.get("/:id/editar", checkUser, PetController.showPetEdicao);
 router.put("/:id/editar", PetController.update);
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
