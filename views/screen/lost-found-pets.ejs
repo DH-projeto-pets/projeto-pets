@@ -24,10 +24,10 @@
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
                   <div class="form-group">
-                    <input type="range" min="0" max="10" step="1" list="tickmarks"
-                    class="form-control-range" id="formControlRange">
+                    <!-- <input type="range" min="0" max="10" step="1" list="tickmarks"
+                    class="form-control-range" id="formControlRange"> -->
                     <div class="slidecontainer">
-                      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                      <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
                     </div>
                     <datalist id="tickmarks">
                       <option value="0" label="0km">
@@ -47,6 +47,8 @@
                       <option value="90" label="90km">
                       <option value="100" label="100km">
                     </datalist>
+                    <!-- Adiciona contador dinâmico -->
+                    <span>Até </span><span id="distance-counter">50</span><span>km</span>
                   </div>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
@@ -104,17 +106,17 @@
                 <a href="/pet/:id">
                   <p class="card-text">
                     <% if (pet.nome) { %>
-                    <%= pet.nome %>
+                      <%= pet.nome %>
                     <% } else { %>
-                    Sem nome
+                     Sem nome
                     <% } %>
                   </p>
                 </a>
                 <% if(pet.status == "PERDIDO"){ %>
-                <%- include('../components/badge-lost') %>
+                  <%- include('../components/badge-lost') %>
                 <% } %>
                 <% if(pet.status == "ENCONTRADO"){ %>
-                <%- include('../components/badge-found') %>
+                  <%- include('../components/badge-found') %>
                 <% } %>
               </div>
             </div>
