@@ -14,7 +14,7 @@ module.exports = {
   },
   showLogin: (req, res) =>
     res.render("screen/login", { errors: {}, usuario: {} }),
-  showRegister: (req, res) => res.render("screen/register-user"),
+  showRegister: (req, res) => res.render("screen/register-user", { errors: {}, usuario: {} }),
   //showRecover: (req, res) => res.render(),
 
   showAbout: (req, res) => res.render('screen/about'),
