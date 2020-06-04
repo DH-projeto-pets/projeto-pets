@@ -47,23 +47,50 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 // Controller normal
 let UserController = {
   store: async (req, res) => {
-    const { email, senha, nome } = req.body;
-    const usuarioExiste = await User.findOne({
-      where: {
-        email,
+    const errors = validationResult(req);
+    console.log(errors, errors.isEmpty());
+
+    if (errors.isEmpty()) {
+      const { email, senha, nome, confirmar_senha } = req.body;
+
+      const usuario = await User.findOne({
+        where: {
+          email,
+        },
+      }).then((u) => u);
+      console.log(usuario);
+
+      //Validar se usuário já existe
+      if (usuario) {
+        // res.redirect("/cadastrar?error=1");
+        res.render("screen/register-user", {
+          errors: {
+            email: "Email já utilizado",
+          },
+          usuario: {
+            ...req.body,
+          },
+        });
+
+        console.log(errors);
+      } else {
+        const usuario = await User.create({
+          email,
+          senha: bcrypt.hashSync(senha, 10),
+          nome,
+        });
+        res.render("screen/login", { errors: {}, usuario:{email:usuario.email}});
+        // cria o user no db
+      }
+    }
+
+    const e = costumizeErrors(errors);
+    res.render("screen/register-user", {
+      errors: e,
+      usuario: {
+        ...req.body,
       },
-    }).then((u) => u);
-
-    if (usuarioExiste) res.redirect("/cadastrar?error=1");
-
-    const usuario = await User.create({
-      email,
-      senha: bcrypt.hashSync(senha, 10),
-      nome,
     });
-    res.send(req.body);
-
-    // cria o user no db
   },
   // Uso da API
   update: async (req, res) => {
