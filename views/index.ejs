@@ -9,27 +9,27 @@
           <img src="/images/banner-cachorro-v1.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h3>Adote um pet</h5>
-            <p>Seu amiguinho espera por você!</p>
-            <%- include('components/banner-content.ejs') %>
+              <p>Seu amiguinho espera por você!</p>
+              <%- include('components/banner-content.ejs') %>
           </div>
         </div>
         <div class="carousel-item">
           <img src="/images/banner-cachorro-v1.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h3>Seu pet está perdido?</h5>
-            <p>Podemos ajudar!</p>
-            <%- include('components/banner-content.ejs') %>
+              <p>Podemos ajudar!</p>
+              <%- include('components/banner-content.ejs') %>
           </div>
         </div>
         <div class="carousel-item">
           <img src="/images/banner-cachorro-v1.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h3>Avistou um pet perdido?</h5>
-            <p>Encontre seu dono</p>
-            <%- include('components/banner-content.ejs') %>
+              <p>Encontre seu dono</p>
+              <%- include('components/banner-content.ejs') %>
           </div>
         </div>
-    
+
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -51,31 +51,32 @@
       <div class="row">
         <div class="col-md-12 grid-home__container">
           <% for (pet of pets) {%>
-            <div class="card grid-pets-item" style="width: 18rem;">
-              <a href="/pet/<%= pet.id %>">
-                <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
-                <div class="card-body">
-                  <div class="container-card-info">
-                      <p class="card-text">
-                        <% if (pet.nome) { %>
-                          <%= pet.nome %>
-                        <% } else { %>
-                          Sem nome
-                        <% } %>
-                      </p>
-                    <% if(pet.status == "PERDIDO"){ %>
-                      <%- include('components/badge-lost') %>
+          <div class="card grid-pets-item" style="width: 18rem;">
+            <a href="/pet/<%= pet.id %>">
+              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                alt="Pet perdido/encontrado">
+              <div class="card-body">
+                <div class="container-card-info">
+                  <p class="card-text">
+                    <% if (pet.nome) { %>
+                    <%= pet.nome %>
+                    <% } else { %>
+                    Sem nome
                     <% } %>
-                    <% if(pet.status == "ENCONTRADO"){ %>
-                      <%- include('components/badge-found') %>
-                    <% } %>
-                  </div>
+                  </p>
+                  <% if(pet.status == "PERDIDO"){ %>
+                  <%- include('components/badge-lost') %>
+                  <% } %>
+                  <% if(pet.status == "ENCONTRADO"){ %>
+                  <%- include('components/badge-found') %>
+                  <% } %>
                 </div>
-              </a>
+              </div>
+            </a>
 
-            </div>
-            <% } %>
-          
+          </div>
+          <% } %>
+
         </div>
       </div>
     </section>
@@ -95,25 +96,26 @@
         <div class="col-md-12 grid-home__container">
 
           <% for (petAdocao of petsAdocao) {%>
-            <div class="card grid-pets-item" style="width: 18rem;">
-              <a href="/pet/<%= pet.id %>">
-                <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
-      
-                <div class="card-body">
-                  <div class="container-card-info">
-                      <p class="card-text">
-                        <% if (pet.nome) { %>
-                          <%= pet.nome %>
-                        <% } else { %>
-                          Sem nome
-                        <% } %>
-                      </p>
-                    <%- include('components/badge-adoption') %>
-                  </div>
+          <div class="card grid-pets-item" style="width: 18rem;">
+            <a href="/pet/<%= pet.id %>">
+              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                alt="Pet perdido/encontrado">
+
+              <div class="card-body">
+                <div class="container-card-info">
+                  <p class="card-text">
+                    <% if (pet.nome) { %>
+                    <%= pet.nome %>
+                    <% } else { %>
+                    Sem nome
+                    <% } %>
+                  </p>
+                  <%- include('components/badge-adoption') %>
                 </div>
-              </a>
-            </div>
-            <% } %>
+              </div>
+            </a>
+          </div>
+          <% } %>
         </div>
       </div>
     </section>

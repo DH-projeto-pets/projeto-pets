@@ -98,8 +98,10 @@
           <!-- Grid Dinâmico -->
           <% for (pet of petsAdocao) {%>
           <div class="card grid-pets-item" style="width: 18rem;">
-            <a href="/pet/<%= pet.id %>">
-              <img class="card-img-top" src="/images/gato.jpg" alt="Pet perdido/encontrado">
+         
+            <a href="/pet/<%=pet.id %>">
+              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                alt="Pet perdido/encontrado">
             </a>
             <div class="card-body">
               <div class="container-card-info">

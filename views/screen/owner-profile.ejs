@@ -54,8 +54,10 @@
           <% for(const pet of usuario.pets) {%>
           <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
             <div class="card grid-pets-item" style="width: 14.5rem;">
-              <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
-
+              
+                <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                  alt="Pet perdido/encontrado">
+              
               <div class="card-body">
                 <div class="container-card-info">
                   <!-- <a href="/pet/<%=pet.id %>"> -->
