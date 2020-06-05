@@ -112,11 +112,13 @@
         
                 <section class="form-row">
                   <section class="form-group col-sm-12 col-md-12">
+
                     <section class="custom-file">
                       <input type="file" class="custom-file-input" name="fotos" id="customFile"
                         onchange="renderFotos(event)" multiple>
                       <label class="custom-file-label" for="customFile">Selecionar arquivos</label>
                     </section>
+
                   </section>
                   <section class="form-group col-sm-12 col-md-12 imgs-preview">
                     <img data-name="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
@@ -156,14 +158,14 @@
                                 col-6">
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-sim" value="sim" />
+                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-sim" value="1" />
                       <label class="form-check-label" for="vacinado-sim">
                         Sim
                       </label>
                     </div>
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-nao" value="nao" />
+                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-nao" value="0" />
                       <label class="form-check-label" for="vacinado-nao">
                         Não
                       </label>
@@ -181,14 +183,14 @@
                                 col-6">
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="castrado" type="radio" id="castrado-sim" value="sim" />
+                      <input class="form-check-input" name="castrado" type="radio" id="castrado-sim" value="1" />
                       <label class="form-check-label" for="castrado-sim">
                         Sim
                       </label>
                     </div>
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="castrado" type="radio" id="castrado-nao" value="nao" />
+                      <input class="form-check-input" name="castrado" type="radio" id="castrado-nao" value="0" />
                       <label class="form-check-label" for="castrado-nao">
                         Não
                       </label>
@@ -207,7 +209,7 @@
                     <div class="form-check
                               form-check-inline">
                       <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-sim"
-                        value="sim" />
+                        value="1" />
                       <label class="form-check-label" for="vermifugado-sim">
                         Sim
                       </label>
@@ -215,7 +217,7 @@
                     <div class="form-check
                               form-check-inline">
                       <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-nao"
-                        value="nao" />
+                        value="0" />
                       <label class="form-check-label" for="vermifugado-nao">
                         Não
                       </label>

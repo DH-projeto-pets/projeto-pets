@@ -1,19 +1,14 @@
-//  Importando dotenv para pegar chave da API
 require("dotenv").config();
-
 const { sequelize, Pet, Foto } = require("../models");
 const { Op } = require("sequelize");
-
-// Importando pacote para usar com a API
+const { check, validationResult, body } = require("express-validator");
 const NodeGeocoder = require("node-geocoder");
-// Configurações da API
 const options = {
   provider: "google",
   apiKey: process.env.API_KEY,
   formatter: null,
 };
-// Chamando API
-const geocoder = NodeGeocoder(options);
+
 
 module.exports = {
   showGrid: async (req, res) => {
@@ -102,7 +97,7 @@ module.exports = {
 
   store: async (req, res) => {
     console.log(req.body);
-
+    const errors = validationResult(req);
     const pet = await Pet.create({
       ...req.body,
       fk_usuario: req.session.user.id,
