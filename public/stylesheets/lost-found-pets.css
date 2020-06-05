@@ -68,3 +68,8 @@
     border-right: 1px solid;
     border-right-color: rgba(105, 105, 105, 0.3);
 }
+
+/* Edita aparência do filtro de distância */
+#distance-counter {
+    font-size: 0.9rem;
+}
