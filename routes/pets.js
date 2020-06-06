@@ -18,6 +18,7 @@ router.post(
 );
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);
 router.post("/adocao/cadastrar", PetController.store);
+router.get("/listar", PetController.index);
 router.get("/:id/editar", checkUser, PetController.showPetEdicao);
 router.put("/:id/editar", PetController.update);
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
