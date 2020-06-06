@@ -15,7 +15,11 @@
   </section>
   <section class="row">
     <div class="card-body col-md-12 pt-2 pb-2">
-      <a class="link-card-feed" href=/pet/<%= pet.id %>><img class="card-img-top" src="/images/buldog.png" alt="Card image cap" /></a
+      <a href="/pet/<%=pet.id %>">
+        <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+          alt="Pet perdido/encontrado">
+      </a>
+      <!-- <a class="link-card-feed" href=/pet/<%= pet.id %>><img class="card-img-top" src="/images/buldog.png" alt="Card image cap" /></a -->
     </div>
   </section>
   <section class="row">
@@ -23,21 +27,35 @@
      <span class="bg-transparent"><%= pet.nome ? pet.nome : "Sem nome" %></span>
       <!-- Colocar aqui a distância ao invés do nome -->
       <span class="bg-transparent">
-      <% var monthNames = [
-      "Janeiro", "Fevereiro", "Março", "Abril", "Maio","Junho", "Julho",
-       "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]; 
+       
+     
+        <% moment.locale('pt-br')
+        let petData = moment(pet.createdAt).fromNow();
+         %>
 
-        var dataCadastro = pet.createdAt; 
-        var d =dataCadastro.getDate(); 
-        var m = monthNames[dataCadastro.getMonth()]; 
-        var y = dataCadastro.getFullYear(); 
-        var h = dataCadastro.getHours(); 
-        var min = dataCadastro.getMinutes(); 
+        <!-- sex, 29 de mai de 2020 às 21:11
+           let petData = moment(pet.createdAt).format('llll');
 
-        if(min<=9){ min='0'+min } %> 
+           29 de maio de 2020 às 17:32
+            let petData = moment(pet.createdAt).format('LLL');
+
+            29/5/2020 17:32:59
+            let petData = moment(pet.createdAt).format('L LTS');
+
+            29/05/2020 11:04
+            let petData = moment(pet.createdAt).format('L LT'); 
+
+            Última quarta-feira às 20:52
+            let petData = moment(pet.createdAt).subtract(1, 'days').calendar(); 
+
+            há 2 dias
+            let petData = moment(pet.createdAt).fromNow();
+           -->
+   
         
-      <%= d+ ' ' +m+ ' ' +y+ ' ' +h+ ':'+min %>
+      <%= `Cadastrado ${petData}`  %>
       </span>
     </div>
   </section>
 </section>
+
