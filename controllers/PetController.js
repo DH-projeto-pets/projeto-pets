@@ -1,21 +1,15 @@
-//  Importando dotenv para pegar chave da API
 require("dotenv").config();
-
 const { sequelize, Pet, Foto } = require("../models");
 const { Op } = require("sequelize");
-const { check, validationResult, body } = require("express-validator");
 const { costumizeErrors } = require("../helpers/utils");
-
+const { check, validationResult, body } = require("express-validator");
 // Importando pacote para usar com a API
 const NodeGeocoder = require("node-geocoder");
-// Configurações da API
 const options = {
-  provider: "google",
   apiKey: process.env.API_KEY,
   formatter: null,
 };
-// Chamando API
-const geocoder = NodeGeocoder(options);
+
 
 module.exports = {
   showGrid: async (req, res) => {
@@ -142,7 +136,11 @@ module.exports = {
       res.redirect("/user/gerenciamento");
   }
   const e = costumizeErrors(errors);
-  res.render("screen/register-lost-found-pets", {errors:e, pet: {...req.body} })
+  if(req.path == '/cadastrar') {
+    res.render("screen/register-lost-found-pets", {errors:e, pet: {...req.body} })
+  } else {
+    res.render("screen/register-adopted-pets", {errors:e, pet: {...req.body} })
+  }
   },
   delete: async (req, res) => {
     const { id: petId } = req.body;

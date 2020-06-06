@@ -15,36 +15,8 @@ const options = {
   apiKey: process.env.API_KEY,
   formatter: null,
 };
-// Criando constante que contem a API
 const geocoder = NodeGeocoder(options);
-// Função que calcula distância entre duas coordenadas
-function distance(lat1, lon1, lat2, lon2, unit) {
-  if (lat1 == lat2 && lon1 == lon2) {
-    return 0;
-  } else {
-    var radlat1 = (Math.PI * lat1) / 180;
-    var radlat2 = (Math.PI * lat2) / 180;
-    var theta = lon1 - lon2;
-    var radtheta = (Math.PI * theta) / 180;
-    var dist =
-      Math.sin(radlat1) * Math.sin(radlat2) +
-      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-    if (dist > 1) {
-      dist = 1;
-    }
-    dist = Math.acos(dist);
-    dist = (dist * 180) / Math.PI;
-    dist = dist * 60 * 1.1515;
-    if (unit == "K") {
-      dist = dist * 1.609344;
-    }
-    if (unit == "N") {
-      dist = dist * 0.8684;
-    }
-    return dist;
-  }
-}
-// Controller normal
+
 let UserController = {
   store: async (req, res) => {
     const errors = validationResult(req);
@@ -110,23 +82,6 @@ let UserController = {
       },
       { where: { id } }
     );
-
-    //     // Pegando o endereço colocado no formulario de edição do usuario
-    //     const { logradouro, numero, bairro, cep, cidade, estado } = req.body;
-    //     // Contatenando endereço (parâmetro a passar para API)
-    //     const endereco = `${logradouro} ${numero} ${bairro} ${cep} ${cidade} ${estado}`;
-    //     // Usando API para obter objeto que contém as coordenadas
-    //     const geoLoc = await geocoder.geocode(endereco);
-    //     // Para ver o objeto retornado pela API
-    //     // console.log(geoLoc)
-    //     const usuario = await User.update({
-    //       ...req.body,
-    //       // Colocando coordenadas no banco de dados
-    //       latitude: geoLoc[0].latitude,
-    //       longitude: geoLoc[0].longitude,
-    //     },
-    //     { where: { id } },
-    //     );
 
     const { nome } = await User.findOne({
       where: {
