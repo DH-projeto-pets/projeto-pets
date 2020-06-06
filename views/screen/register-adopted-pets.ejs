@@ -11,11 +11,14 @@
         <h1 class="col-md-12
                     text-center">
           Cadastrar Pet para adoção
-          <!-- <i class="far fa-question-circle" data-toggle="modal" data-target="#modal-petEncontrado">
-          </i> -->
-        </h1>
-        <form class="col-md-12 formRegisterPet__form" action="/perfil-dono" method="GET">
 
+        </h1>
+        <!-- <%if(typeof errors != 'undefined') { %>
+          <%= JSON.stringify(errors) %>
+        <% } %> -->
+        <form class="col-md-12 formRegisterPet__form"
+              action="cadastrar" method="POST">
+          <input class="form-check-input d-none" name="status" type="radio" id="petEncontrado" value="ADOCAO" checked/>
           <div class="form-row">
             <section class="form-group
                             col-md-4 pl-0">
@@ -30,7 +33,8 @@
                               form-check-inline
                               col-sm-3
                               col-md-12 ">
-                    <input class="form-check-input" name="porte" type="radio" id="pequeno" value="pequeno" />
+                    <input class="form-check-input
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="pequeno" value="PEQUENO" />
                     <label class="form-check-label" for="pequeno">
                       Pequeno
                     </label>
@@ -39,7 +43,8 @@
                               form-check-inline
                               col-sm-3
                               col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="medio" value="medio" />
+                    <input class="form-check-input
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="medio" value="MEDIO" />
                     <label class="form-check-label" for="medio">
                       Médio
                     </label>
@@ -49,7 +54,8 @@
                               form-check-inline
                               col-sm-3
                               col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="grande" value="grande" />
+                    <input class="form-check-input
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="grande" value="GRANDE" />
                     <label class="form-check-label" for="grande">
                       Grande
                     </label>
@@ -58,131 +64,96 @@
                               form-check-inline
                               col-sm-3
                               col-md-12">
-                    <input class="form-check-input" name="porte" type="radio" id="null" value="null" />
+                    <input class="form-check-input
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="null" value="null" />
                     <label class="form-check-label" for="null">Não sei
                     </label>
+                    <%- include('../components/feedback-invalid', { msg: errors['porte'] }) %>
                   </div>
                 </section>
               </section>
             </section>
-
+            
             <!-- Lado direito do formulário -->
             <div class="form-group
-                        col-md-8">
+            col-md-8">
+            <section class="form-row">
+              <label class="col-12" for="inputnome">
+                Nome:
+              </label>
+              <input type="text" name="nome" id="inputnome" 
+              value=""
+            class="form-control text-center"
+            autofocus />
+          
+
+
+
               <section class="form-row">
-                <label class="col-12" for="especie">
-                  Nome:
-                </label>
-                <input class="form-control
-                            col-12" type="text" name="nome" id="">
-                <section class="form-group
-                                col-12">
-                  <label class="mr-2">
-                    Sexo:
-                  </label>
-                  <section class="form-row">
-                    <div class="form-check
-                                col-3
-                                form-check-inline">
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="femea" />
-                      <label class="form-check-label" for="radio-femea">
-                        Fêmea
-                      </label>
-                    </div>
-                    <div class="form-check
-                                col-3
-                                form-check-inline">
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="macho" />
-                      <label class="form-check-label" for="radio-macho">
-                        Macho
-                      </label>
-                    </div>
-                    <div class="form-check
-                                col-4
-                                form-check-inline">
-                      <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="null" />
-                      <label class="form-check-label" for="radio-null">
-                        Não sei
-                      </label>
-                    </div>
+              <section class="form-group col-sm-12 col-md-6">
+              <label for="especie">Espécie:</label>
+              <select class="form-control" name="especie" id="especie">
+              <option value="">Selecione uma espécie</option>
+              <option value="1">Gato</option>
+              <option value="2">Cachorro</option>
+              </select>
+              </section>
+              
+              <section class="form-group col-sm-12 col-md-6">
+                <label for="raca">Raça</label>
+                <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
+                  >
+                  <option value="">Selecione uma raça</option>
+                </select>
+              </section>
+
+            </section>
+            <section class="form-group
+            col-12">
+            <label class="mr-2">
+              Sexo:
+            </label>
+            <section class="form-row">
+              <div class="form-check
+              col-3
+              form-check-inline">
+              <input class="form-check-input
+              <%= errors.sexo ? 'is-invalid' : '' %>"  name="sexo" type="radio" id="radio-femea" value="femea" />
+              <label class="form-check-label" for="radio-femea">
+                Fêmea
+              </label>
+            </div>
+            <div class="form-check
+            col-3
+            form-check-inline">
+            <input class="form-check-input
+            <%= errors.sexo ? 'is-invalid' : '' %>" name="sexo" type="radio" id="radio-macho" value="macho" />
+            <label class="form-check-label" for="radio-macho">
+              Macho
+            </label>
+            <%- include('../components/feedback-invalid', { msg: errors['sexo'] }) %>
+                </div>
+            </section>
+          </section>
+          
+          <section class="form-row">
+            <section class="form-group col-sm-12 col-md-12">
+                    <section class="custom-file">
+                      <input type="file" class="custom-file-input" name="fotos" id="customFile"
+                        onchange="renderFotos(event)" multiple>
+                      <label class="custom-file-label" for="customFile">Selecionar arquivos</label>
+                    </section>
+
                   </section>
-                </section>
-                <!-- Campo de idade do pet -->
-                <!-- <section class="form-group
-                                col-sm-12
-                                col-md-12">
-                  <label class="mr-2">Idade:</label>
-                  <section class="form-row">
-                    <!-- Anos -->
-                <!-- <div class="form-check
-                                form-check-inline
-                                ml-2">
-                      <select class="form-control
-                                      col-8"
-                              id="especie">
-                        <option selected>-</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
-                      <label class="form-check-label
-                                    ml-2"
-                              for="radio-femea">
-                              Anos
-                      </label>
-                    </div> -->
-                <!-- Meses -->
-                <!-- <div class="form-check
-                                form-check-inline">
-                      <select class="form-control
-                                      col-8
-                                      ml-2"
-                              id="especie">
-                        <option selected>-</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
-                      <label class="form-check-label
-                                    ml-2"
-                              for="radio-macho">
-                              Meses
-                      </label>
-                    </div>
-                  </section>
-                </section> -->
-
-
-
-
-                <section class="form-group col-sm-12 col-md-12">
-                  <section class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" onchange="imgArquivo(event)">
-                    <label class="custom-file-label" for="customFile">
-                      Selecionar foto
-                    </label>
+                  <section class="form-group col-sm-12 col-md-12 imgs-preview">
+                    <img data-name="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
+                    <img data-id="multiplePreview" class="img-thumbnail">
+                    <img data-id="multiplePreview" class="img-thumbnail">
+                    <img data-id="multiplePreview" class="img-thumbnail">
                   </section>
                 </section>
 
 
-                <section class="form-row">
-                  <section class="form-group col-sm-12 col-md-6">
-                    <label for="especie">Espécie:</label>
-                    <select class="form-control" name="especie" id="especie" required>
-                      <option value="">Selecione uma espécie</option>
-                      <option value="2">Cachorro</option>
-                      <option value="1">Gato</option>
-                    </select>
-                  </section>
-
-                  <section class="form-group col-sm-12 col-md-6">
-                    <label for="raca">Raça</label>
-                    <select class="form-control" name="raca" id="raca" required>
-                      <option value="">Selecione uma raça</option>
-                      <option value="indefinido">Indefinida</option>
-                    </select>
-                  </section>
-                </section>
                 <!-- Campo sobre se Pet é vacinado ou não -->
                 <section class="form-group
                               row
@@ -194,14 +165,17 @@
                                 col-6">
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-sim" value="sim" />
+                      <input class="form-check-input
+                      <%= errors.vacinado ? 'is-invalid' : '' %>" name="vacinado" type="radio" id="vacinado-sim" value="1" />
                       <label class="form-check-label" for="vacinado-sim">
                         Sim
                       </label>
+                      <%- include('../components/feedback-invalid', { msg: errors['vacinado'] }) %>
                     </div>
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="vacinado" type="radio" id="vacinado-nao" value="nao" />
+                      <input class="form-check-input
+                      <%= errors.vacinado ? 'is-invalid' : '' %>" name="vacinado" type="radio" id="vacinado-nao" value="0" />
                       <label class="form-check-label" for="vacinado-nao">
                         Não
                       </label>
@@ -219,17 +193,20 @@
                                 col-6">
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="castrado" type="radio" id="castrado-sim" value="sim" />
+                      <input class="form-check-input
+                      <%= errors.castrado ? 'is-invalid' : '' %>" name="castrado" type="radio" id="castrado-sim" value="1" />
                       <label class="form-check-label" for="castrado-sim">
                         Sim
                       </label>
                     </div>
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="castrado" type="radio" id="castrado-nao" value="nao" />
+                      <input class="form-check-input
+                      <%= errors.castrado ? 'is-invalid' : '' %>" name="castrado" type="radio" id="castrado-nao" value="0" />
                       <label class="form-check-label" for="castrado-nao">
                         Não
                       </label>
+                      <%- include('../components/feedback-invalid', { msg: errors['castrado'] }) %>
                     </div>
                   </section>
                 </section>
@@ -244,19 +221,22 @@
                                 col-6">
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-sim"
-                        value="sim" />
+                      <input class="form-check-input
+                      <%= errors.vermifugado ? 'is-invalid' : '' %>" name="vermifugado" type="radio" id="vermifugado-sim"
+                        value="1" />
                       <label class="form-check-label" for="vermifugado-sim">
                         Sim
                       </label>
                     </div>
                     <div class="form-check
                               form-check-inline">
-                      <input class="form-check-input" name="vermifugado" type="radio" id="vermifugado-nao"
-                        value="nao" />
+                      <input class="form-check-input
+                      <%= errors.vermifugado ? 'is-invalid' : '' %>" name="vermifugado" type="radio" id="vermifugado-nao"
+                        value="0" />
                       <label class="form-check-label" for="vermifugado-nao">
                         Não
                       </label>
+                      <%- include('../components/feedback-invalid', { msg: errors['vermifugado'] }) %>
                     </div>
                   </section>
                 </section>
@@ -275,35 +255,27 @@
 
                 </section>
                 <section class="form-row col-12">
-                  <section class="form-group col-md-6">
-                    <label for="endereco">Logradouro:</label>
+                    <label for="endereco">Endereço:</label>
                     <input type="email"
                             name="logradouro"
                             class="form-control"
                             id="endereco" />
-                  </section>
-                  <section class="form-group col-md-5">
-                    <label for="numero">Número:</label>
-                    <input type="text"
-                            name="numero"
-                            class="form-control"
-                            id="numero" />
-                  </section>
+              
                 </section>
                 <section class="form-row col-12">
+                  <section class="form-group col-md-6">
+                    <label for="cep">CEP:</label>
+                    <input type="text"
+                            name="cep"
+                            class="form-control"
+                            id="cep" />
+                  </section>
                   <section class="form-group col-md-6">
                     <label for="bairro">Bairro:</label>
                     <input type="text"
                             name="bairro"
                             class="form-control"
                             id="bairro" />
-                  </section>
-                  <section class="form-group col-md-5">
-                    <label for="cep">CEP:</label>
-                    <input type="text"
-                            name="cep"
-                            class="form-control"
-                            id="cep" />
                   </section>
                 </section>
                 <section class="form-row col-12">
@@ -314,7 +286,7 @@
                             class="form-control"
                             id="cidade" />
                   </section>
-                  <section class="form-group col-md-5">
+                  <section class="form-group col-md-6">
                     <label for="estado">Estado:</label>
                     <input type="text"
                             name="estado"

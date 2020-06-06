@@ -139,8 +139,13 @@ Usado no call to action e no grid*/
   text-transform: uppercase;
   /* Adiciona borda em volta do título */
   text-shadow: 2px 0 0 #333, -2px 0 0 #333, 0 2px 0 #333, 0 -2px 0 #333, 1px 1px #333, -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333;
-
 }
+.feedback-form-check-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 /* ************** */
 /* RESPONSIVIDADE */
 /* ************** */

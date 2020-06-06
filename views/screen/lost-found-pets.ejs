@@ -27,7 +27,7 @@
                     <input type="range" min="0" max="10" step="1" list="tickmarks" class="form-control-range"
                       id="formControlRange">
                     <div class="slidecontainer">
-                      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                      <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
                     </div>
                     <datalist id="tickmarks">
                       <option value="0" label="0km">
@@ -47,6 +47,8 @@
                       <option value="90" label="90km">
                       <option value="100" label="100km">
                     </datalist>
+                    <!-- Adiciona contador dinâmico -->
+                    <span>Até </span><span id="distance-counter">50</span><span>km</span>
                   </div>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
@@ -90,8 +92,9 @@
           <!-- Grid Dinâmico -->
           <% for (pet of pets) {%>
           <div class="card grid-pets-item" style="width: 18rem;">
-            <a href="/pet/<%= pet.id %>">
-              <img class="card-img-top" src="/images/cachorro.jpg" alt="Pet perdido/encontrado">
+            <a href="/pet/<%=pet.id %>">
+              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                alt="Pet perdido/encontrado">
             </a>
             <div class="card-body">
               <div class="container-card-info">
