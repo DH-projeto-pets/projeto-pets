@@ -59,17 +59,18 @@
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-6">
                 <label for="especie">Espécie</label>
-                <select class="form-control" name="especie" id="especie" >
+                <select class="form-control <%= errors.especie ? 'is-invalid' : '' %>" name="especie" id="especie" >
                   <option value="">Selecione uma especie</option>
                   <option value="1">Gato</option>
                   <option value="2">Cachorro</option>
                   <!-- <option>Passáro</option> -->
                 </select>
+                <%- include('../components/feedback-invalid', { msg: errors['especie'] }) %>
               </section>
               <section class="form-group col-sm-12 col-md-6">
                 <label for="raca">Raça</label>
                 <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
-                  required>
+                  >
                   <option value="">Selecione uma raça</option>
                 </select>
               </section>
