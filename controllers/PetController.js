@@ -1,5 +1,6 @@
 require("dotenv").config();
-const { sequelize, Pet, Foto } = require("../models");
+
+const { sequelize, Pet, Foto, Raca, User } = require("../models");
 const { Op } = require("sequelize");
 const { costumizeErrors } = require("../helpers/utils");
 const { check, validationResult, body } = require("express-validator");
@@ -9,7 +10,6 @@ const options = {
   apiKey: process.env.API_KEY,
   formatter: null,
 };
-
 
 module.exports = {
   showGrid: async (req, res) => {
@@ -56,7 +56,8 @@ module.exports = {
     });
     res.render("screen/lost-found-pets-profile", { pet });
   },
-  showPetCadastro: (req, res) => res.render("screen/register-lost-found-pets", { errors: {}, pet: {} }),
+  showPetCadastro: (req, res) =>
+    res.render("screen/register-lost-found-pets", { errors: {}, pet: {} }),
   showPetEdicao: async (req, res) => {
     const pet = await Pet.findOne({
       where: {
@@ -134,13 +135,19 @@ module.exports = {
         );
       }
       res.redirect("/user/gerenciamento");
-  }
-  const e = costumizeErrors(errors);
-  if(req.path == '/cadastrar') {
-    res.render("screen/register-lost-found-pets", {errors:e, pet: {...req.body} })
-  } else {
-    res.render("screen/register-adopted-pets", {errors:e, pet: {...req.body} })
-  }
+    }
+    const e = costumizeErrors(errors);
+    if (req.path == "/cadastrar") {
+      res.render("screen/register-lost-found-pets", {
+        errors: e,
+        pet: { ...req.body },
+      });
+    } else {
+      res.render("screen/register-adopted-pets", {
+        errors: e,
+        pet: { ...req.body },
+      });
+    }
   },
   delete: async (req, res) => {
     const { id: petId } = req.body;
@@ -152,5 +159,34 @@ module.exports = {
     });
 
     res.redirect("/user/gerenciamento");
+  },
+  index: async (req, res) => {
+    console.log(req.originalUrl);
+    const { especie, tipo, raca } = req.query;
+    const pet = await Pet.findAll({
+      where: {
+        fk_raca: raca,
+      },
+      include: [
+        {
+          model: User,
+          as: "usuario",
+          atrributes: ["tipo"],
+          where: {
+            tipo: tipo,
+          },
+        },
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+          where: {
+            fk_especie: especie,
+          },
+        },
+      ],
+    });
+
+    return res.send(pet);
   },
 };
