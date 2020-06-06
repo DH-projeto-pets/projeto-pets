@@ -15,7 +15,8 @@ router.post(
   // [check("status").isEmpty(), check("raca").isEmpty(), check("especie").isEmpty(), check("porte").isEmpty(), check("sexo").isEmpty(),],
   [check("status").isIn(['ENCONTRADO', 'PERDIDO']).withMessage('Este campo deve ser preenchido!'),
   check("porte").isIn(['PEQUENO', 'MEDIO', 'GRANDE']).withMessage('Este campo deve ser preenchido!'),
-  check("especie").isLength({ min:1 }).withMessage('Selecione uma opção!')
+  check("especie").isLength({ min:1 }).withMessage('Selecione uma opção!'),
+  check("raca").isLength({ min:1 }).withMessage('Selecione uma opção!')
 ],
   upload.array("fotos"),
   PetController.store

@@ -69,10 +69,11 @@
               </section>
               <section class="form-group col-sm-12 col-md-6">
                 <label for="raca">Raça</label>
-                <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
+                <select class="form-control <%= errors.raca ? 'is-invalid' : '' %>" id="raca" name="raca" class="selectpicker" data-live-search="true"
                   >
                   <option value="">Selecione uma raça</option>
                 </select>
+                <%- include('../components/feedback-invalid', { msg: errors['raca'] }) %>
               </section>
               <section class="form-group col-sm-12 col-md-12">
                 <label>Sexo</label>
