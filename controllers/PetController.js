@@ -1,6 +1,7 @@
 require("dotenv").config();
 const { sequelize, Pet, Foto } = require("../models");
 const { Op } = require("sequelize");
+const { costumizeErrors } = require("../helpers/utils");
 const { check, validationResult, body } = require("express-validator");
 // Importando pacote para usar com a API
 const NodeGeocoder = require("node-geocoder");
@@ -99,26 +100,6 @@ module.exports = {
     const errors = validationResult(req);
     console.log(errors);
     console.log(req.body);
-<<<<<<< HEAD
-    const errors = validationResult(req);
-    const pet = await Pet.create({
-      ...req.body,
-      fk_usuario: req.session.user.id,
-      fk_raca: req.body.raca,
-    })
-      .then((pet) => pet)
-      .catch((err) => err);
-    console.log("==>", pet);
-
-    if (pet) {
-      const images = req.files.map((file) => `/images/${file.originalname}`);
-      // await Foto.bulkCreate(images);
-      console.log(images);
-      for (img of images) {
-        await Foto.create({
-          caminho: img,
-          fk_pet: pet.id,
-=======
     if (errors.isEmpty()) {
       const pet = await Pet.create({
         ...req.body,
@@ -144,7 +125,6 @@ module.exports = {
           where: {
             caminho,
           },
->>>>>>> master
         });
         await Pet.update(
           {
@@ -156,7 +136,11 @@ module.exports = {
       res.redirect("/user/gerenciamento");
   }
   const e = costumizeErrors(errors);
-  res.render("screen/register-lost-found-pets", {errors:e, pet: {...req.body} })
+  if(req.path == '/cadastrar') {
+    res.render("screen/register-lost-found-pets", {errors:e, pet: {...req.body} })
+  } else {
+    res.render("screen/register-adopted-pets", {errors:e, pet: {...req.body} })
+  }
   },
   delete: async (req, res) => {
     const { id: petId } = req.body;
