@@ -177,44 +177,5 @@ module.exports = {
     });
 
     return res.send(pet);
-
-    // const { raca: fk_raca, especie, page = 1 } = req.query;
-    // if (!fk_raca) {
-    //   console.log("here");
-    //   delete req.query.especie;
-    //   const ultimaRaca = await Raca.findOne({
-    //     where: {
-    //       fk_especie: especie,
-    //     },
-    //     order: [["id", "DESC"]],
-    //   });
-    //   const primeiraRaca = await Raca.findOne({
-    //     where: {
-    //       fk_especie: especie,
-    //     },
-    //     order: [["id", "ASC"]],
-    //   });
-
-    //   console.log(primeiraRaca.id, ultimaRaca.id);
-
-    //   const { count: total, rows: pets } = await Pet.findAndCountAll(
-    //     {
-    //       limit: 6,
-    //       offset: (page - 1) * 6,
-    //     },
-    //     {
-    //       where: {
-    //         fk_raca: {
-    //           [Op.between]: [primeiraRaca.id, ultimaRaca.id],
-    //         },
-    //         ...req.query,
-    //       },
-    //     }
-    //   );
-    //   let totalPagina = Math.ceil(total / 6);
-    //   res.render("screen/lost-found-pets", { pets, totalPagina });
-    // }
-
-    // console.log(pets);
   },
 };
