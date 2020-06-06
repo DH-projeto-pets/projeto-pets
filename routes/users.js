@@ -10,13 +10,12 @@ const upload = require("../helpers/upload");
 
 router.get("/editar", checkUser, UserController.showUpdate); // mostra o form
 router.put(
-  "/editar",
-  // [
-  //   check("tipo").contains(["ONG", "PF"]),
-  //   check("email").isEmpty().isEmail(),
-  //   check("nome").isEmpty(),
-  // ],
-  upload.single("image"),
+  "/editar", upload.single("image"),
+  [
+    check("tipo").notEmpty().isIn(['ONG', 'PF']),
+    check("email").isEmail().withMessage("Email inválido"),
+    check("nome").isLength({ min:3 }).withMessage("O nome precisa ter no mínimo 3 caracteres")
+  ],
   UserController.update
 ); // action do form
 router.get("/gerenciamento", checkUser, UserController.showGerenciamento); // mostra a tela de gerenciamento
