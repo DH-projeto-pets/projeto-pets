@@ -13,7 +13,10 @@ router.get("/cadastrar", checkUser, PetController.showPetCadastro);
 router.post(
   "/cadastrar",
   // [check("status").isEmpty(), check("raca").isEmpty(), check("especie").isEmpty(), check("porte").isEmpty(), check("sexo").isEmpty(),],
-  [check("status").isIn(['oi', 'tchau']).withMessage('Este campo deve ser preenchido!')],
+  [check("status").isIn(['ENCONTRADO', 'PERDIDO']).withMessage('Este campo deve ser preenchido!'),
+  check("porte").isIn(['PEQUENO', 'MEDIO', 'GRANDE']).withMessage('Este campo deve ser preenchido!'),
+  check("especie").isLength({ min:1 }).withMessage('Selecione uma opção!')
+],
   upload.array("fotos"),
   PetController.store
 );

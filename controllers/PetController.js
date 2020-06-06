@@ -116,29 +116,29 @@ module.exports = {
         .catch((err) => err);
       console.log("==>", pet);
 
-      if (pet) {
-        const images = req.files.map((file) => `/images/${file.originalname}`);
-        // await Foto.bulkCreate(images);
-        console.log(images);
-        for (img of images) {
-          await Foto.create({
-            caminho: img,
-            fk_pet: pet.id,
-          });
-        }
-        const [caminho] = images;
-        const foto = await Foto.findOne({
-          where: {
-            caminho,
-          },
-        });
-        await Pet.update(
-          {
-            fk_foto_principal: foto.id,
-          },
-          { where: { id: pet.id } }
-        );
-      }
+      // if (pet) {
+      //   // const images = req.files.map((file) => `/images/${file.originalname}`);
+      //   // await Foto.bulkCreate(images);
+      //   console.log(images);
+      //   for (img of images) {
+      //     await Foto.create({
+      //       caminho: img,
+      //       fk_pet: pet.id,
+      //     });
+      //   }
+      //   const [caminho] = images;
+      //   const foto = await Foto.findOne({
+      //     where: {
+      //       caminho,
+      //     },
+      //   });
+      //   await Pet.update(
+      //     {
+      //       fk_foto_principal: foto.id,
+      //     },
+      //     { where: { id: pet.id } }
+      //   );
+      // }
       res.redirect("/user/gerenciamento");
   }
   const e = costumizeErrors(errors);
