@@ -3,6 +3,8 @@ require("dotenv").config();
 
 const { sequelize, Pet, Foto } = require("../models");
 const { Op } = require("sequelize");
+const { check, validationResult, body } = require("express-validator");
+const { costumizeErrors } = require("../helpers/utils");
 
 // Importando pacote para usar com a API
 const NodeGeocoder = require("node-geocoder");
@@ -60,7 +62,7 @@ module.exports = {
     });
     res.render("screen/lost-found-pets-profile", { pet });
   },
-  showPetCadastro: (req, res) => res.render("screen/register-lost-found-pets"),
+  showPetCadastro: (req, res) => res.render("screen/register-lost-found-pets", { errors: {}, pet: {} }),
   showPetEdicao: async (req, res) => {
     const pet = await Pet.findOne({
       where: {
@@ -73,7 +75,7 @@ module.exports = {
   },
 
   showPetCadastroAdocao: (req, res) =>
-    res.render("screen/register-adopted-pets"),
+    res.render("screen/register-adopted-pets", { errors: {}, pet: {} }),
   showPetEdicaoAdocao: async (req, res) => {
     const pet = await Pet.findOne({
       where: {
@@ -101,42 +103,46 @@ module.exports = {
   },
 
   store: async (req, res) => {
+    const errors = validationResult(req);
+    console.log(errors);
     console.log(req.body);
+    if (errors.isEmpty()) {
+      const pet = await Pet.create({
+        ...req.body,
+        fk_usuario: req.session.user.id,
+        fk_raca: req.body.raca,
+      })
+        .then((pet) => pet)
+        .catch((err) => err);
+      console.log("==>", pet);
 
-    const pet = await Pet.create({
-      ...req.body,
-      fk_usuario: req.session.user.id,
-      fk_raca: req.body.raca,
-    })
-      .then((pet) => pet)
-      .catch((err) => err);
-    console.log("==>", pet);
-
-    if (pet) {
-      const images = req.files.map((file) => `/images/${file.originalname}`);
-      // await Foto.bulkCreate(images);
-      console.log(images);
-      for (img of images) {
-        await Foto.create({
-          caminho: img,
-          fk_pet: pet.id,
+      if (pet) {
+        const images = req.files.map((file) => `/images/${file.originalname}`);
+        // await Foto.bulkCreate(images);
+        console.log(images);
+        for (img of images) {
+          await Foto.create({
+            caminho: img,
+            fk_pet: pet.id,
+          });
+        }
+        const [caminho] = images;
+        const foto = await Foto.findOne({
+          where: {
+            caminho,
+          },
         });
+        await Pet.update(
+          {
+            fk_foto_principal: foto.id,
+          },
+          { where: { id: pet.id } }
+        );
       }
-      const [caminho] = images;
-      const foto = await Foto.findOne({
-        where: {
-          caminho,
-        },
-      });
-      await Pet.update(
-        {
-          fk_foto_principal: foto.id,
-        },
-        { where: { id: pet.id } }
-      );
-    }
-
-    res.redirect("/user/gerenciamento");
+      res.redirect("/user/gerenciamento");
+  }
+  const e = costumizeErrors(errors);
+  res.render("screen/register-lost-found-pets", {errors:e, pet: {...req.body} })
   },
   delete: async (req, res) => {
     const { id: petId } = req.body;
