@@ -96,11 +96,13 @@ let UserController = {
   update: async (req, res) => {
     const errors = validationResult(req);
     // console.log(errors, req.body);
-    // if (errors.isEmpty()) {
+
+    if (errors.isEmpty()) {
     const id = req.session.user.id;
     if (req.file) {
       var image = `/images/dinamics/${req.file.originalname}`;
     }
+
     const usuario = await User.update(
       {
         ...req.body,
@@ -131,12 +133,21 @@ let UserController = {
         id,
       },
     });
+
     req.session.save(() => {
       req.session.user.nome = nome;
-      return res.redirect("/user/editar");
+      res.render("screen/edit-user", usuario);
     });
-    // }
-    // res.render("screen/edit-user", { errors });
+  }
+  const e = costumizeErrors(errors);
+  res.render("screen/edit-user", {
+    errors: e,
+    usuario: {
+      ...req.body,
+    },
+
+  });
+    
   },
   delete: (req, res) => {
     // deleta o usuario
@@ -222,7 +233,7 @@ let UserController = {
       },
     });
     // console.log(usuario)
-    res.render("screen/edit-user", { usuario });
+    res.render("screen/edit-user", {  errors:{}, usuario });
   },
 };
 
