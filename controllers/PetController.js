@@ -1,7 +1,7 @@
 //  Importando dotenv para pegar chave da API
 require("dotenv").config();
 
-const { sequelize, Pet, Foto } = require("../models");
+const { sequelize, Pet, Foto, Raca, User } = require("../models");
 const { Op } = require("sequelize");
 
 // Importando pacote para usar com a API
@@ -148,5 +148,73 @@ module.exports = {
     });
 
     res.redirect("/user/gerenciamento");
+  },
+  index: async (req, res) => {
+    console.log(req.originalUrl);
+    const { especie, tipo, raca } = req.query;
+    const pet = await Pet.findAll({
+      where: {
+        fk_raca: raca,
+      },
+      include: [
+        {
+          model: User,
+          as: "usuario",
+          atrributes: ["tipo"],
+          where: {
+            tipo: tipo,
+          },
+        },
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+          where: {
+            fk_especie: especie,
+          },
+        },
+      ],
+    });
+
+    return res.send(pet);
+
+    // const { raca: fk_raca, especie, page = 1 } = req.query;
+    // if (!fk_raca) {
+    //   console.log("here");
+    //   delete req.query.especie;
+    //   const ultimaRaca = await Raca.findOne({
+    //     where: {
+    //       fk_especie: especie,
+    //     },
+    //     order: [["id", "DESC"]],
+    //   });
+    //   const primeiraRaca = await Raca.findOne({
+    //     where: {
+    //       fk_especie: especie,
+    //     },
+    //     order: [["id", "ASC"]],
+    //   });
+
+    //   console.log(primeiraRaca.id, ultimaRaca.id);
+
+    //   const { count: total, rows: pets } = await Pet.findAndCountAll(
+    //     {
+    //       limit: 6,
+    //       offset: (page - 1) * 6,
+    //     },
+    //     {
+    //       where: {
+    //         fk_raca: {
+    //           [Op.between]: [primeiraRaca.id, ultimaRaca.id],
+    //         },
+    //         ...req.query,
+    //       },
+    //     }
+    //   );
+    //   let totalPagina = Math.ceil(total / 6);
+    //   res.render("screen/lost-found-pets", { pets, totalPagina });
+    // }
+
+    // console.log(pets);
   },
 };
