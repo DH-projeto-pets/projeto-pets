@@ -9,20 +9,23 @@
           <section class="form-group col-md-12">
             <label for="tipoPerfil">Tipo de perfil</label><br>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="tipo" id="pessoa" value="PF"
+              <input class="form-check-input  <%= errors.tipo ? 'is-invalid' : '' %>" type="radio" name="tipo" id="pessoa" value="PF"
                 <%= usuario.tipo == "PF" ? "checked": "" %> required>
+                <%- include('../components/feedback-invalid', { msg: errors['tipo'] }) %>
               <label class="form-check-label" for="pessoa">Pessoa Física</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="tipo" id="ong" value="ONG"
+              <input class="form-check-input  <%= errors.tipo ? 'is-invalid' : '' %>" type="radio" name="tipo" id="ong" value="ONG"
                 <%= usuario.tipo == "ONG" ? "checked": "" %> required>
+                <%- include('../components/feedback-invalid', { msg: errors['tipo'] }) %>
               <label class="form-check-label" for="ong">ONG</label>
             </div>
           </section>
 
           <section class="form-group col-md-12">
             <label for="nome">Nome de exibição</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="<%=usuario.nome%>" required />
+            <input type="text" class="form-control <%= errors.nome ? 'is-invalid' : '' %>" id="nome" name="nome" value="<%=usuario.nome%>" required />
+            <%- include('../components/feedback-invalid', { msg: errors['nome'] }) %>
           </section>
           <section class="form-group col-md-12">
             <section class="row">
@@ -47,9 +50,9 @@
           </section>
           <section class="form-group col-md-12">
             <label for="email">E-mail</label>
-
-            <input type="email" class="form-control" id="email" placeholder="E-mail" name="email"
-              value="<%=usuario.email%>" />
+            <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" placeholder="E-mail" name="email"
+              value="<%=usuario.email%>" required/>
+              <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
           </section>
           <!-- <section class="form-group col-md-4">
             <label for="telefone">Telefone</label>
