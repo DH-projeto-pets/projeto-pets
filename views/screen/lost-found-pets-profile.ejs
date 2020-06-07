@@ -36,9 +36,9 @@
                     <img src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>" class="img-fluid col-9 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
 
                     <div class="col-3 p-0 float-right " id="thumbspets">
-                        <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
-                        <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid mb-1 p-0">
-                        <img src="/images/cachorro.jpg" alt="thumb pet" class="img-fluid p-0">
+                        <img src="<%= pet.fk_pet? pet.fk_pet.caminho : '/images/404.png'%>" alt="thumb pet" class="img-fluid mb-1 p-0">
+                        <img src="<%= pet.fk_pet? pet.fk_pet.caminho : '/images/404.png'%>" alt="thumb pet" class="img-fluid mb-1 p-0">
+                        <img src="<%= pet.fk_pet? pet.fk_pet.caminho : '/images/404.png'%>" alt="thumb pet" class="img-fluid p-0">
                     </div>
                 </div>
                 <%- include('../components/pet-status-line') %>
@@ -57,7 +57,7 @@
                 laborum. -->
                 </p>
                 <ul class="list-unstyled ml-2">
-                    <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.fk_raca%></a></li>
+                    <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome%></a></li>
                     <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
                     <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
 
