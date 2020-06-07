@@ -21,9 +21,16 @@
           </select>
         </div>
         <div class="row mb-4">
-          <% for(const pet of pets) { %>
-          <%- include("../components/card-pet-manager", { pet } )%>
-          <% } %>
+          <% if (pets.length > 0) { %>
+            <% for(const pet of pets) { %>
+              <%- include("../components/card-pet-manager", { pet } )%>
+              <% } %>
+            <% } else { %>
+
+              <img src="/images/404pet.png" class="w-100" alt="Nenhum pet foi encontrado" />
+                           <% } %>
+
+        
         </div>
       </div>
     </div>
