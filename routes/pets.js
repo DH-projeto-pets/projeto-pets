@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check, validationResult, body } = require("express-validator");
 const router = Router();
-
+const { petAdoptionValidation } = require('../middlewares/validations')
 const PetController = require("../controllers/PetController");
 
 const { checkUser } = require("../middlewares");
@@ -18,24 +18,7 @@ router.post(
   PetController.store
 );
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);
-router.post("/adocao/cadastrar", 
-      [ check("status").isIn(['ADOCAO']),
-      check("porte")
-        .isIn(['GRANDE', 'MEDIO','PEQUENO'])
-        .withMessage("Esse campo é obrigatório"),
-      check("sexo")
-        .isIn(['FEMEA','MACHO','DESCONHECIDO'])
-        .withMessage("Esse campo é obrigatório"),
-      check("castrado")
-        .isIn(['0','1'])
-        .withMessage("Esse campo é obrigatório."),
-      check("vermifugado")
-        .isIn(['0','1'])
-        .withMessage("Esse campo é obrigatório"),
-      check("vacinado")
-        .isIn(['0','1'])
-        .withMessage("Esse campo é obrigatório")],
-          upload.array("fotos"), PetController.store);
+router.post("/adocao/cadastrar", upload.array("fotos"), petAdoptionValidation, PetController.store);
 
 router.get("/:id/editar", checkUser, PetController.showPetEdicao);
 router.put("/:id/editar", PetController.update);

@@ -26,21 +26,24 @@
               <section class="col-md-12 p-0">Porte:</section>
               <section class="form-row">
                 <div class="form-check form-check-inline col-sm-3 col-md-12 ">
-                  <input class="form-check-input" name="porte" type="radio" id="pequeno" value="PEQUENO" required />
+                  <input class="form-check-input
+                  <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="pequeno" value="PEQUENO" required 
+                  <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %>
+                  />
                   <label class="form-check-label" for="pequeno">Pequeno</label>
                 </div>
                 <div class="form-check form-check-inline col-sm-3 col-md-12">
-                  <input class="form-check-input" name="porte" type="radio" id="medio" value="MEDIO" required />
+                  <input class="form-check-input
+                  <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="medio" value="MEDIO" required />
                   <label class="form-check-label" for="medio">Médio</label>
                 </div>
                 <div class="form-check form-check-inline col-sm-3 col-md-12">
-                  <input class="form-check-input" name="porte" type="radio" id="grande" value="GRANDE" required />
+                  <input class="form-check-input
+                  <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="grande" value="GRANDE" required />
                   <label class="form-check-label" for="grande">Grande</label>
                 </div>
-                <!-- <div class="form-check form-check-inline col-sm-3 col-md-12">
-                  <input class="form-check-input" name="porte" type="radio" id="null" value="" required />
-                  <label class="form-check-label" for="null">Não tenho certeza</label>
-                </div> -->
+                <%- include('../components/feedback-invalid', { msg: errors['PORTE'] }) %>
+            
               </section>
             </section>
           </section>
@@ -59,7 +62,6 @@
                   <option value="">Selecione uma especie</option>
                   <option value="1">Gato</option>
                   <option value="2">Cachorro</option>
-                  <!-- <option>Passáro</option> -->
                 </select>
               </section>
               <section class="form-group col-sm-12 col-md-6">
