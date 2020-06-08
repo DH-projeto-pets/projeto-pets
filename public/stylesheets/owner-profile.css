@@ -19,7 +19,6 @@ border-color: rgb(55, 160, 134);
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 /* 
    #containerimgs{
