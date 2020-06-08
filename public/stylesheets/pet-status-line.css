@@ -2,32 +2,33 @@
     white-space : nowrap;
 }
 
-#tamanho{
-    /* border:solid 4px #FF9721; */
+.tamanho{
+    border:solid 4px #FF9721;
     border-radius: 50px;
  
     }
     
-#vacinado{
+.vacinado{
     border:solid 4px#FFCC33;
     border-radius: 50px;
    
     }
     
         
-    #vermifugado{
+    .vermifugado{
     border:solid 4px #FF9721;
     border-radius: 50px;
   
     }
     
-    #castrado{
+    .castrado{
     border:solid 4px #FFCC33;
     border-radius: 50px;
   
     }
     
     .desativado{
+        border-radius: 50px;
     color: lightgray;
     border:solid 4px lightgray;
     }

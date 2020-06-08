@@ -23,9 +23,15 @@
           </form>
         </div>
         <div class="row mb-4">
+          <% if (pets.length > 0) { %>
           <% for(const pet of pets) { %>
           <%- include("../components/card-pet-manager", { pet } )%>
           <% } %>
+          <% } else { %>
+
+          <img src="/images/404pet.png" class="w-100" alt="Nenhum pet foi encontrado" />
+          <% } %>
+
           <section class="container my-3">
             <div class="row justify-content-center">
               <ul class="pagination">
@@ -35,7 +41,6 @@
               </ul>
             </div>
           </section>
-
         </div>
       </div>
     </div>
