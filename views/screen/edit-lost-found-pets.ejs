@@ -8,13 +8,12 @@
         <form class="col-md-12 formRegisterPet__form" method="POST" action="user/editar?_method=PUT">
           <div class="form-row">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="encontrado"
-              <%= pet.status == "ENCONTRADO" ? "checked": "" %>>
+              <input class="form-check-input" name="status" type="radio" id="petEncontrado"
+              value='<%= pet.status == "ENCONTRADO" ? "checked": "" %>'>
               <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="perdido" 
-              <%= pet.status == "PERDIDO" ? "checked": "" %>>
+              <input class="form-check-input" name="status" type="radio" id="petPerdido" value='<%= pet.status == "PERDIDO" ? "checked": "" %>'/>
               <label class="form-check-label" for="petPerdido">Pet Perdido</label>
 
             </div>

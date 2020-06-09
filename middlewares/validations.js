@@ -4,7 +4,9 @@ const { check,
 } = require('express-validator');
 
 const statusValidation = 
-[check("status").isIn(['PERDIDO', 'ENCONTRADO']).withMessage("Campo obrigatório")]
+[check("status")
+    .isIn(['PERDIDO','ENCONTRADO'])
+    .withMessage("Campo obrigatório")]
 const petValidation = [ check("status").isIn(['ADOCAO']),
   check("porte")
     .isIn(['GRANDE', 'MEDIO','PEQUENO'])
