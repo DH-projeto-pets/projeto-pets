@@ -13,7 +13,7 @@
             <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
           </div>
           <div class="col-md-6 mt-3 pl-0">
-            <div class="col-md-12">
+            <div class="col-md-12 info-user-cont p-0">
               <div class="row">
                 <div class="col-md-1">
                   <i class="fab fa-instagram-square"></i>
@@ -34,7 +34,7 @@
                 <div class="col-md-1">
                   <i class="fas fa-envelope-square"></i>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10" id="email-user">
                   <%- usuario.email %>
                 </div>
               </div>
@@ -51,7 +51,7 @@
   
         </section>
         <section class="row">
-          <div class="col-md-12 mt-2 w-100">
+          <div class="col-md-12 mt-2 w-100 info-user">
     
               <%- usuario.descricao ? usuario.descricao : "Sem descrição" %>
     
@@ -119,3 +119,4 @@
 
 
 <%- include('../partials/footer') %>
+<script src="javascripts/email.js"></script>
