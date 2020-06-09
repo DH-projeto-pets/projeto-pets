@@ -168,22 +168,22 @@ let UserController = {
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
     const { page = 1 } = req.query;
-    const user = await User.findOne({
-      where: { id },
-      include: [
-        {
-          model: Pet,
-          as: "pets",
-          include: "fotoPrincipal",
-          limit: 6,
-          offset: (page - 1) * 6,
+    let { count: total, rows: pets } = await Pet.findAndCountAll(
+      {
+        where: {
+          fk_usuario: id,
         },
-      ],
-    });
-    console.log(user.pets.length);
-    const totalPagina = Math.ceil(user.pets.length / 6);
+        include: ["fotoPrincipal"],
+      }
+      // {
+      //   limit: 6,
+      //   offset: (page - 1) * 6,
+      // }
+    );
+    pets = pets.slice((page - 1) * 6, 6 * page);
+    const totalPagina = Math.ceil(total / 6);
     res.render("screen/manager-pet", {
-      pets: user.pets,
+      pets,
       status: "",
       totalPagina,
     });
