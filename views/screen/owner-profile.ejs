@@ -19,7 +19,7 @@
                   <i class="fab fa-instagram-square"></i>
                 </div>
                 <div class="col-md-10">
-                  <%- usuario.instagram ? user.instagram : "Não informado" %>
+                  <%- usuario.instagram ? usuario.instagram : "Não informado" %>
                 </div>
               </div>
               <div class="row">
@@ -27,23 +27,29 @@
                   <i class="fab fa-facebook-square"></i>
                 </div>
                 <div class="col-md-10">
-                  <%- usuario.facebook ? user.facebook : "Não informado" %>
+                  <%- usuario.facebook ? usuario.facebook : "Não informado" %>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-1">
                   <i class="fas fa-envelope-square"></i>
                 </div>
-                <div class="col-md-10" id="email-user">
-                  <%- usuario.email %>
-                </div>
+                <% var lastCharac = usuario.email.slice(-3) %>
+                <% console.log('caracter', lastCharac) %>
+                <% var masked_str = lastCharac.padStart(10, "*"); %>
+                <% console.log('string mascarada', masked_str ) %>
+                <% if(!locals.user || locals.user == "undefined") { %>
+                <div class="pl-3"><%= usuario.email = `${masked_str}` %></div>
+                  <% } else { %>
+                <div class="col-md-10" id="email-user"><%- usuario.email ? usuario.email : '' %></div>
+                <% } %>
               </div>
               <div class="row">
                 <div class="col-md-1">
                   <i class="fab fa-whatsapp-square"></i>
                 </div>
                 <div class="col-md-10">
-                  <%- usuario.telefone ? user.telefone : "Não informado" %>
+                  <%- usuario.telefone ? usuario.telefone : "Não informado" %>
                 </div>
               </div>
             </div>
@@ -119,4 +125,3 @@
 
 
 <%- include('../partials/footer') %>
-<script src="javascripts/email.js"></script>
