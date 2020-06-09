@@ -13,12 +13,12 @@ router.get("/cadastrar", checkUser, PetController.showPetCadastro);
 router.post(
   "/cadastrar",
   // [check("status").isEmpty(), check("raca").isEmpty(), check("especie").isEmpty(), check("porte").isEmpty(), check("sexo").isEmpty(),],
+  upload.array("fotos"),
   [
     check("status")
-      .isIn(["oi", "tchau"])
+      .isIn(["PERDIDO", "ENCONTRADO"])
       .withMessage("Este campo deve ser preenchido!"),
   ],
-  upload.array("fotos"),
   PetController.store
 );
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);

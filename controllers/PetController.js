@@ -160,33 +160,47 @@ module.exports = {
 
     res.redirect("/user/gerenciamento");
   },
-  index: async (req, res) => {
-    console.log(req.originalUrl);
-    const { especie, tipo, raca } = req.query;
-    const pet = await Pet.findAll({
-      where: {
-        fk_raca: raca,
-      },
-      include: [
-        {
-          model: User,
-          as: "usuario",
-          atrributes: ["tipo"],
-          where: {
-            tipo: tipo,
-          },
-        },
-        {
-          model: Raca,
-          as: "raca",
-          include: "especie",
-          where: {
-            fk_especie: especie,
-          },
-        },
-      ],
-    });
 
-    return res.send(pet);
+  index: async (req, res) => {
+    const { page = 1 } = req.query;
+    const { especie, tipo, raca, ...query } = req.query;
+    console.log(query);
+    const pets = await Pet.findAndCountAll(
+      {
+        include: [
+          {
+            model: User,
+            as: "usuario",
+            ...(tipo && {
+              where: {
+                tipo: tipo,
+              },
+            }),
+          },
+          {
+            model: Raca,
+            as: "raca",
+            include: "especie",
+            ...(especie && {
+              where: {
+                fk_especie: especie,
+              },
+            }),
+          },
+        ],
+        where: {
+          ...(raca && { fk_raca: raca }),
+          ...query,
+          [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
+        },
+      },
+      {
+        limit: 6,
+        offset: (page - 1) * 6,
+      }
+    );
+    // res.json(pets);
+    const totalPagina = Math.ceil(total / 6);
+    res.render("screen/lost-found-pets", { pets, totalPagina });
   },
 };
