@@ -20,12 +20,12 @@
           </div>
           <div class="container collapse" id="collapse-filtro">
             <div class="row">
-              <form action="/pet/" method="GET" class="col-md-12 d-flex flex-wrap">
+              <form method="GET" action="listar" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
                   <div class="form-group">
-                    <!-- <input type="range" min="0" max="10" step="1" list="tickmarks"
-                    class="form-control-range" id="formControlRange"> -->
+                    <input type="range" min="0" max="10" step="1" list="tickmarks" class="form-control-range"
+                      id="formControlRange">
                     <div class="slidecontainer">
                       <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
                     </div>
@@ -53,35 +53,29 @@
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Espécie</h5>
-                  <select class="form-control form-control-sm">
-                    <option>-- Espécie --</option>
-                    <option>Cachorro</option>
-                    <option>Gato</option>
-                    <option>Ave</option>
+                  <select class="form-control form-control-sm" name="especie" id="especie">
+                    <option value="">Selecione uma especie</option>
+                    <option value="1">Gato</option>
+                    <option value="2">Cachorro</option>
                   </select>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Raça</h5>
-                  <select class="form-control form-control-sm">
-                    <option>-- Raça --</option>
-                    <option>SRD</option>
-                    <option>Poodle</option>
-                    <option>Rottweiler</option>
-                    <option>Golden</option>
-                    <option>Cocker</option>
-                    <option>Chiwawa</option>
+                  <select class="form-control form-control-sm" id="raca" name="raca" class="selectpicker"
+                    data-live-search="true">
+                    <!-- <option value="">Selecione uma raça</option> -->
                   </select>
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Porte</h5>
-                  <input type="radio" name="porte" id="p"><label for="p">Pequeno</label><br>
-                  <input type="radio" name="porte" id="m"><label for="m">Médio</label><br>
-                  <input type="radio" name="porte" id="g"><label for="g">Grande</label><br>
-                  <input type="radio" name="porte" id="gg"><label for="gg">Muito Grande</label>
+                  <input type="radio" name="porte" id="PEQUENO"><label for="p">Pequeno</label><br>
+                  <input type="radio" name="porte" id="MEDIO"><label for="m">Médio</label><br>
+                  <input type="radio" name="porte" id="GRANDE"><label for="g">Grande</label><br>
                 </div>
                 <div class="row w-100">
                   <div class="col-md-12 d-flex justify-content-center">
-                    <input type="submit" value="Filtrar" class="btn btn-primary botao-medio-amarelo">
+                    <button type="submit" class="btn btn-primary botao-medio-amarelo">Filtrar</button>
+
                   </div>
                 </div>
               </form>
@@ -107,17 +101,17 @@
                 <a href="/pet/:id">
                   <p class="card-text">
                     <% if (pet.nome) { %>
-                      <%= pet.nome %>
+                    <%= pet.nome %>
                     <% } else { %>
-                     Sem nome
+                    Sem nome
                     <% } %>
                   </p>
                 </a>
                 <% if(pet.status == "PERDIDO"){ %>
-                  <%- include('../components/badge-lost') %>
+                <%- include('../components/badge-lost') %>
                 <% } %>
                 <% if(pet.status == "ENCONTRADO"){ %>
-                  <%- include('../components/badge-found') %>
+                <%- include('../components/badge-found') %>
                 <% } %>
               </div>
             </div>
@@ -131,9 +125,9 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-                <li class="page-item"><a href="?page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
+              <li class="page-item"><a href="?page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
               <% } %>
-            </ul> 
+            </ul>
           </div>
         </section>
       </div>

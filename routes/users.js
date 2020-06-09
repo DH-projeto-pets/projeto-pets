@@ -10,15 +10,19 @@ const upload = require("../helpers/upload");
 
 router.get("/editar", checkUser, UserController.showUpdate); // mostra o form
 router.put(
-  "/editar", upload.single("image"),
+  "/editar",
+  upload.single("image"),
   [
-    check("tipo").notEmpty().isIn(['ONG', 'PF']),
+    check("tipo").notEmpty().isIn(["ONG", "PF"]),
     check("email").isEmail().withMessage("Email inválido"),
-    check("nome").isLength({ min:3 }).withMessage("O nome precisa ter no mínimo 3 caracteres")
+    check("nome")
+      .isLength({ min: 3 })
+      .withMessage("O nome precisa ter no mínimo 3 caracteres"),
   ],
   UserController.update
 ); // action do form
-router.get("/gerenciamento", checkUser, UserController.showGerenciamento); // mostra a tela de gerenciamento
+router.get("/gerenciamento", checkUser, UserController.showGerenciamento);
+router.post("/gerenciamento", checkUser, UserController.indexPets); // mostra a tela de gerenciamento
 router.get("/:id?", UserController.show); // busca o usuario com base no id da rota e exibe a pagina de usuario com as informações
 
 module.exports = router;
