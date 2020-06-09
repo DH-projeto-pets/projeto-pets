@@ -37,9 +37,8 @@
                               col-sm-3
                               col-md-12 ">
                     <input class="form-check-input
-                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="pequeno" value="PEQUENO"
-                    <%= pet.porte == "PEQUENO" ? "checked": "" %> />
-                     />
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="pequeno"
+                    value='<%= pet.porte == "PEQUENO" ? "checked": "" %>'/>
                     <label class="form-check-label" for="pequeno">
                       Pequeno
                     </label>
@@ -49,8 +48,8 @@
                               col-sm-3
                               col-md-12">
                     <input class="form-check-input
-                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="medio" value="MEDIO"                
-                    <%= pet.porte == "MEDIO" ? "checked": "" %> />
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="medio"
+                    value='<%= pet.porte == "MEDIO" ? "checked": "" %>'/>
                     <label class="form-check-label" for="medio">
                       Médio
                     </label>
@@ -61,8 +60,7 @@
                               col-sm-3
                               col-md-12 flex-wrap">
                     <input class="form-check-input
-                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="grande" value="GRANDE"                   
-                    <%= pet.porte == "GRANDE" ? "checked": "" %>/>
+                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="grande" value='<%= pet.porte == "GRANDE" ? "checked": "" %>'/>
                     <label class="form-check-label" for="grande">
                       Grande
                     </label>
@@ -76,13 +74,14 @@
             <div class="form-group
             col-md-8">
             <section class="form-row">
+        
               <label class="col-12" for="inputnome">
                 Nome:
               </label>
               <input type="text" name="nome" id="inputnome" 
               value="
                     <%= pet.nome ? pet.nome : null%>"
-            class="form-control p-3"
+            class="form-control p-3 col-12"
             autofocus />
             </section>
 
@@ -109,9 +108,8 @@
               </section>
 
             </section>
-            <section class="form-group flex-wrap
-            col-12">
-            <label class="mr-2">
+            <section class=" flex-wrap">
+            <label class="p-0">
               Sexo:
             </label>
             <section class="form-row">
@@ -166,8 +164,7 @@
 
                 <!-- Campo sobre se Pet é vacinado ou não -->
                 <section class="form-group
-                              row
-                              col-12">
+                              row">
                   <label class="col-4">
                     Vacinado:
                   </label>
@@ -198,8 +195,7 @@
                 </section>
                 <!-- Campo sobre se Pet é castrado ou não -->
                 <section class="form-group
-                              row
-                              col-12">
+                              row">
                   <label class="col-4">
                     Castrado:
                   </label>
@@ -229,8 +225,7 @@
                 </section>
                 <!-- Campo sobre se Pet é vermifugado ou não -->
                 <section class="form-group
-                              row 
-                              col-12">
+                              row">
                   <label class="col-4">
                     Vermifugado:
                   </label>
@@ -267,8 +262,7 @@
                               col-12">
                   <label for="descricao">Descrição:</label>
                   <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"
-                  value="
-                    <%= pet.descricao ? pet.descricao : null%>">
+                  value="<%= pet.descricao ? pet.descricao : null%>">
                 </textarea>
                 </section>
                 <section class="form-group col-sm-12 col-md-12">
@@ -279,13 +273,11 @@
                 </section>
                 <section class="form-row col-12">
                     <label for="logradouro">Endereço:</label>
-                    <input type="email"
+                    <input type="text"
                             name="rua"
                             class="form-control"
                             id="logradouro"
-                            value="
-                            <%= pet.rua ? pet.rua : null%>"
-                            />
+                            value="<%= pet.rua ? pet.rua : null%>"/>
               
                 </section>
                 <section class="form-row col-12">
@@ -295,8 +287,7 @@
                             name="cep"
                             class="form-control"
                             id="cep"
-                            value="
-                            <%= pet.cep ? pet.cep : null%>"/>
+                            value="<%= pet.cep ? pet.cep : null%>"/>
                   </section>
                   <section class="form-group col-md-6">
                     <label for="bairro">Bairro:</label>
@@ -304,8 +295,7 @@
                             name="bairro"
                             class="form-control"
                             id="bairro"
-                            value="
-                            <%= pet.bairro ? pet.bairro : null%>"/>
+                            value="<%= pet.bairro ? pet.bairro : null%>"/>
                   </section>
                 </section>
                 <section class="form-row col-12">
@@ -314,7 +304,8 @@
                     <input type="text"
                             name="cidade"
                             class="form-control"
-                            id="cidade" />
+                            id="cidade"
+                            value="<%= pet.cidade ? pet.cidade : null%>"/>
                   </section>
                   <section class="form-group col-md-6">
                     <label for="estado">Estado:</label>
@@ -322,9 +313,7 @@
                             name="estado"
                             class="form-control"
                             id="estado"
-                            value="
-                            <%= pet.estado ? pet.estado : null%>"
-                            />
+                            value="<%= pet.estado ? pet.estado : null%>"/>
                   </section>
                 </section>
 
