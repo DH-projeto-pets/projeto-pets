@@ -175,7 +175,6 @@ let UserController = {
       },
       include: ["fotoPrincipal"],
     });
-    console.log(pets.length, total, (page - 1) * 6, 6 * page);
     pets = pets.slice((page - 1) * 6, 6 * page);
     const totalPagina = Math.ceil(total / 6);
     res.render("screen/manager-pet", {
@@ -192,16 +191,6 @@ let UserController = {
     });
     // console.log(usuario)
     res.render("screen/edit-user", { errors: {}, usuario });
-  },
-  a: () => {
-    const total = sequelize.query(
-      "SELECT count(`Pet`.`id`) AS `count` FROM `pets` AS `Pet` LEFT OUTER JOIN `fotos` AS `fotoPrincipal` ON `Pet`.`fk_foto_principal` = `fotoPrincipal`.`id` WHERE (`Pet`.`fk_usuario` = (:id));",
-      { replacements: { id }, model: Pet, mapToModel: true }
-    );
-    const pets = sequelize.query(
-      "SELECT `Pet`.`id`, `Pet`.`nome`, `Pet`.`porte`, `Pet`.`sexo`, `Pet`.`status`, `Pet`.`descricao`, `Pet`.`vacinado`, `Pet`.`castrado`, `Pet`.`vermifugado`, `Pet`.`cuidados_extras`, `Pet`.`fk_raca`, `Pet`.`fk_usuario`, `Pet`.`fk_foto_principal`, `Pet`.`createdAt`, `Pet`.`updatedAt`, `fotoPrincipal`.`id` AS `fotoPrincipal.id`, `fotoPrincipal`.`caminho` AS `fotoPrincipal.caminho`, `fotoPrincipal`.`fk_pet` AS `fotoPrincipal.fk_pet` FROM `pets` AS `Pet` LEFT OUTER JOIN `fotos` AS `fotoPrincipal` ON `Pet`.`fk_foto_principal` = `fotoPrincipal`.`id` WHERE (`Pet`.`fk_usuario` = (:id)) LIMIT 0, (:id",
-      { replacements: { id }, model: Pet, mapToModel: true }
-    );
   },
 };
 

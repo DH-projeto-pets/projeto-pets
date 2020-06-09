@@ -36,7 +36,7 @@
             <div class="row justify-content-center">
               <ul class="pagination">
                 <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-                <li class="page-item"><a href="?page=<%= nPagina %>?status=<%=status%>"
+                <li class="page-item"><a href="?page=<%= nPagina %>&status=<%=status%>"
                     class="page-link"><%= nPagina %></a></li>
                 <% } %>
               </ul>

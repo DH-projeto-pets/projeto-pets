@@ -20,7 +20,8 @@
   margin-bottom: 15px;
 }
 
-.card-img-top {
+.card-manager img {
+  height: 200px;
   max-height: 285px;
 }
 
