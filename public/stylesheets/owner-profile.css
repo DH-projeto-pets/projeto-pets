@@ -20,7 +20,25 @@ border-color: rgb(55, 160, 134);
   display: flex;
   flex-wrap: wrap;
 }
+
+
 /* 
    #containerimgs{
        background-color: tomato;
    } */
+
+   @media (max-width: 1130px) {
+    .info-user-cont, .info-user {
+      font-size: 80%;
+      word-break: break-word;
+
+    }
+   
+  }
+
+  @media (max-width: 768px) {
+    .info-user-cont {
+      margin-left: 5%;
+    }
+
+  }
