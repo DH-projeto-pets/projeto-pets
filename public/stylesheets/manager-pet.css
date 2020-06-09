@@ -19,3 +19,12 @@
 .petGrid div {
   margin-bottom: 15px;
 }
+
+.card-img-top {
+  max-height: 285px;
+}
+
+.not-found-pet-manager {
+  width: 50%;
+  margin: 0 auto;
+}
