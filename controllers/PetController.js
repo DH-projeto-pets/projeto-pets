@@ -58,11 +58,13 @@ module.exports = {
     });
     let totalPagina = Math.ceil(total / 6);
     pets = pets.slice((page - 1) * 6, 6 * page);
+    console.log(serializedStatus);
     res.render("screen/lost-found-pets", {
       pets,
       totalPagina,
       query: {
         ...query,
+        status: query.status || serializedStatus.map((obj) => obj.status),
         raca,
         especie,
         tipo,
@@ -72,7 +74,6 @@ module.exports = {
   showGridAdocao: async (req, res) => {
     let { page = 1, tipo, especie, raca, ...query } = req.query;
     const serializedQuery = queryBuilder(query);
-    console.log(serializedQuery);
     let { count: total, rows: pets } = await Pet.findAndCountAll({
       include: [
         "fotoPrincipal",
@@ -107,11 +108,6 @@ module.exports = {
     //   (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
     //   ""
     // );
-    const parsedQuery = serializedQuery.reduce(
-      (a, c) => Object.assign(c, a),
-      {}
-    );
-    console.log(parsedQuery);
     res.render("screen/adoption-pets", {
       pets,
       totalPagina,

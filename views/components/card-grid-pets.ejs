@@ -19,7 +19,8 @@
       <% } %>
       <% if(pet.status == "ENCONTRADO"){ %>
       <%- include('../components/badge-found') %>
-      <% } else { %>
+      <% } %>
+      <% if(pet.status == "ADOAO") { %>
       <%- include('../components/badge-adoption') %>
       <% } %>
     </div>
