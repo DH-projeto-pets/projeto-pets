@@ -51,7 +51,10 @@ let UserController = {
           senha: bcrypt.hashSync(senha, 10),
           nome,
         });
-        res.render("screen/login", { errors: {}, usuario:{email:usuario.email}});
+        res.render("screen/login", {
+          errors: {},
+          usuario: { email: usuario.email },
+        });
         // cria o user no db
       }
     }
@@ -70,39 +73,37 @@ let UserController = {
     // console.log(errors, req.body);
 
     if (errors.isEmpty()) {
-    const id = req.session.user.id;
-    if (req.file) {
-      var image = `/images/dinamics/${req.file.originalname}`;
+      const id = req.session.user.id;
+      if (req.file) {
+        var image = `/images/dinamics/${req.file.originalname}`;
+      }
+
+      const usuario = await User.update(
+        {
+          ...req.body,
+          image,
+        },
+        { where: { id } }
+      );
+
+      const { nome } = await User.findOne({
+        where: {
+          id,
+        },
+      });
+
+      req.session.save(() => {
+        req.session.user.nome = nome;
+        res.render("screen/edit-user", usuario);
+      });
     }
-
-    const usuario = await User.update(
-      {
+    const e = costumizeErrors(errors);
+    res.render("screen/edit-user", {
+      errors: e,
+      usuario: {
         ...req.body,
-        image,
-      },
-      { where: { id } }
-    );
-
-    const { nome } = await User.findOne({
-      where: {
-        id,
       },
     });
-
-    req.session.save(() => {
-      req.session.user.nome = nome;
-      res.render("screen/edit-user", usuario);
-    });
-  }
-  const e = costumizeErrors(errors);
-  res.render("screen/edit-user", {
-    errors: e,
-    usuario: {
-      ...req.body,
-    },
-
-  });
-    
   },
   delete: (req, res) => {
     // deleta o usuario
@@ -176,20 +177,26 @@ let UserController = {
   },
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
-
-    const user = await User.findOne({
-      where: { id },
-      include: [
-        // "pets",
-        {
-          model: Pet,
-          as: "pets",
-          include: "fotoPrincipal",
+    const { page = 1 } = req.query;
+    let { count: total, rows: pets } = await Pet.findAndCountAll(
+      {
+        where: {
+          fk_usuario: id,
         },
-      ],
+        include: ["fotoPrincipal"],
+      }
+      // {
+      //   limit: 6,
+      //   offset: (page - 1) * 6,
+      // }
+    );
+    pets = pets.slice((page - 1) * 6, 6 * page);
+    const totalPagina = Math.ceil(total / 6);
+    res.render("screen/manager-pet", {
+      pets,
+      status: "",
+      totalPagina,
     });
-
-    res.render("screen/manager-pet", { pets: user.pets });
   },
   showUpdate: async (req, res) => {
     const usuario = await User.findOne({
@@ -198,7 +205,28 @@ let UserController = {
       },
     });
     // console.log(usuario)
-    res.render("screen/edit-user", {  errors:{}, usuario });
+    res.render("screen/edit-user", { errors: {}, usuario });
+  },
+  indexPets: async (req, res) => {
+    const { page = 1 } = req.query;
+    const { id } = req.session.user;
+    const { status } = req.body;
+    const user = await User.findOne({
+      where: { id },
+      include: [
+        {
+          model: Pet,
+          as: "pets",
+          include: "fotoPrincipal",
+          ...(status && { where: { status } }),
+          limit: 6,
+          offset: (page - 1) * 6,
+        },
+      ],
+    });
+    const pets = user ? user.pets : [];
+    const totalPagina = Math.ceil(pets.length / 6);
+    res.render("screen/manager-pet", { pets, totalPagina, status });
   },
 };
 
