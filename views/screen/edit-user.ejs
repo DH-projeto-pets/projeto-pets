@@ -109,8 +109,10 @@
           </section>
           <section class="form-group col-md-12">
             <label for="descricao">Descrição</label>
-            <textarea id="descricao" class="form-control" cols="95%" rows="5"
-              name="descricao"><%=usuario.descricao%></textarea>
+            <textarea id="descricao" class="form-control <%= errors.descricao ? 'is-invalid' : '' %>" cols="95%" rows="5"
+              name="descricao" value="<%=usuario.descricao%>" ><%=usuario.descricao%></textarea>
+              <% console.log('descricao', usuario.descricao) %>
+              <%- include('../components/feedback-invalid', { msg: errors['descricao'] }) %>
           </section>
           <!-- <section class="form-group col-md-12">
             <label for="preferencia">Prefêrencia de contato</label>

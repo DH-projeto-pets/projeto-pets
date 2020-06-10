@@ -160,8 +160,18 @@ let UserController = {
   show: async (req, res) => {
     const { id } = req.params;
 
-    const usuario = await User.findOne({ where: { id }, include: ["pets"] });
-    // console.log(user)
+    const usuario = await User.findOne({
+      where: { id },
+      include: [
+        //"pets",
+      {
+        model: Pet,
+        as: "pets",
+        include: ["fotoPrincipal", "raca"]
+      },
+    ],
+   });
+    console.log(usuario)
     if (!usuario) return res.render("404-not-found");
     res.render("screen/owner-profile", { usuario });
   },
