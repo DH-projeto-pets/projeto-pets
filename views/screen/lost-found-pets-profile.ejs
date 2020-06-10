@@ -8,7 +8,7 @@
       <br>
       <div class="col-12">
         <div class="row mt-1 ml-2">
-          <h1 class=""><%= pet.nome %></h1>
+          <h1 class=""><%= pet.nome ? pet.nome : ''  %></h1>
           <!-- botão para pet encontrado -->
 
           <div class="col-8" style="text-align: left;">
@@ -59,20 +59,12 @@
       <div class="texto  pt-1 pb-3 ml-2">
 
         <br>
-        <p class="ml-2"><%= pet.descricao %>
-          <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum. -->
+        <p class="ml-2"><%= pet.descricao ? pet.descricao : '' %>
         </p>
         <ul class="list-unstyled ml-2">
-          <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome%></a></li>
-          <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
-          <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
+          <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome ? pet.raca.nome : '' %></a></li>
+          <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo ? pet.sexo : '' %></a></li>
+          <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte ? pet.porte : '' %></a></li>
 
         </ul>
         <div class="text-center">

@@ -123,7 +123,11 @@ module.exports = {
       },
       include: ["raca", "fotos", "fotoPrincipal"],
     });
-    res.render("screen/lost-found-pets-profile", { pet });
+    console.log(pet);
+    if (pet) {
+      return res.render("screen/lost-found-pets-profile", { pet });
+    }
+    return res.render("404-not-found");
   },
   showPetCadastro: (req, res) =>
     res.render("screen/register-lost-found-pets", { errors: {}, pet: {} }),
