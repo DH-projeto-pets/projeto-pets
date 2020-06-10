@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 const bcrypt = require("bcrypt");
+const { Op } = require("sequelize");
 const { check, validationResult, body } = require("express-validator");
 const { sequelize, User, Pet } = require("../models");
 
@@ -177,24 +178,18 @@ let UserController = {
   },
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
-    const { page = 1 } = req.query;
-    let { count: total, rows: pets } = await Pet.findAndCountAll(
-      {
-        where: {
-          fk_usuario: id,
-        },
-        include: ["fotoPrincipal"],
-      }
-      // {
-      //   limit: 6,
-      //   offset: (page - 1) * 6,
-      // }
-    );
+    const { page = 1, status } = req.query;
+    let { count: total, rows: pets } = await Pet.findAndCountAll({
+      where: {
+        [Op.and]: [{ fk_usuario: id }, status && { status }],
+      },
+      include: ["fotoPrincipal"],
+    });
     pets = pets.slice((page - 1) * 6, 6 * page);
     const totalPagina = Math.ceil(total / 6);
     res.render("screen/manager-pet", {
       pets,
-      status: "",
+      status,
       totalPagina,
     });
   },
@@ -206,27 +201,6 @@ let UserController = {
     });
     // console.log(usuario)
     res.render("screen/edit-user", { errors: {}, usuario });
-  },
-  indexPets: async (req, res) => {
-    const { page = 1 } = req.query;
-    const { id } = req.session.user;
-    const { status } = req.body;
-    const user = await User.findOne({
-      where: { id },
-      include: [
-        {
-          model: Pet,
-          as: "pets",
-          include: "fotoPrincipal",
-          ...(status && { where: { status } }),
-          limit: 6,
-          offset: (page - 1) * 6,
-        },
-      ],
-    });
-    const pets = user ? user.pets : [];
-    const totalPagina = Math.ceil(pets.length / 6);
-    res.render("screen/manager-pet", { pets, totalPagina, status });
   },
 };
 

@@ -1,10 +1,10 @@
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12 card-manager">
   <div class="card">
     <a href="/pet/<%=pet.id %>">
       <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
         alt="Pet perdido/encontrado">
     </a>
-    <div class="card-body">
+    <div class="card-body pb-0">
       <div class="container-card-info" style="flex-wrap: wrap;">
 
         <a href="/pet/<%=pet.id %>" style="width: 100%;">

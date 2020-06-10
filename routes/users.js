@@ -21,8 +21,7 @@ router.put(
   ],
   UserController.update
 ); // action do form
-router.get("/gerenciamento", checkUser, UserController.showGerenciamento);
-router.post("/gerenciamento", checkUser, UserController.indexPets); // mostra a tela de gerenciamento
+router.get("/gerenciamento", checkUser, UserController.showGerenciamento); // mostra a tela de gerenciamento
 router.get("/:id?", UserController.show); // busca o usuario com base no id da rota e exibe a pagina de usuario com as informações
 
 module.exports = router;

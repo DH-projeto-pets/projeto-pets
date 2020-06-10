@@ -1,8 +1,14 @@
 <%- include('../partials/head', { title: 'Pets Perdidos & Encontrados'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-
-
+  <% console.log('q',query) %>
+  <% let url = ''; %>
+  <% for(var value in query) { %>
+  <%if(query[value]){%>
+  <% url += `${value}=${query[value]}&`; %>
+  <%}%>
+<%}%>
+  <% console.log('q',url) %>
   <section class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-10 main-container main-container__pets">
@@ -20,14 +26,12 @@
           </div>
           <div class="container collapse" id="collapse-filtro">
             <div class="row">
-              <form method="GET" action="listar" class="col-md-12 d-flex flex-wrap">
+              <form method="GET" action="" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
                   <div class="form-group">
-                    <input type="range" min="0" max="10" step="1" list="tickmarks" class="form-control-range"
-                      id="formControlRange">
                     <div class="slidecontainer">
-                      <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                      <input type="range" min="0" max="100" value="50" class="slider">
                     </div>
                     <datalist id="tickmarks">
                       <option value="0" label="0km">
@@ -63,14 +67,42 @@
                   <h5>Raça</h5>
                   <select class="form-control form-control-sm" id="raca" name="raca" class="selectpicker"
                     data-live-search="true">
-                    <!-- <option value="">Selecione uma raça</option> -->
+                    <option value="">Selecione uma raça</option>
                   </select>
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Porte</h5>
-                  <input type="radio" name="porte" id="PEQUENO"><label for="p">Pequeno</label><br>
-                  <input type="radio" name="porte" id="MEDIO"><label for="m">Médio</label><br>
-                  <input type="radio" name="porte" id="GRANDE"><label for="g">Grande</label><br>
+                  <input type="checkbox" name="porte" value="PEQUENO" id="PEQUENO"><label for="PEQUENO">
+                    &nbsp;Pequeno</label><br>
+                  <input type="checkbox" name="porte" value="MEDIO" id="MEDIO"><label for="MEDIO">
+                    &nbsp;Médio</label><br>
+                  <input type="checkbox" name="porte" value="GRANDE" id="GRANDE"><label for="GRANDE">
+                    &nbsp;Grande</label><br>
+                  <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
+                </div>
+                <div class="col-md-3 col-12">
+                  <h5>Sexo</h5>
+                  <input type="checkbox" name="sexo" value="FEMEA" id="FEMEA"><label for="FEMEA">
+                    &nbsp;Fêmea</label><br>
+                  <input type="checkbox" name="sexo" value="MACHO" id="MACHO"><label for="MACHO">
+                    &nbsp;Macho</label><br>
+                  <input type="checkbox" name="sexo" value="DESCONHECIDO" id="DESCONHECIDO"><label for="DESCONHECIDO">
+                    &nbsp;Desconhecido</label><br>
+                  <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
+                </div>
+                <div class="col-md-3 col-12">
+                  <h5>Status</h5>
+                  <input type="checkbox" name="status" value="PERDIDO" id="PERDIDO" checked><label for="PERDIDO">
+                    &nbsp;Perdido</label><br>
+                  <input type="checkbox" name="status" value="ENCONTRADO" id="ENCONTRADO" checked><label
+                    for="ENCONTRADO">
+                    &nbsp;Encontrado</label><br>
+                </div>
+                <div class="col-md-3 col-12">
+                  <h5>Tipo de perfil</h5>
+                  <input type="checkbox" name="tipo" value="ONG" id="ONG"><label for="ONG">&nbsp;
+                    ONG</label><br>
+                  <input type="checkbox" name="tipo" value="PF" id="PF"><label for="PF">&nbsp;Pessoa física</label><br>
                 </div>
                 <div class="row w-100">
                   <div class="col-md-12 d-flex justify-content-center">
@@ -125,7 +157,7 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-              <li class="page-item"><a href="?page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
+              <li class="page-item"><a href="?page=<%= nPagina %>&<%=url%>" class="page-link"><%= nPagina %></a></li>
               <% } %>
             </ul>
           </div>
