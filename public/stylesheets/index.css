@@ -16,6 +16,7 @@
 /* Ajusta altura do banner rotativo da landing page */
 .carousel-item img {
   min-height: 63vh;
+  height: 455px;
 }
 
 /* GRID DE PETS */
