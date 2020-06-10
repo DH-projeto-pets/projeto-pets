@@ -7,7 +7,8 @@ const statusValidation =
 [check("status")
     .isIn(['PERDIDO','ENCONTRADO'])
     .withMessage("Campo obrigatório")]
-const petValidation = [ check("status").isIn(['ADOCAO']),
+const petValidation = [ 
+  check("status").isIn(['ADOCAO']),
   check("porte")
     .isIn(['GRANDE', 'MEDIO','PEQUENO'])
     .withMessage("Campo obrigatório"),

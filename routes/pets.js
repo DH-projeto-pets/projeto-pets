@@ -11,15 +11,15 @@ const upload = require("../helpers/upload");
 router.get("/", PetController.showGrid);
 router.get("/adocao", PetController.showGridAdocao);
 router.get("/cadastrar", checkUser, PetController.showPetCadastro);
-router.post("/cadastrar", statusValidation, petValidation,
-upload.array("fotos"), PetController.store);
+router.post("/cadastrar", upload.array("fotos"),
+  statusValidation, petValidation, PetController.store);
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);
 router.post("/adocao/cadastrar", upload.array("fotos"),
  petValidation, petAdoptionValidation, PetController.store);
 
 router.get("/:id/editar", checkUser, PetController.showPetEdicao);
 router.put("/:id/editar", upload.array("fotos"),
-statusValidation, petValidation, PetController.update);
+  statusValidation, petValidation, PetController.update);
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
 router.put("/adocao/:id/editar", upload.array("fotos"),
     petValidation, petAdoptionValidation, PetController.update);

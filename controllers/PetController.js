@@ -91,7 +91,6 @@ module.exports = {
     console.log("req.body:", req.body);
     errors = validationResult(req);
     console.log(errors);
-
     if(errors.isEmpty()) {
       const pet = await Pet.update(
         {
