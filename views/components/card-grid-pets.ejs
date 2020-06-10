@@ -1,0 +1,27 @@
+<div class="card grid-pets-item" style="width: 18rem;">
+  <a href="/pet/<%=pet.id %>">
+    <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+      alt="Pet perdido/encontrado">
+  </a>
+  <div class="card-body">
+    <div class="container-card-info">
+      <a href="/pet/<%= pet.id %>">
+        <p class="card-text">
+          <% if (pet.nome) { %>
+          <%= pet.nome %>
+          <% } else { %>
+          Sem nome
+          <% } %>
+        </p>
+      </a>
+      <% if(pet.status == "PERDIDO"){ %>
+      <%- include('../components/badge-lost') %>
+      <% } %>
+      <% if(pet.status == "ENCONTRADO"){ %>
+      <%- include('../components/badge-found') %>
+      <% } else { %>
+      <%- include('../components/badge-adoption') %>
+      <% } %>
+    </div>
+  </div>
+</div>
