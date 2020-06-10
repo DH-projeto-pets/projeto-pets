@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const { sequelize, Pet, Foto, Raca, User } = require("../models");
 const { Op } = require("sequelize");
-const { costumizeErrors } = require("../helpers/utils");
+const { costumizeErrors, queryBuilder } = require("../helpers/utils");
 const { check, validationResult, body } = require("express-validator");
 // Importando pacote para usar com a API
 const NodeGeocoder = require("node-geocoder");
@@ -13,21 +13,61 @@ const options = {
 
 module.exports = {
   showGrid: async (req, res) => {
-    let { page = 1 } = req.query;
-    const { count: total, rows: pets } = await Pet.findAndCountAll(
-      {
-        limit: 6,
-        offset: (page - 1) * 6,
-      },
-      {
-        where: {
-          [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
+    const { especie, tipo, raca, page = 1, ...query } = req.query;
+    let serializedStatus = queryBuilder({ status: query.status });
+    if (serializedStatus.length === 0) {
+      serializedStatus = serializedStatus.concat(
+        { status: "PERDIDO" },
+        { status: "ENCONTRADO" }
+      );
+    }
+    const serializedQuery = queryBuilder({
+      sexo: query.sexo,
+      porte: query.porte,
+    });
+
+    console.log(serializedQuery);
+    let { count: total, rows: pets } = await Pet.findAndCountAll({
+      include: [
+        "fotoPrincipal",
+        {
+          model: User,
+          as: "usuario",
+          ...(tipo && {
+            where: {
+              tipo: tipo,
+            },
+          }),
         },
-        order: [["id", "DESC"]],
-      }
-    );
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+          ...(especie && {
+            where: {
+              fk_especie: especie,
+            },
+          }),
+        },
+      ],
+      where: {
+        ...(raca && { fk_raca: raca }),
+        [Op.or]: serializedStatus,
+        ...((query.porte || query.sexo) && { [Op.and]: serializedQuery }),
+      },
+    });
     let totalPagina = Math.ceil(total / 6);
-    res.render("screen/lost-found-pets", { pets, totalPagina });
+    pets = pets.slice((page - 1) * 6, 6 * page);
+    res.render("screen/lost-found-pets", {
+      pets,
+      totalPagina,
+      query: {
+        serializedQuery,
+        raca,
+        especie,
+        tipo,
+      },
+    });
   },
   showGridAdocao: async (req, res) => {
     let { page = 1 } = req.query;
@@ -162,45 +202,43 @@ module.exports = {
   },
 
   index: async (req, res) => {
-    const { page = 1 } = req.query;
-    const { especie, tipo, raca, ...query } = req.query;
+    const { especie, tipo, raca, page = 1, ...query } = req.query;
     console.log(query);
-    const pets = await Pet.findAndCountAll(
-      {
-        include: [
-          {
-            model: User,
-            as: "usuario",
-            ...(tipo && {
-              where: {
-                tipo: tipo,
-              },
-            }),
-          },
-          {
-            model: Raca,
-            as: "raca",
-            include: "especie",
-            ...(especie && {
-              where: {
-                fk_especie: especie,
-              },
-            }),
-          },
-        ],
-        where: {
-          ...(raca && { fk_raca: raca }),
-          ...query,
-          [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
+    // return res.render("screen/lost-found-pets", { pets: [], totalPagina: 1 });
+    const { cols: total, rows: pets } = await Pet.findAndCountAll({
+      include: [
+        {
+          model: User,
+          as: "usuario",
+          ...(tipo && {
+            where: {
+              tipo: tipo,
+            },
+          }),
         },
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+          ...(especie && {
+            where: {
+              fk_especie: especie,
+            },
+          }),
+        },
+      ],
+      where: {
+        ...(raca && { fk_raca: raca }),
+        ...query,
+        [Op.or]:
+          Object.keys(queryBuilder(query)).length === 0
+            ? [{ status: "PERDIDO" }, { status: "ENCONTRADO" }]
+            : queryBuilder(query),
       },
-      {
-        limit: 6,
-        offset: (page - 1) * 6,
-      }
-    );
-    // res.json(pets);
-    const totalPagina = Math.ceil(total / 6);
-    res.render("screen/lost-found-pets", { pets, totalPagina });
+    });
+    // const totalPagina = Math.ceil(total / 6);
+    console.log(JSON.stringify(pets), queryBuilder(query));
+    res.json(pets);
+    // res.render("screen/lost-found-pets", { pets, totalPagina });
   },
 };
