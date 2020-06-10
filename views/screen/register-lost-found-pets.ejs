@@ -8,14 +8,19 @@
       <form class="col-md-12" action="cadastrar" method="POST" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-check form-check-inline <%= errors.status ? 'feedback-form-check-inline':'' %>">
-            <input class="form-check-input <%= errors.status ? 'is-invalid' : '' %>" name="status" type="radio"
-              id="petEncontrado" value="ENCONTRADO" />
+            <input class="form-check-input
+            <%= errors.status ? 'is-invalid' : '' %>" name="status" type="radio" id="petEncontrado" value="ENCONTRADO"
+            <%= pet.status == "ENCONTRADO" ? "checked": "" %>/>
             <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
-            <%- include('../components/feedback-invalid', { msg: errors['status'] }) %>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" name="status" type="radio" id="petPerdido" value="PERDIDO" />
+            <input class="form-check-input
+            <%= errors.status ? 'is-invalid' : '' %>"
+            name="status" type="radio" id="petPerdido"
+            value="PERDIDO"
+            <%= pet.status == "PERDIDO" ? "checked": "" %>/>
             <label class="form-check-label" for="petPerdido">Pet Perdido</label>
+            <%- include('../components/feedback-invalid', { msg: errors['status'] }) %>
           </div>
         </div>
         <div class="form-row">
@@ -27,21 +32,28 @@
               <section class="col-md-12 p-0">Porte:</section>
               <section class="form-row">
                 <div class="form-check form-check-inline col-sm-3 col-md-12 ">
-                  <input class="form-check-input" name="porte" type="radio" id="pequeno" value="PEQUENO" required />
+                  <input class="form-check-input
+                   <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="pequeno" value="PEQUENO"
+                  <%= pet.porte == "PEQUENO" ? "checked": "" %>
+                  />
                   <label class="form-check-label" for="pequeno">Pequeno</label>
                 </div>
                 <div class="form-check form-check-inline col-sm-3 col-md-12">
-                  <input class="form-check-input" name="porte" type="radio" id="medio" value="MEDIO" required />
+                  <input class="form-check-input
+                  <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="medio" value="MEDIO" 
+                  <%= pet.porte == "MEDIO" ? "checked": "" %>
+                  />
                   <label class="form-check-label" for="medio">Médio</label>
                 </div>
                 <div class="form-check form-check-inline col-sm-3 col-md-12">
-                  <input class="form-check-input" name="porte" type="radio" id="grande" value="GRANDE" required />
+                  <input class="form-check-input
+                  <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="grande" value="GRANDE" 
+                  <%= pet.porte == "GRANDE" ? "checked": "" %>
+                  />
                   <label class="form-check-label" for="grande">Grande</label>
                 </div>
-                <!-- <div class="form-check form-check-inline col-sm-3 col-md-12">
-                  <input class="form-check-input" name="porte" type="radio" id="null" value="" required />
-                  <label class="form-check-label" for="null">Não tenho certeza</label>
-                </div> -->
+                <%- include('../components/feedback-invalid', { msg: errors['PORTE'] }) %>
+            
               </section>
             </section>
           </section>
@@ -51,16 +63,16 @@
                 Nome:
               </label>
               <input class="form-control
-                    col-12" type="text" name="nome" id="nome">
+                    col-12" type="text" name="nome" id="nome"
+                    value="<%= pet.nome ? pet.nome : null%>"/>
             </section>
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-6">
                 <label for="especie">Espécie</label>
-                <select class="form-control" name="especie" id="especie" required>
+                <select class="form-control" name="especie" id="especie">
                   <option value="">Selecione uma especie</option>
                   <option value="1">Gato</option>
                   <option value="2">Cachorro</option>
-                  <!-- <option>Passáro</option> -->
                 </select>
               </section>
               <section class="form-group col-sm-12 col-md-6">
@@ -74,16 +86,26 @@
                 <label>Sexo</label>
                 <section class="form-row">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" name="sexo" type="radio" id="radio-femea" value="FEMEA" />
+                    <input class="form-check-input            
+                    <%= errors.sexo ? 'is-invalid' : '' %>" 
+                    name="sexo" type="radio" id="radio-femea" value="FEMEA" 
+                    <%= pet.sexo == "FEMEA" ? "checked": "" %>
+                    />
                     <label class="form-check-label" for="radio-femea">Fêmea</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" name="sexo" type="radio" id="radio-macho" value="MACHO" />
+                    <input class="form-check-input
+                    <%= errors.sexo ? 'is-invalid' : '' %>" 
+                    name="sexo" type="radio" id="radio-macho" 
+                    value="MACHO"<%= pet.sexo == "MACHO" ? "checked": ""%>/>
                     <label class="form-check-label" for="radio-macho">Macho</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" name="sexo" type="radio" id="radio-null" value="DESCONHECIDO"
-                      checked />
+                    <input class="form-check-input             
+                    <%= errors.sexo ? 'is-invalid' : '' %>"   
+                      name="sexo" type="radio" id="radio-null"
+                      value="DESCONHECIDO"<%= pet.sexo == "DESCONHECIDO" ? "checked": "" %>
+                      />
                     <label class="form-check-label" for="radio-null">Não tenho certeza</label>
                   </div>
                 </section>
@@ -109,7 +131,10 @@
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-12">
                 <label for="descricao">Descrição</label>
-                <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"></textarea>
+                <textarea class="form-control" id="descricao" 
+                rows="3" cols="100" name="descricao"
+                value="<%= pet.descricao ? pet.descricao : null%>">
+                </textarea>
               </section>
             </section>
 
@@ -124,28 +149,33 @@
             <section class="form-row">
               <section class="form-group col-md-12">
                 <label for="endereco">Endereço</label>
-                <input type="text" name="rua" class="form-control" id="logradouro" />
+                <input type="text" name="rua" class="form-control" id="logradouro"
+                value="<%= pet.rua ? pet.rua : null%>"/>
               </section>
             </section>
 
             <section class="form-row">
               <section class="form-group col-md-6">
                 <label for="CEP">CEP</label>
-                <input type="numeric" name="cep" class="form-control" id="CEP" />
+                <input type="numeric" name="cep" class="form-control" id="CEP"
+                value="<%= pet.cep ? pet.cep : null%>"/>
               </section>
               <section class="form-group col-md-6">
                 <label for="bairro">Bairro</label>
-                <input type="text" name="bairro" class="form-control" id="bairro" />
+                <input type="text" name="bairro" class="form-control" id="bairro"
+                value="<%= pet.bairro ? pet.bairro : null%>"/>
               </section>
             </section>
             <section class="form-row">
               <section class="form-group col-md-6">
                 <label for="cidade">Cidade</label>
-                <input type="text" name="cidade" class="form-control" id="cidade" />
+                <input type="text" name="cidade" class="form-control" id="cidade"
+                value="<%= pet.cidade ? pet.cidade : null%>"/>
               </section>
               <section class="form-group col-md-6">
                 <label for="estado">Estado</label>
-                <input type="text" name="estado" class="form-control" id="estado" />
+                <input type="text" name="estado" class="form-control" id="estado"
+                value="<%= pet.estado ? pet.estado : null%>"/>
               </section>
             </section>
             <section class="form-row">

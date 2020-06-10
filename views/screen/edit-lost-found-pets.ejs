@@ -5,16 +5,15 @@
     <section class="row formRegisterPet__rowContainer">
       <section class="col-xs-11 col-sm-11 col-md-10 col-xl-6 formRegisterPet__container">
         <h1 class="col-md-12 text-center">Editar Pet</h1>
-        <form class="col-md-12 formRegisterPet__form" method="POST" action="editar?_method=PUT">
+        <form class="col-md-12 formRegisterPet__form" method="POST" action="user/editar?_method=PUT">
           <div class="form-row">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petEncontrado" value="encontrado"
-              <%= pet.status == "ENCONTRADO" ? "checked": "" %>>
+              <input class="form-check-input" name="status" type="radio" id="petEncontrado"
+              value='<%= pet.status == "ENCONTRADO" ? "checked": "" %>'>
               <label class="form-check-label" for="petEncontrado">Pet Encontrado</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="status" type="radio" id="petPerdido" value="perdido" 
-              <%= pet.status == "PERDIDO" ? "checked": "" %>>
+              <input class="form-check-input" name="status" type="radio" id="petPerdido" value='<%= pet.status == "PERDIDO" ? "checked": "" %>'/>
               <label class="form-check-label" for="petPerdido">Pet Perdido</label>
 
             </div>
@@ -56,7 +55,8 @@
                   Nome:
                 </label>
                 <input class="form-control
-                    col-12" type="text" name="nome" id="" value="<%= pet.nome %>">
+                    col-12" type="text" name="nome" id="" 
+                    value="<%= pet.nome %>">
               </section>
               <section class="form-row">
                 <section class="form-group col-sm-12 col-md-6">
@@ -110,7 +110,38 @@
                     Adicionar o endereço manualmente
                   </button>
                 </section>
-
+                <section class="form-row">
+                  <section class="form-group col-md-12">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" name="rua" class="form-control" id="logradouro"
+                    value="<%= pet.rua ? pet.rua : null%>"/>
+                  </section>
+                </section>
+    
+                <section class="form-row">
+                  <section class="form-group col-md-6">
+                    <label for="CEP">CEP</label>
+                    <input type="numeric" name="cep" class="form-control" id="CEP"
+                    value="<%= pet.cep ? pet.cep : null%>"/>
+                  </section>
+                  <section class="form-group col-md-6">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" class="form-control" id="bairro"
+                    value="<%= pet.bairro ? pet.bairro : null%>"/>
+                  </section>
+                </section>
+                <section class="form-row">
+                  <section class="form-group col-md-6">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="cidade" class="form-control" id="cidade"
+                    value="<%= pet.cidade ? pet.cidade : null%>"/>
+                  </section>
+                  <section class="form-group col-md-6">
+                    <label for="estado">Estado</label>
+                    <input type="text" name="estado" class="form-control" id="estado"
+                    value="<%= pet.estado ? pet.estado : null%>"/>
+                  </section>
+                </section>
                 <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
                   <button type="button" class="btn orange--offset mr-2">
                     Cancelar
@@ -129,7 +160,7 @@
 </section>
 <%- include('../partials/footer') %>
 
-<section class="modal fade" id="modal-endereco" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <section class="modal fade" id="modal-endereco" tabindex="-1" role="dialog" aria-hidden="true">
   <section class="modal-dialog" role="document">
     <section class="modal-content">
       <section class="modal-header">
@@ -176,5 +207,5 @@
       </section>
     </section>
   </section>
-</section>
+</section> -->
 </div>

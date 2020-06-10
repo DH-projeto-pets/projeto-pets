@@ -106,7 +106,7 @@ module.exports = {
       },
     });
     console.log(pet);
-    res.render("screen/edit-lost-found-pets", { pet });
+    res.render("screen/edit-lost-found-pets", { errors, pet });
   },
 
   showPetCadastroAdocao: (req, res) =>
@@ -122,19 +122,34 @@ module.exports = {
       },
     });
     console.log(pet);
-    res.render("screen/edit-adopted-pets", { pet });
+    res.render("screen/edit-adopted-pets", { pet, errors: {} });
   }, // Rose
 
   // controla o banco
 
   update: async (req, res) => {
-    const pet = await Pet.update(
-      {
-        ...req.body,
+    console.log("req.body:", req.body);
+    errors = validationResult(req);
+    console.log(errors);
+    if(errors.isEmpty()) {
+      const pet = await Pet.update(
+        {
+          ...req.body,
       },
-      { where: { id: req.params.id } }
-    );
-    return res.redirect("/user/gerenciamento");
+      { where: { id: req.params.id }
+      });
+        console.log(pet);
+      return res.redirect("/user/gerenciamento");
+    } else {
+      const e = costumizeErrors(errors);
+      if(req.path == `/${req.params.id}/editar`) {
+        res.render("screen/edit-lost-found-pets",
+        {errors:e, pet: req.body })
+      } else {
+        res.render("screen/edit-adopted-pets", 
+                  {errors:e, pet: req.body })
+  }
+    }
   },
 
   store: async (req, res) => {
