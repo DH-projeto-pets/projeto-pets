@@ -9,22 +9,23 @@
           <section class="form-group col-md-12">
             <label for="tipoPerfil">Tipo de perfil</label><br>
             <div class="form-check form-check-inline">
-              <input class="form-check-input  <%= errors.tipo ? 'is-invalid' : '' %>" type="radio" name="tipo" id="pessoa" value="PF"
-                <%= usuario.tipo == "PF" ? "checked": "" %> required>
-                <%- include('../components/feedback-invalid', { msg: errors['tipo'] }) %>
+              <input class="form-check-input  <%= errors.tipo ? 'is-invalid' : '' %>" type="radio" name="tipo"
+                id="pessoa" value="PF" <%= usuario.tipo == "PF" ? "checked": "" %> required>
+              <%- include('../components/feedback-invalid', { msg: errors['tipo'] }) %>
               <label class="form-check-label" for="pessoa">Pessoa Física</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input  <%= errors.tipo ? 'is-invalid' : '' %>" type="radio" name="tipo" id="ong" value="ONG"
-                <%= usuario.tipo == "ONG" ? "checked": "" %> required>
-                <%- include('../components/feedback-invalid', { msg: errors['tipo'] }) %>
+              <input class="form-check-input  <%= errors.tipo ? 'is-invalid' : '' %>" type="radio" name="tipo" id="ong"
+                value="ONG" <%= usuario.tipo == "ONG" ? "checked": "" %> required>
+              <%- include('../components/feedback-invalid', { msg: errors['tipo'] }) %>
               <label class="form-check-label" for="ong">ONG</label>
             </div>
           </section>
 
           <section class="form-group col-md-12">
             <label for="nome">Nome de exibição</label>
-            <input type="text" class="form-control <%= errors.nome ? 'is-invalid' : '' %>" id="nome" name="nome" value="<%=usuario.nome%>" required />
+            <input type="text" class="form-control <%= errors.nome ? 'is-invalid' : '' %>" id="nome" name="nome"
+              value="<%=usuario.nome%>" required />
             <%- include('../components/feedback-invalid', { msg: errors['nome'] }) %>
           </section>
           <section class="form-group col-md-12">
@@ -50,9 +51,9 @@
           </section>
           <section class="form-group col-md-12">
             <label for="email">E-mail</label>
-            <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" placeholder="E-mail" name="email"
-              value="<%=usuario.email%>" required/>
-              <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
+            <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email"
+              placeholder="E-mail" name="email" value="<%=usuario.email%>" required />
+            <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
           </section>
           <!-- <section class="form-group col-md-4">
             <label for="telefone">Telefone</label>
@@ -126,55 +127,31 @@
           <section class="form-row col-12">
             <section class="form-group col-md-5">
               <label for="endereco">Logradouro:</label>
-              <input type="text"
-                      name="logradouro"
-                      class="form-control"
-                      id="endereco"
-                      value="<%=usuario.logradouro%>" />
+              <input type="text" name="logradouro" class="form-control" id="endereco" value="<%=usuario.logradouro%>" />
             </section>
             <section class="form-group col-md-3">
               <label for="numero">Número:</label>
-              <input type="text"
-                      name="numero"
-                      class="form-control"
-                      id="numero"
-                      value="<%=usuario.numero%>" />
+              <input type="text" name="numero" class="form-control" id="numero" value="<%=usuario.numero%>" />
             </section>
           </section>
           <section class="form-row col-12">
             <section class="form-group col-md-5">
               <label for="bairro">Bairro:</label>
-              <input type="text"
-                      name="bairro"
-                      class="form-control"
-                      id="bairro"
-                      value="<%=usuario.bairro%>"/>
+              <input type="text" name="bairro" class="form-control" id="bairro" value="<%=usuario.bairro%>" />
             </section>
             <section class="form-group col-md-3">
               <label for="cep">CEP:</label>
-              <input type="text"
-                      name="cep"
-                      class="form-control"
-                      id="cep"
-                      value="<%=usuario.cep%>" />
+              <input type="text" name="cep" class="form-control" id="cep" value="<%=usuario.cep%>" />
             </section>
           </section>
           <section class="form-row col-12">
             <section class="form-group col-md-5">
               <label for="cidade">Cidade:</label>
-              <input type="text"
-                      name="cidade"
-                      class="form-control"
-                      id="cidade"
-                      value="<%=usuario.cidade%>" />
+              <input type="text" name="cidade" class="form-control" id="cidade" value="<%=usuario.cidade%>" />
             </section>
             <section class="form-group col-md-3">
               <label for="estado">Estado:</label>
-              <input type="text"
-                      name="estado"
-                      class="form-control"
-                      id="estado"
-                      value="<%=usuario.estado%>" />
+              <input type="text" name="estado" class="form-control" id="estado" value="<%=usuario.estado%>" />
             </section>
           </section>
           <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
@@ -203,7 +180,7 @@
       </section>
       <section class="modal-body">
         <form action="" method="post"></form>
-          
+
         </form>
       </section>
       <section class="modal-footer">

@@ -58,11 +58,13 @@ module.exports = {
     });
     let totalPagina = Math.ceil(total / 6);
     pets = pets.slice((page - 1) * 6, 6 * page);
+    console.log(serializedStatus);
     res.render("screen/lost-found-pets", {
       pets,
       totalPagina,
       query: {
         ...query,
+        status: query.status || serializedStatus.map((obj) => obj.status),
         raca,
         especie,
         tipo,
@@ -70,21 +72,48 @@ module.exports = {
     });
   },
   showGridAdocao: async (req, res) => {
-    let { page = 1 } = req.query;
-    const { count: total, rows: petsAdocao } = await Pet.findAndCountAll(
-      {
-        limit: 6,
-        offset: (page - 1) * 6,
-      },
-      {
-        where: {
-          [Op.or]: "ADOCAO",
+    let { page = 1, tipo, especie, raca, ...query } = req.query;
+    const serializedQuery = queryBuilder(query);
+    let { count: total, rows: pets } = await Pet.findAndCountAll({
+      include: [
+        "fotoPrincipal",
+        {
+          model: User,
+          as: "usuario",
+          ...(tipo && {
+            where: {
+              tipo: tipo,
+            },
+          }),
         },
-        order: [["id", "DESC"]],
-      }
-    );
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+          ...(especie && {
+            where: {
+              fk_especie: especie,
+            },
+          }),
+        },
+      ],
+      where: {
+        ...(raca && { fk_raca: raca }),
+        status: "ADOCAO",
+        [Op.and]: serializedQuery,
+      },
+    });
     let totalPagina = Math.ceil(total / 6);
-    res.render("screen/adoption-pets", { petsAdocao, totalPagina });
+    // const queryString = serializedQuery.reduce(
+    //   (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
+    //   ""
+    // );
+    res.render("screen/adoption-pets", {
+      pets,
+      totalPagina,
+      query: serializedQuery,
+      parsedQuery: req.query,
+    });
   },
   showPetPerfil: async (req, res) => {
     const { id } = req.params;

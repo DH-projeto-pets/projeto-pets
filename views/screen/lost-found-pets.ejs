@@ -8,7 +8,7 @@
   <% url += `${value}=${query[value]}&`; %>
   <%}%>
 <%}%>
-  <% console.log('q',url) %>
+  <% console.log('q',query) %>
   <section class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-10 main-container main-container__pets">
@@ -24,7 +24,7 @@
               </span>
             </div>
           </div>
-          <div class="container collapse" id="collapse-filtro">
+          <div class="container collapse show" id="collapse-filtro">
             <div class="row">
               <form method="GET" action="" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
@@ -72,37 +72,48 @@
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Porte</h5>
-                  <input type="checkbox" name="porte" value="PEQUENO" id="PEQUENO"><label for="PEQUENO">
+                  <input type="checkbox" name="porte" value="PEQUENO" id="PEQUENO"
+                    <%= query.porte && query.porte.includes('PEQUENO') ? 'checked' : ''%>><label for="PEQUENO">
                     &nbsp;Pequeno</label><br>
-                  <input type="checkbox" name="porte" value="MEDIO" id="MEDIO"><label for="MEDIO">
+                  <input type="checkbox" name="porte" value="MEDIO" id="MEDIO"
+                    <%= query.porte && query.porte.includes('MEDIO') ? 'checked' : ''%>><label for="MEDIO">
                     &nbsp;Médio</label><br>
-                  <input type="checkbox" name="porte" value="GRANDE" id="GRANDE"><label for="GRANDE">
+                  <input type="checkbox" name="porte" value="GRANDE" id="GRANDE"
+                    <%= query.porte && query.porte.includes('GRANDE') ? 'checked' : ''%>><label for="GRANDE">
                     &nbsp;Grande</label><br>
                   <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Sexo</h5>
-                  <input type="checkbox" name="sexo" value="FEMEA" id="FEMEA"><label for="FEMEA">
+                  <input type="checkbox" name="sexo" value="FEMEA" id="FEMEA"
+                    <%= query.sexo && query.sexo.includes('MACHO') ? 'checked' : ''%>><label for="FEMEA">
                     &nbsp;Fêmea</label><br>
-                  <input type="checkbox" name="sexo" value="MACHO" id="MACHO"><label for="MACHO">
+                  <input type="checkbox" name="sexo" value="MACHO" id="MACHO"
+                    <%= query.sexo && query.sexo.includes('FEMEA') ? 'checked' : ''%>><label for="MACHO">
                     &nbsp;Macho</label><br>
-                  <input type="checkbox" name="sexo" value="DESCONHECIDO" id="DESCONHECIDO"><label for="DESCONHECIDO">
+                  <input type="checkbox" name="sexo" value="DESCONHECIDO" id="DESCONHECIDO"
+                    <%= query.sexo && query.sexo.includes('DESCONHECIDO') ? 'checked' : ''%>><label for="DESCONHECIDO">
                     &nbsp;Desconhecido</label><br>
                   <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Status</h5>
-                  <input type="checkbox" name="status" value="PERDIDO" id="PERDIDO" checked><label for="PERDIDO">
+                  <input type="checkbox" name="status" value="PERDIDO" id="PERDIDO"
+                    <%= query.status && query.status.includes('PERDIDO') ? 'checked' : ''%>>
+                  <label for="PERDIDO">
                     &nbsp;Perdido</label><br>
-                  <input type="checkbox" name="status" value="ENCONTRADO" id="ENCONTRADO" checked><label
-                    for="ENCONTRADO">
+                  <input type="checkbox" name="status" value="ENCONTRADO" id="ENCONTRADO"
+                    <%= query.status && query.status.includes('ENCONTRADO') ? 'checked' : ''%>><label for="ENCONTRADO">
                     &nbsp;Encontrado</label><br>
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Tipo de perfil</h5>
-                  <input type="checkbox" name="tipo" value="ONG" id="ONG"><label for="ONG">&nbsp;
+                  <input type="checkbox" name="tipo" value="ONG" id="ONG"
+                    <%= query.tipo && query.tipo.includes('ONG') ? 'checked' : ''%>><label for="ONG">&nbsp;
                     ONG</label><br>
-                  <input type="checkbox" name="tipo" value="PF" id="PF"><label for="PF">&nbsp;Pessoa física</label><br>
+                  <input type="checkbox" name="tipo" value="PF" id="PF"
+                    <%= query.tipo && query.tipo.includes('PF') ? 'checked' : ''%>><label for="PF">&nbsp;Pessoa
+                    física</label><br>
                 </div>
                 <div class="row w-100">
                   <div class="col-md-12 d-flex justify-content-center">
@@ -121,34 +132,16 @@
           <div class="row w-100 justify-content-center my-3">
             <h1>Pets Perdidos & Encontrados</h1>
           </div>
+          <%console.log(pets.length) %>
           <!-- Grid Dinâmico -->
+
+          <% if(pets.length > 0){ %>
           <% for (pet of pets) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
-            <a href="/pet/<%=pet.id %>">
-              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-                alt="Pet perdido/encontrado">
-            </a>
-            <div class="card-body">
-              <div class="container-card-info">
-                <a href="/pet/:id">
-                  <p class="card-text">
-                    <% if (pet.nome) { %>
-                    <%= pet.nome %>
-                    <% } else { %>
-                    Sem nome
-                    <% } %>
-                  </p>
-                </a>
-                <% if(pet.status == "PERDIDO"){ %>
-                <%- include('../components/badge-lost') %>
-                <% } %>
-                <% if(pet.status == "ENCONTRADO"){ %>
-                <%- include('../components/badge-found') %>
-                <% } %>
-              </div>
-            </div>
-          </div>
+          <%- include('../components/card-grid-pets', { pet }) %>
           <% } %>
+          <% } else { %>
+          <img src="/images/404-transparent.png" class="not-found-img-grid" alt="Nenhum pet foi encontrado" />
+          <%}%>
 
         </section>
 
@@ -157,14 +150,14 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-              <li class="page-item"><a href="?page=<%= nPagina %>&<%=url%>" class="page-link"><%= nPagina %></a></li>
-              <% } %>
-            </ul>
-          </div>
-        </section>
+          <li class="page-item"><a href="?page=<%= nPagina %>&<%=url%>" class="page-link"><%= nPagina %></a></li>
+          <% } %>
+          </ul>
       </div>
   </section>
-  <div class="espaco-branco"></div>
+  </div>
+</section>
+<div class="espaco-branco"></div>
 </section>
 
 
