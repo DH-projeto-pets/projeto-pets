@@ -62,7 +62,7 @@ module.exports = {
       pets,
       totalPagina,
       query: {
-        serializedQuery,
+        ...query,
         raca,
         especie,
         tipo,
