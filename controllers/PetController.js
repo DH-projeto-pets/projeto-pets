@@ -71,7 +71,7 @@ module.exports = {
       },
     });
     console.log(pet);
-    res.render("screen/edit-lost-found-pets", { pet });
+    res.render("screen/edit-lost-found-pets", { errors: {}, pet });
   },
 
   showPetCadastroAdocao: (req, res) =>
@@ -93,13 +93,20 @@ module.exports = {
   // controla o banco
 
   update: async (req, res) => {
-    const pet = await Pet.update(
-      {
-        ...req.body,
-      },
-      { where: { id: req.params.id } }
-    );
-    return res.redirect("/user/gerenciamento");
+    const errors = validationResult(req);
+    console.log(errors);
+
+    if (errors.isEmpty()) {
+      const pet = await Pet.update(
+        {
+          ...req.body,
+        },
+        { where: { id: req.params.id } }
+      );
+      const e = costumizeErrors(errors);
+      // return res.redirect("/user/gerenciamento");
+      res.render("screen/edit-lost-found-pets", {errors:e, pet: {...req.body} })
+    }
   },
 
   store: async (req, res) => {

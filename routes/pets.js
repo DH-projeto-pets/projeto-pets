@@ -24,7 +24,13 @@ router.post(
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);
 router.post("/adocao/cadastrar", PetController.store);
 router.get("/:id/editar", checkUser, PetController.showPetEdicao);
-router.put("/:id/editar", PetController.update);
+router.put(
+  "/:id/editar", 
+  [check("status").isIn(['ENCONTRADO', 'PERDIDO']).withMessage('Este campo deve ser preenchido!'),
+  check("porte").isIn(['PEQUENO', 'MEDIO', 'GRANDE']).withMessage('Este campo deve ser preenchido!'),
+  check("especie").isLength({ min:1 }).withMessage('Selecione uma opção!'),
+  check("raca").isLength({ min:1 }).withMessage('Selecione uma opção!')],
+  PetController.update);
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
 router.put("/adocao/:id/editar", PetController.update);
 router.get("/:id", PetController.showPetPerfil);
