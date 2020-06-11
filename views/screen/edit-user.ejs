@@ -44,16 +44,46 @@
             </section>
           </section>
           <section class="form-group col-md-12">
-            <label for="tipoPerfil">Endereço</label><button type="button" class="btn btn-block orange"
-              data-toggle="modal" data-target="#modal-endereco">
-              Editar o endereço
-            </button>
-          </section>
-          <section class="form-group col-md-12">
             <label for="email">E-mail</label>
             <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email"
               placeholder="E-mail" name="email" value="<%=usuario.email%>" required />
             <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
+          </section>
+          <section class="form-group col-md-12">
+            <label for="tipoPerfil">Endereço</label><button type="button" class="btn btn-block orange"
+              data-button="getAddress">
+              Editar o endereço
+            </button>
+          </section>
+          <section class="form-row col-12">
+            <section class="form-group col-md-8">
+              <label for="endereco">Logradouro:</label>
+              <input type="text" name="logradouro" class="form-control" id="endereco" value="<%=usuario.logradouro%>" />
+            </section>
+            <section class="form-group col-md-4">
+              <label for="numero">Número:</label>
+              <input type="text" name="numero" class="form-control" id="numero" value="<%=usuario.numero%>" />
+            </section>
+          </section>
+          <section class="form-row col-12">
+            <section class="form-group col-md-8">
+              <label for="bairro">Bairro:</label>
+              <input type="text" name="bairro" class="form-control" id="bairro" value="<%=usuario.bairro%>" />
+            </section>
+            <section class="form-group col-md-4">
+              <label for="cep">CEP:</label>
+              <input type="text" name="cep" class="form-control" id="cep" value="<%=usuario.cep%>" />
+            </section>
+          </section>
+          <section class="form-row col-12">
+            <section class="form-group col-md-8">
+              <label for="cidade">Cidade:</label>
+              <input type="text" name="cidade" class="form-control" id="cidade" value="<%=usuario.cidade%>" />
+            </section>
+            <section class="form-group col-md-4">
+              <label for="estado">Estado:</label>
+              <input type="text" name="estado" class="form-control" id="estado" value="<%=usuario.estado%>" />
+            </section>
           </section>
           <!-- <section class="form-group col-md-4">
             <label for="telefone">Telefone</label>
@@ -110,10 +140,10 @@
           </section>
           <section class="form-group col-md-12">
             <label for="descricao">Descrição</label>
-            <textarea id="descricao" class="form-control <%= errors.descricao ? 'is-invalid' : '' %>" cols="95%" rows="5"
-              name="descricao" value="<%=usuario.descricao%>" ><%=usuario.descricao%></textarea>
-              <% console.log('descricao', usuario.descricao) %>
-              <%- include('../components/feedback-invalid', { msg: errors['descricao'] }) %>
+            <textarea id="descricao" class="form-control <%= errors.descricao ? 'is-invalid' : '' %>" cols="95%"
+              rows="5" name="descricao" value="<%=usuario.descricao%>"><%=usuario.descricao%></textarea>
+            <% console.log('descricao', usuario.descricao) %>
+            <%- include('../components/feedback-invalid', { msg: errors['descricao'] }) %>
           </section>
           <!-- <section class="form-group col-md-12">
             <label for="preferencia">Prefêrencia de contato</label>
@@ -124,36 +154,6 @@
               <option value="whatsapp">Whatsapp</option>
             </select>
           </section> -->
-          <section class="form-row col-12">
-            <section class="form-group col-md-5">
-              <label for="endereco">Logradouro:</label>
-              <input type="text" name="logradouro" class="form-control" id="endereco" value="<%=usuario.logradouro%>" />
-            </section>
-            <section class="form-group col-md-3">
-              <label for="numero">Número:</label>
-              <input type="text" name="numero" class="form-control" id="numero" value="<%=usuario.numero%>" />
-            </section>
-          </section>
-          <section class="form-row col-12">
-            <section class="form-group col-md-5">
-              <label for="bairro">Bairro:</label>
-              <input type="text" name="bairro" class="form-control" id="bairro" value="<%=usuario.bairro%>" />
-            </section>
-            <section class="form-group col-md-3">
-              <label for="cep">CEP:</label>
-              <input type="text" name="cep" class="form-control" id="cep" value="<%=usuario.cep%>" />
-            </section>
-          </section>
-          <section class="form-row col-12">
-            <section class="form-group col-md-5">
-              <label for="cidade">Cidade:</label>
-              <input type="text" name="cidade" class="form-control" id="cidade" value="<%=usuario.cidade%>" />
-            </section>
-            <section class="form-group col-md-3">
-              <label for="estado">Estado:</label>
-              <input type="text" name="estado" class="form-control" id="estado" value="<%=usuario.estado%>" />
-            </section>
-          </section>
           <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
             <button type="button" class="btn orange--offset mr-2">
               Cancelar
@@ -169,26 +169,3 @@
   <div class="espaco-branco"></div>
 </section>
 <%- include('../partials/footer') %>
-<section class="modal fade" id="modal-endereco" tabindex="-1" role="dialog" aria-hidden="true">
-  <section class="modal-dialog" role="document">
-    <section class="modal-content">
-      <section class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Endereço:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </section>
-      <section class="modal-body">
-        <form action="" method="post"></form>
-
-        </form>
-      </section>
-      <section class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Fechar
-        </button>
-        <button type="submit" class="btn orange">Salvar</button>
-      </section>
-    </section>
-  </section>
-</section>

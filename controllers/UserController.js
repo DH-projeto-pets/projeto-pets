@@ -76,7 +76,7 @@ let UserController = {
     if (errors.isEmpty()) {
       const id = req.session.user.id;
       if (req.file) {
-        var image = `/images/dinamics/${req.file.originalname}`;
+        var image = `/images/${req.file.originalname}`;
       }
 
       const usuario = await User.update(
@@ -95,16 +95,17 @@ let UserController = {
 
       req.session.save(() => {
         req.session.user.nome = nome;
-        res.render("screen/edit-user", usuario);
+        return res.redirect("editar");
+      });
+    } else {
+      const e = costumizeErrors(errors);
+      return res.render("screen/edit-user", {
+        errors: e,
+        usuario: {
+          ...req.body,
+        },
       });
     }
-    const e = costumizeErrors(errors);
-    res.render("screen/edit-user", {
-      errors: e,
-      usuario: {
-        ...req.body,
-      },
-    });
   },
   delete: (req, res) => {
     // deleta o usuario
@@ -165,14 +166,14 @@ let UserController = {
       where: { id },
       include: [
         //"pets",
-      {
-        model: Pet,
-        as: "pets",
-        include: ["fotoPrincipal", "raca"]
-      },
-    ],
-   });
-    console.log(usuario)
+        {
+          model: Pet,
+          as: "pets",
+          include: ["fotoPrincipal", "raca"],
+        },
+      ],
+    });
+    console.log(usuario);
     if (!usuario) return res.render("404-not-found");
     res.render("screen/owner-profile", { usuario });
   },
