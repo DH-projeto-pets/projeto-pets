@@ -121,9 +121,13 @@ module.exports = {
       where: {
         id,
       },
-      include: ["raca"],
+      include: ["raca", "fotos", "fotoPrincipal"],
     });
-    res.render("screen/lost-found-pets-profile", { pet });
+    console.log(pet);
+    if (pet) {
+      return res.render("screen/lost-found-pets-profile", { pet });
+    }
+    return res.render("404-not-found");
   },
   showPetCadastro: (req, res) =>
     res.render("screen/register-lost-found-pets", { errors: {}, pet: {} }),
@@ -195,27 +199,28 @@ module.exports = {
         ...req.body,
         fk_usuario: req.session.user.id,
         fk_raca: req.body.raca,
-      })
-        .then((pet) => pet)
-        .catch((err) => err);
-      console.log("==>", pet);
+      });
 
       if (pet) {
+        const [firstPic] = req.body.fotosMap.split(";");
+        console.log(firstPic);
         const images = req.files.map((file) => `/images/${file.originalname}`);
         // await Foto.bulkCreate(images);
-        console.log(images);
+        // return;
+        // console.log(images);
+        console.log(JSON.stringify(pet));
         for (img of images) {
           await Foto.create({
             caminho: img,
             fk_pet: pet.id,
           });
         }
-        const [caminho] = images;
         const foto = await Foto.findOne({
           where: {
-            caminho,
+            caminho: `/images/${firstPic}`,
           },
         });
+        console.log("princ", foto);
         await Pet.update(
           {
             fk_foto_principal: foto.id,
