@@ -17,7 +17,7 @@
             <input class="form-check-input
             <%= errors.status ? 'is-invalid' : '' %>" name="status" type="radio" id="petPerdido" value="PERDIDO"
               <%= pet.status == "PERDIDO" ? "checked": "" %> />
-            <label class="form-check-label" for="petPerdido">Pet Perdido</label>
+            <label class="form-check-label" for="petPerdido" style="width: -webkit-fill-available;">Pet Perdido</label>
             <%- include('../components/feedback-invalid', { msg: errors['status'] }) %>
           </div>
         </div>
@@ -33,22 +33,27 @@
                   <input class="form-check-input
                    <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="pequeno" value="PEQUENO"
                     <%= pet.porte == "PEQUENO" ? "checked": "" %> />
-                  <label class="form-check-label" for="pequeno">Pequeno</label>
+                  <label class="form-check-label" for="pequeno">
+                    Pequeno
+                  </label>
                 </div>
                 <div class="form-check form-check-inline col-sm-3 col-md-12">
                   <input class="form-check-input
                   <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="medio" value="MEDIO"
                     <%= pet.porte == "MEDIO" ? "checked": "" %> />
-                  <label class="form-check-label" for="medio">Médio</label>
+                  <label class="form-check-label" for="medio">
+                    Médio
+                  </label>
                 </div>
-                <div class="form-check form-check-inline col-sm-3 col-md-12">
+                <div class="form-check form-check-inline col-sm-3 col-md-12 flex-wrap">
                   <input class="form-check-input
                   <%= errors.porte ? 'is-invalid' : '' %>" name="porte" type="radio" id="grande" value="GRANDE"
                     <%= pet.porte == "GRANDE" ? "checked": "" %> />
-                  <label class="form-check-label" for="grande">Grande</label>
+                  <label class="form-check-label" for="grande">
+                    Grande
+                  </label>
+                  <%- include('../components/feedback-invalid', { msg: errors['porte'] }) %>
                 </div>
-                <%- include('../components/feedback-invalid', { msg: errors['PORTE'] }) %>
-
               </section>
             </section>
           </section>
@@ -68,13 +73,15 @@
                   <option value="1">Gato</option>
                   <option value="2">Cachorro</option>
                 </select>
+                <%- include('../components/feedback-invalid', { msg: errors['especie'] }) %>
               </section>
               <section class="form-group col-sm-12 col-md-6">
                 <label for="raca">Raça</label>
-                <select class="form-control" id="raca" name="raca" class="selectpicker" data-live-search="true"
-                  required>
+                <select class="form-control <%= errors.raca ? 'is-invalid' : '' %>" id="raca" name="raca" class="selectpicker" data-live-search="true"
+                   >
                   <option value="">Selecione uma raça</option>
                 </select>
+                <%- include('../components/feedback-invalid', { msg: errors['raca'] }) %>
               </section>
               <section class="form-group col-sm-12 col-md-12">
                 <label>Sexo</label>
@@ -95,7 +102,8 @@
                     <input class="form-check-input             
                     <%= errors.sexo ? 'is-invalid' : '' %>" name="sexo" type="radio" id="radio-null"
                       value="DESCONHECIDO" <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %> />
-                    <label class="form-check-label" for="radio-null">Desconhecido</label>
+                    <label class="form-check-label" for="radio-null">Não tenho certeza</label>
+                    <%- include('../components/feedback-invalid', { msg: errors['sexo'] }) %>
                   </div>
                 </section>
               </section>
