@@ -133,9 +133,16 @@ module.exports = {
         [Op.or]: [{ status: "ENCONTRADO" }, { status: "PERDIDO" }],
         [Op.and]: [{ id: req.params.id }, { fk_usuario: req.session.user.id }],
       },
+      include: [
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+        },
+      ],
     });
-    console.log(pet);
-    res.render("screen/edit-lost-found-pets", { errors, pet });
+    console.log(JSON.stringify(pet));
+    res.render("screen/edit-lost-found-pets", { errors: {}, pet });
   },
 
   showPetCadastroAdocao: (req, res) =>
@@ -160,24 +167,22 @@ module.exports = {
     console.log("req.body:", req.body);
     errors = validationResult(req);
     console.log(errors);
-    if(errors.isEmpty()) {
+    if (errors.isEmpty()) {
       const pet = await Pet.update(
         {
           ...req.body,
-      },
-      { where: { id: req.params.id }
-      });
-        console.log(pet);
+        },
+        { where: { id: req.params.id } }
+      );
+      console.log(pet);
       return res.redirect("/user/gerenciamento");
     } else {
       const e = costumizeErrors(errors);
-      if(req.path == `/${req.params.id}/editar`) {
-        res.render("screen/edit-lost-found-pets",
-        {errors:e, pet: req.body })
+      if (req.path == `/${req.params.id}/editar`) {
+        res.render("screen/edit-lost-found-pets", { errors: e, pet: req.body });
       } else {
-        res.render("screen/edit-adopted-pets", 
-                  {errors:e, pet: req.body })
-  }
+        res.render("screen/edit-adopted-pets", { errors: e, pet: req.body });
+      }
     }
   },
 

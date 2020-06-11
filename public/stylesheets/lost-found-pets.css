@@ -10,13 +10,15 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.not-found-img-grid {
-  height: unset !important;
-  width: 50% !important;
-}
+
 .grid-pets__container img {
   height: 180px;
   width: 100%;
+}
+
+.not-found-img-grid {
+  height: unset !important;
+  width: 50% !important;
 }
 
 .grid-pets__container h2 {

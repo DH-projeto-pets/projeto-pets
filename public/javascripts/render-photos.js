@@ -7,11 +7,14 @@ const imgArquivo = (e) => {
   fileReader.readAsDataURL(e.target.files[0]);
 };
 
-const sortableImgs = new Sortable.default(document.querySelectorAll('.imgs-preview'), {
-  draggable: 'img'
-});
+const sortableImgs = new Sortable.default(
+  document.querySelectorAll(".imgs-preview"),
+  {
+    draggable: "img",
+  }
+);
 
-sortableImgs.on('drag:stop', (e) => {
+sortableImgs.on("drag:stop", (e) => {
   const list = document.querySelector(".imgs-preview").children;
   const preview = document.querySelector(".preview-img");
   preview.src = list[0].src;
@@ -23,8 +26,6 @@ const renderFotos = async (e) => {
       await mountPreview(e.target.files[file], file);
     }
   }
-
-
 };
 
 const mountPreview = (e, i) => {
