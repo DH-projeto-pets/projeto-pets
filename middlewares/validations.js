@@ -24,4 +24,20 @@ const petAdoptionValidation = [
   check("vacinado").isIn(["0", "1"]).withMessage("Campo obrigatório"),
 ];
 
-module.exports = { statusValidation, petValidation, petAdoptionValidation };
+const updateValidation = [
+  check("porte")
+    .isIn(["GRANDE", "MEDIO", "PEQUENO"])
+    .withMessage("Campo obrigatório"),
+  check("especie").notEmpty().withMessage("Campo obrigatório"),
+  check("raca").notEmpty().withMessage("Campo obrigatório"),
+  check("sexo")
+    .isIn(["FEMEA", "MACHO", "DESCONHECIDO"])
+    .withMessage("Campo obrigatório"),
+];
+
+module.exports = {
+  statusValidation,
+  petValidation,
+  petAdoptionValidation,
+  updateValidation,
+};

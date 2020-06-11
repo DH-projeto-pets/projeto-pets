@@ -7,10 +7,12 @@
       <div class="col-md-12">
         <section class="row">
           <div class="col-md-12 mt-4 mb-2">
+            <% console.log(usuario) %>
             <h1><%= usuario.nome %></h1>
           </div>
           <div class="col-md-6">
-            <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
+            <img src="<%= usuario.image ? usuario.image : '/images/pessoa.jpg' %>" class="img-fluid"
+              alt="Foto da Pessoa" id="fotomaior">
           </div>
           <div class="col-md-6 mt-3 pl-0">
             <div class="col-md-12 info-user-cont p-0">
@@ -40,7 +42,7 @@
                 <% console.log('string mascarada', masked_str ) %>
                 <% if(!locals.user || locals.user == "undefined") { %>
                 <div class="pl-3"><%= usuario.email = `${masked_str}` %></div>
-                  <% } else { %>
+                <% } else { %>
                 <div class="col-md-10" id="email-user"><%- usuario.email ? usuario.email : '' %></div>
                 <% } %>
               </div>
@@ -54,26 +56,25 @@
               </div>
             </div>
           </div>
-  
+
         </section>
         <section class="row">
           <div class="col-md-12 mt-2 w-100 info-user">
-    
-              <%- usuario.descricao ? usuario.descricao : "Sem descrição" %>
-    
+
+            <%- usuario.descricao ? usuario.descricao : "Sem descrição" %>
+
           </div>
 
         </section>
         <section class="row">
           <div class="col-md-12 mt-4">
-            <div class="container user-pet-list ">
+            <div class="container user-pet-list"
+              style="display: grid; grid-template-columns: auto auto auto; gap: 10px;">
               <% for(const pet of usuario.pets) {%>
-              <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
-                <div class="card grid-pets m-1" style="width: 14.5rem;">
-                  
-                    <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-                      alt="Pet perdido/encontrado">
-                  
+              <div class="card grid-pets">
+                <a href=" /pet/<%=pet.id %>" style="text-decoration: none; color: unset">
+                  <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                    alt="Pet perdido/encontrado" style="height: 150px;">
                   <div class="card-body">
                     <div class="container-card-info">
                       <!-- <a href="/pet/<%=pet.id %>"> -->
@@ -94,30 +95,27 @@
                         <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome%></a></li>
                         <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
                         <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
-    
-                    </ul>
+                      </ul>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
               <% } %>
-    
-    
             </div>
           </div>
 
         </section>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
 
       </div>
 
 
-      
+
     </section>
   </section>
 
