@@ -21,6 +21,9 @@ border-color: rgb(55, 160, 134);
   flex-wrap: wrap;
 }
 
+.info-user{
+  word-break: break-word;
+}
 
 /* 
    #containerimgs{

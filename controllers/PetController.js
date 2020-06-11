@@ -143,6 +143,7 @@ module.exports = {
           as: "raca",
           include: "especie",
         },
+        "fotoPrincipal",
       ],
     });
     console.log(JSON.stringify(pet));
@@ -176,16 +177,22 @@ module.exports = {
         {
           ...req.body,
         },
-        { where: { id: req.params.id } }
+        { where: { id: req.params.id }, include: ["fotoPrincipal"] }
       );
       console.log(pet);
       return res.redirect("/user/gerenciamento");
     } else {
       const e = costumizeErrors(errors);
       if (req.path == `/${req.params.id}/editar`) {
-        res.render("screen/edit-lost-found-pets", { errors: e, pet: req.body });
+        return res.render("screen/edit-lost-found-pets", {
+          errors: e,
+          pet: req.body,
+        });
       } else {
-        res.render("screen/edit-adopted-pets", { errors: e, pet: req.body });
+        return res.render("screen/edit-adopted-pets", {
+          errors: e,
+          pet: req.body,
+        });
       }
     }
   },
