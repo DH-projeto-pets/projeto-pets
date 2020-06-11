@@ -121,9 +121,13 @@ module.exports = {
       where: {
         id,
       },
-      include: ["raca"],
+      include: ["raca", "fotos", "fotoPrincipal"],
     });
-    res.render("screen/lost-found-pets-profile", { pet });
+    console.log(pet);
+    if (pet) {
+      return res.render("screen/lost-found-pets-profile", { pet });
+    }
+    return res.render("404-not-found");
   },
   showPetCadastro: (req, res) =>
     res.render("screen/register-lost-found-pets", { errors: {}, pet: {} }),
@@ -133,9 +137,16 @@ module.exports = {
         [Op.or]: [{ status: "ENCONTRADO" }, { status: "PERDIDO" }],
         [Op.and]: [{ id: req.params.id }, { fk_usuario: req.session.user.id }],
       },
+      include: [
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+        },
+      ],
     });
-    console.log(pet);
-    res.render("screen/edit-lost-found-pets", { errors, pet });
+    console.log(JSON.stringify(pet));
+    res.render("screen/edit-lost-found-pets", { errors: {}, pet });
   },
 
   showPetCadastroAdocao: (req, res) =>
@@ -160,24 +171,22 @@ module.exports = {
     console.log("req.body:", req.body);
     errors = validationResult(req);
     console.log(errors);
-    if(errors.isEmpty()) {
+    if (errors.isEmpty()) {
       const pet = await Pet.update(
         {
           ...req.body,
-      },
-      { where: { id: req.params.id }
-      });
-        console.log(pet);
+        },
+        { where: { id: req.params.id } }
+      );
+      console.log(pet);
       return res.redirect("/user/gerenciamento");
     } else {
       const e = costumizeErrors(errors);
-      if(req.path == `/${req.params.id}/editar`) {
-        res.render("screen/edit-lost-found-pets",
-        {errors:e, pet: req.body })
+      if (req.path == `/${req.params.id}/editar`) {
+        res.render("screen/edit-lost-found-pets", { errors: e, pet: req.body });
       } else {
-        res.render("screen/edit-adopted-pets", 
-                  {errors:e, pet: req.body })
-  }
+        res.render("screen/edit-adopted-pets", { errors: e, pet: req.body });
+      }
     }
   },
 
@@ -190,27 +199,28 @@ module.exports = {
         ...req.body,
         fk_usuario: req.session.user.id,
         fk_raca: req.body.raca,
-      })
-        .then((pet) => pet)
-        .catch((err) => err);
-      console.log("==>", pet);
+      });
 
       if (pet) {
+        const [firstPic] = req.body.fotosMap.split(";");
+        console.log(firstPic);
         const images = req.files.map((file) => `/images/${file.originalname}`);
         // await Foto.bulkCreate(images);
-        console.log(images);
+        // return;
+        // console.log(images);
+        console.log(JSON.stringify(pet));
         for (img of images) {
           await Foto.create({
             caminho: img,
             fk_pet: pet.id,
           });
         }
-        const [caminho] = images;
         const foto = await Foto.findOne({
           where: {
-            caminho,
+            caminho: `/images/${firstPic}`,
           },
         });
+        console.log("princ", foto);
         await Pet.update(
           {
             fk_foto_principal: foto.id,
