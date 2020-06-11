@@ -1,7 +1,7 @@
 <%- include('../partials/head', { title: 'Pets para Adoção'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-
+  <%console.log(parsedQuery)%>
   <section class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-10 main-container main-container__pets">
@@ -13,75 +13,86 @@
                   <i class="indicator fa fa-caret-down" aria-hidden="true"></i>
                   Filtros
                 </a>
-
+                <!-- <% console.log(parsedQuery) %> -->
               </span>
             </div>
           </div>
           <div class="container collapse" id="collapse-filtro">
             <div class="row">
-              <form action="" class="col-md-12 d-flex flex-wrap">
+              <form action="" method="GET" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
-                  <input type="radio" name="distancia" id="0to1"><label for="0to1">0 - 1km</label><br>
-                  <input type="radio" name="distancia" id="1to3"><label for="1to3">1km - 3km</label><br>
-                  <input type="radio" name="distancia" id="3to5"><label for="3to5">3 - 5km</label><br>
-                  <input type="radio" name="distancia" id="todos"><label for="todos">Todos</label>
+                  <input type="checkbox" name="distancia" id="0to1"><label for="0to1">0 - 1km</label><br>
+                  <input type="checkbox" name="distancia" id="1to3"><label for="1to3">1km - 3km</label><br>
+                  <input type="checkbox" name="distancia" id="3to5"><label for="3to5">3 - 5km</label><br>
+                  <input type="checkbox" name="distancia" id="todos"><label for="todos">Todos</label>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Espécie</h5>
-                  <select class="form-control form-control-sm">
-                    <option>-- Espécie --</option>
-                    <option>Cachorro</option>
-                    <option>Gato</option>
-                    <option>Ave</option>
+                  <select class="form-control form-control-sm" name="especie" id="especie">
+                    <option value="">Selecione uma especie</option>
+                    <option value="1">Gato</option>
+                    <option value="2">Cachorro</option>
                   </select>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Raça</h5>
-                  <select class="form-control form-control-sm">
-                    <option>-- Raça --</option>
-                    <option>SRD</option>
-                    <option>Poodle</option>
-                    <option>Rottweiler</option>
-                    <option>Golden</option>
-                    <option>Cocker</option>
-                    <option>Chiwawa</option>
+                  <select class="form-control form-control-sm" id="raca" name="raca" class="selectpicker"
+                    data-live-search="true">
+                    <option value="">Selecione uma raça</option>
                   </select>
                 </div>
-                <div class="col-md-3 col-12">
+                <div class="col-md-3 col-12 filter-column">
                   <h5>Porte</h5>
-                  <input type="radio" name="porte" id="p"><label for="p">Pequeno</label><br>
-                  <input type="radio" name="porte" id="m"><label for="m">Médio</label><br>
-                  <input type="radio" name="porte" id="g"><label for="g">Grande</label><br>
-                  <input type="radio" name="porte" id="gg"><label for="gg">Muito Grande</label>
+                  <input type="checkbox" name="porte" value="PEQUENO" id="PEQUENO" <%=parsedQuery.porte && parsedQuery.porte.includes('PEQUENO')
+                    ? 'checked' : '' %>><label for="PEQUENO">&nbsp;Pequeno</label><br>
+                  <input type="checkbox" name="porte" value="MEDIO" id="MEDIO"
+                    <%=parsedQuery.porte && parsedQuery.porte.includes('MEDIO')  ? 'checked' : '' %>><label
+                    for="MEDIO">&nbsp;Médio</label><br>
+                  <input type="checkbox" name="porte" value="GRANDE" id="GRANDE"
+                    <%=parsedQuery.porte && parsedQuery.porte.includes('GRANDE')  ? 'checked' : '' %>><label
+                    for="GRANDE">
+                    &nbsp;Grande</label><br>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Vacinado</h5>
-                  <input type="radio" name="vacinado" id="sim"><label for="sim">Sim</label><br>
-                  <input type="radio" name="vacinado" id="nao"><label for="nao">Não</label><br>
+                  <input type="checkbox"
+                    <%=parsedQuery.vacinado && parsedQuery.vacinado.includes('1') ? 'checked' : '' %> name="vacinado"
+                    value="1" id="vacionado-sim"><label for="vacionado-sim">&nbsp;Sim</label><br>
+                  <input type="checkbox"
+                    <%=parsedQuery.vacinado && parsedQuery.vacinado.includes('0') ? 'checked' : '' %> name="vacinado"
+                    value="0" id="nao-vacinado"><label for="nao-vacinado">&nbsp;Não</label><br>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Vermifugado</h5>
-                  <input type="radio" name="vermifugado" id="vermifugado-sim"><label
-                    for="vermifugado-sim">Sim</label><br>
-                  <input type="radio" name="vermifugado" id="vermifugado-nao"><label
-                    for="vermifugado-nao">Não</label><br>
+                  <input type="checkbox"
+                    <%=parsedQuery.vermifugado && parsedQuery.vermifugado.includes('1') ? 'checked' : '' %>
+                    name="vermifugado" value="1" id="vermifugado-sim"><label for="vermifugado-sim">&nbsp;Sim</label><br>
+                  <input type="checkbox"
+                    <%=parsedQuery.vermifugado && parsedQuery.vermifugado.includes('0') ? 'checked' : '' %>
+                    name="vermifugado" value="0" id="vermifugado-nao"><label for="vermifugado-nao">&nbsp;Não</label><br>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Castrado</h5>
-                  <input type="radio" name="castrado" id="castrado-sim"><label
-                    for="castrado-sim">Sim</label><br>
-                  <input type="radio" name="castrado" id="castrado-nao"><label
-                    for="castrado-nao">Não</label><br>
+                  <input type="checkbox"
+                    <%=parsedQuery.castrado && parsedQuery.castrado.includes('1') ? 'checked' : '' %> name="castrado"
+                    value="1" id="castrado-sim"><label for="castrado-sim">&nbsp;Sim</label><br>
+                  <input type="checkbox"
+                    <%=parsedQuery.castrado && parsedQuery.castrado.includes('0') ? 'checked' : '' %> name="castrado"
+                    value="0" id="castrado-nao"><label for="castrado-nao">&nbsp;Não</label><br>
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Responsável</h5>
-                  <input type="radio" name="tipo" id="ong"><label for="ong">ONG</label><br>
-                  <input type="radio" name="tipo" id="pf"><label for="pf">Pessoa Física</label><br>
+                  <input type="checkbox" value="ONG"
+                    <%=parsedQuery.tipo && parsedQuery.tipo.includes('ONG')? 'checked' : '' %> name="tipo"
+                    id="ONG"><label for="ONG">&nbsp;ONG</label><br>
+                  <input type="checkbox" value="PF"
+                    <%=parsedQuery.tipo && parsedQuery.tipo.includes('PF') ? 'checked' : '' %> name="tipo"
+                    id="PF"><label for="PF">&nbsp;Pessoa Física</label><br>
                 </div>
                 <div class="row w-100">
                   <div class="col-md-12 d-flex justify-content-center">
-                    <input type="button" value="Filtrar" class="btn btn-primary botao-medio-amarelo">
+                    <button type="submit" class="btn btn-primary botao-medio-amarelo">Filtrar</button>
                   </div>
                 </div>
               </form>
@@ -96,29 +107,13 @@
             <h1>Pets para Adoção</h1>
           </div>
           <!-- Grid Dinâmico -->
-          <% for (pet of petsAdocao) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
-         
-            <a href="/pet/<%=pet.id %>">
-              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-                alt="Pet perdido/encontrado">
-            </a>
-            <div class="card-body">
-              <div class="container-card-info">
-                <a href="/pet/<%= pet.id %>">
-                  <p class="card-text">
-                    <% if (pet.nome) { %>
-                    <%= pet.nome %>
-                    <% } else { %>
-                    Sem nome
-                    <% } %>
-                  </p>
-                </a>
-                <%- include('../components/badge-adoption') %>
-              </div>
-            </div>
-          </div>
+          <% if(pets.length > 0){ %>
+          <% for (pet of pets) {%>
+          <%- include('../components/card-grid-pets', { pet }) %>
           <% } %>
+          <% } else { %>
+          <img src="/images/404-transparent.png" class="not-found-img-grid" alt="Nenhum pet foi encontrado" />
+          <%}%>
         </section>
 
         <!-- Paginação -->
@@ -126,15 +121,17 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-                <li class="page-item"><a href="?page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
-              <% } %>
-            </ul> 
-          </div>
-        </section>
-
+          <li class="page-item"><a href="?<%=query.reduce(
+            (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
+            '')%>page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
+          <% } %>
+          </ul>
       </div>
   </section>
-  <div class="espaco-branco"></div>
+
+  </div>
+</section>
+<div class="espaco-branco"></div>
 </section>
 
 

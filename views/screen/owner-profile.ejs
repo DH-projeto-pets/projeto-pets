@@ -1,91 +1,127 @@
 <%- include('../partials/head', { title: "Perfil Dono" }) %>
 
-<div class="d-flex" id="wrapper">
+<section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-  <div class="container justify-content:center" id="containerbody">
-    <div class="row pb-4">
+  <section class="container justify-content:center mb-5" id="containerbody">
+    <section class="row pb-4 ml-2 mr-2">
       <div class="col-md-12">
-        <h1><%= usuario.nome %></h1>
-      </div>
-      <div class="col-md-6">
-        <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
-      </div>
-      <div class="col-md-6">
-        <div class="col-md-12">
-          <%= usuario.descricao ? user.descricao : "Sem descrição" %>
-        </div>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-1">
-              <i class="fab fa-instagram-square"></i>
-            </div>
-            <div class="col-md-10">
-              <%= usuario.instagram ? user.instagram : "Não informado" %>
-            </div>
+        <section class="row">
+          <div class="col-md-12 mt-4 mb-2">
+            <h1><%= usuario.nome %></h1>
           </div>
-          <div class="row">
-            <div class="col-md-1">
-              <i class="fab fa-facebook-square"></i>
-            </div>
-            <div class="col-md-10">
-              <%= usuario.facebook ? user.facebook : "Não informado" %>
-            </div>
+          <div class="col-md-6">
+            <img src="/images/pessoa.jpg" class="img-fluid" alt="Foto da Pessoa" id="fotomaior">
           </div>
-          <div class="row">
-            <div class="col-md-1">
-              <i class="fas fa-envelope-square"></i>
-            </div>
-            <div class="col-md-10">
-              <%= usuario.email %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-1">
-              <i class="fab fa-whatsapp-square"></i>
-            </div>
-            <div class="col-md-10">
-              <%= usuario.telefone ? user.telefone : "Não informado" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 mt-4">
-        <div class="container user-pet-list">
-          <% for(const pet of usuario.pets) {%>
-          <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
-            <div class="card grid-pets-item" style="width: 14.5rem;">
-              
-                <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-                  alt="Pet perdido/encontrado">
-              
-              <div class="card-body">
-                <div class="container-card-info">
-                  <!-- <a href="/pet/<%=pet.id %>"> -->
-                  <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
-                  <!-- </a> -->
-                  <% if(pet.status == "PERDIDO"){ %>
-                  <%- include('../components/badge-lost') %>
-                  <% } %>
-                  <% if(pet.status == "ENCONTRADO"){ %>
-                  <%- include('../components/badge-found') %>
-                  <% } %>
-                  <% if(pet.status == "ADOCAO"){ %>
-                  <%- include('../components/badge-adoption') %>
-                  <% } %>
-
+          <div class="col-md-6 mt-3 pl-0">
+            <div class="col-md-12 info-user-cont p-0">
+              <div class="row">
+                <div class="col-md-1">
+                  <i class="fab fa-instagram-square"></i>
+                </div>
+                <div class="col-md-10">
+                  <%- usuario.instagram ? usuario.instagram : "Não informado" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <i class="fab fa-facebook-square"></i>
+                </div>
+                <div class="col-md-10">
+                  <%- usuario.facebook ? usuario.facebook : "Não informado" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <i class="fas fa-envelope-square"></i>
+                </div>
+                <% var lastCharac = usuario.email.slice(-3) %>
+                <% console.log('caracter', lastCharac) %>
+                <% var masked_str = lastCharac.padStart(10, "*"); %>
+                <% console.log('string mascarada', masked_str ) %>
+                <% if(!locals.user || locals.user == "undefined") { %>
+                <div class="pl-3"><%= usuario.email = `${masked_str}` %></div>
+                  <% } else { %>
+                <div class="col-md-10" id="email-user"><%- usuario.email ? usuario.email : '' %></div>
+                <% } %>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <i class="fab fa-whatsapp-square"></i>
+                </div>
+                <div class="col-md-10">
+                  <%- usuario.telefone ? usuario.telefone : "Não informado" %>
                 </div>
               </div>
             </div>
-          </a>
-          <% } %>
+          </div>
+  
+        </section>
+        <section class="row">
+          <div class="col-md-12 mt-2 w-100 info-user">
+    
+              <%- usuario.descricao ? usuario.descricao : "Sem descrição" %>
+    
+          </div>
 
+        </section>
+        <section class="row">
+          <div class="col-md-12 mt-4">
+            <div class="container user-pet-list ">
+              <% for(const pet of usuario.pets) {%>
+              <a href="/pet/<%=pet.id %>" style="text-decoration: none; color: unset">
+                <div class="card grid-pets m-1" style="width: 14.5rem;">
+                  
+                    <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                      alt="Pet perdido/encontrado">
+                  
+                  <div class="card-body">
+                    <div class="container-card-info">
+                      <!-- <a href="/pet/<%=pet.id %>"> -->
+                      <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
+                      <!-- </a> -->
+                      <% if(pet.status == "PERDIDO"){ %>
+                      <%- include('../components/badge-lost') %>
+                      <% } %>
+                      <% if(pet.status == "ENCONTRADO"){ %>
+                      <%- include('../components/badge-found') %>
+                      <% } %>
+                      <% if(pet.status == "ADOCAO"){ %>
+                      <%- include('../components/badge-adoption') %>
+                      <% } %>
+                    </div>
+                    <div class="">
+                      <ul class="list-unstyled">
+                        <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome%></a></li>
+                        <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
+                        <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
+    
+                    </ul>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <% } %>
+    
+    
+            </div>
+          </div>
 
-        </div>
+        </section>
+  
+  
+  
+  
+  
+  
+
       </div>
-    </div>
-  </div>
 
-</div>
 
-</div>
+      
+    </section>
+  </section>
+
+</section>
+
+
 <%- include('../partials/footer') %>
