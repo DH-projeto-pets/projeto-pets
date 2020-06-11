@@ -5,6 +5,7 @@ const {
   petAdoptionValidation,
   statusValidation,
   petValidation,
+  updateValidation,
 } = require("../middlewares/validations");
 const PetController = require("../controllers/PetController");
 
@@ -35,7 +36,7 @@ router.put(
   "/:id/editar",
   upload.array("fotos"),
   statusValidation,
-  petValidation,
+  updateValidation,
   PetController.update
 );
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
