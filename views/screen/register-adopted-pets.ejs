@@ -115,7 +115,7 @@
               </section>
 
             </section>
-            <section class=" flex-wrap">
+            <section class="">
             <label class="p-0">
               Sexo:
           </label>
@@ -140,7 +140,7 @@
               Macho
             </label>
           </div>
-          <div class="form-check form-check-inline">
+          <div class="form-check form-check-inline flex-wrap">
             <input class="form-check-input
             <%= errors.sexo ? 'is-invalid' : '' %>" name="sexo" type="radio" id="radio-null" value="DESCONHECIDO"
             <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %> />
