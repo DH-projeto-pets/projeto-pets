@@ -6,7 +6,6 @@ const statusValidation = [
     .withMessage("Campo obrigatório"),
 ];
 const petValidation = [
-  check("status").isIn(["ADOCAO"]),
   check("porte")
     .isIn(["GRANDE", "MEDIO", "PEQUENO"])
     .withMessage("Campo obrigatório"),
@@ -15,10 +14,11 @@ const petValidation = [
   check("sexo")
     .isIn(["FEMEA", "MACHO", "DESCONHECIDO"])
     .withMessage("Campo obrigatório"),
-  check("fotosMap").notEmpty(),
+  check("fotosMap").notEmpty().withMessage("Selecionar ao menos uma foto."),
 ];
 
 const petAdoptionValidation = [
+  check("status").isIn(["ADOCAO"]),
   check("castrado").isIn(["0", "1"]).withMessage("Campo obrigatório."),
   check("vermifugado").isIn(["0", "1"]).withMessage("Campo obrigatório"),
   check("vacinado").isIn(["0", "1"]).withMessage("Campo obrigatório"),

@@ -36,11 +36,7 @@
           <img src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
             class="img-fluid col-9 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
           <!-- <% console.log(pet.fotos.length) %> -->
-          <% const fill = new Array(4-pet.fotos.length).fill('') %>
           <div class="col-3 p-0 float-right " id="thumbspets">
-            <% if(pet.fotos.length != 4) { %>
-            <%pet.fotos.push(fill)%>
-            <%}%>
             <% for(const foto of pet.fotos){%>
             <% if(foto.caminho !== pet.fotoPrincipal.caminho){ %>
             <img src="<%= foto.caminho? foto.caminho : '/images/404.png'%>" alt="thumb pet" class="img-fluid mb-1 p-0">
