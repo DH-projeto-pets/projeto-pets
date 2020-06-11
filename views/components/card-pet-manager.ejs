@@ -1,10 +1,10 @@
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12 card-manager">
   <div class="card">
     <a href="/pet/<%=pet.id %>">
       <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
         alt="Pet perdido/encontrado">
     </a>
-    <div class="card-body">
+    <div class="card-body pb-0">
       <div class="container-card-info" style="flex-wrap: wrap;">
 
         <a href="/pet/<%=pet.id %>" style="width: 100%;">
@@ -33,11 +33,32 @@
             Editar
           </a>
           <!-- <% } %> -->
-          <form method="POST" action="/pet/delete?_method=DELETE">
-            <input hidden name="id" value="<%=pet.id%>" />
-            <button type="submit" class="btn btn-outline-warning">Excluir</button>
-          </form>
+          <button type="button" class="btn btn-outline-warning" data-toggle="modal"
+            data-target="#modal-<%=pet.id%>">Excluir</button>
         </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-<%=pet.id%>" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Excluir Pet</h5>
+        <button type="button" class="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Você tem certeze que seja excluir <%=pet.nome%>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning">Sair</button>
+        <form method="POST" action="/pet/delete?_method=DELETE">
+          <input hidden name="id" value="<%=pet.id%>" />
+          <button type="submit" class="btn btn-warning">Excluir</button>
+        </form>
       </div>
     </div>
   </div>

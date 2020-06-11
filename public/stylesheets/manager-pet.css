@@ -1,18 +1,31 @@
 .pets-manager {
-    /* top: var(--margin-header); */
-    box-shadow: var(--shadow-box);
-    background-color: var(--cards-bg-color);
-    width: 70%;
-    position: relative;
-    left: 15%;
-    border-radius: var(--border-radius);
-  
+  /* top: var(--margin-header); */
+  box-shadow: var(--shadow-box);
+  background-color: var(--cards-bg-color);
+  width: 70%;
+  position: relative;
+  left: 15%;
+  border-radius: var(--border-radius);
 }
-.pets-manager h1 { 
-    text-align: center;
-    font-size: var(--title-fontsize);
+.pets-manager h1 {
+  text-align: center;
+  font-size: var(--title-fontsize);
 }
 
 .select-tipo {
-    width: 150px;
+  width: 150px;
+}
+
+.petGrid div {
+  margin-bottom: 15px;
+}
+
+.card-manager img {
+  height: 200px;
+  max-height: 285px;
+}
+
+.not-found-pet-manager {
+  width: 50%;
+  margin: 0 auto;
 }

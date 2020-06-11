@@ -10,20 +10,38 @@
           <h1>Gerenciamento de Pets</h1>
         </div>
         <div class="form-select d-flex align-items-center justify-content-end col-12 mb-5">
-          <label class="" for="nome">Status:</label>
-          <select class="form-control select-tipo ml-3" id="exampleFormControlSelect1">
-            <option value="">Todos</option>
-            <option value="ADOCAO">Adocao</option>
-            <option value="PERDIDO">Perdido</option>
-            <option value="ENCONTRADO">Encontrado</option>
-            <!--<option>Passarinho</option>
-            <option>Peixe</option> -->
-          </select>
+          <form action="gerenciamento" method="GET" style="display: contents;">
+            <label class="" for="nome">Status:</label>
+            <select class="form-control select-tipo ml-3" name="status" onchange="this.form.submit()">
+              <option value="">Todos</option>
+              <option value="ADOCAO" <%= status == 'ADOCAO' ? 'selected' : '' %>>Adoção</option>
+              <option value="PERDIDO" <%= status == 'PERDIDO' ? 'selected' : '' %>>Perdido</option>
+              <option value="ENCONTRADO" <%= status == 'ENCONTRADO' ? 'selected' : '' %>>Encontrado</option>
+              <!--<option>Passarinho</option>
+              <option>Peixe</option> -->
+            </select>
+          </form>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-4 petGrid">
+          <% if (pets.length > 0) { %>
           <% for(const pet of pets) { %>
           <%- include("../components/card-pet-manager", { pet } )%>
           <% } %>
+          <% } else { %>
+
+          <img src="/images/404pet.png" class="not-found-pet-manager" alt="Nenhum pet foi encontrado" />
+          <% } %>
+
+          <section class="container my-3">
+            <div class="row justify-content-center">
+              <ul class="pagination">
+                <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
+                <li class="page-item"><a href="?page=<%= nPagina %>&status=<%=status%>"
+                    class="page-link"><%= nPagina %></a></li>
+                <% } %>
+              </ul>
+            </div>
+          </section>
         </div>
       </div>
     </div>

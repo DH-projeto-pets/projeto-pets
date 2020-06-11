@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 const bcrypt = require("bcrypt");
+const { Op } = require("sequelize");
 const { check, validationResult, body } = require("express-validator");
 const { sequelize, User, Pet } = require("../models");
 
@@ -15,36 +16,8 @@ const options = {
   apiKey: process.env.API_KEY,
   formatter: null,
 };
-// Criando constante que contem a API
 const geocoder = NodeGeocoder(options);
-// Função que calcula distância entre duas coordenadas
-function distance(lat1, lon1, lat2, lon2, unit) {
-  if (lat1 == lat2 && lon1 == lon2) {
-    return 0;
-  } else {
-    var radlat1 = (Math.PI * lat1) / 180;
-    var radlat2 = (Math.PI * lat2) / 180;
-    var theta = lon1 - lon2;
-    var radtheta = (Math.PI * theta) / 180;
-    var dist =
-      Math.sin(radlat1) * Math.sin(radlat2) +
-      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-    if (dist > 1) {
-      dist = 1;
-    }
-    dist = Math.acos(dist);
-    dist = (dist * 180) / Math.PI;
-    dist = dist * 60 * 1.1515;
-    if (unit == "K") {
-      dist = dist * 1.609344;
-    }
-    if (unit == "N") {
-      dist = dist * 0.8684;
-    }
-    return dist;
-  }
-}
-// Controller normal
+
 let UserController = {
   store: async (req, res) => {
     const errors = validationResult(req);
@@ -79,7 +52,10 @@ let UserController = {
           senha: bcrypt.hashSync(senha, 10),
           nome,
         });
-        res.render("screen/login", { errors: {}, usuario:{email:usuario.email}});
+        res.render("screen/login", {
+          errors: {},
+          usuario: { email: usuario.email },
+        });
         // cria o user no db
       }
     }
@@ -96,47 +72,39 @@ let UserController = {
   update: async (req, res) => {
     const errors = validationResult(req);
     // console.log(errors, req.body);
-    // if (errors.isEmpty()) {
-    const id = req.session.user.id;
-    if (req.file) {
-      var image = `/images/dinamics/${req.file.originalname}`;
+
+    if (errors.isEmpty()) {
+      const id = req.session.user.id;
+      if (req.file) {
+        var image = `/images/dinamics/${req.file.originalname}`;
+      }
+
+      const usuario = await User.update(
+        {
+          ...req.body,
+          image,
+        },
+        { where: { id } }
+      );
+
+      const { nome } = await User.findOne({
+        where: {
+          id,
+        },
+      });
+
+      req.session.save(() => {
+        req.session.user.nome = nome;
+        res.render("screen/edit-user", usuario);
+      });
     }
-    const usuario = await User.update(
-      {
+    const e = costumizeErrors(errors);
+    res.render("screen/edit-user", {
+      errors: e,
+      usuario: {
         ...req.body,
-        image,
-      },
-      { where: { id } }
-    );
-
-    //     // Pegando o endereço colocado no formulario de edição do usuario
-    //     const { logradouro, numero, bairro, cep, cidade, estado } = req.body;
-    //     // Contatenando endereço (parâmetro a passar para API)
-    //     const endereco = `${logradouro} ${numero} ${bairro} ${cep} ${cidade} ${estado}`;
-    //     // Usando API para obter objeto que contém as coordenadas
-    //     const geoLoc = await geocoder.geocode(endereco);
-    //     // Para ver o objeto retornado pela API
-    //     // console.log(geoLoc)
-    //     const usuario = await User.update({
-    //       ...req.body,
-    //       // Colocando coordenadas no banco de dados
-    //       latitude: geoLoc[0].latitude,
-    //       longitude: geoLoc[0].longitude,
-    //     },
-    //     { where: { id } },
-    //     );
-
-    const { nome } = await User.findOne({
-      where: {
-        id,
       },
     });
-    req.session.save(() => {
-      req.session.user.nome = nome;
-      return res.redirect("/user/editar");
-    });
-    // }
-    // res.render("screen/edit-user", { errors });
   },
   delete: (req, res) => {
     // deleta o usuario
@@ -193,27 +161,37 @@ let UserController = {
   show: async (req, res) => {
     const { id } = req.params;
 
-    const usuario = await User.findOne({ where: { id }, include: ["pets"] });
-    // console.log(user)
+    const usuario = await User.findOne({
+      where: { id },
+      include: [
+        //"pets",
+      {
+        model: Pet,
+        as: "pets",
+        include: ["fotoPrincipal", "raca"]
+      },
+    ],
+   });
+    console.log(usuario)
     if (!usuario) return res.render("404-not-found");
     res.render("screen/owner-profile", { usuario });
   },
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
-
-    const user = await User.findOne({
-      where: { id },
-      include: [
-        // "pets",
-        {
-          model: Pet,
-          as: "pets",
-          include: "fotoPrincipal",
-        },
-      ],
+    const { page = 1, status } = req.query;
+    let { count: total, rows: pets } = await Pet.findAndCountAll({
+      where: {
+        [Op.and]: [{ fk_usuario: id }, status && { status }],
+      },
+      include: ["fotoPrincipal"],
     });
-
-    res.render("screen/manager-pet", { pets: user.pets });
+    pets = pets.slice((page - 1) * 6, 6 * page);
+    const totalPagina = Math.ceil(total / 6);
+    res.render("screen/manager-pet", {
+      pets,
+      status,
+      totalPagina,
+    });
   },
   showUpdate: async (req, res) => {
     const usuario = await User.findOne({
@@ -222,7 +200,7 @@ let UserController = {
       },
     });
     // console.log(usuario)
-    res.render("screen/edit-user", { usuario });
+    res.render("screen/edit-user", { errors: {}, usuario });
   },
 };
 

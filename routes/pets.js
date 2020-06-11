@@ -1,7 +1,11 @@
 const { Router } = require("express");
 const { check, validationResult, body } = require("express-validator");
 const router = Router();
-
+const {
+  petAdoptionValidation,
+  statusValidation,
+  petValidation,
+} = require("../middlewares/validations");
 const PetController = require("../controllers/PetController");
 
 const { checkUser } = require("../middlewares");
@@ -12,27 +16,36 @@ router.get("/adocao", PetController.showGridAdocao);
 router.get("/cadastrar", checkUser, PetController.showPetCadastro);
 router.post(
   "/cadastrar",
-  // [check("status").isEmpty(), check("raca").isEmpty(), check("especie").isEmpty(), check("porte").isEmpty(), check("sexo").isEmpty(),],
-  [check("status").isIn(['ENCONTRADO', 'PERDIDO']).withMessage('Este campo deve ser preenchido!'),
-  check("porte").isIn(['PEQUENO', 'MEDIO', 'GRANDE']).withMessage('Este campo deve ser preenchido!'),
-  check("especie").isLength({ min:1 }).withMessage('Selecione uma opção!'),
-  check("raca").isLength({ min:1 }).withMessage('Selecione uma opção!')
-],
   upload.array("fotos"),
+  statusValidation,
+  petValidation,
   PetController.store
 );
 router.get("/adocao/cadastrar", checkUser, PetController.showPetCadastroAdocao);
-router.post("/adocao/cadastrar", PetController.store);
+router.post(
+  "/adocao/cadastrar",
+  upload.array("fotos"),
+  petValidation,
+  petAdoptionValidation,
+  PetController.store
+);
+
 router.get("/:id/editar", checkUser, PetController.showPetEdicao);
 router.put(
-  "/:id/editar", 
-  [check("status").isIn(['ENCONTRADO', 'PERDIDO']).withMessage('Este campo deve ser preenchido!'),
-  check("porte").isIn(['PEQUENO', 'MEDIO', 'GRANDE']).withMessage('Este campo deve ser preenchido!'),
-  check("especie").isLength({ min:1 }).withMessage('Selecione uma opção!'),
-  check("raca").isLength({ min:1 }).withMessage('Selecione uma opção!')],
-  PetController.update);
+  "/:id/editar",
+  upload.array("fotos"),
+  statusValidation,
+  petValidation,
+  PetController.update
+);
 router.get("/adocao/:id/editar", checkUser, PetController.showPetEdicaoAdocao);
-router.put("/adocao/:id/editar", PetController.update);
+router.put(
+  "/adocao/:id/editar",
+  upload.array("fotos"),
+  petValidation,
+  petAdoptionValidation,
+  PetController.update
+);
 router.get("/:id", PetController.showPetPerfil);
 router.delete("/delete", PetController.delete);
 

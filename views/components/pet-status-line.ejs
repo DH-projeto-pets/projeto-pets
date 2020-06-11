@@ -1,6 +1,6 @@
 <div class="row " >
     <div class="col-12 d-flex column justify-content-around">
-        <div class="card text-center desativado" id="tamanho"  data-toggle="tooltip" data-placement="bottom" title="Tamanho">
+        <div class="card text-center <%= pet.porte !== 'PEQUENO' && pet.porte !== 'MEDIO' && pet.porte !== 'GRANDE' ? 'desativado' : 'tamanho' %>" id="tamanho"  data-toggle="tooltip" data-placement="bottom" title="Tamanho <%= pet.porte == 'PEQUENO' ? 'pequeno' : pet.porte == 'MEDIO' ? 'médio' : pet.porte == 'GRANDE' ? 'grande' : 'desconhecido' %>">
             <div class="card-body py-3">
                 <i class="fa fa-weight-hanging"></i>
                               <!--  if(pet.porte == 'nao sei'){ - adiciona classe desativado } -->
@@ -8,7 +8,7 @@
         </div>
 
 
-        <div class="card text-center" id="vacinado" data-toggle="tooltip" data-placement="bottom" title="Vacinado">
+        <div class="card text-center  <%= pet.vacinado !== '0' ? 'desativado' : 'vacinado' %>" id="vacinado" data-toggle="tooltip" data-placement="bottom" title="Vacinado">
             <div class="card-body py-3">
                 <i class="fa fa-syringe" ></i>
                  <!--  if(pet.vacinado == false){ - adiciona classe desativado } -->
@@ -16,7 +16,7 @@
         </div>
 
 
-        <div class="card text-center" id="vermifugado"  data-toggle="tooltip" data-placement="bottom" title="Vermifugado">
+        <div class="card text-center <%= pet.vermifugado !== '1' ? 'desativado' : 'vermifugado' %>" id="vermifugado"  data-toggle="tooltip" data-placement="bottom" title="Vermifugado">
             <div class="card-body py-3">
                 <i class="fas fa-pills "></i>
              <!--  if(pet.vermifugado == false){ - adiciona classe desativado } -->
@@ -24,7 +24,7 @@
         </div>
 
 
-        <div class="card text-center " id="castrado"  data-toggle="tooltip" data-placement="bottom" title="Castrado">
+        <div class="card text-center <%= pet.castrado !== '1' ? 'desativado' : 'castrado' %>" id="castrado"  data-toggle="tooltip" data-placement="bottom" title="Castrado">
             <div class="card-body py-3">
                 <i class="fa fa-clipboard-list"></i>
                 <!--  if(pet.castrado == false){ - adiciona classe desativado } -->

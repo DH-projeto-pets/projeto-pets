@@ -1,8 +1,14 @@
 <%- include('../partials/head', { title: 'Pets Perdidos & Encontrados'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-
-
+  <% console.log('q',query) %>
+  <% let url = ''; %>
+  <% for(var value in query) { %>
+  <%if(query[value]){%>
+  <% url += `${value}=${query[value]}&`; %>
+  <%}%>
+<%}%>
+  <% console.log('q',query) %>
   <section class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-10 main-container main-container__pets">
@@ -18,70 +24,83 @@
               </span>
             </div>
           </div>
-          <div class="container collapse" id="collapse-filtro">
+          <div class="container collapse show" id="collapse-filtro">
             <div class="row">
-              <form action="/pet/" method="GET" class="col-md-12 d-flex flex-wrap">
+              <form method="GET" action="" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
                   <div class="form-group">
-                    <!-- <input type="range" min="0" max="10" step="1" list="tickmarks"
-                    class="form-control-range" id="formControlRange"> -->
                     <div class="slidecontainer">
-                      <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                      <input type="range" min="0" max="100" value="50" class="slider" id="myRange" style="width: 100%;">
                     </div>
-                    <datalist id="tickmarks">
-                      <option value="0" label="0km">
-                      <option value="1" label="1km">
-                      <option value="2" label="2km">
-                      <option value="3" label="3km">
-                      <option value="4" label="4km">
-                      <option value="5" label="5km">
-                      <option value="10" label="10km">
-                      <option value="15" label="15km">
-                      <option value="20" label="20km">
-                      <option value="30" label="30km">
-                      <option value="40" label="40km">
-                      <option value="50" label="50km">
-                      <option value="70" label="70km">
-                      <option value="80" label="80km">
-                      <option value="90" label="90km">
-                      <option value="100" label="100km">
-                    </datalist>
                     <!-- Adiciona contador dinâmico -->
                     <span>Até </span><span id="distance-counter">50</span><span>km</span>
                   </div>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Espécie</h5>
-                  <select class="form-control form-control-sm">
-                    <option>-- Espécie --</option>
-                    <option>Cachorro</option>
-                    <option>Gato</option>
-                    <option>Ave</option>
+                  <select class="form-control form-control-sm" name="especie" id="especie">
+                    <option value="">Selecione uma especie</option>
+                    <option value="1">Gato</option>
+                    <option value="2">Cachorro</option>
                   </select>
                 </div>
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Raça</h5>
-                  <select class="form-control form-control-sm">
-                    <option>-- Raça --</option>
-                    <option>SRD</option>
-                    <option>Poodle</option>
-                    <option>Rottweiler</option>
-                    <option>Golden</option>
-                    <option>Cocker</option>
-                    <option>Chiwawa</option>
+                  <select class="form-control form-control-sm" id="raca" name="raca" class="selectpicker"
+                    data-live-search="true">
+                    <option value="">Selecione uma raça</option>
                   </select>
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Porte</h5>
-                  <input type="radio" name="porte" id="p"><label for="p">Pequeno</label><br>
-                  <input type="radio" name="porte" id="m"><label for="m">Médio</label><br>
-                  <input type="radio" name="porte" id="g"><label for="g">Grande</label><br>
-                  <input type="radio" name="porte" id="gg"><label for="gg">Muito Grande</label>
+                  <input type="checkbox" name="porte" value="PEQUENO" id="PEQUENO"
+                    <%= query.porte && query.porte.includes('PEQUENO') ? 'checked' : ''%>><label for="PEQUENO">
+                    &nbsp;Pequeno</label><br>
+                  <input type="checkbox" name="porte" value="MEDIO" id="MEDIO"
+                    <%= query.porte && query.porte.includes('MEDIO') ? 'checked' : ''%>><label for="MEDIO">
+                    &nbsp;Médio</label><br>
+                  <input type="checkbox" name="porte" value="GRANDE" id="GRANDE"
+                    <%= query.porte && query.porte.includes('GRANDE') ? 'checked' : ''%>><label for="GRANDE">
+                    &nbsp;Grande</label><br>
+                  <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
+                </div>
+                <div class="col-md-3 col-12">
+                  <h5>Sexo</h5>
+                  <input type="checkbox" name="sexo" value="FEMEA" id="FEMEA"
+                    <%= query.sexo && query.sexo.includes('MACHO') ? 'checked' : ''%>><label for="FEMEA">
+                    &nbsp;Fêmea</label><br>
+                  <input type="checkbox" name="sexo" value="MACHO" id="MACHO"
+                    <%= query.sexo && query.sexo.includes('FEMEA') ? 'checked' : ''%>><label for="MACHO">
+                    &nbsp;Macho</label><br>
+                  <input type="checkbox" name="sexo" value="DESCONHECIDO" id="DESCONHECIDO"
+                    <%= query.sexo && query.sexo.includes('DESCONHECIDO') ? 'checked' : ''%>><label for="DESCONHECIDO">
+                    &nbsp;Desconhecido</label><br>
+                  <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
+                </div>
+                <div class="col-md-3 col-12">
+                  <h5>Status</h5>
+                  <input type="checkbox" name="status" value="PERDIDO" id="PERDIDO"
+                    <%= query.status && query.status.includes('PERDIDO') ? 'checked' : ''%>>
+                  <label for="PERDIDO">
+                    &nbsp;Perdido</label><br>
+                  <input type="checkbox" name="status" value="ENCONTRADO" id="ENCONTRADO"
+                    <%= query.status && query.status.includes('ENCONTRADO') ? 'checked' : ''%>><label for="ENCONTRADO">
+                    &nbsp;Encontrado</label><br>
+                </div>
+                <div class="col-md-3 col-12">
+                  <h5>Tipo de perfil</h5>
+                  <input type="checkbox" name="tipo" value="ONG" id="ONG"
+                    <%= query.tipo && query.tipo.includes('ONG') ? 'checked' : ''%>><label for="ONG">&nbsp;
+                    ONG</label><br>
+                  <input type="checkbox" name="tipo" value="PF" id="PF"
+                    <%= query.tipo && query.tipo.includes('PF') ? 'checked' : ''%>><label for="PF">&nbsp;Pessoa
+                    física</label><br>
                 </div>
                 <div class="row w-100">
                   <div class="col-md-12 d-flex justify-content-center">
-                    <input type="submit" value="Filtrar" class="btn btn-primary botao-medio-amarelo">
+                    <button type="submit" class="btn btn-primary botao-medio-amarelo">Filtrar</button>
+
                   </div>
                 </div>
               </form>
@@ -95,34 +114,16 @@
           <div class="row w-100 justify-content-center my-3">
             <h1>Pets Perdidos & Encontrados</h1>
           </div>
+          <%console.log(pets.length) %>
           <!-- Grid Dinâmico -->
+
+          <% if(pets.length > 0){ %>
           <% for (pet of pets) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
-            <a href="/pet/<%=pet.id %>">
-              <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-                alt="Pet perdido/encontrado">
-            </a>
-            <div class="card-body">
-              <div class="container-card-info">
-                <a href="/pet/:id">
-                  <p class="card-text">
-                    <% if (pet.nome) { %>
-                      <%= pet.nome %>
-                    <% } else { %>
-                     Sem nome
-                    <% } %>
-                  </p>
-                </a>
-                <% if(pet.status == "PERDIDO"){ %>
-                  <%- include('../components/badge-lost') %>
-                <% } %>
-                <% if(pet.status == "ENCONTRADO"){ %>
-                  <%- include('../components/badge-found') %>
-                <% } %>
-              </div>
-            </div>
-          </div>
+          <%- include('../components/card-grid-pets', { pet }) %>
           <% } %>
+          <% } else { %>
+          <img src="/images/404-transparent.png" class="not-found-img-grid" alt="Nenhum pet foi encontrado" />
+          <%}%>
 
         </section>
 
@@ -131,14 +132,14 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-                <li class="page-item"><a href="?page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
-              <% } %>
-            </ul> 
-          </div>
-        </section>
+          <li class="page-item"><a href="?page=<%= nPagina %>&<%=url%>" class="page-link"><%= nPagina %></a></li>
+          <% } %>
+          </ul>
       </div>
   </section>
-  <div class="espaco-branco"></div>
+  </div>
+</section>
+<div class="espaco-branco"></div>
 </section>
 
 
