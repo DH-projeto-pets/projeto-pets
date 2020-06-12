@@ -26,7 +26,7 @@ module.exports = {
       porte: query.porte,
     });
 
-    console.log(serializedQuery);
+    console.log(serializedQuery, [...serializedStatus, ...serializedQuery]);
     let { count: total, rows: pets } = await Pet.findAndCountAll({
       include: [
         "fotoPrincipal",
@@ -52,13 +52,13 @@ module.exports = {
       ],
       where: {
         ...(raca && { fk_raca: raca }),
-        [Op.or]: serializedStatus,
+        [Op.or]: [...serializedStatus],
         ...((query.porte || query.sexo) && { [Op.and]: serializedQuery }),
       },
     });
     let totalPagina = Math.ceil(total / 6);
     pets = pets.slice((page - 1) * 6, 6 * page);
-    console.log(serializedStatus);
+    // console.log(serializedStatus);
     res.render("screen/lost-found-pets", {
       pets,
       totalPagina,
