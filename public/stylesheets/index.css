@@ -15,6 +15,7 @@
 }
 /* Ajusta altura do banner rotativo da landing page */
 .carousel-item img {
+  object-fit: cover;
   min-height: 63vh;
   height: 455px;
 }
