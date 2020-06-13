@@ -1,13 +1,7 @@
 <%- include('../partials/head', { title: 'Pets Perdidos & Encontrados'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-  <% let url = ''; %>
-  <% for(var value in query) { %>
-  <%if(query[value]){%>
-  <% url += `${value}=${query[value]}&`; %>
-  <%}%>
-<%}%>
-
+  <%console.log(query)%>
   <section class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-10 main-container main-container__pets">
@@ -131,7 +125,7 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-          <li class="page-item"><a href="?page=<%= nPagina %>&<%=url%>" class="page-link"><%= nPagina %></a></li>
+          <li class="page-item"><a href="?<%=url%>&page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
           <% } %>
           </ul>
       </div>

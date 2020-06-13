@@ -39,4 +39,21 @@ module.exports = {
       ""
     );
   },
+  createUrl(query) {
+    let url = [];
+    for (const prop in query) {
+      if (query[prop]) {
+        if (Array.isArray(query[prop])) {
+          const q = query[prop].reduce((a, c, i, l) => {
+            return (a += `${prop}=${c}${i == l.length - 1 ? "" : "&"}`);
+          }, "");
+          url = url.concat(q);
+        } else {
+          q = `${prop}=${query[prop]}`;
+          url = url.concat(q);
+        }
+      }
+    }
+    return url.join("&");
+  },
 };
