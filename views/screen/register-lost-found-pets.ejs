@@ -149,6 +149,7 @@
               <section class="form-group col-md-4">
                 <label for="CEP">CEP</label>
                 <input type="numeric" name="cep" class="form-control" id="CEP" value="<%= pet.cep ? pet.cep : null%>" />
+                <%- include('../components/feedback-invalid', { msg: errors['cep'] }) %>
               </section>
               <section class="form-group col-md-6">
                 <label for="endereco">Endereço</label>
