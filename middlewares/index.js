@@ -15,18 +15,13 @@ module.exports = {
       }
     );
 
-    const petsAdocao = await Pet.findAll(
-      {
-        limit: 4,
+    const petsAdocao = await Pet.findAll({
+      where: {
+        [Op.and]: [{ status: "ADOCAO" }],
       },
-      {
-        where: {
-          [Op.or]: [{ status: "ADOCAO" }],
-        },
-        order: [["id", "DESC"]],
-      }
-    );
-
+      // order: [["id", "DESC"]],
+    });
+    console.log("===>", JSON.stringify(petsAdocao));
     if (!req.session.user) return res.render("index", { pets, petsAdocao });
     return next();
   },
