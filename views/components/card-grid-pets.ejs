@@ -1,7 +1,6 @@
 <div class="card grid-pets-item" style="width: 18rem;">
   <a href="/pet/<%=pet.id %>">
-    <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-      alt="Pet perdido/encontrado">
+    <img class="card-img-top" src="<%= pet.caminho ? pet.caminho : '/images/404.png'%>" alt="Pet perdido/encontrado">
   </a>
   <div class="card-body">
     <div class="container-card-info">

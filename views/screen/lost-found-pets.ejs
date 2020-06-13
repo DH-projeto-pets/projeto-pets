@@ -1,14 +1,13 @@
 <%- include('../partials/head', { title: 'Pets Perdidos & Encontrados'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-  <% console.log('q',query) %>
   <% let url = ''; %>
   <% for(var value in query) { %>
   <%if(query[value]){%>
   <% url += `${value}=${query[value]}&`; %>
   <%}%>
 <%}%>
-  <% console.log('q',query) %>
+
   <section class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-10 main-container main-container__pets">
@@ -68,10 +67,10 @@
                 <div class="col-md-3 col-12">
                   <h5>Sexo</h5>
                   <input type="checkbox" name="sexo" value="FEMEA" id="FEMEA"
-                    <%= query.sexo && query.sexo.includes('MACHO') ? 'checked' : ''%>><label for="FEMEA">
+                    <%= query.sexo && query.sexo.includes('FEMEA') ? 'checked' : ''%>><label for="FEMEA">
                     &nbsp;Fêmea</label><br>
                   <input type="checkbox" name="sexo" value="MACHO" id="MACHO"
-                    <%= query.sexo && query.sexo.includes('FEMEA') ? 'checked' : ''%>><label for="MACHO">
+                    <%= query.sexo && query.sexo.includes('MACHO') ? 'checked' : ''%>><label for="MACHO">
                     &nbsp;Macho</label><br>
                   <input type="checkbox" name="sexo" value="DESCONHECIDO" id="DESCONHECIDO"
                     <%= query.sexo && query.sexo.includes('DESCONHECIDO') ? 'checked' : ''%>><label for="DESCONHECIDO">

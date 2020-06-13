@@ -1,8 +1,12 @@
 require("dotenv").config();
 
 const { sequelize, Pet, Foto, Raca, User } = require("../models");
-const { Op } = require("sequelize");
-const { costumizeErrors, queryBuilder } = require("../helpers/utils");
+const { Op, QueryTypes } = require("sequelize");
+const {
+  costumizeErrors,
+  queryBuilder,
+  createWhereClause,
+} = require("../helpers/utils");
 const { check, validationResult, body } = require("express-validator");
 // Importando pacote para usar com a API
 const NodeGeocoder = require("node-geocoder");
@@ -13,58 +17,62 @@ const options = {
 
 module.exports = {
   showGrid: async (req, res) => {
-    const { especie, tipo, raca, page = 1, ...query } = req.query;
-    let serializedStatus = queryBuilder({ status: query.status });
-    if (serializedStatus.length === 0) {
-      serializedStatus = serializedStatus.concat(
-        { status: "PERDIDO" },
-        { status: "ENCONTRADO" }
-      );
+    let { especie, tipo, raca, page = 1, ...query } = req.query;
+    if (!query.status) {
+      query.status = ["PERDIDO", "ENCONTRADO"];
     }
-    const serializedQuery = queryBuilder({
-      sexo: query.sexo,
-      porte: query.porte,
-    });
-
-    console.log(serializedQuery);
-    let { count: total, rows: pets } = await Pet.findAndCountAll({
-      include: [
-        "fotoPrincipal",
-        {
-          model: User,
-          as: "usuario",
-          ...(tipo && {
-            where: {
-              tipo: tipo,
-            },
-          }),
+    const whereClause = createWhereClause(query);
+    let pets = await sequelize.query(
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+        Array.isArray(tipo) || !tipo
+          ? `AND usuario.tipo IN ('PF', 'ONG')`
+          : `AND usuario.tipo = :tipo `
+      } INNER JOIN racas AS raca ON pet.fk_raca = raca.id ${
+        especie
+          ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
+          : ""
+      } ${whereClause ? `WHERE ${whereClause}` : ""} ${
+        raca ? `AND fk.raca = :raca` : ""
+      } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
+      {
+        replacements: {
+          whereClause,
+          tipo,
+          raca,
+          especie,
         },
-        {
-          model: Raca,
-          as: "raca",
-          include: "especie",
-          ...(especie && {
-            where: {
-              fk_especie: especie,
-            },
-          }),
+        type: QueryTypes.SELECT,
+      }
+    );
+    let total = await sequelize.query(
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+        Array.isArray(tipo) || !tipo
+          ? `AND usuario.tipo IN ('PF', 'ONG')`
+          : `AND usuario.tipo = :tipo `
+      } INNER JOIN racas AS raca ON pet.fk_raca = raca.id ${
+        especie
+          ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
+          : ""
+      } ${whereClause ? `WHERE ${whereClause}` : ""} ${
+        raca ? `AND fk.raca = :raca` : ""
+      }`,
+      {
+        replacements: {
+          whereClause,
+          tipo,
+          raca,
+          especie,
         },
-      ],
-      where: {
-        ...(raca && { fk_raca: raca }),
-        [Op.or]: serializedStatus,
-        ...((query.porte || query.sexo) && { [Op.and]: serializedQuery }),
-      },
-    });
-    let totalPagina = Math.ceil(total / 6);
-    pets = pets.slice((page - 1) * 6, 6 * page);
-    console.log(serializedStatus);
+        type: QueryTypes.SELECT,
+      }
+    );
+    const totalPagina = Math.ceil(total.length / 6);
     res.render("screen/lost-found-pets", {
       pets,
-      totalPagina,
+      totalPagina: 0,
       query: {
         ...query,
-        status: query.status || serializedStatus.map((obj) => obj.status),
+        //     status: query.status || serializedStatus.map((obj) => obj.status),
         raca,
         especie,
         tipo,

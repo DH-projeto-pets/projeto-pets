@@ -14,5 +14,5 @@ Utilizar o framework express e padrão MVC;
 
 
 02/06
-☐ Deverá ser feita a validação do que está sendo salvo dentro do banco de dados, além de exibir mensagem de erro sempre que necessário.
-☐ Formulários e ações devem salvar as informações diretamente no banco de dados;
+✔ Deverá ser feita a validação do que está sendo salvo dentro do banco de dados, além de exibir mensagem de erro sempre que necessário. @done(20-06-11 16:41)
+✔ Formulários e ações devem salvar as informações diretamente no banco de dados; @done(20-06-11 16:41)
