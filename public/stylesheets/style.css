@@ -1,7 +1,9 @@
 body {
-    background-image: url(../images/fundo2.png);
-    background-size: 70%;
+    background-image:linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/fundo2.png);
+    background-size: 60%;
+
 }
+
 
 .sidebarPets__cards {
   display: flex;
@@ -65,8 +67,8 @@ h2 {
 
 .main-container {
   width: 60%;
-  background-color: rgb(240, 240, 240);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  background-color: rgb(238, 240, 240);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
   border-radius: .25rem;
 }
 @media(max-width: 768px) {
