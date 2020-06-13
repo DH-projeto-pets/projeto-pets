@@ -273,59 +273,47 @@
                   </button>
 
                 </section>
-                <section class="form-row col-12">
-                    <label for="logradouro">Endereço:</label>
-                    <input type="text"
-                            name="rua"
-                            class="form-control"
-                            id="logradouro"
-                            value="<%= pet.rua ? pet.rua : null%>"
-                            />
-              
-                </section>
-                <section class="form-row col-12">
-                  <section class="form-group col-md-6">
-                    <label for="cep">CEP:</label>
-                    <input type="text"
-                            name="cep"
-                            class="form-control"
-                            id="cep"
-                            value="<%= pet.cep ? pet.cep : null%>"/>
-                  </section>
-                  <section class="form-group col-md-6">
-                    <label for="bairro">Bairro:</label>
-                    <input type="text"
-                            name="bairro"
-                            class="form-control"
-                            id="bairro"
-                            value="<%= pet.bairro ? pet.bairro : null%>"/>
-                  </section>
-                </section>
-                <section class="form-row col-12">
-                  <section class="form-group col-md-6">
-                    <label for="cidade">Cidade:</label>
-                    <input type="text"
-                            name="cidade"
-                            class="form-control"
-                            id="cidade" />
-                  </section>
-                  <section class="form-group col-md-6">
-                    <label for="estado">Estado:</label>
-                    <input type="text"
-                            name="estado"
-                            class="form-control"
-                            id="estado"
-                            value="<%= pet.estado ? pet.estado : null%>"
-                            />
-                  </section>
-                </section>
-
-                <section class="form-group 
-                              col-sm-12 col-md-12
-                              d-flex justify-content-end">
-                  <button type="button" class="btn orange--offset mr-2">Cancelar</button>
-                  <button type="submit" class="btn orange">Salvar</button>
-                </section>
+                <!-- Endereço -->
+            <section class="form-row">
+              <section class="form-group col-md-4">
+                <label for="CEP">CEP</label>
+                <input type="numeric" name="cep" class="form-control" id="CEP" value="<%= pet.cep ? pet.cep : null%>" />
+                <%- include('../components/feedback-invalid', { msg: errors['cep'] }) %>
+              </section>
+              <section class="form-group col-md-6">
+                <label for="endereco">Endereço</label>
+                <input type="text" name="logradouro" class="form-control" id="logradouro"
+                  value="<%= pet.logradouro ? pet.logradouro : null%>" />
+              </section>
+              <section class="form-group col-md-2">
+                <label for="endereco">Numero</label>
+                <input type="text" name="numero" class="form-control" id="numero"
+                  value="<%= pet.numero ? pet.numero : null%>" />
+              </section>
+            </section>
+            <section class="form-row">
+              <section class="form-group col-md-5">
+                <label for="bairro">Bairro</label>
+                <input type="text" name="bairro" class="form-control" id="bairro"
+                  value="<%= pet.bairro ? pet.bairro : null%>" />
+              </section>
+              <section class="form-group col-md-5">
+                <label for="cidade">Cidade</label>
+                <input type="text" name="cidade" class="form-control" id="cidade"
+                  value="<%= pet.cidade ? pet.cidade : null%>" />
+              </section>
+              <section class="form-group col-md-2">
+                <label for="estado">Estado</label>
+                <input type="text" name="estado" class="form-control" id="estado"
+                  value="<%= pet.estado ? pet.estado : null%>" />
+              </section>
+            </section>
+            <section class="form-group 
+                          col-sm-12 col-md-12
+                          d-flex justify-content-end">
+              <button type="button" class="btn orange--offset mr-2">Cancelar</button>
+              <button type="submit" class="btn orange">Salvar</button>
+            </section>
             </div>
           </div>
         </form>
