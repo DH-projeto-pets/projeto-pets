@@ -139,7 +139,7 @@
 
             <!-- Campo sobre se Pet é vacinado ou não -->
             <section class="form-group row">
-              <label class="col-4">
+              <label class="col-4 pl-0">
                 Vacinado:
               </label>
               <section class="form-row col-6">
@@ -165,7 +165,7 @@
             </section>
             <!-- Campo sobre se Pet é castrado ou não -->
             <section class="form-group row">
-              <label class="col-4">
+              <label class="col-4 pl-0">
                 Castrado:
               </label>
               <section class="form-row col-6">
@@ -191,7 +191,7 @@
             </section>
             <!-- Campo sobre se Pet é vermifugado ou não -->
             <section class="form-group row">
-              <label class="col-4">
+              <label class="col-4 pl-0">
                 Vermifugado:
               </label>
               <section class="form-row col-6">
@@ -218,43 +218,10 @@
             </section>
 
             <!-- Descrição do animal -->
-            <section class="form-group col-12">
+            <section class="form-group">
               <label for="descricao">Descrição:</label>
               <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"
                 value="<%= pet.descricao ? pet.descricao : null%>"></textarea>
-            </section>
-            <section class="form-group col-sm-12 col-md-12">
-              <button type="button" class="btn btn-block orange" data-button="getAddress">
-                Usar meu endereço
-              </button>
-            </section>
-            <section class="form-row col-12">
-              <label for="logradouro">Endereço:</label>
-              <input type="text" name="rua" class="form-control" id="logradouro"
-                value="<%= pet.rua ? pet.rua : null%>" />
-            </section>
-            <section class="form-row col-12">
-              <section class="form-group col-md-6">
-                <label for="cep">CEP:</label>
-                <input type="text" name="cep" class="form-control" id="cep" value="<%= pet.cep ? pet.cep : null%>" />
-              </section>
-              <section class="form-group col-md-6">
-                <label for="bairro">Bairro:</label>
-                <input type="text" name="bairro" class="form-control" id="bairro"
-                  value="<%= pet.bairro ? pet.bairro : null%>" />
-              </section>
-            </section>
-            <section class="form-row col-12">
-              <section class="form-group col-md-6">
-                <label for="cidade">Cidade:</label>
-                <input type="text" name="cidade" class="form-control" id="cidade"
-                  value="<%= pet.cidade ? pet.cidade : null%>" />
-              </section>
-              <section class="form-group col-md-6">
-                <label for="estado">Estado:</label>
-                <input type="text" name="estado" class="form-control" id="estado"
-                  value="<%= pet.estado ? pet.estado : null%>" />
-              </section>
             </section>
             <!-- Endereço -->
             <section class="form-row">
