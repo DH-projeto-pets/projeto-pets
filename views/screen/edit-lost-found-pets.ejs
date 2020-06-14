@@ -90,19 +90,31 @@
                   <div class="form-check form-check-inline">
 
                     <input class="form-check-input <%= errors.sexo ? 'is-invalid' : '' %>" name="sexo" type="radio"
-                      id="radio-desconhecido" value="desconhecido" required <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %>>
+                      id="radio-desconhecido" value="desconhecido" required
+                      <%= pet.sexo == "DESCONHECIDO" ? "checked": "" %>>
                     <label class="form-check-label" for="radio-null">Não tenho certeza</label>
                     <%- include('../components/feedback-invalid', { msg: errors['sexo'] }) %>
                   </div>
 
                 </section>
               </section>
-              <section class="form-group col-sm-12 col-md-12">
-                <!-- <section class="custom-file">
+
+              <!-- <section class="custom-file">
                   <input type="file" class="custom-file-input" id="customFile">
                   <label class="custom-file-label" for="customFile">Selecionar arquivo</label>
                 </section> -->
+              <input type="hidden" name="fotosMap" />
+              <section class="form-group col-sm-12 col-md-12 imgs-preview">
+                <% for(let foto = 0; foto < 4; foto++) {%>
+                <img data-id="multiplePreview" class="img-thumbnail"
+                  src="<%= pet.fotos[foto] ? pet.fotos[foto].caminho : '' %>">
+                <%}%>
+                <!-- <img data-first="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail">
+                <img data-id="multiplePreview" class="img-thumbnail"> -->
               </section>
+
               <section class="form-group col-sm-12 col-md-12">
                 <label for="descricao">Descrição</label>
                 <textarea class="form-control" id="descricao" rows="3" cols="100"

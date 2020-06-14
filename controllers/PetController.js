@@ -179,6 +179,7 @@ module.exports = {
           include: "especie",
         },
         "fotoPrincipal",
+        "fotos",
       ],
     });
     console.log(JSON.stringify(pet));
