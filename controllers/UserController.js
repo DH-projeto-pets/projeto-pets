@@ -71,14 +71,14 @@ let UserController = {
   // Uso da API
   update: async (req, res) => {
     const errors = validationResult(req);
-    // console.log(errors, req.body);
+    console.log(errors, req.body, req.file);
 
     if (errors.isEmpty()) {
       const id = req.session.user.id;
       if (req.file) {
         var image = `/images/${req.file.originalname}`;
       }
-
+      console.log('imageee', image)
       const usuario = await User.update(
         {
           ...req.body,
