@@ -68,8 +68,7 @@
         </section>
         <section class="row">
           <div class="col-md-12 mt-4">
-            <div class="container user-pet-list"
-              style="display: grid; grid-template-columns: auto auto auto; gap: 10px;">
+            <div class="container user-pet-list" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
               <% for(const pet of usuario.pets) {%>
               <div class="card grid-pets">
                 <a href=" /pet/<%=pet.id %>" style="text-decoration: none; color: unset">

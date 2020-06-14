@@ -6,6 +6,7 @@ const {
   costumizeErrors,
   queryBuilder,
   createWhereClause,
+  createUrl,
 } = require("../helpers/utils");
 const { check, validationResult, body } = require("express-validator");
 // Importando pacote para usar com a API
@@ -32,7 +33,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
@@ -54,7 +55,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       }`,
       {
         replacements: {
@@ -69,14 +70,19 @@ module.exports = {
     const totalPagina = Math.ceil(total.length / 6);
     res.render("screen/lost-found-pets", {
       pets,
-      totalPagina: 0,
+      totalPagina,
       query: {
         ...query,
-        //     status: query.status || serializedStatus.map((obj) => obj.status),
         raca,
         especie,
         tipo,
       },
+      url: createUrl({
+        ...query,
+        raca,
+        especie,
+        tipo,
+      }),
     });
   },
   showGridAdocao: async (req, res) => {
@@ -97,7 +103,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
@@ -119,7 +125,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       }`,
       {
         replacements: {
@@ -131,7 +137,7 @@ module.exports = {
         type: QueryTypes.SELECT,
       }
     );
-    
+
     let totalPagina = Math.ceil(total.length / 6);
     // const queryString = serializedQuery.reduce(
     //   (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
