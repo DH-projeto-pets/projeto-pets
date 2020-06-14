@@ -103,7 +103,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
@@ -125,7 +125,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       }`,
       {
         replacements: {
@@ -137,7 +137,7 @@ module.exports = {
         type: QueryTypes.SELECT,
       }
     );
-    
+
     let totalPagina = Math.ceil(total.length / 6);
     // const queryString = serializedQuery.reduce(
     //   (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
