@@ -126,12 +126,8 @@ let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
       }
 
       const { nome } = await User.findOne({
-        where: {
-          id,
-        },
-      });
-      // Adicionar endereço na tabela de endereços.
-      
+        where: { id } });
+  
       req.session.save(() => {
         req.session.user.nome = nome;
         return res.redirect("editar");
