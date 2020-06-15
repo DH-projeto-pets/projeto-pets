@@ -20,6 +20,9 @@
 /* Altera a cor de fundo dos itens do menu */
 .list-group-item, .bg-light {
   background-color: #FF8800 !important;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04rem;
 }
 
 /* Altera a cor do texto dos links do menu */

@@ -1,3 +1,8 @@
+.card-img-top{
+  object-fit: cover;
+}
+
+
 .gridCard-body {
   padding: 10px;
 }
