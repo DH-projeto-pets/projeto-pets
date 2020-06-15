@@ -49,44 +49,38 @@
               placeholder="E-mail" name="email" value="<%=usuario.email%>" required />
             <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
           </section>
-          <section class="form-group col-md-12">
-            <label for="tipoPerfil">Endereço</label><button type="button" class="btn btn-block orange"
-              data-button="getAddress">
-              Editar o endereço
-            </button>
-          </section>
-
 
           <section class="form-group col-md-4">
             <label for="CEP">CEP</label>
-            <input type="numeric" name="cep" class="form-control" id="CEP" value="<%= pet.cep ? pet.cep : null%>" />
+            <input type="numeric" name="cep" class="form-control" id="CEP"
+              value="<%= usuario.endereco ? usuario.endereco.cep : null%>" />
             <%- include('../components/feedback-invalid', { msg: errors['cep'] }) %>
           </section>
           <section class="form-group col-md-6">
             <label for="endereco">Endereço</label>
             <input type="text" name="logradouro" class="form-control" id="logradouro"
-              value="<%= pet.logradouro ? pet.logradouro : null%>" />
+              value="<%= usuario.endereco ? usuario.endereco.logradouro : null%>" />
           </section>
           <section class="form-group col-md-2">
             <label for="endereco">Numero</label>
             <input type="text" name="numero" class="form-control" id="numero"
-              value="<%= pet.numero ? pet.numero : null%>" />
+              value="<%= usuario.endereco ? usuario.endereco.numero : null%>" />
           </section>
 
           <section class="form-group col-md-5">
             <label for="bairro">Bairro</label>
             <input type="text" name="bairro" class="form-control" id="bairro"
-              value="<%= pet.bairro ? pet.bairro : null%>" />
+              value="<%= usuario.endereco ? usuario.endereco.bairro : null%>" />
           </section>
           <section class="form-group col-md-5">
             <label for="cidade">Cidade</label>
             <input type="text" name="cidade" class="form-control" id="cidade"
-              value="<%= pet.cidade ? pet.cidade : null%>" />
+              value="<%= usuario.endereco ? usuario.endereco.cidade : null%>" />
           </section>
           <section class="form-group col-md-2">
             <label for="estado">Estado</label>
             <input type="text" name="estado" class="form-control" id="estado"
-              value="<%= pet.estado ? pet.estado : null%>" />
+              value="<%= usuario.endereco ? usuario.endereco.estado : null%>" />
           </section>
           <!-- <section class="form-group col-md-4">
             <label for="telefone">Telefone</label>

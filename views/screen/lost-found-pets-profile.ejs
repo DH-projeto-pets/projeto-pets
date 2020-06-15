@@ -39,7 +39,7 @@
           <div class="col-3 p-0 float-right " id="thumbspets">
             <% for(const foto of pet.fotos){%>
             <% if(foto.caminho !== pet.fotoPrincipal.caminho){ %>
-            <img src="<%= foto.caminho? foto.caminho : '/images/404.png'%>" alt="thumb pet" class="img-fluid mb-1 p-0">
+            <img src="<%= foto.caminho? foto.caminho : '/images/404.png'%>" alt="thumbpet" class="img-fluid mb-1 p-0">
             <%} %>
             <%}%>
             <!-- <img src="<%= pet.fk_pet? pet.fk_pet.caminho : '/images/404.png'%>" alt="thumb pet"
