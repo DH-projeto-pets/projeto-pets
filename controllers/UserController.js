@@ -124,7 +124,6 @@ let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
         }
         });
       }
-
       const { nome } = await User.findOne({
         where: { id } });
   
