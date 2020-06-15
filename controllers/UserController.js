@@ -87,43 +87,7 @@ let UserController = {
         },
         { where: { id } }
       );
-      console.log(usuario)
-/* *******************************************/
-let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
-
-      const endereco = Endereco.findOne({
-        where: { fk_usuario: id }
-      })
-      if(!endereco) {
-        const result = await geocoder.geocode(
-          `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
-        );
-              const latitude = result[0].latitude;
-              const longitude = result[0].longitude;
-        const addressCreate = Endereco.create(
-          {
-            ...req.body,
-            latitude,
-            logitude,
-            fk_usuario
-          }
-        )
-      } else {
-        const result = await geocoder.geocode(
-          `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
-        );
-        const latitude = result[0].latitude;
-        const longitude = result[0].longitude;
-
-        const addressEdit = Endereco.update({
-          ...req.body,
-          latitude,
-          longitude,
-        },{ where: {
-          fk_usuario: id
-        }
-        });
-      }
+      
       const { nome } = await User.findOne({
         where: { id } });
   
