@@ -179,6 +179,7 @@ module.exports = {
           include: "especie",
         },
         "fotoPrincipal",
+        "fotos",
       ],
     });
     console.log(JSON.stringify(pet));
@@ -196,6 +197,15 @@ module.exports = {
           { status: "ADOCAO" },
         ],
       },
+
+      include: [
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+        },
+        "fotoPrincipal",
+      ],
     });
     console.log(pet);
     res.render("screen/edit-adopted-pets", { pet, errors: {} });

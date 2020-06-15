@@ -42,6 +42,7 @@ let UserController = {
           },
           usuario: {
             ...req.body,
+            tipo: "PF",
           },
         });
 
@@ -78,7 +79,7 @@ let UserController = {
       if (req.file) {
         var image = `/images/${req.file.originalname}`;
       }
-      console.log('imageee', image)
+      console.log("imageee", image);
       const usuario = await User.update(
         {
           ...req.body,
