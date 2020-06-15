@@ -181,6 +181,7 @@ module.exports = {
         },
         "fotoPrincipal",
         "fotos",
+        "endereco",
       ],
     });
     console.log(JSON.stringify(pet));
@@ -206,6 +207,7 @@ module.exports = {
           include: "especie",
         },
         "fotoPrincipal",
+        "endereco",
       ],
     });
     console.log(pet);
@@ -232,17 +234,34 @@ module.exports = {
       );
       const latitude = result[0].latitude;
       const longitude = result[0].longitude;
-    
-      const address = await Endereco.update({
-        ...req.body,
-        latitude,
-        longitude,      
-      }, {
+
+      const address = await Endereco.findOne({
         where: {
-          fk_pet : req.params.id
-        }
+          fk_pet: req.params.id,
+        },
       });
-      console.log(pet);
+      if (address) {
+        await Endereco.update(
+          {
+            ...req.body,
+            latitude,
+            longitude,
+          },
+          {
+            where: {
+              fk_pet: req.params.id,
+            },
+          }
+        );
+      }
+      if (!address) {
+        await Endereco.create({
+          ...req.body,
+          latitude,
+          longitude,
+          fk_pet: req.params.id,
+        });
+      }
       return res.redirect("/user/gerenciamento");
     } else {
       const e = costumizeErrors(errors);
@@ -259,7 +278,7 @@ module.exports = {
       }
     }
   },
- 
+
   store: async (req, res) => {
     const errors = validationResult(req);
     console.log(errors);
@@ -280,9 +299,8 @@ module.exports = {
         ...req.body,
         latitude,
         longitude,
-        fk_pet : pet.id
+        fk_pet: pet.id,
       });
-
 
       if (pet) {
         const [firstPic] = req.body.fotosMap.split(";");

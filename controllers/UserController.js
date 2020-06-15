@@ -4,7 +4,7 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
 const { check, validationResult, body } = require("express-validator");
-const { sequelize, User, Pet } = require("../models");
+const { sequelize, User, Pet, Endereco } = require("../models");
 
 const { costumizeErrors } = require("../helpers/utils");
 
@@ -12,7 +12,6 @@ const { costumizeErrors } = require("../helpers/utils");
 const NodeGeocoder = require("node-geocoder");
 // Configurações da API
 const options = {
-  provider: "google",
   apiKey: process.env.API_KEY,
   formatter: null,
 };
@@ -94,7 +93,50 @@ let UserController = {
         },
       });
       // Adicionar endereço na tabela de endereços.
-      
+
+      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      const [address] = await geocoder.geocode(
+        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      );
+      const { latitude, longitude } = address;
+
+      const hasAddress = await Endereco.findOne({
+        where: {
+          fk_usuario: id,
+        },
+      });
+      if (hasAddress) {
+        await Endereco.update(
+          {
+            cep,
+            logradouro,
+            numero,
+            bairro,
+            cidade,
+            estado,
+            latitude,
+            longitude,
+          },
+          {
+            where: {
+              fk_usuario: id,
+            },
+          }
+        );
+      } else {
+        await Endereco.create({
+          cep,
+          logradouro,
+          numero,
+          bairro,
+          cidade,
+          estado,
+          latitude,
+          longitude,
+          fk_usuario: id,
+        });
+      }
+
       req.session.save(() => {
         req.session.user.nome = nome;
         return res.redirect("editar");
@@ -201,6 +243,7 @@ let UserController = {
       where: {
         id: req.session.user.id,
       },
+      include: ["endereco"],
     });
     // console.log(usuario)
     res.render("screen/edit-user", { errors: {}, usuario });
