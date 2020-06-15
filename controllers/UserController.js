@@ -93,7 +93,8 @@ let UserController = {
           id,
         },
       });
-
+      // Adicionar endereço na tabela de endereços.
+      
       req.session.save(() => {
         req.session.user.nome = nome;
         return res.redirect("editar");

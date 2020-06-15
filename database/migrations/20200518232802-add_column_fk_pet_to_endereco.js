@@ -13,6 +13,8 @@ module.exports = {
         table: 'pets',
         field: 'id',
       },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     });
   },
 
