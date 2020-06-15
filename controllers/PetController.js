@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const { sequelize, Pet, Foto, Raca, User } = require("../models");
+const { sequelize, Pet, Foto, Raca, User, Endereco } = require("../models");
 const { Op, QueryTypes } = require("sequelize");
 const {
   costumizeErrors,
@@ -15,6 +15,7 @@ const options = {
   apiKey: process.env.API_KEY,
   formatter: null,
 };
+const geocoder = NodeGeocoder(options);
 
 module.exports = {
   showGrid: async (req, res) => {
@@ -214,6 +215,23 @@ module.exports = {
         },
         { where: { id: req.params.id }, include: ["fotoPrincipal"] }
       );
+
+      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      const result = await geocoder.geocode(
+        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      );
+      const latitude = result[0].latitude;
+      const longitude = result[0].longitude;
+    
+      const address = await Endereco.update({
+        ...req.body,
+        latitude,
+        longitude,      
+      }, {
+        where: {
+          fk_pet : req.params.id
+        }
+      });
       console.log(pet);
       return res.redirect("/user/gerenciamento");
     } else {
@@ -231,7 +249,7 @@ module.exports = {
       }
     }
   },
-
+ 
   store: async (req, res) => {
     const errors = validationResult(req);
     console.log(errors);
@@ -242,6 +260,19 @@ module.exports = {
         fk_usuario: req.session.user.id,
         fk_raca: req.body.raca,
       });
+      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      const result = await geocoder.geocode(
+        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      );
+      const latitude = result[0].latitude;
+      const longitude = result[0].longitude;
+      const address = await Endereco.create({
+        ...req.body,
+        latitude,
+        longitude,
+        fk_pet : pet.id
+      });
+
 
       if (pet) {
         const [firstPic] = req.body.fotosMap.split(";");
@@ -270,6 +301,7 @@ module.exports = {
           { where: { id: pet.id } }
         );
       }
+      console.log(res);
       res.redirect("/user/gerenciamento");
     }
     const e = costumizeErrors(errors);
