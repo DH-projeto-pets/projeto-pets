@@ -1,11 +1,12 @@
 require("dotenv").config();
 
-const { sequelize, Pet, Foto, Raca, User } = require("../models");
+const { sequelize, Pet, Foto, Raca, User, Endereco } = require("../models");
 const { Op, QueryTypes } = require("sequelize");
 const {
   costumizeErrors,
   queryBuilder,
   createWhereClause,
+  createUrl,
 } = require("../helpers/utils");
 const { check, validationResult, body } = require("express-validator");
 // Importando pacote para usar com a API
@@ -14,6 +15,7 @@ const options = {
   apiKey: process.env.API_KEY,
   formatter: null,
 };
+const geocoder = NodeGeocoder(options);
 
 module.exports = {
   showGrid: async (req, res) => {
@@ -32,7 +34,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
@@ -54,7 +56,7 @@ module.exports = {
           ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
-        raca ? `AND fk.raca = :raca` : ""
+        raca ? `AND pet.fk_raca = :raca` : ""
       }`,
       {
         replacements: {
@@ -69,49 +71,75 @@ module.exports = {
     const totalPagina = Math.ceil(total.length / 6);
     res.render("screen/lost-found-pets", {
       pets,
-      totalPagina: 0,
+      totalPagina,
       query: {
         ...query,
-        //     status: query.status || serializedStatus.map((obj) => obj.status),
         raca,
         especie,
         tipo,
       },
+      url: createUrl({
+        ...query,
+        raca,
+        especie,
+        tipo,
+      }),
     });
   },
   showGridAdocao: async (req, res) => {
-    let { page = 1, tipo, especie, raca, ...query } = req.query;
+    let { especie, tipo, raca, page = 1, ...query } = req.query;
     const serializedQuery = queryBuilder(query);
-    let { count: total, rows: pets } = await Pet.findAndCountAll({
-      include: [
-        "fotoPrincipal",
-        {
-          model: User,
-          as: "usuario",
-          ...(tipo && {
-            where: {
-              tipo: tipo,
-            },
-          }),
+
+    if (!query.status) {
+      query.status = "ADOCAO";
+    }
+    const whereClause = createWhereClause(query);
+    let pets = await sequelize.query(
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+        Array.isArray(tipo) || !tipo
+          ? `AND usuario.tipo IN ('PF', 'ONG')`
+          : `AND usuario.tipo = :tipo `
+      } INNER JOIN racas AS raca ON pet.fk_raca = raca.id ${
+        especie
+          ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
+          : ""
+      } ${whereClause ? `WHERE ${whereClause}` : ""} ${
+        raca ? `AND pet.fk_raca = :raca` : ""
+      } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
+      {
+        replacements: {
+          whereClause,
+          tipo,
+          raca,
+          especie,
         },
-        {
-          model: Raca,
-          as: "raca",
-          include: "especie",
-          ...(especie && {
-            where: {
-              fk_especie: especie,
-            },
-          }),
+        type: QueryTypes.SELECT,
+      }
+    );
+    let total = await sequelize.query(
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+        Array.isArray(tipo) || !tipo
+          ? `AND usuario.tipo IN ('PF', 'ONG')`
+          : `AND usuario.tipo = :tipo `
+      } INNER JOIN racas AS raca ON pet.fk_raca = raca.id ${
+        especie
+          ? "AND raca.fk_especie = :especie LEFT OUTER JOIN especies as especie ON raca.fk_especie = especie.id"
+          : ""
+      } ${whereClause ? `WHERE ${whereClause}` : ""} ${
+        raca ? `AND pet.fk_raca = :raca` : ""
+      }`,
+      {
+        replacements: {
+          whereClause,
+          tipo,
+          raca,
+          especie,
         },
-      ],
-      where: {
-        ...(raca && { fk_raca: raca }),
-        status: "ADOCAO",
-        [Op.and]: serializedQuery,
-      },
-    });
-    let totalPagina = Math.ceil(total / 6);
+        type: QueryTypes.SELECT,
+      }
+    );
+
+    let totalPagina = Math.ceil(total.length / 6);
     // const queryString = serializedQuery.reduce(
     //   (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
     //   ""
@@ -152,6 +180,7 @@ module.exports = {
           include: "especie",
         },
         "fotoPrincipal",
+        "fotos",
       ],
     });
     console.log(JSON.stringify(pet));
@@ -169,6 +198,15 @@ module.exports = {
           { status: "ADOCAO" },
         ],
       },
+
+      include: [
+        {
+          model: Raca,
+          as: "raca",
+          include: "especie",
+        },
+        "fotoPrincipal",
+      ],
     });
     console.log(pet);
     res.render("screen/edit-adopted-pets", { pet, errors: {} });
@@ -187,6 +225,23 @@ module.exports = {
         },
         { where: { id: req.params.id }, include: ["fotoPrincipal"] }
       );
+
+      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      const result = await geocoder.geocode(
+        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      );
+      const latitude = result[0].latitude;
+      const longitude = result[0].longitude;
+    
+      const address = await Endereco.update({
+        ...req.body,
+        latitude,
+        longitude,      
+      }, {
+        where: {
+          fk_pet : req.params.id
+        }
+      });
       console.log(pet);
       return res.redirect("/user/gerenciamento");
     } else {
@@ -204,7 +259,7 @@ module.exports = {
       }
     }
   },
-
+ 
   store: async (req, res) => {
     const errors = validationResult(req);
     console.log(errors);
@@ -215,6 +270,19 @@ module.exports = {
         fk_usuario: req.session.user.id,
         fk_raca: req.body.raca,
       });
+      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      const result = await geocoder.geocode(
+        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      );
+      const latitude = result[0].latitude;
+      const longitude = result[0].longitude;
+      const address = await Endereco.create({
+        ...req.body,
+        latitude,
+        longitude,
+        fk_pet : pet.id
+      });
+
 
       if (pet) {
         const [firstPic] = req.body.fotosMap.split(";");
@@ -243,6 +311,7 @@ module.exports = {
           { where: { id: pet.id } }
         );
       }
+      console.log(res);
       res.redirect("/user/gerenciamento");
     }
     const e = costumizeErrors(errors);

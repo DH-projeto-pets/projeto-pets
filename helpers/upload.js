@@ -9,4 +9,20 @@ const storage = multer.diskStorage({
   },
 });
 
-module.exports = multer({ storage });
+const fileFilter = ( req, file, cb) => {
+  const allowedMimes = [
+    'image/jpeg',
+    'image/pjpeg',
+    'image/png',
+    'image/gif'
+  ];
+  if(allowedMimes.includes(file.mimetype)){
+    cb(null, true);
+  } else {
+    cb('Arquivo do tipo inválido');
+  }
+ 
+}
+
+
+module.exports = multer({  storage:storage, fileFilter: fileFilter, limits: {fileSize: 1024 * 1024 * 2} } );
