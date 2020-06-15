@@ -16,21 +16,24 @@ const createOpt = (value, text) => {
   opt.innerText = text;
   return opt;
 };
+const mountSelect = async (especie) => {
+  const racas = await getRacas(especie);
+  $("select").selectpicker("destroy");
+  racasSelect.innerHTML = "";
+  const defaultOpt = createOpt("", "Selecione uma raça");
+  racasSelect.append(defaultOpt);
+  for (raca of racas) {
+    const opt = createOpt(raca.id, raca.nome);
+    racasSelect.append(opt);
+  }
+  $("select").selectpicker();
+};
 
 if (especieSelect) {
-  especieSelect.addEventListener("change", async (e) => {
+  especieSelect.addEventListener("change", (e) => {
     const especie = e.target.value;
     if (Number(especie) !== NaN) {
-      const racas = await getRacas(especie);
-      $("select").selectpicker("destroy");
-      racasSelect.innerHTML = "";
-      const defaultOpt = createOpt("", "Selecione uma raça");
-      racasSelect.append(defaultOpt);
-      for (raca of racas) {
-        const opt = createOpt(raca.id, raca.nome);
-        racasSelect.append(opt);
-      }
-      $("select").selectpicker();
+      mountSelect(especie);
     }
   });
 }

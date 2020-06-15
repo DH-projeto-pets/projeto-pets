@@ -55,7 +55,7 @@
                     for="GRANDE">
                     &nbsp;Grande</label><br>
                 </div>
-                <div class="col-md-3 col-12 filter-column">
+                <div class="col-md-2 col-12 filter-column">
                   <h5>Vacinado</h5>
                   <input type="checkbox"
                     <%=parsedQuery.vacinado && parsedQuery.vacinado.includes('1') ? 'checked' : '' %> name="vacinado"
@@ -64,7 +64,7 @@
                     <%=parsedQuery.vacinado && parsedQuery.vacinado.includes('0') ? 'checked' : '' %> name="vacinado"
                     value="0" id="nao-vacinado"><label for="nao-vacinado">&nbsp;Não</label><br>
                 </div>
-                <div class="col-md-3 col-12 filter-column">
+                <div class="col-md-2 col-12 filter-column">
                   <h5>Vermifugado</h5>
                   <input type="checkbox"
                     <%=parsedQuery.vermifugado && parsedQuery.vermifugado.includes('1') ? 'checked' : '' %>
@@ -73,7 +73,7 @@
                     <%=parsedQuery.vermifugado && parsedQuery.vermifugado.includes('0') ? 'checked' : '' %>
                     name="vermifugado" value="0" id="vermifugado-nao"><label for="vermifugado-nao">&nbsp;Não</label><br>
                 </div>
-                <div class="col-md-3 col-12 filter-column">
+                <div class="col-md-2 col-12 filter-column">
                   <h5>Castrado</h5>
                   <input type="checkbox"
                     <%=parsedQuery.castrado && parsedQuery.castrado.includes('1') ? 'checked' : '' %> name="castrado"
@@ -81,6 +81,20 @@
                   <input type="checkbox"
                     <%=parsedQuery.castrado && parsedQuery.castrado.includes('0') ? 'checked' : '' %> name="castrado"
                     value="0" id="castrado-nao"><label for="castrado-nao">&nbsp;Não</label><br>
+                </div>
+                <div class="col-md-3 col-12 filter-column">
+                  <h5>Sexo</h5>
+                  <input type="checkbox" name="sexo" value="FEMEA" id="FEMEA"
+                    <%= parsedQuery.sexo && parsedQuery.sexo.includes('FEMEA') ? 'checked' : ''%>><label for="FEMEA">
+                    &nbsp;Fêmea</label><br>
+                  <input type="checkbox" name="sexo" value="MACHO" id="MACHO"
+                    <%= parsedQuery.sexo && parsedQuery.sexo.includes('MACHO') ? 'checked' : ''%>><label for="MACHO">
+                    &nbsp;Macho</label><br>
+                  <input type="checkbox" name="sexo" value="DESCONHECIDO" id="DESCONHECIDO"
+                    <%= parsedQuery.sexo && parsedQuery.sexo.includes('DESCONHECIDO') ? 'checked' : ''%>><label
+                    for="DESCONHECIDO">
+                    &nbsp;Desconhecido</label><br>
+                  <!-- <input type="radio" name="porte" value="" id="todos" selected><label for="todos"> Todos</label><br> -->
                 </div>
                 <div class="col-md-3 col-12">
                   <h5>Responsável</h5>

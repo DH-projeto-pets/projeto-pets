@@ -37,6 +37,17 @@
 <script src="/javascripts/distance-counter.js"></script>
 <script src="/javascripts/getLocation.js"></script>
 <script src="/javascripts/getAddress.js"></script>
+
+<script>
+  $('[name="especie"]').selectpicker("val", `<%= pet.raca ? pet.raca.fk_especie: '' %>`);
+  if (especieSelect) {
+
+    mountSelect(especieSelect.value)
+    setTimeout(() => {
+      $('[name="raca"]').selectpicker("val", `<%= pet.fk_raca ? pet.fk_raca : '' %>`);
+    }, 1000)
+  }
+</script>
 </body>
 
 </html>
