@@ -1,6 +1,7 @@
 <footer>
   <div class="row">
     <div class="col-3 ml-2 pr-0">
+      <%console.log(useSelect) %>
       <img src="/images/logo-pet-aqui.png" class="img-responsive d-flex justify-content-start" alt="logo">
     </div>
     <div class="col-10 order-3 order-sm-1 offset-1 offset-sm-0 col-sm-5
@@ -37,17 +38,17 @@
 <script src="/javascripts/distance-counter.js"></script>
 <script src="/javascripts/getLocation.js"></script>
 <script src="/javascripts/getAddress.js"></script>
-
+<% if (useSelect) {%>
 <script>
   $('[name="especie"]').selectpicker("val", `<%= pet.raca ? pet.raca.fk_especie: '' %>`);
   if (especieSelect) {
-
     mountSelect(especieSelect.value)
     setTimeout(() => {
       $('[name="raca"]').selectpicker("val", `<%= pet.fk_raca ? pet.fk_raca : '' %>`);
     }, 1000)
   }
 </script>
+<%}%>
 </body>
 
 </html>

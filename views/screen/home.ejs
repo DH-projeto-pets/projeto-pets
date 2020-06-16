@@ -8,7 +8,7 @@
         <section class="div-cardContainer main-container mb-5 justify-content-center">
           <section class="cards-home-user">
             <% for(pet of pets) { %>
-            <%- include('../components/card-feed', { pet }) %> 
+            <%- include('../components/card-feed', { pet }) %>
             <%  } %>
           </section>
         </section>
@@ -16,4 +16,4 @@
     </section>
   </section>
 </section>
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { useSelect: false }) %>

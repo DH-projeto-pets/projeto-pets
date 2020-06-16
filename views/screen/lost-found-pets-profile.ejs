@@ -64,10 +64,11 @@
 
         </ul>
         <div class="text-center">
-          <a class="btn btn-primary btn-lg mb-3" href="/user/<%= pet.fk_usuario %>" role="button" id="botaocontato">Entrar
+          <a class="btn btn-primary btn-lg mb-3" href="/user/<%= pet.fk_usuario %>" role="button"
+            id="botaocontato">Entrar
             em contato</a>
         </div>
       </div>
     </div>
   </div>
-  <%- include('../partials/footer') %>
+  <%- include('../partials/footer', { useSelect: false }) %>
