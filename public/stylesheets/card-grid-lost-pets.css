@@ -3,3 +3,7 @@
     text-align: center;
     font-size: 18px;
 }
+.card-img-top{
+    object-fit: cover;
+  }
+  
