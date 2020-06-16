@@ -13,17 +13,20 @@
         <form action="/cadastrar" method="POST" class="form-signin">
 
           <label class="login-email-label">Nome:</label>
-          <input type="text" name="nome" id="nome" value="<% usuario.nome ? usuario.nome : '' %>" class="form-control text-center <%= errors.nome ? 'is-invalid' : '' %>" required autofocus />
+          <input type="text" name="nome" id="nome" value="<% usuario.nome ? usuario.nome : '' %>"
+            class="form-control text-center <%= errors.nome ? 'is-invalid' : '' %>" required autofocus />
           <%- include('../components/feedback-invalid', { msg: errors['nome'] }) %>
           <label class="login-email-label">Email:</label>
-          <input type="email" name="email" id="email" value="<% usuario.email ? usuario.email : '' %>" class="form-control text-center <%= errors.email ? 'is-invalid' : '' %>"  required autofocus />
+          <input type="email" name="email" id="email" value="<% usuario.email ? usuario.email : '' %>"
+            class="form-control text-center <%= errors.email ? 'is-invalid' : '' %>" required autofocus />
           <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
           <label class="login-senha-label">Senha:</label>
-          <input type="password" name="senha" id="senha" class="form-control text-center <%= errors.senha ? 'is-invalid' : '' %>"  required />
+          <input type="password" name="senha" id="senha"
+            class="form-control text-center <%= errors.senha ? 'is-invalid' : '' %>" required />
           <%- include('../components/feedback-invalid', { msg: errors['senha'] }) %>
           <label class=" login-confirmar-senha-label">Confirmar senha:</label>
-          <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control text-center <%= errors.confirmar_senha ? 'is-invalid' : '' %>"
-             required />
+          <input type="password" name="confirmar_senha" id="confirmar_senha"
+            class="form-control text-center <%= errors.confirmar_senha ? 'is-invalid' : '' %>" required />
           <%- include('../components/feedback-invalid', { msg: errors['confirmar_senha'] }) %>
 
           <!-- <section class="form-row d-flex align-items-center mt-4">
@@ -53,5 +56,5 @@
 </div>
 <!-- /container -->
 </section>
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { useSelect: false }) %>
 <script src="javascripts/cadastrar.js"></script>

@@ -3,27 +3,21 @@ const { Op } = require("sequelize");
 
 module.exports = {
   checkUser: async (req, res, next) => {
-    const pets = await Pet.findAll(
-      {
-        limit: 4,
+    let pets = await Pet.findAll({
+      where: {
+        [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
       },
-      {
-        where: {
-          [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
-        },
-        order: [["id", "DESC"]],
-      }
-    );
-
-    const petsAdocao = await Pet.findAll({
+      order: [["id", "DESC"]],
+    });
+    let petsAdocao = await Pet.findAll({
       where: {
         [Op.and]: [{ status: "ADOCAO" }],
       },
-      // order: [["id", "DESC"]],
+      order: [["id", "DESC"]],
     });
-    console.log("===>", JSON.stringify(petsAdocao));
+    pets = pets.slice(0, 4);
+    petsAdocao = petsAdocao.slice(0, 4);
     if (!req.session.user) return res.render("index", { pets, petsAdocao });
-    return next();
   },
   checkUserLogado: (req, res, next) => {
     if (req.session.user) return res.redirect("/");
