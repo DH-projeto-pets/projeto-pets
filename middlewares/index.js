@@ -18,7 +18,9 @@ module.exports = {
     pets = pets.slice(0, 4);
     petsAdocao = petsAdocao.slice(0, 4);
     if (!req.session.user) return res.render("index", { pets, petsAdocao });
+    return next()
   },
+
   checkUserLogado: (req, res, next) => {
     if (req.session.user) return res.redirect("/");
     return next();
