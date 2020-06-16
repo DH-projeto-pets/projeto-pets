@@ -44,7 +44,8 @@
                 <div class="pl-3"><%= usuario.email = `${masked_str}` %></div>
                 <% } else { %>
                 <div class="col-md-10" id="email-user">
-                  <a href="mailto:<%- usuario.email ? usuario.email : '' %>"> <%- usuario.email ? usuario.email : '' %></a></div>
+                  <a href="mailto:<%- usuario.email ? usuario.email : '' %>">
+                    <%- usuario.email ? usuario.email : '' %></a></div>
                 <% } %>
               </div>
               <div class="row">
@@ -122,4 +123,4 @@
 </section>
 
 
-<%- include('../partials/footer') %>
+<%- include('../partials/footer', { useSelect: false }) %>
