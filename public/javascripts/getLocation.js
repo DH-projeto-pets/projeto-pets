@@ -5,6 +5,10 @@ if (btnLocation) {
   });
 }
 
+window.onload = function () {
+  navigator.geolocation.getCurrentPosition(success, error, options);
+};
+
 var options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -19,6 +23,10 @@ async function success(pos) {
   ).then((res) => res.json());
   console.log(address);
   // console.log('Longitude: ' + crd.longitude);
+  let latCampo = document.querySelector('[name="latitude"]');
+  let lonCampo = document.querySelector('[name="longitude"]');
+  latCampo.value = latitude;
+  lonCampo.value = longitude;
   // console.log('Mais ou menos ' + crd.accuracy + ' metros.');
 }
 
