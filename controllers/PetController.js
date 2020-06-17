@@ -26,7 +26,7 @@ module.exports = {
       page = 1,
       latitude = 0,
       longitude = 0,
-      distancia = 0,
+      distancia = 40,
       ...query
     } = req.query;
     if (!query.status) {
@@ -143,9 +143,9 @@ module.exports = {
       especie,
       tipo,
       raca,
-      latitude,
-      longitude,
-      distancia,
+      latitude = 0,
+      longitude = 0,
+      distancia = 1,
       page = 1,
       ...query
     } = req.query;
@@ -154,20 +154,26 @@ module.exports = {
     if (!query.status) {
       query.status = "ADOCAO";
     }
+    delete query.raca;
+    delete query.especie;
+    delete query.latitude;
+    delete query.longitude;
+    delete query.distancia;
+    delete query.tipo;
     const whereClause = createWhereClause(query);
     let pets = await sequelize.query(
       `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
       JOIN (
         SELECT * FROM enderecos ende WHERE ACOS(
-        SIN(PI() * ende.latitude/180.0) * 
-            SIN(PI() * :latitude/180.0) + 
-            COS(PI() * ende.latitude/180.0) * 
-            COS(PI() * :longitude/180.0) *
-            COS(
-          PI() * -46.6863321/180.0 -
-                PI() * ende.longitude/180.0
-                )
-        )
+          SIN(PI() * ende.latitude/180.0) * 
+              SIN(PI() * :latitude/180.0) + 
+              COS(PI() * ende.latitude/180.0) * 
+              COS(PI() * :latitude/180.0) *
+              COS(
+            PI() * :longitude/180.0 -
+                  PI() * ende.longitude/180.0
+                  )
+          )
             * 6371 <= :distancia
       ) ende ON ende.fk_usuario = pet.fk_usuario 
       LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
@@ -187,15 +193,29 @@ module.exports = {
           tipo,
           raca,
           especie,
-          latitude,
-          longitude,
-          distancia,
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: Number(distancia),
         },
         type: QueryTypes.SELECT,
       }
     );
     let total = await sequelize.query(
-      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+      `SELECT COUNT(*) FROM pets AS pet 
+      JOIN (
+        SELECT * FROM enderecos ende WHERE ACOS(
+          SIN(PI() * ende.latitude/180.0) * 
+              SIN(PI() * :latitude/180.0) + 
+              COS(PI() * ende.latitude/180.0) * 
+              COS(PI() * :latitude/180.0) *
+              COS(
+            PI() * :longitude/180.0 -
+                  PI() * ende.longitude/180.0
+                  )
+          )
+            * 6371 <= :distancia
+      ) ende ON ende.fk_usuario = pet.fk_usuario 
+      LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
           : `AND usuario.tipo = :tipo `
@@ -212,9 +232,9 @@ module.exports = {
           tipo,
           raca,
           especie,
-          latitude,
-          longitude,
-          distancia,
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: Number(distancia),
         },
         type: QueryTypes.SELECT,
       }
@@ -228,7 +248,15 @@ module.exports = {
     res.render("screen/adoption-pets", {
       pets,
       totalPagina,
-      query: serializedQuery,
+      url: createUrl({
+        ...query,
+        raca,
+        especie,
+        tipo,
+        distancia,
+        latitude,
+        longitude,
+      }),
       parsedQuery: req.query,
     });
   },
