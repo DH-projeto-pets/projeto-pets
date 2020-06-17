@@ -337,40 +337,40 @@ module.exports = {
         { where: { id: req.params.id }, include: ["fotoPrincipal"] }
       );
 
-      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
-      const result = await geocoder.geocode(
-        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
-      );
-      const latitude = result[0].latitude;
-      const longitude = result[0].longitude;
+      // let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      // const result = await geocoder.geocode(
+      //   `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      // );
+      // const latitude = result[0].latitude;
+      // const longitude = result[0].longitude;
 
-      const address = await Endereco.findOne({
-        where: {
-          fk_pet: req.params.id,
-        },
-      });
-      if (address) {
-        await Endereco.update(
-          {
-            ...req.body,
-            latitude,
-            longitude,
-          },
-          {
-            where: {
-              fk_pet: req.params.id,
-            },
-          }
-        );
-      }
-      if (!address) {
-        await Endereco.create({
-          ...req.body,
-          latitude,
-          longitude,
-          fk_pet: req.params.id,
-        });
-      }
+      // const address = await Endereco.findOne({
+      //   where: {
+      //     fk_pet: req.params.id,
+      //   },
+      // });
+      // if (address) {
+      //   await Endereco.update(
+      //     {
+      //       ...req.body,
+      //       latitude,
+      //       longitude,
+      //     },
+      //     {
+      //       where: {
+      //         fk_pet: req.params.id,
+      //       },
+      //     }
+      //   );
+      // }
+      // if (!address) {
+      //   await Endereco.create({
+      //     ...req.body,
+      //     latitude,
+      //     longitude,
+      //     fk_pet: req.params.id,
+      //   });
+      // }
       return res.redirect("/user/gerenciamento");
     } else {
       const e = costumizeErrors(errors);
@@ -398,18 +398,18 @@ module.exports = {
         fk_usuario: req.session.user.id,
         fk_raca: req.body.raca,
       });
-      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
-      const result = await geocoder.geocode(
-        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
-      );
-      const latitude = result[0].latitude;
-      const longitude = result[0].longitude;
-      const address = await Endereco.create({
-        ...req.body,
-        latitude,
-        longitude,
-        fk_pet: pet.id,
-      });
+      // let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      // const result = await geocoder.geocode(
+      //   `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      // );
+      // const latitude = result[0].latitude;
+      // const longitude = result[0].longitude;
+      // const address = await Endereco.create({
+      //   ...req.body,
+      //   latitude,
+      //   longitude,
+      //   fk_pet: pet.id,
+      // });
 
       if (pet) {
         const [firstPic] = req.body.fotosMap.split(";");
