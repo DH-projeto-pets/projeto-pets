@@ -39,7 +39,9 @@ module.exports = {
     });
     let pets = await sequelize.query(
       `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
-      JOIN (
+      ${
+        latitude && longitude
+          ? `JOIN (
         SELECT * FROM enderecos ende WHERE ACOS(
           SIN(PI() * ende.latitude/180.0) * 
               SIN(PI() * :latitude/180.0) + 
@@ -51,7 +53,9 @@ module.exports = {
                   )
           )
             * 6371 <= :distancia
-      ) ende ON ende.fk_usuario = pet.fk_usuario 
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
       LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
@@ -78,7 +82,9 @@ module.exports = {
     );
     let total = await sequelize.query(
       `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
-      JOIN (
+      ${
+        latitude && longitude
+          ? `JOIN (
         SELECT * FROM enderecos ende WHERE ACOS(
           SIN(PI() * ende.latitude/180.0) * 
               SIN(PI() * :latitude/180.0) + 
@@ -90,7 +96,9 @@ module.exports = {
                   )
           )
             * 6371 <= :distancia
-      ) ende ON ende.fk_usuario = pet.fk_usuario
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
       LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id 
       INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
@@ -163,7 +171,9 @@ module.exports = {
     const whereClause = createWhereClause(query);
     let pets = await sequelize.query(
       `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
-      JOIN (
+      ${
+        latitude && longitude
+          ? `JOIN (
         SELECT * FROM enderecos ende WHERE ACOS(
           SIN(PI() * ende.latitude/180.0) * 
               SIN(PI() * :latitude/180.0) + 
@@ -175,7 +185,9 @@ module.exports = {
                   )
           )
             * 6371 <= :distancia
-      ) ende ON ende.fk_usuario = pet.fk_usuario 
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
       LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
@@ -202,7 +214,9 @@ module.exports = {
     );
     let total = await sequelize.query(
       `SELECT COUNT(*) FROM pets AS pet 
-      JOIN (
+      ${
+        latitude && longitude
+          ? `JOIN (
         SELECT * FROM enderecos ende WHERE ACOS(
           SIN(PI() * ende.latitude/180.0) * 
               SIN(PI() * :latitude/180.0) + 
@@ -214,7 +228,9 @@ module.exports = {
                   )
           )
             * 6371 <= :distancia
-      ) ende ON ende.fk_usuario = pet.fk_usuario 
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
       LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
