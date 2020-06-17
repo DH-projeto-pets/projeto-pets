@@ -95,7 +95,21 @@ module.exports = {
     }
     const whereClause = createWhereClause(query);
     let pets = await sequelize.query(
-      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
+      JOIN (
+        SELECT * FROM enderecos ende WHERE ACOS(
+        SIN(PI() * ende.latitude/180.0) * 
+            SIN(PI() * :latitude/180.0) + 
+            COS(PI() * ende.latitude/180.0) * 
+            COS(PI() * :longitude/180.0) *
+            COS(
+          PI() * -46.6863321/180.0 -
+                PI() * ende.longitude/180.0
+                )
+        )
+            * 6371 <= :distancia
+      ) ende ON ende.fk_usuario = pet.fk_usuario 
+      LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
           : `AND usuario.tipo = :tipo `
