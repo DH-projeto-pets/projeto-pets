@@ -52,35 +52,40 @@
 
           <section class="form-group col-md-4">
             <label for="CEP">CEP</label>
-            <input type="numeric" name="cep" class="form-control" id="CEP"
+            <input type="numeric" name="cep" class="form-control <%= errors.cep ? 'is-invalid' : '' %>" id="CEP"
               value="<%= usuario.endereco ? usuario.endereco.cep : null%>" />
             <%- include('../components/feedback-invalid', { msg: errors['cep'] }) %>
           </section>
           <section class="form-group col-md-6">
             <label for="endereco">Endereço</label>
-            <input type="text" name="logradouro" class="form-control" id="logradouro"
+            <input type="text" name="logradouro" class="form-control <%= errors.logradouro ? 'is-invalid' : '' %>" id="logradouro"
               value="<%= usuario.endereco ? usuario.endereco.logradouro : null%>" />
+              <%- include('../components/feedback-invalid', { msg: errors['logradouro'] }) %>
           </section>
           <section class="form-group col-md-2">
             <label for="endereco">Numero</label>
-            <input type="text" name="numero" class="form-control" id="numero"
+            <input type="text" name="numero" class="form-control <%= errors.numero ? 'is-invalid' : '' %>" id="numero"
               value="<%= usuario.endereco ? usuario.endereco.numero : null%>" />
+              <%- include('../components/feedback-invalid', { msg: errors['numero'] }) %>
           </section>
 
           <section class="form-group col-md-5">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" class="form-control" id="bairro"
+            <input type="text" name="bairro" class="form-control <%= errors.bairro ? 'is-invalid' : '' %>" id="bairro"
               value="<%= usuario.endereco ? usuario.endereco.bairro : null%>" />
+              <%- include('../components/feedback-invalid', { msg: errors['bairro'] }) %>
           </section>
           <section class="form-group col-md-5">
             <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" class="form-control" id="cidade"
+            <input type="text" name="cidade" class="form-control <%= errors.cidade ? 'is-invalid' : '' %>" id="cidade"
               value="<%= usuario.endereco ? usuario.endereco.cidade : null%>" />
+              <%- include('../components/feedback-invalid', { msg: errors['cidade'] }) %>
           </section>
           <section class="form-group col-md-2">
             <label for="estado">Estado</label>
-            <input type="text" name="estado" class="form-control" id="estado"
+            <input type="text" name="estado" class="form-control <%= errors.estado ? 'is-invalid' : '' %>" id="estado"
               value="<%= usuario.endereco ? usuario.endereco.estado : null%>" />
+              <%- include('../components/feedback-invalid', { msg: errors['estado'] }) %>
           </section>
           <!-- <section class="form-group col-md-4">
             <label for="telefone">Telefone</label>

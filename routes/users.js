@@ -16,8 +16,13 @@ router.put(
     check("tipo").notEmpty().isIn(["ONG", "PF"]),
     check("email").isEmail().withMessage("Email inválido"),
     check("nome").isLength({ min:3 }).withMessage("O nome precisa ter no mínimo 3 caracteres"),
-    check("descricao").isLength({min:0,max:255}).withMessage("É permitido no máximo 255 caracteres")
-
+    check("descricao").isLength({min:0,max:255}).withMessage("É permitido no máximo 255 caracteres"),
+    check("cep").isLength({min:8, max:8}).withMessage("Campo obrigatório"),
+    check("logradouro").isLength({min:1, max:100}).withMessage("Campo obrigatório"),
+    check("numero").isLength({min:1, max:5}).withMessage("Campo obrigatório"),
+    check("bairro").isLength({min:1, max:40}).withMessage("Campo obrigatório"),
+    check("cidade").isLength({min:1, max:40}).withMessage("Campo obrigatório"),
+    check("estado").isLength({min:1, max:2}).withMessage("Campo obrigatório")
   ],
   UserController.update
 ); // action do form
