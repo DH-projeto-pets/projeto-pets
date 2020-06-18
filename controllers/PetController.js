@@ -66,7 +66,7 @@ module.exports = {
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
         raca ? `AND pet.fk_raca = :raca` : ""
-      } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
+      } ORDER BY pet.createdAt DESC LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
           whereClause,
@@ -198,7 +198,7 @@ module.exports = {
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
         raca ? `AND pet.fk_raca = :raca` : ""
-      } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
+      } ORDER BY pet.createdAt DESC LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
           whereClause,
