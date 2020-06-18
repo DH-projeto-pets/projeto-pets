@@ -147,6 +147,7 @@ let UserController = {
         errors: e,
         usuario: {
           ...req.body,
+          endereco:{...req.body}
         },
       });
     }

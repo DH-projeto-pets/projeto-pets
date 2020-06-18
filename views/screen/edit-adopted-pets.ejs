@@ -1,7 +1,7 @@
 <%- include('../partials/head', { title: 'Editar Pet para adoção'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
-  <section class="container-fluid  main-container">
+  <section class="container-fluid  main-container mb-5">
     <section class="mt-2">
 
       <h1 class="col-md-12
@@ -254,7 +254,7 @@
             </section>
 
             <!-- Endereço -->
-            <section class="form-row">
+            <!-- <section class="form-row">
               <section class="form-group col-md-4">
                 <label for="CEP">CEP</label>
                 <input type="numeric" name="cep" class="form-control" id="CEP"
@@ -288,7 +288,7 @@
                 <input type="text" name="estado" class="form-control" id="estado"
                   value="<%= pet.endereco ? pet.endereco.estado : null%>" />
               </section>
-            </section>
+            </section> -->
             <section class="form-group 
                           col-sm-12 col-md-12
                           d-flex justify-content-end">

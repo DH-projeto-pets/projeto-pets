@@ -1,7 +1,7 @@
 <%- include('../partials/head', { title: 'Editar Pet'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
-  <section class="container-fluid main-container">
+  <section class="container-fluid main-container mb-5">
     <!-- <section class="row formRegisterPet__rowContainer"> -->
     <section class="mt-2">
       <h1 class="col-md-12 text-center">Editar Pet</h1>
@@ -122,7 +122,7 @@
               </section>
 
               <!-- <section class="form-row"> -->
-              <section class="form-group col-md-4">
+              <!-- <section class="form-group col-md-4">
                 <label for="CEP">CEP</label>
                 <input type="numeric" name="cep" class="form-control" id="CEP"
                   value="<%= pet.endereco ? pet.endereco.cep : null%>" />
@@ -139,7 +139,7 @@
                   value="<%= pet.endereco ? pet.endereco.numero : null%>" />
               </section>
 
-              <!-- <section class="form-row"> -->
+              
               <section class="form-group col-md-5">
                 <label for="bairro">Bairro</label>
                 <input type="text" name="bairro" class="form-control" id="bairro"
@@ -154,7 +154,7 @@
                 <label for="estado">Estado</label>
                 <input type="text" name="estado" class="form-control" id="estado"
                   value="<%= pet.endereco ? pet.endereco.estado : null%>" />
-              </section>
+              </section> -->
               <!-- </section> -->
               <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
                 <button type="button" class="btn orange--offset mr-2">
@@ -170,7 +170,7 @@
     </section>
     <!-- </section> -->
   </section>
-  <div class="espaco-branco"></div>
+
 </section>
 <%- include('../partials/footer', { useSelect: true }) %>
 
