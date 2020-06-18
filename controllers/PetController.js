@@ -19,13 +19,44 @@ const geocoder = NodeGeocoder(options);
 
 module.exports = {
   showGrid: async (req, res) => {
-    let { especie, tipo, raca, page = 1, ...query } = req.query;
+    let {
+      especie,
+      tipo,
+      raca,
+      page = 1,
+      latitude = 0,
+      longitude = 0,
+      distancia = 40,
+      ...query
+    } = req.query;
     if (!query.status) {
       query.status = ["PERDIDO", "ENCONTRADO"];
     }
-    const whereClause = createWhereClause(query);
+    const whereClause = createWhereClause({
+      porte: query.porte,
+      sexo: query.sexo,
+      status: query.status,
+    });
     let pets = await sequelize.query(
-      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
+      ${
+        latitude && longitude
+          ? `JOIN (
+        SELECT * FROM enderecos ende WHERE ACOS(
+          SIN(PI() * ende.latitude/180.0) * 
+              SIN(PI() * :latitude/180.0) + 
+              COS(PI() * ende.latitude/180.0) * 
+              COS(PI() * :latitude/180.0) *
+              COS(
+            PI() * :longitude/180.0 -
+                  PI() * ende.longitude/180.0
+                  )
+          )
+            * 6371 <= :distancia
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
+      LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
           : `AND usuario.tipo = :tipo `
@@ -42,12 +73,34 @@ module.exports = {
           tipo,
           raca,
           especie,
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: Number(distancia),
         },
         type: QueryTypes.SELECT,
       }
     );
     let total = await sequelize.query(
-      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
+      ${
+        latitude && longitude
+          ? `JOIN (
+        SELECT * FROM enderecos ende WHERE ACOS(
+          SIN(PI() * ende.latitude/180.0) * 
+              SIN(PI() * :latitude/180.0) + 
+              COS(PI() * ende.latitude/180.0) * 
+              COS(PI() * :latitude/180.0) *
+              COS(
+            PI() * :longitude/180.0 -
+                  PI() * ende.longitude/180.0
+                  )
+          )
+            * 6371 <= :distancia
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
+      LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id 
+      INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
           : `AND usuario.tipo = :tipo `
@@ -64,6 +117,9 @@ module.exports = {
           tipo,
           raca,
           especie,
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: Number(distancia),
         },
         type: QueryTypes.SELECT,
       }
@@ -77,25 +133,62 @@ module.exports = {
         raca,
         especie,
         tipo,
+        distancia,
       },
       url: createUrl({
         ...query,
         raca,
         especie,
         tipo,
+        distancia,
+        latitude,
+        longitude,
       }),
     });
   },
   showGridAdocao: async (req, res) => {
-    let { especie, tipo, raca, page = 1, ...query } = req.query;
+    let {
+      especie,
+      tipo,
+      raca,
+      latitude = 0,
+      longitude = 0,
+      distancia = 1,
+      page = 1,
+      ...query
+    } = req.query;
     const serializedQuery = queryBuilder(query);
 
     if (!query.status) {
       query.status = "ADOCAO";
     }
+    delete query.raca;
+    delete query.especie;
+    delete query.latitude;
+    delete query.longitude;
+    delete query.distancia;
+    delete query.tipo;
     const whereClause = createWhereClause(query);
     let pets = await sequelize.query(
-      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet 
+      ${
+        latitude && longitude
+          ? `JOIN (
+        SELECT * FROM enderecos ende WHERE ACOS(
+          SIN(PI() * ende.latitude/180.0) * 
+              SIN(PI() * :latitude/180.0) + 
+              COS(PI() * ende.latitude/180.0) * 
+              COS(PI() * :latitude/180.0) *
+              COS(
+            PI() * :longitude/180.0 -
+                  PI() * ende.longitude/180.0
+                  )
+          )
+            * 6371 <= :distancia
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
+      LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
           : `AND usuario.tipo = :tipo `
@@ -112,12 +205,33 @@ module.exports = {
           tipo,
           raca,
           especie,
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: Number(distancia),
         },
         type: QueryTypes.SELECT,
       }
     );
     let total = await sequelize.query(
-      `SELECT pet.nome, pet.id, pet.status, foto.caminho FROM pets AS pet LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
+      `SELECT COUNT(*) FROM pets AS pet 
+      ${
+        latitude && longitude
+          ? `JOIN (
+        SELECT * FROM enderecos ende WHERE ACOS(
+          SIN(PI() * ende.latitude/180.0) * 
+              SIN(PI() * :latitude/180.0) + 
+              COS(PI() * ende.latitude/180.0) * 
+              COS(PI() * :latitude/180.0) *
+              COS(
+            PI() * :longitude/180.0 -
+                  PI() * ende.longitude/180.0
+                  )
+          )
+            * 6371 <= :distancia
+      ) ende ON ende.fk_usuario = pet.fk_usuario`
+          : ""
+      }
+      LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id INNER JOIN usuarios AS usuario ON pet.fk_usuario = usuario.id ${
         Array.isArray(tipo) || !tipo
           ? `AND usuario.tipo IN ('PF', 'ONG')`
           : `AND usuario.tipo = :tipo `
@@ -134,6 +248,9 @@ module.exports = {
           tipo,
           raca,
           especie,
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: Number(distancia),
         },
         type: QueryTypes.SELECT,
       }
@@ -147,7 +264,15 @@ module.exports = {
     res.render("screen/adoption-pets", {
       pets,
       totalPagina,
-      query: serializedQuery,
+      url: createUrl({
+        ...query,
+        raca,
+        especie,
+        tipo,
+        distancia,
+        latitude,
+        longitude,
+      }),
       parsedQuery: req.query,
     });
   },
@@ -228,40 +353,40 @@ module.exports = {
         { where: { id: req.params.id }, include: ["fotoPrincipal"] }
       );
 
-      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
-      const result = await geocoder.geocode(
-        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
-      );
-      const latitude = result[0].latitude;
-      const longitude = result[0].longitude;
+      // let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      // const result = await geocoder.geocode(
+      //   `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      // );
+      // const latitude = result[0].latitude;
+      // const longitude = result[0].longitude;
 
-      const address = await Endereco.findOne({
-        where: {
-          fk_pet: req.params.id,
-        },
-      });
-      if (address) {
-        await Endereco.update(
-          {
-            ...req.body,
-            latitude,
-            longitude,
-          },
-          {
-            where: {
-              fk_pet: req.params.id,
-            },
-          }
-        );
-      }
-      if (!address) {
-        await Endereco.create({
-          ...req.body,
-          latitude,
-          longitude,
-          fk_pet: req.params.id,
-        });
-      }
+      // const address = await Endereco.findOne({
+      //   where: {
+      //     fk_pet: req.params.id,
+      //   },
+      // });
+      // if (address) {
+      //   await Endereco.update(
+      //     {
+      //       ...req.body,
+      //       latitude,
+      //       longitude,
+      //     },
+      //     {
+      //       where: {
+      //         fk_pet: req.params.id,
+      //       },
+      //     }
+      //   );
+      // }
+      // if (!address) {
+      //   await Endereco.create({
+      //     ...req.body,
+      //     latitude,
+      //     longitude,
+      //     fk_pet: req.params.id,
+      //   });
+      // }
       return res.redirect("/user/gerenciamento");
     } else {
       const e = costumizeErrors(errors);
@@ -289,18 +414,18 @@ module.exports = {
         fk_usuario: req.session.user.id,
         fk_raca: req.body.raca,
       });
-      let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
-      const result = await geocoder.geocode(
-        `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
-      );
-      const latitude = result[0].latitude;
-      const longitude = result[0].longitude;
-      const address = await Endereco.create({
-        ...req.body,
-        latitude,
-        longitude,
-        fk_pet: pet.id,
-      });
+      // let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
+      // const result = await geocoder.geocode(
+      //   `${logradouro} ${numero} ${cep} ${bairro} ${cidade} ${estado}`
+      // );
+      // const latitude = result[0].latitude;
+      // const longitude = result[0].longitude;
+      // const address = await Endereco.create({
+      //   ...req.body,
+      //   latitude,
+      //   longitude,
+      //   fk_pet: pet.id,
+      // });
 
       if (pet) {
         const [firstPic] = req.body.fotosMap.split(";");

@@ -20,10 +20,14 @@
           <div class="container collapse" id="collapse-filtro">
             <div class="row">
               <form action="" method="GET" class="col-md-12 d-flex flex-wrap">
+                <input type="hidden" name="latitude">
+                <input type="hidden" name="longitude">
                 <div class="col-md-3 col-12 filter-column">
                   <h5>Distância</h5>
                   <div class="slidecontainer">
-                    <input type="range" min="0" max="100" value="50" class="slider" id="myRange" style="width: 100%;">
+                    <input type="range" min="0" max="100"
+                      value="<%= parsedQuery.distancia ? parsedQuery.distancia : 40 %>" class="slider" name="distancia"
+                      class="slider" id="myRange" style="width: 100%;">
                   </div>
                   <!-- Adiciona contador dinâmico -->
                   <span>Até </span><span id="distance-counter">50</span><span>km</span>
@@ -136,9 +140,7 @@
           <div class="row justify-content-center">
             <ul class="pagination">
               <% for (let nPagina = 1; nPagina <= totalPagina; nPagina++) { %>
-          <li class="page-item"><a href="?<%=query.reduce(
-            (a, c) => (a += `${Object.keys(c)}=${Object.values(c)}&`),
-            '')%>page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
+          <li class="page-item"><a href="?<%=url%>page=<%= nPagina %>" class="page-link"><%= nPagina %></a></li>
           <% } %>
           </ul>
       </div>
