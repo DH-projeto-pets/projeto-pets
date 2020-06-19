@@ -56,13 +56,15 @@
       <div class="texto  pt-1 pb-3 ml-2">
 
         <br>
-        <p class="ml-2"><%= pet.descricao ? pet.descricao : '' %>
-        </p>
+        <a class="font-weight-bold ml-2">Descrição:</a> <a class=""><%= pet.descricao ? pet.descricao : '' %></a>
+        <br>   
         <ul class="list-unstyled ml-2">
+          
+          <li><a class="font-weight-bold">Espécie:</a> <a class="link"> <%= pet.raca.fk_especie =='1' ? 'gato' : pet.raca.fk_especie =='2' ? 'Cachorro' : '' %></a></li>
           <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome ? pet.raca.nome : '' %></a></li>
           <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo ? pet.sexo : '' %></a></li>
           <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte ? pet.porte : '' %></a></li>
-
+  
         </ul>
         <div class="text-center">
           <a class="btn btn-primary btn-lg mb-3" href="/user/<%= pet.fk_usuario %>" role="button"
