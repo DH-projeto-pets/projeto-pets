@@ -7,8 +7,10 @@
             </div>
         </div>
 
-
-        <div class="card text-center  <%= pet.vacinado == '1' ? 'vacinado' : 'desativado' %>" id=" vacinado" data-toggle="tooltip" data-placement="bottom" title=" <%= pet.vacinado == '1' ? 'Vacinado' : 'Não vacinado' %> ">
+       
+            
+        <div class="card text-center <%= pet.vacinado == '1' && pet.status== 'ADOCAO' ? 'vacinado' : pet.status == 'ENCONTRADO' ? 'd-none' : pet.status =='PERDIDO' ? 'd-none' :'desativado' %>"
+                     id=" vacinado" data-toggle="tooltip" data-placement="bottom" title=" <%= pet.vacinado == '1' ? 'Vacinado' : 'Não vacinado ' %> ">
             <div class="card-body py-3">
                 <i class="fa fa-syringe" ></i>
                  <!--  if(pet.vacinado == false){ - adiciona classe desativado } -->
@@ -16,7 +18,7 @@
         </div>
 
 
-        <div class="card text-center <%= pet.vermifugado == '1' ? 'vermifugado' : 'desativado' %>" id="vermifugado"  data-toggle="tooltip" data-placement="bottom" title=" <%= pet.vacinado == '1' ? 'Vermifugado' : 'Não vermifugado' %>">
+        <div class="card text-center <%= pet.vermifugado == '1' && pet.status== 'ADOCAO' ? 'vermifugado' : pet.status == 'ENCONTRADO' ? 'd-none' : pet.status =='PERDIDO' ? 'd-none' :'desativado' %>" id="vermifugado"  data-toggle="tooltip" data-placement="bottom" title=" <%= pet.vacinado == '1' ? 'Vermifugado' : 'Não vermifugado' %>">
             <div class="card-body py-3">
                 <i class="fas fa-pills "></i>
              <!--  if(pet.vermifugado == false){ - adiciona classe desativado } -->
@@ -24,7 +26,7 @@
         </div>
 
 
-        <div class="card text-center <%= pet.castrado == '1' ? 'castrado' : 'desativado' %>" id="castrado"  data-toggle="tooltip" data-placement="bottom" title=" <%= pet.vacinado == '1' ? 'Castrado' : 'Não castrado' %>">
+        <div class="card text-center <%= pet.castrado == '1' && pet.status== 'ADOCAO' ? 'castrado' : pet.status == 'ENCONTRADO' ? 'd-none' : pet.status =='PERDIDO' ? 'd-none' :'desativado' %>" id="castrado"  data-toggle="tooltip" data-placement="bottom" title=" <%= pet.vacinado == '1' ? 'Castrado' : 'Não castrado' %>">
             <div class="card-body py-3">
                 <i class="fa fa-clipboard-list"></i>
                 <!--  if(pet.castrado == false){ - adiciona classe desativado } -->
