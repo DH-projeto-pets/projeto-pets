@@ -18,3 +18,6 @@ inputSenhaConfirmar.addEventListener("input", (e) => {
 if (url) {
   inputEmail.classList.add('is-invalid')
 }
+function voltar() {
+  window.history.back();
+}
