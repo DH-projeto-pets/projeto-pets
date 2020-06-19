@@ -23,4 +23,49 @@ display: inline-block;
 .link::first-line {
   text-transform: capitalize;
 }
-   
+   .thumbpet{
+    object-fit: cover;
+    height: 4.6vh;
+   }
+
+   #fotomaior{
+    object-fit: cover;
+   height: 15vh;
+   }
+
+   @media (min-width: 500px) {
+    #fotomaior {
+      height: 30vh;
+     }
+     .thumbpet{
+      height: 9.55vh;
+     }
+    }
+
+   @media (min-width: 768px) {
+    #fotomaior {
+      height: 40vh;
+     }
+     .thumbpet{
+      height: 12.9vh;
+     }
+    }
+
+  @media (min-width: 992px) {
+    #fotomaior {
+      height: 55vh;
+    }
+    .thumbpet{
+      height: 17.9vh;
+     }
+  }
+
+
+    @media (min-width: 1200px) {
+      #fotomaior {
+        height: 55vh;
+     }
+     .thumbpet{
+      height: 17.9vh;
+     }
+  }
