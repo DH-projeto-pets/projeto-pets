@@ -49,6 +49,26 @@
               placeholder="E-mail" name="email" value="<%=usuario.email%>" required />
             <%- include('../components/feedback-invalid', { msg: errors['email'] }) %>
           </section>
+          <section class="form-group col-md-12">
+            <section class="row">
+              <section class="col-md-12">
+                <label for="senha">Trocar a senha</label>
+              </section>
+            </section>
+            <section class="row">
+              <section class="col-md-6">
+                <label for="senha">Senha atual:</label>
+                <input type="password" class="form-control <% if (errors.senha) {
+                  'is-invalid' } %>" id="senha" placeholder="Digite a senha atual" name="senha"  /> 
+                <%- include('../components/feedback-invalid', { msg: errors['senha'] }) %>
+              </section>
+              <section class="col-md-6">
+                <label for="novaSenha">Nova senha:</label>
+                <input type="password" class="form-control" id="novaSenha"
+                placeholder="Digite a nova senha" name="novaSenha"  />
+              </section>
+            </section>
+          </section>
 
           <section class="form-group col-md-4">
             <label for="CEP">CEP</label>
@@ -162,3 +182,4 @@
   <div class="espaco-branco"></div>
 </section>
 <%- include('../partials/footer', { useSelect: false }) %>
+<script src="javascripts/checkSenha.js"></script>
