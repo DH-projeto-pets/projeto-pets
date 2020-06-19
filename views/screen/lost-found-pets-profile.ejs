@@ -40,7 +40,7 @@
             <% for(const foto of pet.fotos){%>
             <% if(foto.caminho !== pet.fotoPrincipal.caminho){ %>
             <img src="<%= foto.caminho? foto.caminho : '/images/404.png'%>" alt="thumbpet"
-              class="img-fluid mb-1 p-0 thumbpet col-12">
+            class="img-fluid mb-1 p-0 thumbpet col-12">
             <%} %>
             <%}%>
             <!-- <img src="<%= pet.fk_pet? pet.fk_pet.caminho : '/images/404.png'%>" alt="thumb pet"
