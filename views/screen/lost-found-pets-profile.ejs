@@ -33,13 +33,14 @@
       <div class="container col-12" id="containerimgs">
         <div class="row p-2 d-flex justify-content-center">
           <%console.log(JSON.stringify(pet.fotos.length))%>
-          <img src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-            class="img-fluid col-9 p-0 pr-1" alt="Foto do Pet" id="fotomaior">
+          <img src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>" class=" col-9 p-0 pr-1"
+            alt="Foto do Pet" id="fotomaior" >
           <!-- <% console.log(pet.fotos.length) %> -->
           <div class="col-3 p-0 float-right " id="thumbspets">
             <% for(const foto of pet.fotos){%>
             <% if(foto.caminho !== pet.fotoPrincipal.caminho){ %>
-            <img src="<%= foto.caminho? foto.caminho : '/images/404.png'%>" alt="thumbpet" class="img-fluid mb-1 p-0">
+            <img src="<%= foto.caminho? foto.caminho : '/images/404.png'%>" alt="thumbpet"
+              class="img-fluid mb-1 p-0 thumbpet col-12">
             <%} %>
             <%}%>
             <!-- <img src="<%= pet.fk_pet? pet.fk_pet.caminho : '/images/404.png'%>" alt="thumb pet"

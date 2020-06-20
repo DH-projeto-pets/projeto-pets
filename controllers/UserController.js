@@ -79,19 +79,48 @@ let UserController = {
         var image = `/images/${req.file.originalname}`;
       }
       console.log("imageee", image);
-      const usuario = await User.update(
-        {
-          ...req.body,
-          image,
-        },
-        { where: { id } }
-      );
 
-      const { nome } = await User.findOne({
-        where: {
-          id,
-        },
-      });
+        const { senha, novaSenha } = req.body
+        const usuario = await User.findOne({
+          where: {
+            id
+          },
+        }).then((u) => u);
+
+        console.log('senhaa', senha, novaSenha, usuario)
+        if (!bcrypt.compareSync(senha, usuario.senha)) {
+          return res.render("screen/edit-user", {
+            errors: {
+              senha: "Senha diferente da cadastrada",
+            },
+            usuario: {
+              ...req.body,
+              endereco:{...req.body}
+            },
+          });
+        }
+        else{
+
+        req.body.novaSenha =  bcrypt.hashSync(req.body.novaSenha, 10);
+
+          const usuario = await User.update(
+            {
+              ...req.body,
+              image,
+              senha: req.body.novaSenha
+            },
+            { where: { id } }
+          );
+
+        }
+        const { nome } = await User.findOne({
+          where: {
+            id,
+          },
+        });
+
+      // }
+
       // Adicionar endereço na tabela de endereços.
 
       let { cep, logradouro, numero, bairro, cidade, estado } = req.body;
