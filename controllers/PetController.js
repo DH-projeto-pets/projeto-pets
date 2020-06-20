@@ -282,9 +282,18 @@ module.exports = {
       where: {
         id,
       },
-      include: ["raca", "fotos", "fotoPrincipal"],
+      include: [
+        "raca",
+        "fotos",
+        "fotoPrincipal",
+        {
+          as: "usuario",
+          model: User,
+          include: "endereco",
+        },
+      ],
     });
-    console.log(pet);
+    // console.log(JSON.stringify(pet));
     if (pet) {
       return res.render("screen/lost-found-pets-profile", { pet });
     }

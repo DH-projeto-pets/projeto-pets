@@ -18,7 +18,8 @@
 <script>
   moment.locale('pt-br')
   let page = 1;
-  var coords = {};
+  let coords = {};
+  let hasMore = true;
   const body = document.querySelector('.cards-home-user');
   window.onload = function () {
     navigator.geolocation.getCurrentPosition(success, error, {
@@ -52,6 +53,9 @@
         "Content-type": "application/json; charset=UTF-8"
       }
     }).then(res => res.json()).then(res => res).catch(err => err);
+    if (pets.length < 10) {
+      hasMore = !hasMore;
+    }
     mountTimeline(pets)
 
   }
@@ -130,9 +134,10 @@
 
   document.addEventListener("scroll", function (event) {
     if (getDocHeight() - 20 <= getScrollXY()[1] + window.innerHeight) {
-      console.log('here')
-      ++page;
-      getPets(coords);
+      if (hasMore) {
+        ++page;
+        getPets(coords);
+      }
     }
   });
 
