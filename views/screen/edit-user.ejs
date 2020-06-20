@@ -21,7 +21,7 @@
               <label class="form-check-label" for="ong">ONG</label>
             </div>
           </section>
-
+          <% console.log(errors) %>
           <section class="form-group col-md-12">
             <label for="nome">Nome de exibição</label>
             <input type="text" class="form-control <%= errors.nome ? 'is-invalid' : '' %>" id="nome" name="nome"
@@ -58,8 +58,7 @@
             <section class="row">
               <section class="col-md-6">
                 <label for="senha">Senha atual:</label>
-                <input type="password" class="form-control <% if (errors.senha) {
-                  'is-invalid' } %>" id="senha" placeholder="Digite a senha atual" name="senha"  /> 
+                <input type="password" class="form-control <%= errors.senha ? 'is-invalid' : '' %>" id="senha" placeholder="Digite a senha atual" name="senha"  /> 
                 <%- include('../components/feedback-invalid', { msg: errors['senha'] }) %>
               </section>
               <section class="col-md-6">
