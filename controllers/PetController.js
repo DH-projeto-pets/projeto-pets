@@ -66,7 +66,7 @@ module.exports = {
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
         raca ? `AND pet.fk_raca = :raca` : ""
-      } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
+      } ORDER BY pet.createdAt DESC LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
           whereClause,
@@ -198,7 +198,7 @@ module.exports = {
           : ""
       } ${whereClause ? `WHERE ${whereClause}` : ""} ${
         raca ? `AND pet.fk_raca = :raca` : ""
-      } LIMIT ${6} OFFSET ${(page - 1) * 6}`,
+      } ORDER BY pet.createdAt DESC LIMIT ${6} OFFSET ${(page - 1) * 6}`,
       {
         replacements: {
           whereClause,
@@ -521,5 +521,41 @@ module.exports = {
     console.log(JSON.stringify(pets), queryBuilder(query));
     res.json(pets);
     // res.render("screen/lost-found-pets", { pets, totalPagina });
+  },
+  getPets: async (req, res) => {
+    const { latitude, longitude, page = 1 } = req.body;
+    const pets = await sequelize.query(
+      `SELECT pet.nome, pet.id, pet.status, foto.caminho, pet.createdAt, ende.latitude, ende.longitude FROM pets AS pet 
+    ${
+      latitude && longitude
+        ? `JOIN (
+      SELECT * FROM enderecos ende WHERE ACOS(
+        SIN(PI() * ende.latitude/180.0) * 
+            SIN(PI() * :latitude/180.0) + 
+            COS(PI() * ende.latitude/180.0) * 
+            COS(PI() * :latitude/180.0) *
+            COS(
+          PI() * :longitude/180.0 -
+                PI() * ende.longitude/180.0
+                )
+        )
+          * 6371 <= :distancia
+    ) ende ON ende.fk_usuario = pet.fk_usuario`
+        : ""
+    }
+    LEFT OUTER JOIN fotos AS foto ON pet.fk_foto_principal = foto.id 
+    ORDER BY pet.createdAt DESC LIMIT 10 OFFSET ${(page - 1) * 10}
+    `,
+      {
+        replacements: {
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          distancia: 60,
+        },
+        type: QueryTypes.SELECT,
+      }
+    );
+    console.log(pets);
+    res.json(pets);
   },
 };

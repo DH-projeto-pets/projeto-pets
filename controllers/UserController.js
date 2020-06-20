@@ -80,44 +80,59 @@ let UserController = {
       }
       console.log("imageee", image);
 
-        const { senha, novaSenha } = req.body
+      const { senha, novaSenha } = req.body;
+
+      if (senha && novaSenha) {
         const usuario = await User.findOne({
           where: {
-            id
+            id,
           },
         }).then((u) => u);
 
-        console.log('senhaa', senha, novaSenha, usuario)
         if (!bcrypt.compareSync(senha, usuario.senha)) {
+          delete req.body.senha;
           return res.render("screen/edit-user", {
             errors: {
               senha: "Senha diferente da cadastrada",
             },
             usuario: {
               ...req.body,
-              endereco:{...req.body}
+              endereco: { ...req.body },
             },
           });
-        }
-        else{
+        } 
+        else {
+          console.log('erroSenha', req.body.novaSenha)
 
-        req.body.novaSenha =  bcrypt.hashSync(req.body.novaSenha, 10);
+          const newPassword  = bcrypt.hashSync(req.body.novaSenha, 10);
+          console.log(newPassword)
 
           const usuario = await User.update(
             {
-              ...req.body,
-              image,
-              senha: req.body.novaSenha
+              senha: newPassword,
             },
             { where: { id } }
           );
-
         }
-        const { nome } = await User.findOne({
-          where: {
-            id,
-          },
-        });
+      }
+
+      delete req.body.senha;
+
+      const usuario = await User.update(
+        {
+          ...req.body,
+          image,
+        },
+        { where: { id } }
+      );
+
+      // console.log('senhaa', senha, novaSenha, usuario)
+
+      const { nome } = await User.findOne({
+        where: {
+          id,
+        },
+      });
 
       // }
 
@@ -176,7 +191,7 @@ let UserController = {
         errors: e,
         usuario: {
           ...req.body,
-          endereco:{...req.body}
+          endereco: { ...req.body },
         },
       });
     }
@@ -193,6 +208,7 @@ let UserController = {
         where: {
           email,
         },
+        include: ["endereco"],
       }).then((u) => u);
 
       // falta validar se o usuario existe ou n
