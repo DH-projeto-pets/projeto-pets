@@ -7,18 +7,20 @@ module.exports = {
       where: {
         [Op.or]: [{ status: "PERDIDO" }, { status: "ENCONTRADO" }],
       },
+      include: "fotoPrincipal",
       order: [["id", "DESC"]],
     });
     let petsAdocao = await Pet.findAll({
       where: {
         [Op.and]: [{ status: "ADOCAO" }],
       },
+      include: "fotoPrincipal",
       order: [["id", "DESC"]],
     });
     pets = pets.slice(0, 4);
     petsAdocao = petsAdocao.slice(0, 4);
     if (!req.session.user) return res.render("index", { pets, petsAdocao });
-    return next()
+    return next();
   },
 
   checkUserLogado: (req, res, next) => {

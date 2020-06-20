@@ -49,5 +49,6 @@ router.put(
 );
 router.get("/:id", PetController.showPetPerfil);
 router.delete("/delete", PetController.delete);
+router.post("/list", PetController.getPets);
 
 module.exports = router;
