@@ -17,12 +17,6 @@ var options = {
 
 async function success(pos) {
   var { latitude, longitude, accuracy, altitudeAccuracy } = pos.coords;
-  console.log(accuracy);
-  const address = await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDiPqRxxOBUUX9-H8OUnjgZQZukxX98TjE`
-  ).then((res) => res.json());
-  console.log(address);
-  // console.log('Longitude: ' + crd.longitude);
   let latCampo = document.querySelector('[name="latitude"]');
   let lonCampo = document.querySelector('[name="longitude"]');
   latCampo.value = latitude;

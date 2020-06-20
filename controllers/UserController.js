@@ -147,7 +147,7 @@ let UserController = {
         errors: e,
         usuario: {
           ...req.body,
-          endereco:{...req.body}
+          endereco: { ...req.body },
         },
       });
     }
@@ -164,6 +164,7 @@ let UserController = {
         where: {
           email,
         },
+        include: ["endereco"],
       }).then((u) => u);
 
       // falta validar se o usuario existe ou n

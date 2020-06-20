@@ -1,19 +1,137 @@
 <%- include('../partials/head', { title: 'Tela inicial'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-
+  <% console.log(user) %>
   <section class="container mt-5">
     <section class="row justify-content-center">
       <section class="col-12 col-sm-10 col-md-9 ">
         <section class="div-cardContainer main-container mb-5 justify-content-center">
           <section class="cards-home-user">
-            <% for(pet of pets) { %>
-            <%- include('../components/card-feed', { pet }) %>
-            <%  } %>
           </section>
+          <!-- <button type="button" class="btn btn-warning" data-button="loadMore">Ver mais</button> -->
         </section>
       </section>
     </section>
   </section>
 </section>
 <%- include('../partials/footer', { useSelect: false }) %>
+<script>
+  moment.locale('pt-br')
+  let page = 1;
+  var coords = {};
+  const body = document.querySelector('.cards-home-user');
+  window.onload = function () {
+    navigator.geolocation.getCurrentPosition(success, error, {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    });
+  };
+
+  async function success(pos) {
+    var { latitude, longitude, accuracy, altitudeAccuracy } = pos.coords;
+    coords = { latitude, longitude }
+    getPets(coords)
+  }
+
+  function error(err) {
+    coords = {
+      latitude: Number('<%=  user.endereco.latitude %>'),
+      longitude: Number('<%=  user.endereco.longitude %>'),
+    }
+    getPets(coords)
+  }
+
+  async function getPets(coords) {
+    const pets = await fetch(`http://localhost:3000/pet/list`, {
+      method: "POST",
+      body: JSON.stringify({ ...coords, page: page }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(res => res.json()).then(res => res).catch(err => err);
+    mountTimeline(pets)
+
+  }
+
+  function mountTimeline(pets) {
+    let cards = '';
+    for (pet of pets) {
+      cards += createCard(pet);
+    }
+    body.innerHTML += cards;
+  }
+
+  const createCard = (pet) => {
+    return (
+      `<section class="card container border mb-1">
+        <section class="row justify-content-end mt-3">
+    <div class="col-md-12 pl-4 pr-4 d-flex justify-content-between">
+      <a class="link-card-feed" href=/pet/${pet.id}><span class="bg-transparent">${pet.nome ? pet.nome : "Sem nome"}</span></a>
+    </div>
+  </section>
+  <section class="row">
+    <div class="card-body col-md-12 pt-2 pb-2">
+      <a href="/pet/${pet.id}">
+        <img class="card-img-top" src="${pet.caminho ? pet.caminho : '/images/404.png'}"
+          alt="Pet perdido/encontrado">
+      </a>
+    </div>
+  </section>
+  <section class="row">
+    <div class="col-md-12 pl-4 pr-4 mb-3 d-flex justify-content-between">
+     <span class="bg-transparent">${distance(pet.latitude, pet.longitude, coords.latitude, coords.longitude, 'K').toFixed(2)} Kms</span>
+      <span class="bg-transparent">        
+       
+      ${`Cadastrado ${moment(pet.createdAt).fromNow()} `}
+      </span>
+    </div>
+  </section>
+</section>
+`
+    )
+  }
+
+  // const btn = document.querySelector('[data-button]');
+  // btn.addEventListener('click',
+  //   () => {
+  //     ++page;
+  //     getPets(coords);
+  //   })
+
+  function getScrollXY() {
+    var scrOfX = 0, scrOfY = 0;
+    if (typeof (window.pageYOffset) == 'number') {
+      //Netscape compliant
+      scrOfY = window.pageYOffset;
+      scrOfX = window.pageXOffset;
+    } else if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+      //DOM compliant
+      scrOfY = document.body.scrollTop;
+      scrOfX = document.body.scrollLeft;
+    } else if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+      //IE6 standards compliant mode
+      scrOfY = document.documentElement.scrollTop;
+      scrOfX = document.documentElement.scrollLeft;
+    }
+    return [scrOfX, scrOfY];
+  }
+
+  function getDocHeight() {
+    var D = document;
+    return Math.max(
+      D.body.scrollHeight, D.documentElement.scrollHeight,
+      D.body.offsetHeight, D.documentElement.offsetHeight,
+      D.body.clientHeight, D.documentElement.clientHeight
+    );
+  }
+
+  document.addEventListener("scroll", function (event) {
+    if (getDocHeight() - 20 <= getScrollXY()[1] + window.innerHeight) {
+      console.log('here')
+      ++page;
+      getPets(coords);
+    }
+  });
+
+</script>
