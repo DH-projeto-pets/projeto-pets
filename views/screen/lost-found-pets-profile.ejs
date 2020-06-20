@@ -24,57 +24,70 @@
           </div>
 
           <div class="col pt-2 pl-3 text-nowrap" style="text-align: right;">
-            <a class="pr-1 pl-1"> <i style="font-size: 13px" class="mt-1 fas fa-map-marker-alt"></i> 13km de
-              você</a>
+            <a class="pr-1 pl-1">
+              <i style="font-size: 13px" class="mt-1 fas fa-map-marker-alt"></i>
+              <span data-span="info-km"></span>
+            </a>
           </div>
         </div>
       </div>
 
       <div class="container col-12" id="containerimgs">
         <div class="row p-2 d-flex justify-content-center">
-          <% console.log(JSON.stringify(pet.fotos)) %>
           <img src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>" class=" col-9 p-0 pr-1"
             alt="Foto do Pet" id="fotomaior">
 
           <div class="col-3 p-0 float-right " id="thumbspets">
             <% for(var i=0;i<4;i++){%>
-              
+
             <% if(pet.fotos[i]) { %>
             <% if(pet.fotos[i].caminho !== pet.fotoPrincipal.caminho){ %>
-              
+
             <img src="<%= pet.fotos[i].caminho? pet.fotos[i].caminho : '/images/404.png'%>" alt="thumbpet"
               class="img-fluid mb-1 p-0 thumbpet col-12">
-              <%}%>
+            <%}%>
             <%} else {%>
-              <img src='/images/404.png' alt="thumbpet"
-              class="img-fluid mb-1 p-0 thumbpet col-12">
-              <% } %>
+            <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
+            <% } %>
             <%}%>
        
           </div>
         </div>
         <%- include('../components/pet-status-line') %>
-      </div>
-      <div class="texto  pt-1 pb-3 ml-2">
+          </div>
+          <div class="texto  pt-1 pb-3 ml-2">
 
-        <br>
-        <a class="font-weight-bold ml-2">Descrição:</a> <a class=""><%= pet.descricao ? pet.descricao : '' %></a>
-        <br>
-        <ul class="list-unstyled ml-2">
+            <br>
+            <a class="font-weight-bold ml-2">Descrição:</a> <a class=""><%= pet.descricao ? pet.descricao : '' %></a>
+            <br>
+            <ul class="list-unstyled ml-2">
 
-          <li><a class="font-weight-bold">Espécie:</a> <a class="link">
-              <%= pet.raca.fk_especie =='1' ? 'Gato' : pet.raca.fk_especie =='2' ? 'Cachorro' : '' %></a></li>
-          <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome ? pet.raca.nome : '' %></a></li>
-          <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo ? pet.sexo : '' %></a></li>
-          <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte ? pet.porte : '' %></a></li>
+              <li><a class="font-weight-bold">Espécie:</a> <a class="link">
+                  <%= pet.raca.fk_especie =='1' ? 'Gato' : pet.raca.fk_especie =='2' ? 'Cachorro' : '' %></a></li>
+              <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome ? pet.raca.nome : '' %></a>
+              </li>
+              <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo ? pet.sexo : '' %></a></li>
+              <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte ? pet.porte : '' %></a></li>
 
-        </ul>
-        <div class="text-center">
-          <a class="btn btn-primary btn-lg mb-3" href="/user/<%= pet.fk_usuario %>" role="button"
-            id="botaocontato">Entrar
-            em contato</a>
+            </ul>
+            <div class="text-center">
+              <a class="btn btn-primary btn-lg mb-3" href="/user/<%= pet.fk_usuario %>" role="button"
+                id="botaocontato">Entrar
+                em contato</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <%- include('../partials/footer', { useSelect: false }) %>
+
+      <%- include('../partials/footer', { useSelect: false }) %>
+      <script>
+        const span = document.querySelector('[data-span="info-km"]');
+        const petLatitude = Number(
+          "<%= pet.usuario.endereco?  pet.usuario.endereco.latitude : '' %>"
+        );
+        const petLongitude = Number(
+          "<%= pet.usuario.endereco?  pet.usuario.endereco.longitude : '' %>"
+        );
+
+      </script>
+      <script src="/javascripts/setLocation.js"></script>
