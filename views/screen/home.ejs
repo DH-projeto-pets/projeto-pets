@@ -69,12 +69,19 @@
   }
 
   const createCard = (pet) => {
+    let badge = {
+      ADOCAO: `<div class="badge badge-adoption" data-toggle="tooltip" data-placement="bottom" title="Pet para Adoção">A</div>`,
+      PERDIDO: `<div class="badge badge-lost" data-toggle="tooltip" data-placement="bottom" title="Pet Perdido">P</div>`,
+      ENCONTRADO: `<div class="badge badge-found" data-toggle="tooltip" data-placement="bottom" title="Pet Encontrado">E</div>`
+    };
+
     return (
       `<section class="card container border mb-1">
         <section class="row justify-content-end mt-3">
     <div class="col-md-12 pl-4 pr-4 d-flex justify-content-between">
       <a class="link-card-feed" href=/pet/${pet.id}><span class="bg-transparent">${pet.nome ? pet.nome : "Sem nome"}</span></a>
-    </div>
+      ${badge[pet.status]}
+      </div>
   </section>
   <section class="row">
     <div class="card-body col-md-12 pt-2 pb-2">
@@ -86,7 +93,7 @@
   </section>
   <section class="row">
     <div class="col-md-12 pl-4 pr-4 mb-3 d-flex justify-content-between">
-     <span class="bg-transparent">${distance(pet.latitude, pet.longitude, coords.latitude, coords.longitude, 'K').toFixed(2)} Kms</span>
+     <span class="bg-transparent">${distance(pet.latitude, pet.longitude, coords.latitude, coords.longitude, 'K').toFixed(2)} km</span>
       <span class="bg-transparent">        
        
       ${`Cadastrado ${moment(pet.createdAt).fromNow()} `}
