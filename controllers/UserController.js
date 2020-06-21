@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 const bcrypt = require("bcrypt");
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const { check, validationResult, body } = require("express-validator");
 const { sequelize, User, Pet, Endereco } = require("../models");
 
@@ -100,12 +100,11 @@ let UserController = {
               endereco: { ...req.body },
             },
           });
-        } 
-        else {
-          console.log('erroSenha', req.body.novaSenha)
+        } else {
+          console.log("erroSenha", req.body.novaSenha);
 
-          const newPassword  = bcrypt.hashSync(req.body.novaSenha, 10);
-          console.log(newPassword)
+          const newPassword = bcrypt.hashSync(req.body.novaSenha, 10);
+          console.log(newPassword);
 
           const usuario = await User.update(
             {
@@ -251,21 +250,31 @@ let UserController = {
   },
   show: async (req, res) => {
     const { id } = req.params;
+    console.log(id);
+    const { page = 1 } = req.query;
+    console.log("PAGE", page);
 
-    const usuario = await User.findOne({
-      where: { id },
-      include: [
-        //"pets",
-        {
-          model: Pet,
-          as: "pets",
-          include: ["fotoPrincipal", "raca"],
+    const usuario = await sequelize.query(
+      "SELECT `User`.`id`, `User`.`nome`, `User`.`email`, `User`.`senha`, `User`.`image`, `User`.`tipo`, `User`.`descricao`, `User`.`telefone`, `User`.`facebook`, `User`.`instagram`, `User`.`twitter`, `pets`.`id` AS `pets.id`, `pets`.`nome` AS `pets.nome`, `pets`.`porte` AS `pets.porte`, `pets`.`sexo` AS `pets.sexo`, `pets`.`status` AS `pets.status`, `pets`.`descricao` AS `pets.descricao`, `pets`.`vacinado` AS `pets.vacinado`, `pets`.`castrado` AS `pets.castrado`, `pets`.`vermifugado` AS `pets.vermifugado`, `pets`.`cuidados_extras` AS `pets.cuidados_extras`, `pets`.`fk_raca` AS `pets.fk_raca`, `pets`.`fk_usuario` AS `pets.fk_usuario`, `pets`.`fk_foto_principal` AS `pets.fk_foto_principal`, `pets`.`createdAt` AS `pets.createdAt`, `pets`.`updatedAt` AS `pets.updatedAt`, `pets->fotoPrincipal`.`id` AS `pets.fotoPrincipal.id`, `pets->fotoPrincipal`.`caminho` AS `pets.fotoPrincipal.caminho`, `pets->fotoPrincipal`.`fk_pet` AS `pets.fotoPrincipal.fk_pet`, `pets->raca`.`id` AS `pets.raca.id`, `pets->raca`.`nome` AS `pets.raca.nome`, `pets->raca`.`fk_especie` AS `pets.raca.fk_especie` FROM `usuarios` AS `User` LEFT OUTER JOIN `pets` AS `pets` ON `User`.`id` = `pets`.`fk_usuario` LEFT OUTER JOIN `fotos` AS `pets->fotoPrincipal` ON `pets`.`fk_foto_principal` = `pets->fotoPrincipal`.`id` LEFT OUTER JOIN `racas` AS `pets->raca` ON `pets`.`fk_raca` = `pets->raca`.`id` WHERE `User`.`id` = :id ORDER BY pets.createdAt DESC LIMIT :limit;",
+      {
+        type: Sequelize.QueryTypes.SELECT,
+        nest: true,
+        replacements: {
+          id,
+          limit: page * 6,
         },
-      ],
-    });
-    console.log(usuario);
+      }
+    );
+    // console.log(JSON.stringify(usuario));
+    const pets = usuario.map((usuario) => usuario.pets);
+    const [user] = usuario;
+    delete user.pets;
+    user.pets = pets;
     if (!usuario) return res.render("404-not-found");
-    res.render("screen/owner-profile", { usuario });
+    res.render("screen/owner-profile", {
+      usuario: user,
+      page: Number(page) + 1,
+    });
   },
   showGerenciamento: async (req, res) => {
     const { id } = req.session.user;
