@@ -10,7 +10,7 @@
           <div class="carousel-caption d-none d-md-block">
             <h3>Adote um pet</h5>
               <p>Seu amiguinho espera por você!</p>
-              <%- include('components/banner-content.ejs') %>
+              <%- include('components/banner-content-adoption.ejs') %>
           </div>
         </div>
         <div class="carousel-item">
@@ -52,7 +52,7 @@
         <div class="col-md-12 grid-home__container">
           <% if (pets.length > 0) { %>
           <% for (pet of pets) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
+          <div class="card grid-pets-item" style="width: 16rem;">
             <a href="/pet/<%= pet.id %>">
               <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
                 alt="Pet perdido/encontrado">
@@ -100,7 +100,7 @@
         <div class="col-md-12 grid-home__container">
           <% if (pets.length > 0) { %>
           <% for (pet of petsAdocao) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
+          <div class="card grid-pets-item" style="width: 16rem;">
             <a href="/pet/<%= pet.id %>">
               <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
                 alt="Pet perdido/encontrado">
