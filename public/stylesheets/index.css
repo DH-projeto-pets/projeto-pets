@@ -116,7 +116,7 @@ Usado no call to action e no grid*/
 
 /* Adiciona altura fixa para as imagens de pets da home */
 .grid-pets-item img {
-  /* height: 280px; */
+  height: 220px;
 }
 
 /* Altera a aparência do "link" dos cards */
