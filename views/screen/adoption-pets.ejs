@@ -153,3 +153,12 @@
 
 
 <%- include('../partials/footer', { useSelect: false }) %>
+<script>
+  $('[name="especie"]').selectpicker("val", `<%= parsedQuery.especie ? parsedQuery.especie: '' %>`);
+  if (especieSelect) {
+    mountSelect(especieSelect.value)
+    setTimeout(() => {
+      $('[name="raca"]').selectpicker("val", `<%= parsedQuery.raca ? parsedQuery.raca : '' %>`);
+    }, 1000)
+  }
+</script>

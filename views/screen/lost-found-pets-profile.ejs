@@ -38,14 +38,16 @@
             alt="Foto do Pet" id="fotomaior">
 
           <div class="col-3 p-0 float-right " id="thumbspets">
-            <% for(var i=0;i<4;i++){%>
+            <% for(var i=0;i<3;i++){%>
 
             <% if(pet.fotos[i]) { %>
             <% if(pet.fotos[i].caminho !== pet.fotoPrincipal.caminho){ %>
 
             <img src="<%= pet.fotos[i].caminho? pet.fotos[i].caminho : '/images/404.png'%>" alt="thumbpet"
               class="img-fluid mb-1 p-0 thumbpet col-12">
-            <%}%>
+            <%} else {%>
+            <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
+            <% } %>
             <%} else {%>
             <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
             <% } %>
@@ -116,10 +118,10 @@
           console.log("<%=  user %>");
           coords = {
             latitude: Number(
-              '<%=  locals.user.endereco ?  locals.user.endereco.latitude : "" %>'
+              '<%=  locals.user ?  locals.user.endereco.latitude : "" %>'
             ),
             longitude: Number(
-              '<%= locals.user.endereco ? locals.user.endereco.longitude : "" %>'
+              '<%= locals.user ? locals.user.endereco.longitude : "" %>'
             ),
           };
           distancia = distance(

@@ -173,7 +173,7 @@
             </section> -->
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
-                <button onclick="voltar()"type="button"  class="btn orange--offset mr-2">
+                <button onclick="voltar()" type="button" class="btn orange--offset mr-2">
                   Cancelar
                 </button>
                 <button type="submit" class="btn orange">
@@ -185,5 +185,17 @@
   </section>
 </section>
 </section>
+<%console.log("ESPECE", pet.especie) %>
 </section>
+
+
 <%- include('../partials/footer', { useSelect: true }) %>
+<script>
+  $('[name="especie"]').selectpicker("val", `<%= pet.especie ? pet.especie: '' %>`);
+  if (especieSelect) {
+    mountSelect(especieSelect.value)
+    setTimeout(() => {
+      $('[name="raca"]').selectpicker("val", `<%= pet.raca ? pet.raca : '' %>`);
+    }, 1000)
+  }
+</script>
