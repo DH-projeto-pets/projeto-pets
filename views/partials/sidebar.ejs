@@ -86,11 +86,11 @@
     <%= !locals.user ? 'd-none' : '' %>" id="menu-toggle">
       <i class="fas fa-bars"></i>
     </button>
-    <button class="navbar-toggler
+    <!-- <button class="navbar-toggler
     <%= !locals.user ? '' : '' %>" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="#sidebarCollapse">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
     <% if(!locals.user) { %>
     <a href="/" class="navbar-brand
       sup-menu__logo">
@@ -111,7 +111,9 @@
 
         <% if(locals.user) { %>
         <li class="nav-item dropdown">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          <a class="nav-link" href="#"
+           id="navbarDropdown" role="button" data-toggle="dropdown" 
+           aria-haspopup="true"
             aria-expanded="false">
             Olá, <%= locals.user.nome %>
             <i class="fas fa-caret-down"></i>
