@@ -275,3 +275,12 @@
   </section>
 </section>
 <%- include('../partials/footer', { useSelect: true }) %>
+<script>
+  $('[name="especie"]').selectpicker("val", `<%= pet.especie ? pet.especie: '' %>`);
+  if (especieSelect) {
+    mountSelect(especieSelect.value)
+    setTimeout(() => {
+      $('[name="raca"]').selectpicker("val", `<%= pet.raca ? pet.raca : '' %>`);
+    }, 1000)
+  }
+</script>
