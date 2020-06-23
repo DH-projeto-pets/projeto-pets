@@ -38,14 +38,16 @@
             alt="Foto do Pet" id="fotomaior">
 
           <div class="col-3 p-0 float-right " id="thumbspets">
-            <% for(var i=0;i<4;i++){%>
+            <% for(var i=0;i<3;i++){%>
 
             <% if(pet.fotos[i]) { %>
             <% if(pet.fotos[i].caminho !== pet.fotoPrincipal.caminho){ %>
 
             <img src="<%= pet.fotos[i].caminho? pet.fotos[i].caminho : '/images/404.png'%>" alt="thumbpet"
               class="img-fluid mb-1 p-0 thumbpet col-12">
-            <%}%>
+            <%} else {%>
+            <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
+            <% } %>
             <%} else {%>
             <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
             <% } %>
@@ -78,7 +80,6 @@
           </div>
         </div>
       </div>
-
       <%- include('../partials/footer', { useSelect: false }) %>
       <script>
         const span = document.querySelector('[data-span="info-km"]');
@@ -88,6 +89,48 @@
         const petLongitude = Number(
           "<%= pet.usuario.endereco?  pet.usuario.endereco.longitude : '' %>"
         );
+        let distancia = "";
+        window.onload = function () {
+          navigator.geolocation.getCurrentPosition(success, error, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+          });
+        };
 
+        async function success(pos) {
+          console.log("pegou");
+          var { latitude, longitude, accuracy, altitudeAccuracy } = pos.coords;
+          coords = { latitude, longitude };
+          distancia = distance(
+            petLatitude,
+            petLongitude,
+            coords.latitude,
+            coords.longitude
+          );
+
+          span.innerText = `${Math.round(distancia) ? Math.round(distancia) + ' km de você' : ''}`;
+        }
+
+        function error(err) {
+          console.log("error");
+          coords = {
+            latitude: Number(
+              '<%=  !locals.user ? "" : locals.user.endereco ? locals.user.endereco.latitude : "" %>'
+
+            ),
+            longitude: Number(
+              '<%=  !locals.user ? "" : locals.user.endereco ? locals.user.endereco.longitude : "" %>'
+
+            ),
+          };
+          distancia = distance(
+            petLatitude,
+            petLongitude,
+            coords.latitude,
+            coords.longitude
+          );
+          span.innerText = `${Math.round(distancia) ? Math.round(distancia) + 'km de você' : ''}`;
+        }
       </script>
       <script src="/javascripts/setLocation.js"></script>
