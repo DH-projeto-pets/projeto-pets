@@ -53,3 +53,20 @@ footer {
 .item-footer:hover {
   color: unset;
 }
+
+
+@media (max-width: 336px) {
+  .item-footer {
+    font-size: 7px;
+  }
+  .img-responsive {
+    height: 25px;
+    width: 100px;
+  }
+  .text-copy{
+    font-size: 8px;
+  }
+  .foot-top{
+    padding-top: 20px;
+  }
+}

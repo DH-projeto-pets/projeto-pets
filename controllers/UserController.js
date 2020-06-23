@@ -127,12 +127,6 @@ let UserController = {
 
       // console.log('senhaa', senha, novaSenha, usuario)
 
-      const { nome } = await User.findOne({
-        where: {
-          id,
-        },
-      });
-
       // }
 
       // Adicionar endereço na tabela de endereços.
@@ -180,8 +174,15 @@ let UserController = {
         });
       }
 
+      const u = await User.findOne({
+        where: {
+          id,
+        },
+        include: ["endereco"],
+      });
+
       req.session.save(() => {
-        req.session.user.nome = nome;
+        req.session.user = u;
         return res.redirect("editar");
       });
     } else {

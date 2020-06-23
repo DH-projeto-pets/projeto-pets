@@ -16,7 +16,7 @@
               </span>
             </div>
           </div>
-          <div class="container collapse show" id="collapse-filtro">
+          <div class="container collapse" id="collapse-filtro">
             <div class="row">
               <form method="GET" action="" class="col-md-12 d-flex flex-wrap">
                 <div class="col-md-3 col-12 filter-column">
@@ -141,3 +141,12 @@
 
 
 <%- include('../partials/footer', { useSelect: false }) %>
+<script>
+  $('[name="especie"]').selectpicker("val", `<%= query.especie ? query.especie: '' %>`);
+  if (especieSelect) {
+    mountSelect(especieSelect.value)
+    setTimeout(() => {
+      $('[name="raca"]').selectpicker("val", `<%= query.raca ? query.raca : '' %>`);
+    }, 1000)
+  }
+</script>

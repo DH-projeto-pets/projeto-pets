@@ -93,6 +93,7 @@ Usado no call to action e no grid*/
   display: flex;
   align-items: center;
 }
+
 .area-texto-cta {
   background-color: rgba(242, 242, 242, 0.9);
   padding: 20px;
@@ -116,7 +117,7 @@ Usado no call to action e no grid*/
 
 /* Adiciona altura fixa para as imagens de pets da home */
 .grid-pets-item img {
-  /* height: 280px; */
+  height: 220px;
 }
 
 /* Altera a aparência do "link" dos cards */
@@ -156,6 +157,12 @@ Usado no call to action e no grid*/
 @media (max-width: 768px) {
   .lateral-cta {
     background: none;
+  }
+  .texto-ajudar{
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.2;
+  
   }
   .fundo-pegadas-h370 {
     max-height: fit-content;

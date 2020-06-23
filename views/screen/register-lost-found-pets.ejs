@@ -129,8 +129,9 @@
 
             <section class="form-row">
               <section class="form-group col-sm-12 col-md-12">
-                <label for="descricao">Descrição:</label>
-                <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"><%= pet.descricao ? pet.descricao : null%></textarea>
+                <label for="descricao">Descrição</label>
+                <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"
+                  ><%= pet.descricao ? pet.descricao : null%></textarea>
               </section>
             </section>
 
@@ -181,5 +182,16 @@
   </section>
 </section>
 </section>
+<%console.log("ESPECE", pet.especie) %>
 </section>
+
 <%- include('../partials/footer', { useSelect: true }) %>
+<script>
+  $('[name="especie"]').selectpicker("val", `<%= pet.especie ? pet.especie: '' %>`);
+  if (especieSelect) {
+    mountSelect(especieSelect.value)
+    setTimeout(() => {
+      $('[name="raca"]').selectpicker("val", `<%= pet.raca ? pet.raca : '' %>`);
+    }, 1000)
+  }
+</script>

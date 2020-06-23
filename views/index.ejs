@@ -10,7 +10,7 @@
           <div class="carousel-caption d-none d-md-block">
             <h3>Adote um pet</h5>
               <p>Seu amiguinho espera por você!</p>
-              <%- include('components/banner-content.ejs') %>
+              <%- include('components/banner-content-adoption.ejs') %>
           </div>
         </div>
         <div class="carousel-item">
@@ -42,17 +42,17 @@
     </div>
 
     <!-- Espaçamento em branco -->
-    <div class="espaco-branco"></div>
+    <!-- <div class="espaco-branco"></div> -->
 
     <!-- Grid Dinâmico -->
     <!-- Pets Perdidos e Encontrados -->
-    <h2 class="display-4 text-center my-4">Últimos Pets Perdidos e Encontrados</h2>
+    <h2 class="display-4 text-center mt-5 my-4">Últimos Pets Perdidos e Encontrados</h2>
     <section class="container-fluid fundo-pegadas-h370">
       <div class="row">
         <div class="col-md-12 grid-home__container">
           <% if (pets.length > 0) { %>
           <% for (pet of pets) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
+          <div class="card grid-pets-item" style="width: 16rem;">
             <a href="/pet/<%= pet.id %>">
               <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
                 alt="Pet perdido/encontrado">
@@ -79,19 +79,19 @@
           <% } %>
           <% } else { %>
 
-            <img src="/images/404pet.png" class="not-found-pet-manager" alt="Nenhum pet foi encontrado" />
-            <% } %>
+          <img src="/images/404pet.png" class="not-found-pet-manager" alt="Nenhum pet foi encontrado" />
+          <% } %>
         </div>
       </div>
     </section>
 
     <!-- Botao Ver todos -->
-    <div class="container-botao">
+    <div class="container-botao mb-5">
       <a class="btn btn-primary botao-medio-amarelo" href="/pet/">VER TODOS</a>
     </div>
 
     <!-- Espaçamento em branco -->
-    <div class="espaco-branco"></div>
+    <!-- <div class="espaco-branco"></div> -->
 
     <!-- Grid Pets para Adoção -->
     <h2 class="display-4 text-center my-4">Últimos Pets para Adoção</h2>
@@ -100,7 +100,7 @@
         <div class="col-md-12 grid-home__container">
           <% if (pets.length > 0) { %>
           <% for (pet of petsAdocao) {%>
-          <div class="card grid-pets-item" style="width: 18rem;">
+          <div class="card grid-pets-item" style="width: 16rem;">
             <a href="/pet/<%= pet.id %>">
               <img class="card-img-top" src="<%= pet.fotoPrincipal? pet.fotoPrincipal.caminho : '/images/404.png'%>"
                 alt="Pet perdido/encontrado">
@@ -129,26 +129,25 @@
     </section>
 
     <!-- Botao Ver todos -->
-    <div class="container-botao">
+    <div class="container-botao mb-5">
       <a class="btn btn-primary botao-medio-amarelo" href="/pet/adocao">VER TODOS</a>
     </div>
 
     <!-- Espaçamento em branco -->
-    <div class="espaco-branco"></div>
+    <!-- <div class="espaco-branco"></div> -->
     <!-- Espaçamento em branco -->
-    <div class="espaco-branco"></div>
+    <!-- <div class="espaco-branco"></div> -->
 
     <div class="jumbotron jumbotron-fluid fundo-pegadas-h370">
       <div class="lateral-cta">
         <div class="container">
           <div class="row">
-            <div class="col-lg-9 col-sm-12 col-12 area-texto-cta">
-              <h1 class="display-4">Como posso ajudar?</h1>
+            <div class="col-lg-8 col-md-10 col-sm-12 col-12 area-texto-cta pl-5">
+              <h1 class="display-4 mb-3 texto-ajudar">Como posso ajudar?</h1>
               <p class="">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Ex et id incidunt voluptatum earum. Accusantium praesentium,
-                voluptatem commodi consectetur minus adipisci porro eos placeat
-                est ullam dolorum accusamus corporis iste. </p>
+              Divulgue nosso site para alguém que perdeu seu amiguinho. </p>
+             <p>Cadastre um bichinho que encontrou na rua e ajude-o a encontrar o seu tutor </p>
+              <p>Veja os pets disponíveis para adoção ou divulgue para quem queira adotar!</p>
               <a class="btn btn-primary botao-medio-verde" href="/sobre">CONHECER MAIS</a>
             </div>
           </div>
@@ -156,7 +155,7 @@
       </div>
     </div>
     <!-- Espaço em branco -->
-    <div class="espaco-branco"></div>
+    <!-- <div class="espaco-branco"></div> -->
     <%- include('partials/footer', { useSelect: false }) %>
   </section>
 </section>
