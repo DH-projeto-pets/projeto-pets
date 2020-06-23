@@ -64,6 +64,12 @@
       list-group-item-action">
       <i class="fas fa-user-edit"></i> Editar perfil
     </a>
+    <% if(locals.user) { %>
+      <a href="/user/<%=locals.user.id%>" class="list-group-item
+    list-group-item-action">
+    <i class="fas fa-user"></i> Ver perfil
+  </a>
+  <% } %>
     <!-- Link para página de termos de uso -->
     <!-- <a href="/termos-de-uso" class="list-group-item
       list-group-item-action">
@@ -93,7 +99,7 @@
     </button>
     <% if(!locals.user) { %>
     <a href="/" class="navbar-brand
-      sup-menu__logo">
+      sup-menu__logo mx-auto" >
       <img src="/images/logo-pet-aqui.png">
     </a>
     <% } %>
