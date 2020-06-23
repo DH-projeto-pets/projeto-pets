@@ -56,6 +56,14 @@
                 </div>
               </div>
             </div>
+            <% if(!locals.user) {%>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <a href="/cadastrar">Crie uma conta pra visualizar as informações do usuário</a>
+              </div>
+            </div>
+          </div>
+          <%}%>
           </div>
 
         </section>
@@ -63,66 +71,66 @@
           <div class="col-md-12 mt-2 w-100 info-user">
             <a class="font-weight-bold">Descrição:</a>
             <%- usuario.descricao ? usuario.descricao : "Sem descrição" %>
-            </label>
-          </div>
-
-        </section>
-        <section class="row">
-          <div class="col-md-12 mt-4">
-            <div class="container user-pet-list" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-              <% for(const pet of usuario.pets) {%>
-              <div class="card grid-pets">
-                <a href=" /pet/<%=pet.id %>" style="text-decoration: none; color: unset">
-                  <img class="card-img-top"
-                    src="<%= pet.fotoPrincipal.caminho ? pet.fotoPrincipal.caminho : '/images/404.png'%>"
-                    alt="Pet perdido/encontrado" style="height: 150px;">
-                  <div class="card-body">
-                    <div class="container-card-info">
-                      <!-- <a href="/pet/<%=pet.id %>"> -->
-                      <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
-                      <!-- </a> -->
-                      <% if(pet.status == "PERDIDO"){ %>
-                      <%- include('../components/badge-lost') %>
-                      <% } %>
-                      <% if(pet.status == "ENCONTRADO"){ %>
-                      <%- include('../components/badge-found') %>
-                      <% } %>
-                      <% if(pet.status == "ADOCAO"){ %>
-                      <%- include('../components/badge-adoption') %>
-                      <% } %>
-                    </div>
-                    <div class="">
-                      <ul class="list-unstyled">
-                        <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome%></a></li>
-                        <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
-                        <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <% } %>
-            </div>
-          </div>
-
-          <section class="col-md-12 mt-1" style=" display: flex;
-          justify-content: center; ">
-            <a class="btn btn-warning" style="background-color: var(--orange); color: white" href="?page=<%=page%>">Ver
-              mais</a>
-          </section>
-        </section>
-
-
-
-
-
-
+          </label>
       </div>
 
-
-
     </section>
+    <section class="row">
+      <div class="col-md-12 mt-4">
+        <div class="container user-pet-list" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+          <% for(const pet of usuario.pets) {%>
+          <div class="card grid-pets">
+            <a href=" /pet/<%=pet.id %>" style="text-decoration: none; color: unset">
+              <img class="card-img-top"
+                src="<%= pet.fotoPrincipal.caminho ? pet.fotoPrincipal.caminho : '/images/404.png'%>"
+                alt="Pet perdido/encontrado" style="height: 150px;">
+              <div class="card-body">
+                <div class="container-card-info">
+                  <!-- <a href="/pet/<%=pet.id %>"> -->
+                  <p class="card-text"><%= pet.nome ? pet.nome : "Sem nome" %></p>
+                  <!-- </a> -->
+                  <% if(pet.status == "PERDIDO"){ %>
+                  <%- include('../components/badge-lost') %>
+                  <% } %>
+                  <% if(pet.status == "ENCONTRADO"){ %>
+                  <%- include('../components/badge-found') %>
+                  <% } %>
+                  <% if(pet.status == "ADOCAO"){ %>
+                  <%- include('../components/badge-adoption') %>
+                  <% } %>
+                </div>
+                <div class="">
+                  <ul class="list-unstyled">
+                    <li><a class="font-weight-bold">Raça:</a> <a class="link"> <%= pet.raca.nome%></a></li>
+                    <li><a class="font-weight-bold">Sexo:</a> <a class="link"> <%= pet.sexo%></a></li>
+                    <li><a class="font-weight-bold">Porte:</a> <a class="link"> <%= pet.porte%></a></li>
+                  </ul>
+                </div>
+              </div>
+            </a>
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+      <section class="col-md-12 mt-1" style=" display: flex;
+          justify-content: center; ">
+        <a class="btn btn-warning" style="background-color: var(--orange); color: white" href="?page=<%=page%>">Ver
+          mais</a>
+      </section>
+    </section>
+
+
+
+
+
+
+    </div>
+
+
+
   </section>
+</section>
 
 </section>
 
