@@ -76,3 +76,9 @@ h2 {
     width: auto;
   }
 }
+
+@media(max-width: 1096px) {
+  .form-container {
+    width: 80%;
+  }
+}

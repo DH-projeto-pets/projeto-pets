@@ -1,7 +1,7 @@
 <%- include('../partials/head', { title: 'Cadastrar Pet para adoção'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
-  <section class="container-fluid  main-container mb-5">
+  <section class="container-fluid  main-container form-container mb-5">
     <section class="mt-2">
 
       <h1 class="col-md-12 text-center">
@@ -91,7 +91,7 @@
                 Sexo:
               </label>
               <section class="form-row">
-                <div class="form-check col-3 form-check-inline">
+                <div class="form-check form-check-inline">
                   <input class="form-check-input <%= errors.sexo ?
                     'is-invalid' : '' %>" name="sexo" required type="radio" id="radio-femea" value="FEMEA" <%= pet.sexo == "FEMEA" ?
                     "checked": "" %> />
@@ -99,7 +99,7 @@
                     Fêmea
                   </label>
                 </div>
-                <div class="form-check col-3 form-check-inline">
+                <div class="form-check form-check-inline">
                   <input class="form-check-input <%= errors.sexo ?
                     'is-invalid' : '' %>" name="sexo" type="radio" required id="radio-macho" value="MACHO" <%= pet.sexo == "MACHO" ?
                     "checked": "" %> />
@@ -170,7 +170,7 @@
               </label>
               <section class="form-row col-12 col-xl-6">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input <%= errors.castrado ?
+                  <input required class="form-check-input <%= errors.castrado ?
                     'is-invalid' : '' %>" name="castrado" type="radio"  id="castrado-sim" value="1" <%= pet.castrado == "1" ?
                     "checked": "" %> />
                   <label class="form-check-label" for="castrado-sim">
@@ -178,7 +178,7 @@
                   </label>
                 </div>
                 <div class="form-check form-check-inline flex-wrap">
-                  <input class="form-check-input <%= errors.castrado ?
+                  <input required class="form-check-input <%= errors.castrado ?
                     'is-invalid' : '' %>" name="castrado" type="radio"  id="castrado-nao" value="0" <%= pet.castrado == "0" ?
                     "checked": "" %> />
                   <label class="form-check-label" for="castrado-nao">
@@ -196,7 +196,7 @@
               </label>
               <section class="form-row col-12 col-xl-6">
                 <div class="form-check form-check-inline offset-0">
-                  <input class="form-check-input <%= errors.vermifugado ?
+                  <input required class="form-check-input <%= errors.vermifugado ?
                     'is-invalid' : '' %>" name="vermifugado" type="radio" id="vermifugado-sim" value="1" <%=
                     pet.vermifugado == "1" ? "checked": "" %> />
 
@@ -205,7 +205,7 @@
                   </label>
                 </div>
                 <div class="form-check form-check-inline flex-wrap">
-                  <input class="form-check-input <%= errors.vermifugado ?
+                  <input required class="form-check-input <%= errors.vermifugado ?
                     'is-invalid' : '' %>" name="vermifugado" type="radio" id="vermifugado-nao" value="0" <%=
                     pet.vermifugado == "0" ? "checked": "" %> />
                   <label class="form-check-label" for="vermifugado-nao">
