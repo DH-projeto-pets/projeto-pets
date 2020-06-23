@@ -2,7 +2,7 @@
 
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true }) %>
-  <section class="container justify-content:center mb-5" id="containerbody">
+  <section class="container justify-content:center mb-5 perfil-container" id="containerbody">
     <section class="row pb-4 ml-2 mr-2">
       <div class="col-md-12">
         <section class="row">
@@ -77,7 +77,7 @@
     </section>
     <section class="row">
       <div class="col-md-12 mt-4">
-        <div class="container user-pet-list" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+        <div class="container user-pet-list">
           <% for(const pet of usuario.pets) {%>
           <div class="card grid-pets">
             <a href=" /pet/<%=pet.id %>" style="text-decoration: none; color: unset">
@@ -113,7 +113,7 @@
         </div>
       </div>
 
-      <section class="col-md-12 mt-1" style=" display: flex;
+      <section class="col-md-12 mt-1 mb-3" style=" display: flex;
           justify-content: center; ">
         <a class="btn btn-warning" style="background-color: var(--orange); color: white" href="?page=<%=page%>">Ver
           mais</a>
