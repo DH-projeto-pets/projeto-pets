@@ -1,7 +1,7 @@
 <%- include('../partials/head', { title: 'Editar Pet para adoção'}) %>
 <section class="d-flex" id="wrapper">
   <%- include('../partials/sidebar', { sidebarIsVisible: true}) %>
-  <section class="container-fluid  main-container mb-5">
+  <section class="container-fluid  main-container form-container mb-5">
     <section class="mt-2">
 
       <h1 class="col-md-12
@@ -90,7 +90,7 @@
               </section>
 
               <section class="form-group col-sm-12 col-md-6">
-                <label for="raca">Raça</label>
+                <label for="raca">Raça:</label>
                 <select class="form-control
                 <%= errors.raca ? 'is-invalid' : '' %>" id="raca" name="raca" class="selectpicker"
                   data-live-search="true" required>
@@ -105,9 +105,7 @@
                 Sexo:
               </label>
               <section class="form-row">
-                <div class="form-check
-              col-3
-              form-check-inline">
+                <div class="form-check form-check-inline">
                   <input class="form-check-input
               <%= errors.sexo ? 'is-invalid' : '' %>" name="sexo" type="radio" required id="radio-femea" value="FEMEA"
                     <%= pet.sexo == "FEMEA" ? "checked": "" %> />
@@ -115,9 +113,7 @@
                     Fêmea
                   </label>
                 </div>
-                <div class="form-check
-            col-3
-            form-check-inline">
+                <div class="form-check form-check-inline">
                   <input class="form-check-input
             <%= errors.sexo ? 'is-invalid' : '' %>" name="sexo" type="radio" required id="radio-macho" value="MACHO"
                     <%= pet.sexo == "MACHO" ? "checked": "" %> />
@@ -157,14 +153,13 @@
             <!-- Campo sobre se Pet é vacinado ou não -->
             <section class="form-group
                               row">
-              <label class="col-4 pl-0">
+              <label class="col-12 col-xl-4">
                 Vacinado:
               </label>
-              <section class="form-row
-                                col-6">
+              <section class="form-row col-12 col-xl-6">
                 <div class="form-check
                               form-check-inline">
-                  <input class="form-check-input
+                  <input class="form-check-input 
                       <%= errors.vacinado ? 'is-invalid' : '' %>" name="vacinado" type="radio" required
                     id="vacinado-sim" value="1" <%= pet.vacinado == "1" ? "checked": "" %> />
                   <label class="form-check-label" for="vacinado-sim">
@@ -186,11 +181,10 @@
             <!-- Campo sobre se Pet é castrado ou não -->
             <section class="form-group
                               row">
-              <label class="col-4 pl-0">
+              <label class="col-12 col-xl-4">
                 Castrado:
               </label>
-              <section class="form-row
-                                col-6">
+              <section class="form-row col-12 col-xl-6">
                 <div class="form-check
                               form-check-inline">
                   <input class="form-check-input
@@ -215,11 +209,10 @@
             <!-- Campo sobre se Pet é vermifugado ou não -->
             <section class="form-group
                               row">
-              <label class="col-4 pl-0">
+              <label class="col-12 col-xl-4">
                 Vermifugado:
               </label>
-              <section class="form-row
-                                col-6">
+              <section class="form-row col-12 col-xl-6">
                 <div class="form-check
                               form-check-inline">
                   <input class="form-check-input
@@ -248,9 +241,7 @@
             <section class="form-group">
               <label for="descricao">Descrição:</label>
               <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"
-                value="<%= pet.descricao ? pet.descricao : null%>">
-
-                </textarea>
+                value=""><%= pet.descricao ? pet.descricao : null%></textarea>
             </section>
 
             <!-- Endereço -->
@@ -289,11 +280,10 @@
                   value="<%= pet.endereco ? pet.endereco.estado : null%>" />
               </section>
             </section> -->
-            <section class="form-group 
-                          col-sm-12 col-md-12
-                          d-flex justify-content-end">
-              <button onclick="voltar()"type="button"  class="btn orange--offset mr-2">
-              <button type="submit" class="btn orange">Salvar</button>
+            <section class="form-group col-sm-12 col-md-12"
+                          style="display: flex; justify-content: flex-end;">
+       
+              <button type="submit" class="btn orange">Salvar alterações</button>
             </section>
           </div>
         </div>

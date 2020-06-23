@@ -77,11 +77,10 @@
 
 .imgs-preview {
   display: flex;
-  justify-content: space-between;
-  height: 100px;
+  flex-wrap: wrap;
 }
 
 .imgs-preview img {
-  flex: 1;
-  max-width: 116.99px;
+  width: 92px;
+  height: 100px;
 }
