@@ -80,7 +80,6 @@
           </div>
         </div>
       </div>
-      <% console.log(locals.user.endereco) %>
       <%- include('../partials/footer', { useSelect: false }) %>
       <script>
         const span = document.querySelector('[data-span="info-km"]');
@@ -115,13 +114,14 @@
 
         function error(err) {
           console.log("error");
-          console.log("<%=  user %>");
           coords = {
             latitude: Number(
-              '<%=  locals.user ?  locals.user.endereco.latitude : "" %>'
+              '<%=  !locals.user ? "" : locals.user.endereco ? locals.user.endereco.latitude : "" %>'
+
             ),
             longitude: Number(
-              '<%= locals.user ? locals.user.endereco.longitude : "" %>'
+              '<%=  !locals.user ? "" : locals.user.endereco ? locals.user.endereco.longitude : "" %>'
+
             ),
           };
           distancia = distance(
