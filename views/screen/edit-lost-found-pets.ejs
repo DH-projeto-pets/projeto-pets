@@ -6,7 +6,7 @@
     <section class="mt-2">
       <h1 class="col-md-12 text-center">Editar Pet</h1>
       <form class="col-md-12 " method="POST" action="editar?_method=PUT">
-        <div class="form-row">
+        <div class="form-row mb-3">
           <div class="form-check form-check-inline">
             <input class="form-check-input" name="status" type="radio" id="petEncontrado"
               <%= pet.status == "ENCONTRADO" ? "checked": "" %> value="ENCONTRADO">
@@ -49,7 +49,7 @@
             </section>
           </section>
           <section class="form-group col-md-8">
-            <section class="form-row">
+            <section class="form-row mb-3">
               <label class="col-12" for="especie">
                 Nome:
               </label>
