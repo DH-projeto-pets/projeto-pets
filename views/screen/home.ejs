@@ -74,7 +74,7 @@
       PERDIDO: `<div class="badge badge-lost" data-toggle="tooltip" data-placement="bottom" title="Pet Perdido">P</div>`,
       ENCONTRADO: `<div class="badge badge-found" data-toggle="tooltip" data-placement="bottom" title="Pet Encontrado">E</div>`
     };
-
+    const distancia = distance(pet.latitude, pet.longitude, coords.latitude, coords.longitude, 'K').toFixed(2)
     return (
       `<section class="card container border mb-1">
         <section class="row justify-content-end mt-3">
@@ -93,7 +93,7 @@
   </section>
   <section class="row">
     <div class="col-md-12 pl-4 pr-4 mb-3 d-flex justify-content-between">
-     <span class="bg-transparent">${distance(pet.latitude, pet.longitude, coords.latitude, coords.longitude, 'K').toFixed(2)} km</span>
+      <span class="bg-transparent">${distancia < 1 ? `${distancia * 1000}m` : `${distancia}km`} de você</span>
       <span class="bg-transparent">        
        
       ${`Cadastrado ${moment(pet.createdAt).fromNow()} `}
