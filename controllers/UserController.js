@@ -270,7 +270,11 @@ let UserController = {
     const pets = usuario.map((usuario) => usuario.pets);
     const [user] = usuario;
     delete user.pets;
-    user.pets = pets;
+    if (pets[0].id) {
+      user.pets = pets;
+    } else {
+      user.pets = [];
+    }
     if (!usuario) return res.render("404-not-found");
     res.render("screen/owner-profile", {
       usuario: user,

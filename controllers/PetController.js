@@ -340,6 +340,7 @@ module.exports = {
           as: "raca",
           include: "especie",
         },
+        "fotos",
         "fotoPrincipal",
         "endereco",
       ],
