@@ -101,12 +101,14 @@
         async function success(pos) {
           console.log("pegou");
           var { latitude, longitude, accuracy, altitudeAccuracy } = pos.coords;
-          coords = { latitude, longitude };
+          console.log(latitude, longitude)
+          const coords = { latitude, longitude };
+          console.log(coords)
           distancia = distance(
             petLatitude,
             petLongitude,
-            coords.latitude,
-            coords.longitude
+            latitude,
+            longitude
           );
 
           span.innerText = `${Math.round(distancia) ? Math.round(distancia) + ' km de você' : ''}`;
@@ -114,7 +116,7 @@
 
         function error(err) {
           console.log("error");
-          coords = {
+          const coords = {
             latitude: Number(
               '<%=  !locals.user ? "" : locals.user.endereco ? locals.user.endereco.latitude : "" %>'
 
@@ -133,4 +135,4 @@
           span.innerText = `${Math.round(distancia) ? Math.round(distancia) + 'km de você' : ''}`;
         }
       </script>
-      <script src="/javascripts/setLocation.js"></script>
+  
