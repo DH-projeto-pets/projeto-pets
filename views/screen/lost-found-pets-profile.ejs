@@ -8,7 +8,7 @@
       <br>
       <div class="col-12">
         <div class="row mt-1 ml-2">
-          <h1 class=""><%= pet.nome ? pet.nome : ''  %></h1>
+          <h1 class=""><%= pet.nome ? pet.nome : 'Sem nome'  %></h1>
           <!-- botão para pet encontrado -->
 
           <div class="col-8" style="text-align: left;">
@@ -38,20 +38,12 @@
             alt="Foto do Pet" id="fotomaior">
 
           <div class="col-3 p-0 float-right " id="thumbspets">
-            <% for(var i=0;i<3;i++){%>
-
-            <% if(pet.fotos[i]) { %>
-            <% if(pet.fotos[i].caminho !== pet.fotoPrincipal.caminho){ %>
-
-            <img src="<%= pet.fotos[i].caminho? pet.fotos[i].caminho : '/images/404.png'%>" alt="thumbpet"
-              class="img-fluid mb-1 p-0 thumbpet col-12">
-            <%} else {%>
-            <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
-            <% } %>
-            <%} else {%>
-            <img src='/images/404.png' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
-            <% } %>
-            <%}%>
+            <% for(photo of pet.fotos){ %>
+              <%if(photo.caminho !== pet.fotoPrincipal.caminho) {%>
+              <img src='<%=photo.caminho%>' alt="thumbpet" class="img-fluid mb-1 p-0 thumbpet col-12">
+              <%}%>
+             <%}%>
+            
        
           </div>
         </div>
@@ -111,10 +103,10 @@
             longitude
           );
           if (distancia < 1) {
-          span.innerText = `${distancia ? distancia.toFixed(2)*1000 + ' m de você' : ''}`;
+          span.innerText = `${distancia ? distancia.toFixed(2)*1000 + 'm de você' : ''}`;
             return;
           }
-          span.innerText = `${distancia ? distancia.toFixed(2) + ' km de você' : ''}`;
+          span.innerText = `${distancia ? distancia.toFixed(2) + 'km de você' : ''}`;
         }
 
         function error(err) {
