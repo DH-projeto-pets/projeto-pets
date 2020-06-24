@@ -108,8 +108,11 @@
             coords.latitude,
             coords.longitude
           );
-
-          span.innerText = `${Math.round(distancia) ? Math.round(distancia) + ' km de você' : ''}`;
+          if (distancia < 1) {
+          span.innerText = `${distancia ? distancia.toFixed(2)*1000 + ' m de você' : ''}`;
+            return;
+          }
+          span.innerText = `${distancia ? distancia.toFixed(2) + ' km de você' : ''}`;
         }
 
         function error(err) {
@@ -130,7 +133,11 @@
             coords.latitude,
             coords.longitude
           );
-          span.innerText = `${Math.round(distancia) ? Math.round(distancia) + 'km de você' : ''}`;
+          if (distancia < 1) {
+            span.innerText = `${distancia ? distancia.toFixed(2)*1000 + ' m de você' : ''}`;
+            return;
+          }
+          span.innerText = `${distancia ? distancia.toFixed(2) + ' km de você' : ''}`;
         }
       </script>
       <script src="/javascripts/setLocation.js"></script>
