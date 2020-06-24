@@ -19,7 +19,8 @@
           <section class="form-group
                             col-md-4 pl-0">
             <section class="form-group col-sm-6 col-md-12 pl-0 form-img-review">
-              <img src="/images/default-photo.png" alt="Visualização de imagem" class="img-thumbnail preview-img">
+              <img src="<%= pet.fotoPrincipal ? pet.fotoPrincipal.caminho : '/images/default-photo.png'%>"
+                alt="Visualização de imagem" class="img-thumbnail">
             </section>
             <section class="form-group 
                               col-sm-12 col-md-12 pl-0">
@@ -142,10 +143,10 @@
               </section>
               <input type="hidden" name="fotosMap" />
               <section class="form-group col-sm-12 col-md-12 imgs-preview">
-                <img data-first="primeiroPreview" data-id="multiplePreview" class="img-thumbnail">
-                <img data-id="multiplePreview" class="img-thumbnail">
-                <img data-id="multiplePreview" class="img-thumbnail">
-                <img data-id="multiplePreview" class="img-thumbnail">
+                <% for(let foto = 0; foto < 4; foto++) {%>
+                <img data-id="multiplePreview" class="img-thumbnail"
+                  src="<%= pet.fotos[foto] ? pet.fotos[foto].caminho : '' %>">
+                <%}%>
               </section>
             </section>
 
@@ -161,91 +162,91 @@
                               form-check-inline">
                   <input class="form-check-input 
                       <%= errors.vacinado ? 'is-invalid' : '' %>" name="vacinado" type="radio" required
-                    id="vacinado-sim" value="1" <%= pet.vacinado == "1" ? "checked": "" %> />
-                  <label class="form-check-label" for="vacinado-sim">
-                    Sim
-                  </label>
-                </div>
-                <div class="form-check
+                id="vacinado-sim" value="1" <%= pet.vacinado == "1" ? "checked": "" %> />
+                <label class="form-check-label" for="vacinado-sim">
+                  Sim
+                </label>
+          </div>
+          <div class="form-check
                     form-check-inline">
-                  <input class="form-check-input
+            <input class="form-check-input
                     <%= errors.vacinado ? 'is-invalid' : '' %>" name="vacinado" type="radio" id="vacinado-nao" required
-                    value="0" <%= pet.vacinado == "0" ? "checked": "" %> />
-                  <label class="form-check-label" for="vacinado-nao">
-                    Não
-                  </label>
-                  <%- include('../components/feedback-invalid', { msg: errors['vacinado'] }) %>
-                </div>
-              </section>
-            </section>
-            <!-- Campo sobre se Pet é castrado ou não -->
-            <section class="form-group
+              value="0" <%= pet.vacinado == "0" ? "checked": "" %> />
+            <label class="form-check-label" for="vacinado-nao">
+              Não
+            </label>
+            <%- include('../components/feedback-invalid', { msg: errors['vacinado'] }) %>
+          </div>
+    </section>
+  </section>
+  <!-- Campo sobre se Pet é castrado ou não -->
+  <section class="form-group
                               row">
-              <label class="col-12 col-xl-4">
-                Castrado:
-              </label>
-              <section class="form-row col-12 col-xl-6">
-                <div class="form-check
+    <label class="col-12 col-xl-4">
+      Castrado:
+    </label>
+    <section class="form-row col-12 col-xl-6">
+      <div class="form-check
                               form-check-inline">
-                  <input class="form-check-input
+        <input class="form-check-input
                       <%= errors.castrado ? 'is-invalid' : '' %>" name="castrado" required type="radio"
-                    id="castrado-sim" value="1" <%= pet.castrado == "1" ? "checked": "" %> />
-                  <label class="form-check-label" for="castrado-sim">
-                    Sim
-                  </label>
-                </div>
-                <div class="form-check
+          id="castrado-sim" value="1" <%= pet.castrado == "1" ? "checked": "" %> />
+        <label class="form-check-label" for="castrado-sim">
+          Sim
+        </label>
+      </div>
+      <div class="form-check
                               form-check-inline">
-                  <input class="form-check-input
+        <input class="form-check-input
                       <%= errors.castrado ? 'is-invalid' : '' %>" name="castrado" type="radio" required
-                    id="castrado-nao" value="0" <%= pet.castrado == "0" ? "checked": "" %> />
-                  <label class="form-check-label" for="castrado-nao">
-                    Não
-                  </label>
-                  <%- include('../components/feedback-invalid', { msg: errors['castrado'] }) %>
-                </div>
-              </section>
-            </section>
-            <!-- Campo sobre se Pet é vermifugado ou não -->
-            <section class="form-group
+          id="castrado-nao" value="0" <%= pet.castrado == "0" ? "checked": "" %> />
+        <label class="form-check-label" for="castrado-nao">
+          Não
+        </label>
+        <%- include('../components/feedback-invalid', { msg: errors['castrado'] }) %>
+      </div>
+    </section>
+  </section>
+  <!-- Campo sobre se Pet é vermifugado ou não -->
+  <section class="form-group
                               row">
-              <label class="col-12 col-xl-4">
-                Vermifugado:
-              </label>
-              <section class="form-row col-12 col-xl-6">
-                <div class="form-check
+    <label class="col-12 col-xl-4">
+      Vermifugado:
+    </label>
+    <section class="form-row col-12 col-xl-6">
+      <div class="form-check
                               form-check-inline">
-                  <input class="form-check-input
+        <input class="form-check-input
                       <%= errors.vermifugado ? 'is-invalid' : '' %>" required name="vermifugado" type="radio"
-                    id="vermifugado-sim" value="1" <%= pet.vermifugado == "1" ? "checked": "" %> />
+          id="vermifugado-sim" value="1" <%= pet.vermifugado == "1" ? "checked": "" %> />
 
-                  <label class="form-check-label" for="vermifugado-sim">
-                    Sim
-                  </label>
-                </div>
-                <div class="form-check
+        <label class="form-check-label" for="vermifugado-sim">
+          Sim
+        </label>
+      </div>
+      <div class="form-check
                               form-check-inline">
-                  <input class="form-check-input
+        <input class="form-check-input
                       <%= errors.vermifugado ? 'is-invalid' : '' %>" name="vermifugado" required type="radio"
-                    id="vermifugado-nao" value="0" <%= pet.vermifugado == "0" ? "checked": "" %> />
-                  <label class="form-check-label" for="vermifugado-nao">
-                    Não
-                  </label>
-                  <%- include('../components/feedback-invalid', { msg: errors['vermifugado'] }) %>
-                </div>
-              </section>
-            </section>
+          id="vermifugado-nao" value="0" <%= pet.vermifugado == "0" ? "checked": "" %> />
+        <label class="form-check-label" for="vermifugado-nao">
+          Não
+        </label>
+        <%- include('../components/feedback-invalid', { msg: errors['vermifugado'] }) %>
+      </div>
+    </section>
+  </section>
 
 
-            <!-- Descrição do animal -->
-            <section class="form-group">
-              <label for="descricao">Descrição:</label>
-              <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"
-                value=""><%= pet.descricao ? pet.descricao : null%></textarea>
-            </section>
+  <!-- Descrição do animal -->
+  <section class="form-group">
+    <label for="descricao">Descrição:</label>
+    <textarea class="form-control" id="descricao" rows="3" cols="100" name="descricao"
+      value=""><%= pet.descricao ? pet.descricao : null%></textarea>
+  </section>
 
-            <!-- Endereço -->
-            <!-- <section class="form-row">
+  <!-- Endereço -->
+  <!-- <section class="form-row">
               <section class="form-group col-md-4">
                 <label for="CEP">CEP</label>
                 <input type="numeric" name="cep" class="form-control" id="CEP"
@@ -280,16 +281,15 @@
                   value="<%= pet.endereco ? pet.endereco.estado : null%>" />
               </section>
             </section> -->
-            <section class="form-group col-sm-12 col-md-12"
-                          style="display: flex; justify-content: flex-end;">
-       
-              <button type="submit" class="btn orange">Salvar alterações</button>
-            </section>
-          </div>
-        </div>
-      </form>
+  <section class="form-group col-sm-12 col-md-12" style="display: flex; justify-content: flex-end;">
 
-    </section>
+    <button type="submit" class="btn orange">Salvar alterações</button>
   </section>
+  </div>
+  </div>
+  </form>
+
+</section>
+</section>
 </section>
 <%- include('../partials/footer', { useSelect: true }) %>
